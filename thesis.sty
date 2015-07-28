@@ -1,0 +1,58 @@
+\ProvidesPackage{thesis}
+
+\usepackage{amsmath}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage[pdftitle={\thesistitle},pdfauthor={\thesisauthor},bookmarks]{hyperref}
+
+\usepackage[backend=bibtex8,textencoding=utf8,bibencoding=utf8]{biblatex}
+
+% pagesizes
+\paperwidth=8.5in
+\paperheigh=11in
+
+
+\setlength{\hoffset}{0in}
+\setlength{\oddsidemargin}{.5in}
+\setlength{\textwidth}{6in}
+\setlength{\evensidemargin}{0in}
+
+
+% title page
+\newcommand{\thesistitlepage}{
+    \normalspace
+    \thispagestyle{empty}
+    \begin{center}
+        \textbf{\LARGE \thesistitle} \\[1cm]
+        \textbf{\LARGE \thesisauthor} \\[8cm]
+        Submitted in partial fulfillment of the \\
+        requirements for the degree \\
+        of Doctor of Philosophy \\
+        in the Graduate School of Arts and Sciences \\[4cm]
+        \textbf{\Large COLUMBIA UNIVERSITY} \\[5mm]
+        \thesisyear
+    \end{center}
+    \clearpage
+}
+
+% copyright page
+\newcommand{\thesiscopyrightpage}{
+    \thispagestyle{empty}
+    \strut \vfill
+    \begin{center}
+      \copyright\:\thesisyear \\
+      \thesisauthor \\
+      All Rights Reserved
+    \end{center}
+    \cleardoublepage
+}
+
+% draft version
+\newcommand{\draft}{
+    \renewcommand{\normalspace}{\singlespace}
+    \normalspace
+    \chapter*{Draft. Version \today}
+    \clearpage
+}
