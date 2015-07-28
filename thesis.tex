@@ -1,23 +1,64 @@
+%!TEX program = xelatex
 % PhD Thesis
-
 \documentclass[letterpaper,12pt]{memoir}
+
+\newcommand{\thesistitle}{Statistical Topology for Genomics and Evolution}
+\newcommand{\thesisauthor}{Kevin Joseph Emmett}
+\newcommand{\thesisyear}{2015}
+\newcommand{\abstractpath}{./tex/abstract.tex}
 
 \usepackage{thesis}
 
-\begin{document}
+\usepackage[backend=biber,style=numeric,sorting=nyt,bibencoding=utf8]{biblatex}
+\addbibresource{./thesis.bib}
+\setlength{\bibitemsep}{\baselineskip} % skip line between bib entries
 
+\begin{document}
+\DoubleSpacing
+
+% title page
+\thesistitlepage
+
+% copyright
+\thesiscopyrightpage
+
+% abstract
+\thesisabstract
+
+% begin roman numbering
 \frontmatter
 
 \tableofcontents
-\cleardoublepage
+\clearpage
 
 \listoffigures
-\cleardoublepage
+\clearpage
 
 \listoftables
-\cleardoublepage
+\clearpage
 
+% begin arabic numbering
 \mainmatter
+
+\chapter{Introduction}
+\label{ch:introduction}
+\input{./tex/introduction.tex}
+
+\chapter{Theory}
+\label{ch:theory}
+% \input{./tex/theory.tex}
+
+\chapter{Applications: Prokaryotes}
+\label{part:bacteria}
+% \input{./tex/bacteria.tex}
+
+\part{Applications: Eukaryotes}
+\label{part:human}
+% \input{./tex/human.tex}
+
+\chapter{Conclusions}
+\label{ch:conclusions}
+% \input{./tex/conclusions.tex}
 
 \backmatter
 

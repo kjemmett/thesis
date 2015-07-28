@@ -1,3 +1,4 @@
+%!TEX root = ./thesis.tex
 \ProvidesPackage{thesis}
 
 \usepackage{amsmath}
@@ -5,33 +6,58 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 
-\usepackage[pdftitle={\thesistitle},pdfauthor={\thesisauthor},bookmarks]{hyperref}
+% \usepackage[utf8]{inputenc}
+\usepackage{graphicx}
 
-\usepackage[backend=bibtex8,textencoding=utf8,bibencoding=utf8]{biblatex}
+\usepackage[unicode=true,bookmarks]{hyperref}
+\hypersetup{pdfinfo={Title={\thesistitle},Author={\thesisauthor}},
+            pdfencoding=auto}
 
 % pagesizes
 \paperwidth=8.5in
-\paperheigh=11in
+\paperheight=11in
 
+% margins
+\setlrmarginsandblock{1in}{1in}{*}
+\setulmarginsandblock{1in}{1in}{*}
+\checkandfixthelayout
 
-\setlength{\hoffset}{0in}
-\setlength{\oddsidemargin}{.5in}
-\setlength{\textwidth}{6in}
-\setlength{\evensidemargin}{0in}
+% various things
+% \setlength{\hoffset}{0in}
+% \setlength{\oddsidemargin}{.5in}
+% \setlength{\textwidth}{6in}
+% \setlength{\evensidemargin}{0in}
 
+% % 1in + voffset + topmargin + headheight + headsep + textheight + footskip 
+% % For PhD thesis we also need an extra inch at the bottom
+% % 1inch = 72 pt
+% \setlength{\voffset}{0.0in}
+% \setlength{\topmargin}{.0in}
+% \setlength{\headheight}{14pt}
+% \setlength{\headsep}{22pt}
+% \setlength{\textheight}{8.5in}
+% \setlength{\footskip}{0pt}
+
+% define spacing
+\footnotesep=1\baselineskip
 
 % title page
 \newcommand{\thesistitlepage}{
-    \normalspace
     \thispagestyle{empty}
+    \vspace*{1in}
     \begin{center}
-        \textbf{\LARGE \thesistitle} \\[1cm]
-        \textbf{\LARGE \thesisauthor} \\[8cm]
+        \begin{Spacing}{2}
+        \textbf{\Large \thesistitle} \\ [0.5in]
+        \textbf{\Large \thesisauthor} \\
+        \end{Spacing}
+        \vfill
+        \begin{Spacing}{1}
         Submitted in partial fulfillment of the \\
-        requirements for the degree \\
-        of Doctor of Philosophy \\
-        in the Graduate School of Arts and Sciences \\[4cm]
-        \textbf{\Large COLUMBIA UNIVERSITY} \\[5mm]
+        requirements for the degree of \\
+        Doctor of Philosophy \\
+        in the Graduate School of Arts and Sciences \\ [1in]
+        \end{Spacing}
+        \textbf{\Large COLUMBIA UNIVERSITY} \\ [0.2in]
         \thesisyear
     \end{center}
     \clearpage
@@ -42,10 +68,26 @@
     \thispagestyle{empty}
     \strut \vfill
     \begin{center}
-      \copyright\:\thesisyear \\
-      \thesisauthor \\
-      All Rights Reserved
+        \begin{Spacing}{1.5}
+        \copyright\enspace\thesisyear \\
+        \thesisauthor \\
+        All Rights Reserved
+        \end{Spacing}
     \end{center}
+    \cleardoublepage
+}
+
+% abstract page
+\newcommand{\thesisabstract}{
+    \thispagestyle{empty}
+    \begin{center}
+    \textbf{\Large ABSTRACT} \\[1cm]
+     \textbf{\Large \thesistitle} \\[1cm]
+     \textbf{\Large \thesisauthor} \\[1cm]
+    \end{center}
+    \begin{Spacing}{2}
+    \input{\abstractpath}
+    \end{Spacing}
     \cleardoublepage
 }
 
