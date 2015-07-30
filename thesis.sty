@@ -11,12 +11,16 @@
 \usepackage{lipsum}
 
 \usepackage{xcolor}
+\usepackage{bookmark}
 \usepackage[unicode=true,bookmarks=true]{hyperref}
 \hypersetup{pdfinfo={Title={\thesistitle},Author={\thesisauthor}},
             pdfencoding=auto,
             colorlinks=true,
             linkcolor={blue!50!black},
             citecolor={green!50!black}}
+
+\usepackage{tocloft}% http://ctan.org/pkg/tocloft
+\setlength{\cftpartnumwidth}{2em}% Set length of number width in ToC for \part
 
 % pagesizes
 \paperwidth=8.5in
@@ -64,6 +68,7 @@
 % title page
 \newcommand{\thesistitlepage}{
     \thispagestyle{empty}
+    \bookmark[dest=TitlePage]{Title Page}
     \vspace*{1in}
     \begin{center}
         \begin{Spacing}{2}
@@ -100,6 +105,7 @@
 % abstract page
 \newcommand{\thesisabstract}{
     \thispagestyle{empty}
+    \bookmark[page=3]{Abstract}
     \begin{center}
     \textbf{\Large ABSTRACT} \\[1cm]
      \textbf{\Large \thesistitle} \\[1cm]

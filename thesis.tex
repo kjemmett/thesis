@@ -11,6 +11,8 @@
 % load thesis styling
 \usepackage{thesis}
 
+
+
 % bibliography setup
 \usepackage[backend=biber,style=numeric,sorting=nyt,bibencoding=utf8]{biblatex}
 \addbibresource{./thesis.bib}
@@ -51,7 +53,8 @@
 \input{./tex/theory.tex}
 
 %% Part 1: Models
-\part{Theory}
+{\let\newpage\relax
+\part{Theory}}
 \label{part:theory}
 
 In this section, we consider two models.
@@ -79,6 +82,7 @@ In this section, we consider two models.
 
 \chapter{Pathogen Evolution - PATRIC}
 \label{ch:pathogens}
+\input{./tex/pathogens.tex}
 \lipsum
 
 \chapter{Prokaryote Reticulate Evolution - COGs}
@@ -100,6 +104,10 @@ In this section, we consider two models.
 \chapter{Human Chromsomal Organization}
 \lipsum
 % \input{./tex/human.tex}
+
+% bookmark setup
+\bookmarksetup{startatroot}
+\addtocontents{toc}{\bigskip}% perhaps as well
 
 \chapter{Conclusions}
 \label{ch:conclusions}
