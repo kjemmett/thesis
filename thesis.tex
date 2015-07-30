@@ -1,63 +1,109 @@
 %!TEX program = xelatex
 % PhD Thesis
-\documentclass[letterpaper,12pt]{memoir}
+\documentclass[letterpaper,12pt,twoside]{memoir}
 
-\newcommand{\thesistitle}{Statistical Topology for Genomics and Evolution}
+% thesis metadata
+\newcommand{\thesistitle}{Statistical Topology of Reticulate Evolution}
 \newcommand{\thesisauthor}{Kevin Joseph Emmett}
 \newcommand{\thesisyear}{2015}
 \newcommand{\abstractpath}{./tex/abstract.tex}
 
+% load thesis styling
 \usepackage{thesis}
 
+% bibliography setup
 \usepackage[backend=biber,style=numeric,sorting=nyt,bibencoding=utf8]{biblatex}
 \addbibresource{./thesis.bib}
 \setlength{\bibitemsep}{\baselineskip} % skip line between bib entries
 
+% document
 \begin{document}
-\DoubleSpacing
 
-% title page
+% cover pages [no numbering]
 \thesistitlepage
-
-% copyright
 \thesiscopyrightpage
-
-% abstract
 \thesisabstract
 
-% begin roman numbering
+% prefatory pages [roman numerals]
 \frontmatter
 
 \tableofcontents
-\clearpage
+\cleardoublepage
 
 \listoffigures
-\clearpage
+\cleardoublepage
 
 \listoftables
-\clearpage
+\cleardoublepage
 
-% begin arabic numbering
+\thesisacknowledgements
+
+\thesisdedication
+
+% main body [arabic numerals]
 \mainmatter
 
-\chapter{Introduction}
-\label{ch:introduction}
+% introduction
 \input{./tex/introduction.tex}
 
 \chapter{Theory}
 \label{ch:theory}
-% \input{./tex/theory.tex}
+\input{./tex/theory.tex}
 
-\chapter{Applications: Prokaryotes}
-\label{part:bacteria}
+%% Part 1: Models
+\part{Theory}
+\label{part:theory}
+
+In this section, we consider two models.
+
+\chapter{Parametric Inference using Persistence Diagrams}
+\label{ch:parametric_inference}
+\input{./tex/parametric_inference.tex}
+\lipsum
+
+\chapter{Reticulate Complex Constructions}
+\label{ch:complex_construction}
+\lipsum
+
+%% Part 2: Microbes
+\part{Applications: Microorganism Evolution}
+\label{part:microorganism}
+
+\chapter{Bacteriophage Reticulate Evolution}
+\label{ch:phage}
+\lipsum
+
+\chapter{Influenza Evolution}
+\label{ch:influenza}
+\input{./tex/influenza.tex}
+
+\chapter{Pathogen Evolution - PATRIC}
+\label{ch:pathogens}
+\lipsum
+
+\chapter{Prokaryote Reticulate Evolution - COGs}
+\label{ch:prokaryotes}
+\lipsum
 % \input{./tex/bacteria.tex}
 
-\part{Applications: Eukaryotes}
+
+%% Part 3: Human Data
+\part{Applications: Human Genomic Data}
 \label{part:human}
+
+\chapter{Human Recombination Rate Mapping}
+\lipsum
+
+\chapter{Human Population Structure}
+\lipsum
+
+\chapter{Human Chromsomal Organization}
+\lipsum
 % \input{./tex/human.tex}
 
 \chapter{Conclusions}
 \label{ch:conclusions}
+\lipsum
 % \input{./tex/conclusions.tex}
 
 \backmatter

@@ -8,10 +8,15 @@
 
 % \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage{lipsum}
 
+\usepackage{xcolor}
 \usepackage[unicode=true,bookmarks=true]{hyperref}
 \hypersetup{pdfinfo={Title={\thesistitle},Author={\thesisauthor}},
-            pdfencoding=auto}
+            pdfencoding=auto,
+            colorlinks=true,
+            linkcolor={blue!50!black},
+            citecolor={green!50!black}}
 
 % pagesizes
 \paperwidth=8.5in
@@ -22,24 +27,39 @@
 \setulmarginsandblock{1in}{1in}{*}
 \checkandfixthelayout
 
-% various things
-% \setlength{\hoffset}{0in}
-% \setlength{\oddsidemargin}{.5in}
-% \setlength{\textwidth}{6in}
-% \setlength{\evensidemargin}{0in}
-
-% % 1in + voffset + topmargin + headheight + headsep + textheight + footskip 
-% % For PhD thesis we also need an extra inch at the bottom
-% % 1inch = 72 pt
-% \setlength{\voffset}{0.0in}
-% \setlength{\topmargin}{.0in}
-% \setlength{\headheight}{14pt}
-% \setlength{\headsep}{22pt}
-% \setlength{\textheight}{8.5in}
-% \setlength{\footskip}{0pt}
-
-% define spacing
+% define footnote spacing
 \footnotesep=1\baselineskip
+
+% mainmatter pagestyle
+\RequirePackage{etoolbox}
+\appto\frontmatter{\pagestyle{plain}\SingleSpacing}
+\appto\mainmatter{\pagestyle{plain}\DoubleSpacing}
+
+% define \cleardoublepageempty for plain pagestyle
+% [will include page number on blank page]
+\def
+\cleardoublepageempty{%
+\clearpage
+  \ifodd\c@page
+  \else
+    \hbox{}
+    \thispagestyle{empty}
+    \newpage      
+  \fi
+}%
+
+% redefine \cleardoublepage for plain pagestyle
+% [will include page number on blank page]
+\def
+\cleardoublepage{
+\clearpage
+  \ifodd\c@page
+  \else
+    \hbox{}
+    \thispagestyle{plain}
+    \newpage      
+  \fi
+}
 
 % title page
 \newcommand{\thesistitlepage}{
@@ -74,7 +94,7 @@
         All Rights Reserved
         \end{Spacing}
     \end{center}
-    \cleardoublepage
+    \cleardoublepageempty
 }
 
 % abstract page
@@ -88,6 +108,23 @@
     \begin{Spacing}{2}
     \input{\abstractpath}
     \end{Spacing}
+    \cleardoublepageempty
+}
+
+\newcommand{\thesisacknowledgements}{
+    \chapter*{Acknowledgements}
+    I acknowledge the support of several individuals.
+    \cleardoublepage
+}
+\newcommand{\thesisdedication}{
+    \thispagestyle{plain}
+    \vspace*{2in}
+    \begin{center}
+    \textit{\large
+    This thesis is dedicated to Cindy Fang.
+    }
+    \end{center}
+    \vfill \strut
     \cleardoublepage
 }
 
@@ -98,3 +135,14 @@
     \chapter*{Draft. Version \today}
     \clearpage
 }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% macros
+
+\newcommand{\Cech}{\v{C}ech}
+\newcommand\given[1][]{\:#1\vert\:}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\endinput
