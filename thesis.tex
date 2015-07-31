@@ -7,113 +7,65 @@
 \newcommand{\thesisauthor}{Kevin Joseph Emmett}
 \newcommand{\thesisyear}{2015}
 \newcommand{\abstractpath}{./tex/abstract.tex}
+\newcommand{\bibpath}{./thesis.bib}
 
 % load thesis styling
 \usepackage{thesis}
 
-
-
-% bibliography setup
-\usepackage[backend=biber,style=numeric,sorting=nyt,bibencoding=utf8]{biblatex}
-\addbibresource{./thesis.bib}
-\setlength{\bibitemsep}{\baselineskip} % skip line between bib entries
-
 % document
 \begin{document}
 
-% cover pages [no numbering]
+%% cover pages [no numbering]
 \thesistitlepage
 \thesiscopyrightpage
 \thesisabstract
 
-% prefatory pages [roman numerals]
+%% prefatory pages [roman numerals]
 \frontmatter
 
+% table of contents
 \tableofcontents
 \cleardoublepage
 
+% list of figures
 \listoffigures
 \cleardoublepage
 
+% list of tables
 \listoftables
 \cleardoublepage
 
+% thesis acknowledgements
 \thesisacknowledgements
 
+% thesis dedication
 \thesisdedication
 
-% main body [arabic numerals]
+%% main body [arabic numerals]
 \mainmatter
 
 % introduction
 \input{./tex/introduction.tex}
 
-\chapter{Theory}
-\label{ch:theory}
-\input{./tex/theory.tex}
+% background
+\input{./tex/background.tex}
 
-%% Part 1: Models
-{\let\newpage\relax
-\part{Theory}}
-\label{part:theory}
+% Part 1: Theory
+\input{./tex/part1/part1.tex}
 
-In this section, we consider two models.
-
-\chapter{Parametric Inference using Persistence Diagrams}
-\label{ch:parametric_inference}
-\input{./tex/parametric_inference.tex}
-\lipsum
-
-\chapter{Reticulate Complex Constructions}
-\label{ch:complex_construction}
-\lipsum
-
-%% Part 2: Microbes
-\part{Applications: Microorganism Evolution}
-\label{part:microorganism}
-
-\chapter{Bacteriophage Reticulate Evolution}
-\label{ch:phage}
-\lipsum
-
-\chapter{Influenza Evolution}
-\label{ch:influenza}
-\input{./tex/influenza.tex}
-
-\chapter{Pathogen Evolution - PATRIC}
-\label{ch:pathogens}
-\input{./tex/pathogens.tex}
-\lipsum
-
-\chapter{Prokaryote Reticulate Evolution - COGs}
-\label{ch:prokaryotes}
-\lipsum
-% \input{./tex/bacteria.tex}
-
+% Part 2: Microbes
+\input{./tex/part2/part2.tex}
 
 %% Part 3: Human Data
-\part{Applications: Human Genomic Data}
-\label{part:human}
+\input{./tex/part3/part3.tex}
 
-\chapter{Human Recombination Rate Mapping}
-\lipsum
+% add space before conclusions chapter in toc
+\addtocontents{toc}{\bigskip}
 
-\chapter{Human Population Structure}
-\lipsum
+% conclusions
+\input{./tex/conclusions.tex}
 
-\chapter{Human Chromsomal Organization}
-\lipsum
-% \input{./tex/human.tex}
-
-% bookmark setup
-\bookmarksetup{startatroot}
-\addtocontents{toc}{\bigskip}% perhaps as well
-
-\chapter{Conclusions}
-\label{ch:conclusions}
-\lipsum
-% \input{./tex/conclusions.tex}
-
+%% backmatter [arabic numerals]
 \backmatter
 
 \SingleSpacing

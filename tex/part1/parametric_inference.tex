@@ -1,4 +1,6 @@
-%!TEX root = ../thesis.tex
+%!TEX root = ../../thesis.tex
+\chapter{Parametric Inference using Persistence Diagrams}
+\label{ch:parametric_inference}
 
 \section{Persistent Homology}
 
@@ -7,7 +9,7 @@ For detailed background, see the reviews \cite{Carlsson:2009,Ghrist:2008} and th
 In brief, persistent homology computes topological invariants representing information about the connectivity and holes in a dataset.
 A dataset, $S=(s_{1},\ldots,s_{N})$, is represented as a point cloud in a high-dimensional space (not necessarily Euclidean).
 From the point cloud, a nested family of simplicial complexes, or a filtration, is constructed, parameterized by a filtration value $\epsilon$, which controls the simplices present in the complex.
-The two most common ways of constructing a simplicial complex at each $\epsilon$ are the \v{C}ech complex and the Vietoris-Rips complex.
+The two most common ways of constructing a simplicial complex at each $\epsilon$ are the \Cech complex and the Vietoris-Rips complex.
 The filtration is represented as a list of simplices defined on the vertices of $S$, annotated with the $\epsilon$ at which the simplex appears.
 Given a filtration, the persistence algorithm is used to compute homology groups.
 The $0$-dimensional homology ($H_0$) represents a hierarchical clustering of the data.
@@ -15,7 +17,7 @@ Higher dimensional homology groups represent loops, holes, and higher dimensiona
 Each feature is annotated with an interval, representing the $\epsilon$ at which the feature appears and the $\epsilon$ at which the feature contracts in the filtration.
 These filtration values are the \emph{birth} and \emph{death} times, respectively.
 The topological invariants in the filtration can be concisely represented in a barcode diagram, a set of line segments ordered by filtration value on the horizontal axis (Figure \ref{fig:persistence_diagram}).
-Equivalently, invariants can represented by a persistence diagram, a scatter plot with the birth time on the horizontal axis and the death time on the vertical axis .
+Equivalently, invariants can represented by a persistence diagram, a scatter plot with the birth time on the horizontal axis and the death time on the vertical axis.
 Persistent homology is computed using Dionysus \cite{Morozov:2012}.
 
 \begin{figure}
@@ -118,7 +120,7 @@ We also observe tighter confidence intervals at higher recombination rates, cons
 \begin{figure}
 \begin{center}
 \centerline{\includegraphics[width=\columnwidth]{./fig/param_inference.pdf}}
-\caption{Inference of recombination rate $\rho$ using topological information. The recombination rate $\rho$ is estimated for five values \{4, 12, 36, 72, 144\} at three different mutation rates \{50, 500, 5000\}. Mean estimate over 500 simulations and 95\% confidence interval is shown.}
+\caption[Inference of recombination rate $\rho$ using topological information]{Inference of recombination rate $\rho$ using topological information. The recombination rate $\rho$ is estimated for five values \{4, 12, 36, 72, 144\} at three different mutation rates \{50, 500, 5000\}. Mean estimate over 500 simulations and 95\% confidence interval is shown.}
 \label{fig:param_inference}
 \end{center}
 \end{figure}
