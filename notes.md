@@ -18,6 +18,10 @@ Things to cover...
 * topological data analysis
 * persistent homology
 
+* statistics
+* dimensionality reudction: PCA, MDS
+
+
 * statistics for PH [many]
 * random complexes and PH [Kahle etc]
 
