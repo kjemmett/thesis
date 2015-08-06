@@ -7,22 +7,47 @@ number of holes, Betti numbers, etc., one will be more interested in the
 distribution of such objects on noncompact manifolds as one goes out
 to infinity''}{Isadore Singer}
 
+Darwin’s \emph{On the Origin of Species} contains a single figure, depicting the ancestry of species as a phylogenetic tree.
+The tree structure has since been the dominant framework to understand, visualize, and communicate discoveries about evolution.
+With the modern explosion in genomic data, molecular phylogenetics –-- tree building –-- has become the standard tool for inferring evolutionary relationships. 
+Yet a tree is accurate only if there has been no exchange of genetic material among the ancestors of sampled organisms.
+Growing genomic data has increasingly challenged this picture.
+Notable examples including species hybridization, bacterial gene transfer, and meiotic recombination.
+In HIV, frequent recombination confounds our understanding of the early and present epidemic’s history.
+Carl Woese’s organization of bacteria, eukarya, and archaea into the three domains of life was based on only 1500 nucleotides in the 16S subunit ribosomal RNA, less than 0.00005\% of the human genome.
+One then wonders if the information deduced from small genomic sections can be extrapolated to other regions, as different gene sequences can yield vastly different tree topologies.
+Incompatibilities in the tree model now appear as the rule, not the exception, demonstrating the need for new representations of evolutionary relationships \autocite{Doolittle:1999,Doolittle:2006}.
+
+In this thesis, we use new computational techniques, borrowed from the field of algebraic topology, to capture complex patterns of gene exchange that are hidden by current phylogenetic methods.
+By doing so, we provide a fuller understanding of evolutionary relationships than allowed by current phylogenetic methods.
+Genomic exchange can be characterized by the parental sequences involved in the exchange, by the amount and identity of material exchanged (i.e., the genes or loci involved), and the frequency with which similar exchanges occur.
+Techniques such as phylogenetic networks and ancestral recombination graphs have been developed to describe reticulate evolution, but they have had only limited success due to difficulties of biological interpretation and computational infeasibility in all but the smallest datasets.
+Linkage-based techniques have succeeded in measuring rates of recombination in medium-sized datasets (< 200 sequences), but they cannot reveal the scale of these exchanges (i.e., the genetic distance between parental sequences), and they have limited resolution in pinpointing where along a genome such exchanges have occurred.
+A new mathematical foundation is needed to break free of these limitations.
+
+\subsection{Thesis Organization}
+
 This thesis contains results of applying methods from topological data analysis to various problems in genomics and evolution.
 It primarily details the use of persistent homology as a tool to measure the prevalence and scale of nonvertical evolutionary events, such as reassortments and recombinations.
 In so doing, various techniques are developed to extract statistical information from the topological complexes that are constructed.
-We rely on results from \cite{Grosz_and_Sidner_1986}.
 
-The rest of this thesis is organized as follows.
-In Chapter \ref{ch:background} we present background information on the wide range of topics discussed in this thesis.
-This includes discussion of 
+The thesis is organized as follows.
 
-In Part \ref{part:theory}, we discuss two important problems.
-In Chapter \ref{ch:parametric_inference} we develop an approach for performing statistical inference using the information contained in the persistence diagram.
-In Chapter \ref{ch:complex_construction} we propose two methods of complex construction that generalize the traditional Vietoris-Rips but have favorable properties for phylogenetic analysis.
-In Part \ref{part:applications_microorganism} we apply our approaches to several datasets deriv
+In Chapter \ref{ch:background} we present background information on the topics discussed in this thesis.the wide range of topics discussed in this thesis.
+This discussion is chiefly structured into two pieces: (1) background on phylogenetics and population genetics, and (2) background on algebraic topology and the methods of topological data analysis.
+
+In Part \ref{part:theory}, we develop two complementary approaches for analyzing genomic data using topological data analysis.
+In Chapter \ref{ch:parametric_inference}, we develop methods for performing statistical inference using summary statistics contained in the persistence diagram.
+This is the first such use of persistence diagrams as a tool for performing parametric inference.
+In Chapter \ref{ch:complex_construction}, we propose alternative methods of constructing topological complexes that generalize the traditional Vietoris-Rips and \Cech complexes but are suited to the particular demands of phylogenetic applications.
+We draw on previous work in phylogenetic networks and use homology theory to provide quantitative assessment of reticulation.
+
+In Part \ref{part:application_microorganism} we apply our approach 
 In this section, we consider two models.
+
 In Part \ref{part:applications_human}, we apply our approaches to a several problems in human population genetics and biology.
 In Chapter \ref{ch:human_recombination_rate} we measure the human recombination rate.
 In Chapter \ref{ch:human_population_structre} we reconstruct models of human demographic movements.
 In Chapter \ref{ch:human_chromatin_folding} we analyze Hi-C data to understand patterns of chromatin folding in the nucleus.
+
 Finally, in Chapter \ref{ch:conclusions} we summarize our results and present possible avenues for future directions.
