@@ -22,7 +22,7 @@ Phylogenetics is how you build a tree from evolutionary characters.
 Many such methods exist, but most relevant to this thesis are distance-based approaches.
 These methods first construct a pairwise distance matrix and then construct a tree that best represents that distance data.
 Only in the case of perfectly additive data will a tree be able to exactly fit the matrix.
-Identifying the pairwise distance matrix with a its finite metric space representation allows most of the results described here.
+Identifying the pairwi se distance matrix with a its finite metric space representation allows most of the results described here.
 Phylogenetics can be viewed as 
 
 \subsection{The Coalescent}
@@ -49,13 +49,13 @@ Evolutionary histories are no longer represented by a tree, but rather by an \em
 Recombination is the component of the model generating nontrivial topology by introducing deviations from a contractibile tree structure, and is the component which we would like to quantify.
 Coalescent simulations were performed using \texttt{ms} \cite{Hudson:2002}.
 
-\begin{figure}
-\begin{center}
-\centerline{\includegraphics[width=\columnwidth]{./fig/coalescent_sims.pdf}}
-\caption{Distributions of statistics defined on the $H_1$ persistence diagram for different model parameters. Top left: Number of features. Top right: Birth time distribution. Bottom left: Death time distribution. Bottom right: Feature length distribution. Data generated from $1000$ coalescent simulations with $n=100$, $\theta=500$, and variable $\rho$.}
-\label{fig:coalescent_sims}
-\end{center}
-\end{figure}
+% \begin{figure}
+% \begin{center}
+% \centerline{\includegraphics[width=\columnwidth]{./fig/coalescent_sims.pdf}}
+% \caption{Distributions of statistics defined on the $H_1$ persistence diagram for different model parameters. Top left: Number of features. Top right: Birth time distribution. Bottom left: Death time distribution. Bottom right: Feature length distribution. Data generated from $1000$ coalescent simulations with $n=100$, $\theta=500$, and variable $\rho$.}
+% \label{fig:coalescent_sims}
+% \end{center}
+% \end{figure}
 
 \section{Algebraic Topology}
 
@@ -82,7 +82,7 @@ But is basically clustering.
 \label{subsec:persistent_homology}
 
 We summarize persistent homology from the perspective of an end-user.
-For detailed background, see the reviews \cite{Carlsson:2009,Ghrist:2008} and the books \cite{Edelsbrunner:2010,Zomorodian:2005b}.
+For detailed background, see the reviews \cite{Carlsson:2009a,Ghrist:2008} and the books \cite{Edelsbrunner:2010,Zomorodian:2005b}.
 In brief, persistent homology computes topological invariants representing information about the connectivity and holes in a dataset.
 A dataset, $S=(s_{1},\ldots,s_{N})$, is represented as a point cloud in a high-dimensional space (not necessarily Euclidean).
 From the point cloud, a nested family of simplicial complexes, or a filtration, is constructed, parameterized by a filtration value $\epsilon$, which controls the simplices present in the complex.

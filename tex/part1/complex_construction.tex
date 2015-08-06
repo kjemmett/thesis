@@ -49,7 +49,7 @@ We present simple examples in which the genetic distance filtration fails to cap
 In Section \ref{sec:median_complex} we present the median closure of the original vertex set.
 We show how this operation recovers invariant signals of incompatibility in a quantitative way.
 In Section \ref{sec:higher_homology} we discuss interpretations of higher dimensional homology and introduce a \Cech\ complex construction on sequence data.
-In Section \ref{sec:cech_complex} we present
+% In Section \ref{sec:cech_complex} we present
 In Section \ref{sec:examples} we present examples of our approach.
 Throughout, we assume biallelic data under an infinite sites model with no back mutation.
 
@@ -76,22 +76,64 @@ Consider the example in Figure \ref{fig:fig1_sequences}.
 This set of five sequences can be represented the tree in Figure \ref{fig:fig1_tree}.
 The barcode diagram from a persistent homology computation is shown in Figure \ref{fig:fig1_barcode}.
 
+% \begin{figure}
+%   \centering
+%   \fbox{\begin{subfigure}[c]{0.3\textwidth}
+%     \begin{align*}
+%       s_{1} & = 1100000 \\
+%       s_{2} & = 1010000 \\
+%       s_{3} & = 0001000 \\
+%       s_{4} & = 0000110 \\
+%       s_{5} & = 0000101
+%     \end{align*}
+%     \caption{Sequences}
+%     \label{fig:fig1_sequences}
+%   \end{subfigure}}
+%   ~
+%   \fbox{\begin{subfigure}[c]{0.3\textwidth}
+%     \begin{tikzpicture}
+%       \coordinate (0) at (0,0);
+%       \coordinate[label=270:$s_3$] (1) at (0,-1);
+%       \coordinate (2) at (-1,0);
+%       \coordinate (3) at (1,0);
+%       \coordinate[label=45:$s_4$] (4) at (1.707,0.707);
+%       \coordinate[label=-45:$s_5$] (5) at (1.707,-0.707);
+%       \coordinate[label=135:$s_1$] (6) at (-1.707,0.707);
+%       \coordinate[label=-135:$s_2$] (7) at (-1.707,-0.707);
+%       \draw[black,thick] (6) -- (2) -- (0) -- (3) -- (4);
+%       \draw[black,thick] (7) -- (2) -- (0) -- (3) -- (5);
+%       \draw[black,thick] (0) -- (1);
+%     \end{tikzpicture}
+%     \caption{Tree}
+%     \label{fig:fig1_tree}
+%   \end{subfigure}}
+%   ~
+%   \fbox{\begin{subfigure}[c]{0.3\textwidth}
+%     %\includegraphics[width=\textwidth]{fig/fig1_barcode.eps}
+%     \caption{Barcode}
+%     \label{fig:fig1_barcode}
+%   \end{subfigure}}
+%   \caption{A tree is trivially contractible and has vanishing higher homology.}
+%   \label{fig:fig1}
+% \end{figure}
+
 \begin{figure}
   \centering
-  \fbox{\begin{subfigure}[c]{0.3\textwidth}
-    \begin{align*}
+  \fbox{
+  \subbottom[Sequence]{
+      \begin{align*}
       s_{1} & = 1100000 \\
       s_{2} & = 1010000 \\
       s_{3} & = 0001000 \\
       s_{4} & = 0000110 \\
       s_{5} & = 0000101
     \end{align*}
-    \caption{Sequences}
     \label{fig:fig1_sequences}
-  \end{subfigure}}
+  }}
   ~
-  \fbox{\begin{subfigure}[c]{0.3\textwidth}
-    \begin{tikzpicture}
+  \fbox{
+  \subbottom[Tree]{
+      \begin{tikzpicture}
       \coordinate (0) at (0,0);
       \coordinate[label=270:$s_3$] (1) at (0,-1);
       \coordinate (2) at (-1,0);
@@ -104,10 +146,10 @@ The barcode diagram from a persistent homology computation is shown in Figure \r
       \draw[black,thick] (7) -- (2) -- (0) -- (3) -- (5);
       \draw[black,thick] (0) -- (1);
     \end{tikzpicture}
-    \caption{Tree}
     \label{fig:fig1_tree}
-  \end{subfigure}}
+  }}
   ~
+  \subbottom[Barcode]{}
   \fbox{\begin{subfigure}[c]{0.3\textwidth}
     %\includegraphics[width=\textwidth]{fig/fig1_barcode.eps}
     \caption{Barcode}
@@ -183,6 +225,9 @@ In the fundamental loop, we can give an interpretation to each vertex.
 There is a common ancestor, two parents, and a recombinant child.
 Of course, we do not \emph{a priori} know which sequences played which role in a given loop, which is the same as the problem of rooting a phylogenetic tree.
 Persistent homology is simply a method of efficiently counting the number of such loops in the data, across all genetic scales.
+
+\section{Examples}
+\label{sec:examples}
 
 In considering small examples of this form we often encountered cases in which the four gamete test indicated reticulation, but persistent homology failed to detect a loop.
 What these examples had in common is that due to distortion in the metric space, simplices would collapse before they should have.
@@ -270,7 +315,7 @@ Performing the Hudson-Kaplan test yields $R_M=1$, with a partition between sites
 In this example, persistent homology will contract immediately, with trivial higher homology.
 To understand why this is the case, consider an embedding into $\mathbb{R}^3$.
 The problem is that $s_{3}$ sits in the middle of the other four sequences, and at $\epsilon=2$ everything contracts.
-Had $s_{3}$ not been in the data, we would have had an example very similar to Example \ref{ex:example1}, with the interpretation of one recombination event.
+Had $s_{3}$ not been present in the data, we would have had an example very similar to Example \ref{ex:example1}, with the interpretation of one recombination event.
 We term this the ``dixie cup'' example.
 The conclusion to draw from this example is that multiple recombination events can interact in complicated ways, destroying signal from persistent homology.
 
@@ -422,7 +467,7 @@ $H_{6}$ & 0 & 0 & 0 & 0 & 0 &  0\\
 \captionof{table}{\Cech\ Homology of Hypercube}
 \end{center}
 
-We include a simple proof of the numbers in this table in Appendix \ref{app:hypercube}.
+We include a simple proof of the numbers in this table [right here].
 
 \subsection{Examples}
 
@@ -506,7 +551,7 @@ The persistent homology of $S$ will generate $H_2$ in the interval $[1,1.5)$.
 A possible evolutionary scenario is presented in Figure \ref{fig:fig_simple_betti2}.
 We see that sequence $s_5$ is a triple reassortment of sequences $s_2$, $s_3$, and $s_5$.
 Further, notice that there is total incompatibility between sites $(1,2)$, $(2,3)$, and $(1,3)$.
-Contrast this with the example detailed in Figure \ref{fig:no_betti2}.
+Contrast this with the example detailed in Figure \ref{fig:fig_no_betti2}.
 Here, we have a set of six sequences which exhibits two $H_1$ loops, and no $H_2$ homology.
 The two loops can be seen as independent.
 And if we examine
@@ -562,7 +607,7 @@ And if we examine
     \label{fig:fig_simple_betti2_barcode}
   \end{subfigure}}
   \caption{Five sequences generating $H_2$ homology. In fact, only four are required. One possible evolutionary history is shown.}
-  \label{fig:fig_simple_betti2}
+  \label{fig:fig_simple_betti2_main}
 \end{figure}
 
 \begin{figure}
