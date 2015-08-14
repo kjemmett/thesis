@@ -27,14 +27,15 @@ Things to cover...
 
 * Recapitulate the Doolittle story and run through some history.
 * Darwin -> Zuckerkandl/Pauling -> Woese -> Modern Genomics
-* Doolittle
-* Some evidence for nonvertical evolution.
+* Doolittle; evidence for nonvertical evolution; new models
 * Propose topological data analysis as a possible framework
 * Describe the basic idea behind TDA
+* Give a simple picture for how TDA is applied to sequence data
 
 ### Background
 
-* Major section: survey of evolutionaru biology, population genetics and phylogenetics.
+* Major section: survey of evolutionary biology, population genetics and phylogenetics.
+* Sequence alignment. Coalescent simulation.
 * Discuss Darwin, Zuckerkandl and Pauling, Woese, Doolittle.
 * LUCA. Universal Tree of Life. Powerful image!
 * But evidence that evolution is not as linear as Darwin thought.
@@ -47,6 +48,8 @@ Things to cover...
 * Discuss group theory, equivalence classes, homology.
 * Lead up to persistent homology.
 * Discuss developments in statistical TDA.
+
+* M
 
 ### Theory Section
 
