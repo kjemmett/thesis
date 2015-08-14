@@ -10,10 +10,9 @@ Things to cover...
 * population genetics
 * evolution
 * horizontal gene transfer
-
 * phylogenetic networks
 
-* topology
+* topology: properties under continuous transformation
 * algebraic topology
 * topological data analysis
 * persistent homology
@@ -21,18 +20,28 @@ Things to cover...
 * statistics
 * dimensionality reudction: PCA, MDS
 
-
 * statistics for PH [many]
 * random complexes and PH [Kahle etc]
 
+### Introduction
+
+* Recapitulate the Doolittle story and run through some history.
+* Darwin -> Zuckerkandl/Pauling -> Woese -> Modern Genomics
+* Doolittle
+* Some evidence for nonvertical evolution.
+* Propose topological data analysis as a possible framework
+* Describe the basic idea behind TDA
+
 ### Background
 
-* Major section: population genetics and phylogenetics.
-* Discuss Darwin, Woese, Doolittle.
+* Major section: survey of evolutionaru biology, population genetics and phylogenetics.
+* Discuss Darwin, Zuckerkandl and Pauling, Woese, Doolittle.
+* LUCA. Universal Tree of Life. Powerful image!
+* But evidence that evolution is not as linear as Darwin thought.
 * Discuss the coalescent with recombination. Biological mechanisms of recombination and horizontal gene transfer
 * Discuss phylogenetics and phylogenetic networks.
 * Detailed information can be put in later sections
-
+* Infinite sites assumption
 
 * Major section: Applied topology
 * Discuss group theory, equivalence classes, homology.

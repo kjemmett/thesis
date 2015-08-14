@@ -1,0 +1,23 @@
+#!/usr/bin/env python
+import shutil
+import bibtexparser
+
+bib_path = '../thesis.bib'
+
+# make a backup
+shutil.copy(bib_path, '{0}.bak'.format(bib_path))
+
+# initialize parser
+parser = bibtexparser.bparser.BibTexParser()
+parser.ignore_nonstandard_types = False
+
+# parse bib file
+with open(bib_path, 'r') as bibtex_file:
+    bib_database = bibtexparser.load(bibtex_file, parser)
+
+# sort entries on id
+bib_database.entries = sorted(bib_database.entries, key=lambda entry: entry['ID'])
+
+# write bib file with utf8 encoding
+with open(bib_path, 'w') as bibtex_file:
+    bibtex_file.write(bibtexparser.dumps(bib_database).encode('utf8'))
