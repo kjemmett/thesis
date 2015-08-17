@@ -31,6 +31,7 @@ Things to cover...
 * Propose topological data analysis as a possible framework
 * Describe the basic idea behind TDA
 * Give a simple picture for how TDA is applied to sequence data
+* Thesis Organization
 
 ### Background
 
