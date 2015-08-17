@@ -7,10 +7,11 @@
 \newcommand{\thesisauthor}{Kevin Joseph Emmett}
 \newcommand{\thesisyear}{2015}
 \newcommand{\abstractpath}{./tex/abstract.tex}
-\newcommand{\bibpath}{./thesis.bib}
+% \newcommand{\bibpath}{./thesis.bib}
 
 % load thesis styling
 \usepackage{thesis}
+% \usepackage[backend=biber]{biblatex}
 \addbibresource{./thesis.bib}
 
 %% document
@@ -23,6 +24,8 @@
 
 %% prefatory pages [roman numerals]
 \frontmatter
+
+\cite{Adler:2010}
 
 % table of contents
 \tableofcontents
@@ -42,7 +45,7 @@
 % thesis dedication
 \thesisdedication
 
-%% main body [arabic numerals]
+% main body [arabic numerals]
 \mainmatter
 
 % introduction
@@ -66,7 +69,7 @@
 % conclusions
 \input{./tex/conclusions.tex}
 
-%% backmatter [arabic numerals]
+% backmatter [arabic numerals]
 \backmatter
 
 \SingleSpacing

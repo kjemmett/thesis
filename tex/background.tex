@@ -19,11 +19,30 @@ More specific background relevant to the applications described in Part \ref{par
 \subsection{Phylogenetics}
 
 Phylogenetics is how you build a tree from evolutionary characters.
-Many such methods exist, but most relevant to this thesis are distance-based approaches.
-These methods first construct a pairwise distance matrix and then construct a tree that best represents that distance data.
+
+Start with sequences.
+Perform an alignment.
+From an alignment, one can then directly use parsimony or likelihood approaches.
+Alternatively, one can compute a matrix of pairwise distances and then construct a tree that best approximates these distances.
+Most relevant to this thesis are the distance-based approaches (because they can be viewed as finite metric spaces amenable to topological analysis).
 Only in the case of perfectly additive data will a tree be able to exactly fit the matrix.
 Identifying the pairwise distance matrix with a its finite metric space representation allows most of the results described here.
-Phylogenetics can be viewed as 
+
+Include discussion of rooted vs unrooted.
+
+\subsection{Distance Matrix Methods}
+
+Introduced by Cavalli-Sforza and Edwards in 1967 \cite{CavalliSforza:1967th} and Fitch and Margoliash in 1967 \cite{Fitch:1967we}.
+Compute a matrix of pairwise distances and then find the tree that best approximates those distances.
+Weighted and unweighted least squares.
+UPGMA.
+Neighbor joining is now the most common distance-matrix approach because it can perfectly reconstruct an additive tree.
+Neighbor joining was introduced by Saitou and Nei in 1987 \cite{Saitou:1987wo}.
+
+There are limitations of distance based methods.
+Do not use all the information.
+
+Need to include discussion of metrics on aligned sequences.
 
 \subsection{The Coalescent}
 
@@ -102,7 +121,7 @@ The $0$-dimensional homology ($H_0$) represents a hierarchical clustering of the
 Higher dimensional homology groups represent loops, holes, and higher dimensional voids in the data.
 Each feature is annotated with an interval, representing the $\epsilon$ at which the feature appears and the $\epsilon$ at which the feature contracts in the filtration.
 These filtration values are the \emph{birth} and \emph{death} times, respectively.
-The topological invariants in the filtration can be concisely represented in a barcode diagram, a set of line segments ordered by filtration value on the horizontal axis (Figure \ref{fig:persistence_diagram}).
+The topological invariants in the filtration can be concisely represented in a barcode diagram, a set of line segments ordered by filtration value on the horizontal axis (Figure XXX).
 Equivalently, invariants can represented by a persistence diagram, a scatter plot with the birth time on the horizontal axis and the death time on the vertical axis.
 
 Several packages for computing persistent homology have been developed [Dionysus, Javaplex, Guidi] and TDA frontend for R.

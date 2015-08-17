@@ -2,28 +2,31 @@
 \chapter{Introduction}
 \label{ch:introduction}
 
-\epigraph{``A good quote is hard to find.''}{Charles Darwin}
+\epigraph{``As buds give rise by growth to fresh buds, and these, if vigorous, branch out and overtop on all sides many a feebler branch, so by generation I believe it has been with the great Tree of Life, which fills with its dead and broken branches the crust of the earth, and covers the surface with its ever-branching and beautiful ramifications.''}{Charles Darwin, 1872}
 
 \emph{On the Origin of Species} contains a single figure (see Figure \ref{fig:darwin_origin}), depicting the ancestry of species as a branching genealogical tree.
 Since then, the tree structure has been the dominant framework to understand, visualize, and communicate discoveries about evolution.
+Indeed, a primary goal of the discipline of evolutionary biology is to expand and fill the \emph{tree of life}.
+Traditionally, this was the realm of phenotype-derived taxonomies [cites?].
+The field was placed on quantitative foundations with the Watson and Crick's discovery of the DNA double-helix in 1953 \cite{Watson:1953wm} and Zuckerkandl and Pauling's recognition that the information encoded in these sequences could be used as a document of evolutionary history in the early 1960's \cite{Zuckerkandl:1962,Zuckerkandl:1965wi}.
+This inaugurated the field of molecular phylogenetics: the comparison of macromolecular sequences to infer genealogies and evolutionary relationships.
+With theoretical foundations in place, evolutionary biology progressed in earnest.
+Numerical approaches to infer phylogenies were established by Cavalli-Sforza and Edwards in the 1960s.
+Molecular phylogenetics --- tree building --- has become the standard tool for inferring evolutionary relationships.
 
-Indeed the goal of large parts of evolutionary biology is to fill out the \emph{tree of life}.
-Traditionally the realm of phenotype-derived taxonomies.
+However, a tree is only accurate if there has been no exchange of genetic material among the ancestors of sampled organisms.
+Increasing genomic data has challenged this picture and demonstrated several examples of
+Notable examples including species hybridization, horizontal gene transfer in bacteria, and meiotic recombination in eukaryotes.
 
 With the modern explosion in genomic data, molecular phylogenetics –-- tree building –-- has become the standard tool for inferring evolutionary relationships. \kje{[Summary Figure?]}
 Yet a tree is accurate only if there has been no exchange of genetic material among the ancestors of sampled organisms.
 
-Growing genomic data has increasingly challenged this picture.
-Notable examples including species hybridization, horizontal gene transfer in bacteria, and meiotic recombination in eukaryotes.
+\kje{(Here insert more of the Doolittle story.)}
 
 molecular phylogenetics — the comparison of macromolecular sequences to infer genealogical and thereby, evolutionary relationships
 
-Traditionally the realm of phenotype-derived taxonomies.
-Zuckerkandl and Pauling initiated the field of molecular phylogenetics \cite{Zuckerkandl:1965wi}.
 Carl Woese's later organization of bacteria, eukarya, and archaea into the three domains of life was based on only 1,500 nucleotides in the 16S subnit ribosomal RNA, less than 0.00005\% of the human genome \cite{Woese:1977vd}
 More recent work developed automated approach yadda yadda\cite{Ciccarelli:2006gw}, but even then that is only 0.01\% of a typical human genome, as articulated in Dagan/Martin tree of 1\% \cite{Dagan:2006}.
-
-Growing genomic data challenges this picture.
 
 These nonvertical modes of evolution are more than just a theoretical concern:
 In HIV, frequent recombination confounds our understanding of the early and present epidemic’s history. [cite]
@@ -34,7 +37,7 @@ One wonders if the information deduced from small genomic sections can be extrap
 Incompatibilities in the tree model now appear as the rule, not the exception, demonstrating the need for new representations of evolutionary relationships \autocite{Doolittle:1999,Doolittle:2006}.
 These and other similar situations, further described below, call for new methods of characterizing evolutionary relationships.
 
-Many have argued that, in light of genomic evidence of HGT, the very notion of a universal tree of life must be discarded. [cite Doolittle, Koonin?]
+Many have argued that, in light of genomic evidence of HGT, the very notion of a universal tree of life must be discarded. \kje{[cite Doolittle, Koonin]}.
 
 sequences of orthologous genes! [plug that stuff into Ayasdi!]
 
@@ -46,7 +49,7 @@ sequences of orthologous genes! [plug that stuff into Ayasdi!]
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{./fig/introduction/doolittle_tree.png}
-\caption[Ford Doolittle's Tree]{W Ford Doolittle's representation of the universal tree of life with nonvertical evolution.}
+\caption[Ford Doolittle's Tree]{W Ford Doolittle's representation of the universal tree of life with nonvertical evolution. (From \emph{Science}, vol. 284, issue 5423, page 2127. Reprinted with permission from AAAS.)}
 \label{fig:doolittle_tree}
 \end{figure}
 
@@ -92,7 +95,7 @@ This thesis contains results of applying methods from topological data analysis 
 It primarily details the use of persistent homology as a tool to measure the prevalence and scale of nonvertical evolutionary events, such as reassortments and recombinations.
 In so doing, various techniques are developed to extract statistical information from the topological complexes that are constructed.
 
-\subsection{Thesis Organization}
+\section{Thesis Organization}
 
 The remainder of this thesis is organized as follows.
 
@@ -105,8 +108,11 @@ This is the first such use of persistence diagrams as a tool for performing para
 In Chapter \ref{ch:complex_construction}, we propose alternative methods of constructing topological complexes that generalize the traditional Vietoris-Rips and \Cech complexes but are suited to the particular demands of phylogenetic applications.
 We draw on previous work in phylogenetic networks and use homology theory to provide quantitative assessment of reticulation.
 
-In Part \ref{part:application_microorganism} we apply our approach 
-In this section, we consider two models.
+In Part \ref{part:application_microorganism} we apply our approach various microorganism datasets.
+In Chapter \ref{ch:phage} we study bacteriophages.
+In Chapter \ref{ch:influenza} we study influenza.
+In Chapter \ref{ch:pathogens} we study pathogenic bacteria and use topological techniques to represent the spread of antibiotic resistance.
+In Chapter \ref{ch:prokaryotes} we study prokaryotes.
 
 In Part \ref{part:applications_human}, we apply our approaches to a several problems in human population genetics and biology.
 In Chapter \ref{ch:human_recombination_rate} we measure the human recombination rate.
