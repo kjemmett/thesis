@@ -25,6 +25,7 @@ Things to cover...
 
 ### Introduction
 
+* Open with Darwin's Tree of Life
 * Recapitulate the Doolittle story and run through some history.
 * Darwin -> Zuckerkandl/Pauling -> Woese -> Modern Genomics
 * Doolittle; evidence for nonvertical evolution; new models

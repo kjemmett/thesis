@@ -2,24 +2,50 @@
 \chapter{Introduction}
 \label{ch:introduction}
 
-\epigraph{``As buds give rise by growth to fresh buds, and these, if vigorous, branch out and overtop on all sides many a feebler branch, so by generation I believe it has been with the great Tree of Life, which fills with its dead and broken branches the crust of the earth, and covers the surface with its ever-branching and beautiful ramifications.''}{Charles Darwin, 1872}
+%\epigraph{``As buds give rise by growth to fresh buds, and these, if vigorous, branch out and overtop on all sides many a feebler branch, so by generation I believe it has been with the great Tree of Life, which fills with its dead and broken branches the crust of the earth, and covers the surface with its ever-branching and beautiful ramifications.''}{Charles Darwin, 1872}
 
-\emph{On the Origin of Species} contains a single figure (see Figure \ref{fig:darwin_origin}), depicting the ancestry of species as a branching genealogical tree.
+\emph{On the Origin of Species} contains a single figure, depicting the ancestry of species as a branching genealogical tree \cite{Darwin:1859uh} (see Figure \ref{fig:darwin_origin}).
 Since then, the tree structure has been the dominant framework to understand, visualize, and communicate discoveries about evolution.
-Indeed, a primary goal of the discipline of evolutionary biology is to expand and fill the \emph{tree of life}.
-Traditionally, this was the realm of phenotype-derived taxonomies [cites?].
-The field was placed on quantitative foundations with the Watson and Crick's discovery of the DNA double-helix in 1953 \cite{Watson:1953wm} and Zuckerkandl and Pauling's recognition that the information encoded in these sequences could be used as a document of evolutionary history in the early 1960's \cite{Zuckerkandl:1962,Zuckerkandl:1965wi}.
+Indeed, a primary aim of evolutionary biology has been to expand and fill out what is referred to as the \emph{universal tree of life}, the set of evolutionary relationships among all extant organisms on Earth \cite{Bowler:2003uz}.
+Traditionally, this was the realm of phenotype-derived taxonomies [cite].
+With the advent of molecular data and numerical approaches for tree-inference, evolutionary biology has become a bona fide quantitative discipline.
+Molecular phylogenetics --- tree building --- has become the standard tool for inferring evolutionary relationships.
+Yet a tree is only accurate if the Darwinian model of descent with modification via reproduction is the sole process driving evolution.
+However, it has long been recognized that there exist alterative evolutionary processes that allow organisms to exchange genetic material through alternative means.
+Notable examples including species hybridization, horizontal gene transfer in bacteria, and meiotic recombination in eukaryotes.
+Increasing genomic data, powered by new high-throughput sequencing technologies, has shown that these nonvertical processes occur much more frequently than previously believed.
+Some have argued that this new data means we need new ways of thinking beyond the tree paradigm [cf. Doolittle].
+
+The aim of this thesis is to present new mathematical and computational tools to study evolution in a variety of contexts.
+In the following brief introduction, we survey salient aspects of molecular evolution, the tree paradigm, and challenges thereof.
+We then introduce the idea of thinking of evolution as a topological space.
+
+\begin{figure}
+\centering
+\includegraphics[width=.75\columnwidth]{./fig/introduction/Darwin_divergence.jpg}
+\caption[Charles Darwin's Tree]{The only figure in Darwin's Origin of Species.}
+\label{fig:darwin_origin}
+\end{figure}
+
+\section{Molecular Evolution and the Tree Paradigm}
+
+Molecular evolution: mutation, drift, neutral theory.
+The molecular basis of evolution.
+Information encoded in DNA, genomes.
+Modern evolutionary synthesis: Darwin+Mendel.
+Quantitative modeling.
+Phylogenetics.
+Carl Woese and tree of life
+Species, Organism, and Evolution. HGT+Species concepts. Woese+Goldenfeld.
+Cosmopolitan genes: move around with environmental pressures [not lineage specific but environment specific.]
+Darwin: evolution in terms of organisms not molecules [Pace2009]
+Gene tree disconcordance.
+How to make a molecular phylogeny? 1. align, 2. evaluate differences; 3. fit a topology
+
+The field was placed on quantitative foundations with the Watson and Crick's discovery of the DNA double-helix in 1953 \cite{Watson:1953wm} and Zuckerkandl and Pauling's recognition that the information encoded in these sequences could be used as a document of evolutionary history in the early 1960's \cite{Zuckerkandl:1962,Zuckerkandl:1965wi}. [NOTE: study microorganisms to probe past evolutionary events; see:Pace2009]
 This inaugurated the field of molecular phylogenetics: the comparison of macromolecular sequences to infer genealogies and evolutionary relationships.
 With theoretical foundations in place, evolutionary biology progressed in earnest.
 Numerical approaches to infer phylogenies were established by Cavalli-Sforza and Edwards in the 1960s.
-Molecular phylogenetics --- tree building --- has become the standard tool for inferring evolutionary relationships.
-
-However, a tree is only accurate if there has been no exchange of genetic material among the ancestors of sampled organisms.
-Increasing genomic data has challenged this picture and demonstrated several examples of
-Notable examples including species hybridization, horizontal gene transfer in bacteria, and meiotic recombination in eukaryotes.
-
-With the modern explosion in genomic data, molecular phylogenetics –-- tree building –-- has become the standard tool for inferring evolutionary relationships. \kje{[Summary Figure?]}
-Yet a tree is accurate only if there has been no exchange of genetic material among the ancestors of sampled organisms.
 
 \kje{(Here insert more of the Doolittle story.)}
 
@@ -42,18 +68,16 @@ Many have argued that, in light of genomic evidence of HGT, the very notion of a
 sequences of orthologous genes! [plug that stuff into Ayasdi!]
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{./fig/introduction/darwin_origin.png}
-\caption[Charles Darwin's Tree]{The only figure in Darwin's Origin of Species.}
-\label{fig:darwin_origin}
-\end{figure}
-
-\begin{figure}
 \includegraphics[width=\columnwidth]{./fig/introduction/doolittle_tree.png}
 \caption[Ford Doolittle's Tree]{W Ford Doolittle's representation of the universal tree of life with nonvertical evolution. (From \emph{Science}, vol. 284, issue 5423, page 2127. Reprinted with permission from AAAS.)}
 \label{fig:doolittle_tree}
 \end{figure}
 
 In this thesis, we propose the use of new computational techniques, borrowed from the field of algebraiac topology, to capture and represent complex patterns of genetic exchange that may be obscured using current phylogenetic approaches and tree-centered thinking.
+
+\section{Evolution as a Topological Space}
+
+In this thesis, we propose the use of new computational techniques, borrowed from the field of algebraic topology, to capture and represent complex patterns of genetic exchange.
 
 While this may appear obscure at first glance, let us unpack the idea.
 Topology is concerned with invariant properties of spaces.
@@ -65,6 +89,8 @@ Consider Doolittle's net of life.
 Much more complicated topological space.
 If we envision these relationships as a topological space, we could use a similar characterization.
 The tree is trivially compactable.
+An evolutionary scenario which includes nonvertical processes
+
 
 there are complications that must be addressed at the outset.
 First, deep evolutionary history consists of extinct organisms.
