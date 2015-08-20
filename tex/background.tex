@@ -85,28 +85,40 @@ Species Trees and Gene Trees.
 Recombination and reassortment.
 We will want to include discussion of 
 
-%%%%%%%%%%%%%%%%%
-% TOPOLOGICAL DATA ANALYSIS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TOPOLOGICAL DATA ANALYSIS %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \section{Topological Data Analysis}
 
 Topology is the study of shape.
 Algebraic topology associates algebraic structures to notions of shape.
-Computational topology provides methods of computing invariants.
-Topological data analysis is the name for the field that has emerged from this framework.
+Computational topology provides tools of computing invariants.
+Topological data analysis is the name for the field that has emerged from this work, offering a suite of approaches for analyzing real world data using topological information.
 
 Algebriac topology associates algebraic structures to qualitative notions of shape.
 Principle tool is group theory.
 Groups count connected components.
 
+\subsection{Topology}
+
+\subsection{Algebra}
+
+
 \subsection{Simplicial Complexes}
 
-Abstract Simplicial Complex
+Abstract Simplicial Complex.
 Cech Complex.
 Rips Complex.
 
 \section{Topological Data Analysis}
 
 For excellent review of topological data analysis, see the reviews.
+Start with point cloud data.
+Built a filtration.
+Filtration is a nested set of simplical complexes.
+
 
 \subsection{Mapper}
 
@@ -134,14 +146,20 @@ Equivalently, invariants can represented by a persistence diagram, a scatter plo
 Several packages for computing persistent homology have been developed [Dionysus, Javaplex, Guidi] and TDA frontend for R.
 Persistent homology is computed using Dionysus \cite{Morozov:2012}.
 
-\subsection{Statistical Persistent Homology}
+\subsubsection{Stability}
+\subsubsection{Statistical Persistent Homology}
 
+Currently the cutting edge in TDA.
+Primarily motivated
 Cutting edge in TDA.
 Primarily motivated by the idea that there is a true topology and we are given a finite sample of it.
 We are motivated by a slightly different problem in this thesis.
 We briefly discuss these results.
 Persistence Landscapes.
+Bootstrap resampling
 
-\subsection{Multidimensional Persistence}
-\subsection{}
+\subsubsection{Multidimensional Persistence}
+
+Filtrations along different dimensions.
+In our case, we will consider 
 

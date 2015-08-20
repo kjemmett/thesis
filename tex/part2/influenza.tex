@@ -10,6 +10,23 @@ Influenza is useful to examine because there is a lot of data.
 Influenza is a single-stranded RNA virus that is naturally found in avian populations.
 Each viral genome has eight genetic segments.
 
+\section{Reassortment}
+
+The evolution of influenza is punctuated by frequent reassortment.
+To characterize influenza evolution, we computed the persistent homology of four influenza datasets from avian, swine, and human hosts, each numbering as many as 1,000 genomic sequences.
+When applied to a single segment of the virus unaffected by reassortment, higher-dimensional homology groups vanish (Fig. 2).
+Alignments of single segments are therefore suitable for phylogenetic analysis.
+In settings of vertical evolution, we can directly transform a filtration of 0-D simplicial complexes into an equivalent distance-based dendrogram.
+ Fig. 2A represents the zero-dimensional topology of the hemagglutinin segment of avian influenza viruses. 
+ The zero-dimensional generators at higher genetic distances indicate the major clusters, coinciding with the antigenic subtypes H1-H16.
+ From the bar sizes of the barcode plot, we can create a dendrogram that recapitulates classic phylogenetic analyses57,58 (Fig. 2B).
+ Only when segments are concatenated does persistent homology indicate that reassortment precludes phylogenetic analysis (Fig. 2C).
+ These results show that persistent homology can detect pervasive reassortment in influenza.
+ Estimating ICR from one-dimensional homology provides a lower-bound on reassortment rate in influenza.
+ We calculate an ICR of <1 event per year for classic H1N1 swine and H3N2 human influenza viruses, supported by previous phylogenetic estimates59,60.
+ In contrast, we calculate a high reassortment rate of 22.16 events per year for avian influenza A.
+This difference could be explained by the high diversity and frequent co-infection of avian viruses and correlates with the high proportion of potential avian reassortants reported in previous studies61,62.
+
 \section{Multiscale Flu Reassortment}
 
 \begin{figure}
