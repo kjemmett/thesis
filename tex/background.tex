@@ -89,8 +89,8 @@ We will want to include discussion of
 % TOPOLOGICAL DATA ANALYSIS %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Mathematical Preliminaries}
 
-\section{Topological Data Analysis}
 
 Topology is the study of shape.
 Algebraic topology associates algebraic structures to notions of shape.
@@ -103,30 +103,93 @@ Groups count connected components.
 
 \subsection{Topology}
 
-\subsection{Algebra}
+Topology: characterize properties of spaces invariant under continuous deformation.
 
+\subsection{Algebric Topology}
+
+\subsubsection{simplicial complex}
+Associate a collection of algebraic objects with a topological space.
+Quantify global properties of space.
+Homotopy and Homology.
+Homology: properties of chains composed of oriented simplices
+Elements of homology groups are cycles (chains with vanishing boundary).
+Two k-cycles are homologous if they differ by the boundary of a (k+1)-chain.
+Glue together simplices : simplicial complex.
+
+\begin{enumerate}
+\item Any face of a simplex in K is also in K
+\item The intersection of any two simplciiesl in K is a face of both 
+\end{enumerate}
+Incidence matrix representation
+
+\subsubsection{Chains, cycles and boundaries [rephrase]}
+chain:
+cycle:
+boundary: 
+TDA+PH: number and type of holes. which holes are essential and which are unimportant.
+
+Basically get to the point where can define homology.
+Chain complex.
+Boundary operators
+Work only over $\mod 2$ Homology (0,1) coefficients.
+Torsion observed in teh image patch data set, but no reason to think it is present biologial data sets we examine.
+
+
+\subsubsection{Homology}
+Quotient group
+\begin{equation}
+  H = Z / B
+\end{equation}
 
 \subsection{Simplicial Complexes}
 
+Simplex: generalization of triangle or tetrahedron to arbitraty dimensions. [see Zomorodian].
+k-simplex: k-dimensional polytope which is the convex hull of k+1 vertices.
+Faces. Boundary.
+Simplicial complex: collection of simplcies.
+Set of vertices: simplex.
+Vertices. Dimension.
 Abstract Simplicial Complex.
 Cech Complex.
 Rips Complex.
 
 \section{Topological Data Analysis}
 
+Topological Data Analysis (TDA) studies structure in high-dimensional data such as connectedness and the presence of holes.
+In practice, we observe only a sample of data points, from which we wish to infer an underlying model or generating principle.
+TDA first builds topological complexes from data, then measures informative properties of these complexes. 
+Persistent homology (PH) is a method from TDA that uses algebraic topology to compute quantitative properties in data, including connectedness and the presence of holes (see Box 1).
+
+Make a connection with graph theory (see Horak). Prgoram: encode data as simplicial complex, combinatorial version of a topological space, properties studied from combinatorial, topological, algebraic perspective.
+
 For excellent review of topological data analysis, see the reviews.
 Start with point cloud data.
 Built a filtration.
 Filtration is a nested set of simplical complexes.
 
+\subsection{Finite Metric Spaces}
+
+Finite metric spaces are really interesting objects of study.
+Lots of good work on embedding finite metric spaces, see Matousek.
+Metric space with a finite number of points.
+Combinatorics, geometric, and algorithms.
+In topological data analysis, our spaces of interest are finite metric spaces.
 
 \subsection{Mapper}
 
+Condensed Representations.
+Exploratory data analysis.
+
 Can compare to dimensionality reduction.
 But is basically clustering.
+Reeb graph
+
 
 \subsection{Persistent Homology}
 \label{subsec:persistent_homology}
+
+How to extend homology to finite metric spaces?
+Data -> Sets of complexes -> Vector spaces
 
 We summarize persistent homology from the perspective of an end-user.
 For detailed background, see the reviews \cite{Carlsson:2009a,Ghrist:2008} and the books \cite{Edelsbrunner:2010,Zomorodian:2005b}.
@@ -140,15 +203,51 @@ The $0$-dimensional homology ($H_0$) represents a hierarchical clustering of the
 Higher dimensional homology groups represent loops, holes, and higher dimensional voids in the data.
 Each feature is annotated with an interval, representing the $\epsilon$ at which the feature appears and the $\epsilon$ at which the feature contracts in the filtration.
 These filtration values are the \emph{birth} and \emph{death} times, respectively.
-The topological invariants in the filtration can be concisely represented in a barcode diagram, a set of line segments ordered by filtration value on the horizontal axis (Figure XXX).
-Equivalently, invariants can represented by a persistence diagram, a scatter plot with the birth time on the horizontal axis and the death time on the vertical axis.
 
-Several packages for computing persistent homology have been developed [Dionysus, Javaplex, Guidi] and TDA frontend for R.
+The topological invariants in the filtration can be concisely represented in a barcode diagram, a set of line segments ordered by filtration value on the horizontal axis.
+In the barcode diagram,
+
+The topological invariants in the filtration can be concisely represented in a barcode diagram, a set of line segments ordered by filtration value on the horizontal axis (Figure XXX).
+
+Invariants can be equivalently represented by a persistence diagram, a scatter plot with the birth time on the horizontal axis and the death time on the vertical axis.
+
+The intuition behind persistent homology is that is that good or interesting features will persist over longer scales
+That is, they will be more robust.
+In the barcode diagram this corresonds to long bars, and in the persistence diagram, this corresponds to points far from the diagonal.
+Invariants that persist for only short scales are likely to be noise or artifacts of incomplete sampling.
+The questions of how to rigorously determine what makes a good interval is an open question that is currently being addressed by a number of different groups.
+We discuss this further in Section \ref{subsubsec:ph_statistics}.
+
+\subsubsection{The Persistence Algorithm}
+
+While we act mostly as an end-user of persistent homology in this thesis, the algorithmics behind efficient computations of homology are interesting and worth including for comprehensiveness.
+Computing persistent homology is an exercise in linear algebra.
+The initial algorithms first induce a matching on a set of simplices.
+This was Zomorodian and is the implementation used in Javaplex and Dionysus.
+Then you reduce a couple of matrices.
+You can read off each bar and its represetnative cycle from looking at the zeros on this one particular matrix.
+It's pretty nifty.
+
+More advanced algorithms have been developed that compute simplicial collapses: recognizing that the size of the simplciial set is often the limiting factor here, they collapse simplicies into simpler structures that will have identical homology.
+This uses Discrete Morse Theory and is the idea behind implementations such as Perseus.
+
+Several packages for computing persistent homology have been developed [Dionysus, Javaplex, Guidi, phom] and TDA frontend for R.
 Persistent homology is computed using Dionysus \cite{Morozov:2012}.
 
 \subsubsection{Stability}
-\subsubsection{Statistical Persistent Homology}
 
+What happens if we perturb the original data slightly?
+Will bars change?
+Will new bars be formed?
+Stability result determined how a change in $D\rightarrow D'$ takes us to $H\rightarrow H'$.
+
+Couple of comments about different distances on topological space: Hausdorff, Gromov-Hausdorff.
+Distances between barcodes: Bottleneck, Wasserstein. Matchings.
+
+conclusion: small perturbations in data can only produce small changes in the barcode.
+
+\subsubsection{Statistical Persistent Homology}
+\label{subsubsec:ph_statistics}
 Currently the cutting edge in TDA.
 Primarily motivated
 Cutting edge in TDA.

@@ -110,3 +110,5 @@ The philosophy of analyzing evolution with persistent homology differs from that
 
 This proposal seeks to develop new methods in persistent homology, motivated by the specific needs of evolutionary biology. While topology traditionally focuses on immutable objects, evolution is a dynamic process. We are not content merely to describe genomic data, but seek to explain the evolutionary mechanisms that gave rise to it. To this end, we develop (Aim 1.1) techniques for statistical inference using persistent homology-based methods. In Aim 1.3, we will improve on these techniques by explicitly incorporating time as a dimension in the persistent homology calculations; this goal will require substantial theoretical advance in computational topology7,8.
 
+----------------------------------
+
