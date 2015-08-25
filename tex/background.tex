@@ -105,9 +105,13 @@ Groups count connected components.
 
 Topology: characterize properties of spaces invariant under continuous deformation.
 
-\subsection{Algebric Topology}
+\subsection{Algebraic Topology}
 
-\subsubsection{simplicial complex}
+In this section we give background sufficient to define homology for our purposes, before moving on to applied topology and persistent homology.
+A more thorough exposition of algebraic topology can be found in [HATCHER].
+
+\subsubsection{Simplicial Complex}
+
 Associate a collection of algebraic objects with a topological space.
 Quantify global properties of space.
 Homotopy and Homology.
@@ -118,14 +122,45 @@ Glue together simplices : simplicial complex.
 
 \begin{enumerate}
 \item Any face of a simplex in K is also in K
-\item The intersection of any two simplciiesl in K is a face of both 
+\item The intersection of any two simplices in K is a face of both 
 \end{enumerate}
-Incidence matrix representation
+
+Incidence matrix representation...
 
 \subsubsection{Chains, cycles and boundaries [rephrase]}
-chain:
-cycle:
-boundary: 
+
+Boundary operator $\partial_{k}:C_{k}\rightarrow C_{k-1}$.
+Action of boundary operator on a simplex $\sigma$ is defined as: 
+
+\begin{equation}
+\partial_{k}\sigma = \displaystyle\sum_{i}(-1)^{i}[v_{0},v_{1},...,\hat{v}_{i},...,v_{n}].
+\end{equation}
+
+A chain $C\in C_{k}$ is called a cycle if $\partial_{k}C=0$.
+Chain with empty boundary.
+Set of cycles forms a group
+
+Boundary operator defines a chain complex $C_{*}$:
+
+\begin{equation}
+\dots \overset{\partial_{n+1}}{\longrightarrow} C_n \overset{\partial_{n}}{\longrightarrow} C_{n-1} \overset{\partial_{n-1}}{\longrightarrow}  ... \overset{\partial_{2}}{\longrightarrow} C_n \overset{\partial_{1}}{\longrightarrow} C_{n-1} \overset{\partial_{0}}{\longrightarrow}  0
+\end{equation}
+
+Important property:
+
+\begin{equation}
+\partial_{k-1}\partial_{k} = 0 \forall k
+\end{equation}
+
+Intuitively, a boundary has no boundary.
+
+$C$ is the set of 
+The $k$-th cycle group is $Z_{k}=\ker \partial_{k}$.
+$Z_{k}$ defines the set of all cycles of dimension $k$.
+$B_{k}$ defines the set of all boundaries of dimension $k$.
+That is, elements of $B_{k}$ serve as boundaries of $(k+1)$-chains.
+
+
 TDA+PH: number and type of holes. which holes are essential and which are unimportant.
 
 Basically get to the point where can define homology.
@@ -135,11 +170,27 @@ Work only over $\mod 2$ Homology (0,1) coefficients.
 Torsion observed in teh image patch data set, but no reason to think it is present biologial data sets we examine.
 
 
-\subsubsection{Homology}
+\subsubsection{Homology Groups}
+
+Simplical homology.
+Abelian groups.
+First homology group: abelianization of the fundamental gorup.
 Quotient group
+
+Recalling out definition of the boundary and cycle groups, define a quotient group
+
 \begin{equation}
-  H = Z / B
+H_{k} = Z_{k} / B_{k} = \ker\partial_{k} / \im\partial_{k+1}
 \end{equation}
+
+Closed chains (cycles) up to boundary of higher dimensional cycles.
+Elements are classes of homologous cycles.
+
+\begin{figure}
+\centering\includegraphics[width=\columnwidth]{./fig/FASY_chain_complexes.pdf}
+\caption{Relationship between chain and cycle and homology. Adapted (``Adapted'') from Fasy.}
+\label{fig:chain_complexes}
+\end{figure}
 
 \subsection{Simplicial Complexes}
 
@@ -150,6 +201,13 @@ Simplicial complex: collection of simplcies.
 Set of vertices: simplex.
 Vertices. Dimension.
 Abstract Simplicial Complex.
+
+The \Cech complex consists of the set of simplices $\sigma$ with vertices $v_{1},...,v_{k}\in S$ such that
+
+\begin{equation}
+\displaystyle\cap_{i}^{} B(v_{i},\epsilon)\neq0
+\end{equation}
+
 Cech Complex.
 Rips Complex.
 
@@ -211,6 +269,12 @@ The topological invariants in the filtration can be concisely represented in a b
 
 Invariants can be equivalently represented by a persistence diagram, a scatter plot with the birth time on the horizontal axis and the death time on the vertical axis.
 
+Connected components.
+Loops.
+Voids.
+
+TOPOLOGICAL DATA ANALYSIS BABY!
+
 The intuition behind persistent homology is that is that good or interesting features will persist over longer scales
 That is, they will be more robust.
 In the barcode diagram this corresonds to long bars, and in the persistence diagram, this corresponds to points far from the diagonal.
@@ -231,10 +295,13 @@ It's pretty nifty.
 More advanced algorithms have been developed that compute simplicial collapses: recognizing that the size of the simplciial set is often the limiting factor here, they collapse simplicies into simpler structures that will have identical homology.
 This uses Discrete Morse Theory and is the idea behind implementations such as Perseus.
 
+Include only simple implementation for $Z2$
+
 Several packages for computing persistent homology have been developed [Dionysus, Javaplex, Guidi, phom] and TDA frontend for R.
 Persistent homology is computed using Dionysus \cite{Morozov:2012}.
 
 \subsubsection{Stability}
+\label{subsubsec:ph_stability}
 
 What happens if we perturb the original data slightly?
 Will bars change?
@@ -248,6 +315,7 @@ conclusion: small perturbations in data can only produce small changes in the ba
 
 \subsubsection{Statistical Persistent Homology}
 \label{subsubsec:ph_statistics}
+
 Currently the cutting edge in TDA.
 Primarily motivated
 Cutting edge in TDA.
@@ -255,10 +323,16 @@ Primarily motivated by the idea that there is a true topology and we are given a
 We are motivated by a slightly different problem in this thesis.
 We briefly discuss these results.
 Persistence Landscapes.
-Bootstrap resampling
+Bootstrap resampling.
 
 \subsubsection{Multidimensional Persistence}
+\label{subsubsec:ph_multidim}
 
 Filtrations along different dimensions.
-In our case, we will consider 
+Prototypical example: density and distance.
+Include a bit of discussion of Lesnick's ideas.
+
+Our case is going to be slightly different.
+We will consider a set of points annotated with different metrics that we can put on it which will induce different homologies.
+Then we will see what happens we interpolate between those different metrics.
 
