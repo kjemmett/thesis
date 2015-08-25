@@ -3,20 +3,32 @@
 \chapter{Background}
 \label{ch:background}
 
-This thesis marries open problems in population genetics with powerful mathematical tools.
-As few readers will likely have substantial exposure to both fields, we devote this initial chapter to providing preliminaries.
-
-\section{Population Genetics}
-
-Mathematical population genetics is concerned with X
+This thesis integrates open problems in population genetics and evolutionary biology with powerful tools from applied topology.
+As few readers will likely have substantial exposure to both fields, we devote this initial chapter to prelimaries and motivation.
+Exposition required for specific results will be found in the individual chapters.
 
 \section{Biology}
 
-In this section we present background.
+In this section we present biological background.
 This section is intended to motivate the problems discussed.
 More specific background relevant to the applications described in Part \ref{part:application_microorganism} and Part \ref{part:applications_human} is presented in those Parts.
 
+What do we mean by horizontal and vertical evolution?
+Vertical, or clonal, evolution is mediated by stochastic mutations over multiple generations.
+Vertical evolution is consistent with a phylogenetic tree.
+
+\subsection{Population Genetics}
+
+Mathematical population genetics is concerned with properties of populations as they are subject to evolutionary forces over long time scales.
+These forces include natural selection, genetic drift, mutation, and recombination.
+Historically the input data for population genetics models was comparative studies of allele frequencies across populations.
+Large-scale genome surveys 
+Develop genealogy.
+Look at population structure.
+
 \subsection{Phylogenetics}
+
+Phylogenetics is concerned with relationships among species as inferred from evolutionary characters.
 
 Phylogenetics is how you build a tree from evolutionary characters.
 
@@ -89,8 +101,7 @@ We will want to include discussion of
 % TOPOLOGICAL DATA ANALYSIS %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Mathematical Preliminaries}
-
+\section{Mathematics}
 
 Topology is the study of shape.
 Algebraic topology associates algebraic structures to notions of shape.
@@ -168,7 +179,6 @@ Chain complex.
 Boundary operators
 Work only over $\mod 2$ Homology (0,1) coefficients.
 Torsion observed in teh image patch data set, but no reason to think it is present biologial data sets we examine.
-
 
 \subsubsection{Homology Groups}
 
@@ -336,3 +346,24 @@ Our case is going to be slightly different.
 We will consider a set of points annotated with different metrics that we can put on it which will induce different homologies.
 Then we will see what happens we interpolate between those different metrics.
 
+\section{Space of Phylogenetic Trees}
+
+(This section may or may not be moved, but I want to get it on the page.)
+Studies of tree space were initiated by Billera, Holmes, and Vogtmann in \cite{Billera:2001tv}.
+Each point represents an unrooted binary tree with L leaves and positive branch lengths.
+Number of interior edges $r=L-3$, a particular daditive tree can be plotted as a point in the positive open orthant $(0,\infty)^{r}$.
+A single orthan corresponds to a single tree topology.
+
+
+four point condition.
+
+\subsection{Number of Trees}
+
+[should be in phylogenetics section].
+Unrooted, bifurcating, labeled trees
+Multiple tree topologies can exist.
+Number of unrooted bifurcating trees with $L$ leaves is $(2L-5)!!$.
+
+Number of tree topologies explodes with number of leaves.
+Fitch quote: more than 20 species, more than Avogadro's number of topologies.
+Phylogeny can be seen as projecting onto the space of trees.

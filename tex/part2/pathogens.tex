@@ -1,5 +1,5 @@
-%!TEX root = ../thesis.tex
-\chapter{Pathogen Evolution - PATRIC}
+%!TEX root = ../../thesis.tex
+\chapter{Pathogen Evolution}
 \label{ch:pathogens}
 
 Pathogenic bacteria can lead to severe infection and mortality and presents an enormous burden on human populations and public health systems.
@@ -19,3 +19,155 @@ The presence of horizontal gene transfer precludes accurate phylogenetic charact
 Bacterial species definitions and taxonomic classifications are made on the basis of 16S ribosomal RNA, a highly conserved genomic region between bacteria and archaea species \cite{Woese:1977vd}.
 However, the region generally accounts for less than 1\% of the complete genome, implying that the vast majority of evolutionary relationships are not accounted for in the taxonomy \cite{Dagan:2006}.
 Because of the important role played by lateral gene transfer, new ways of characterizing evolutionary and phenotypic relationships between microorganisms are needed.
+
+In this paper we explore topics relating to horizontal gene transfer in bacteria and the emergence of antibiotic resistance in pathogenic strains.
+We show that TDA can not only quantify gene transfer events, but also characterize the scale of gene transfer.
+The scale of recombination can be measured from the distribution of birth times of the $H_1$ invariants in the barcode diagram.
+It has been shown that recombination rates decrease with increasing sequence divergence \cite{Fraser:2007ep}.
+We characterize the rate and scale of intraspecies recombination in several pathogenic bacteria of public health concern.
+We select a set of pathogenic bacteria that are of public health interest based on a recently released World Health Organization (WHO) report on antimicrobial resistance \cite{WHO:2014wa}.
+Using persistent homology, we characterize the rate and scale of recombination in the core genome using multilocus sequence data.
+To extend our characterization to the whole genome, we use protein family annotations as a proxy for sequence composition.
+This allows us to compute a similarity matrix between strains.
+Comparing persistence diagrams gives us information about the relative scales of gene transfer at arbitrary loci.
+The species selected for study and the sample sizes in each analysis are specified in Table~\ref{table:samplesizes}.
+Next, we explore the spread of antibiotic resistance genes in \emph{S. aureus} using Mapper, an algorithm for partial clustering and visualization of high dimensional data \cite{Singh:2007ve}.
+We identify two major populations of \emph{S. aureus}, and observe one cluster with strong enrichment for the antibiotic resistance gene \emph{mecA}.
+Importantly, resistance appears to be increasingly spreading in the second population.
+Finally, we consider the risk of lateral transfer of resistance genes from the human microbiome into an antibiotic sensitive strain, using $\beta$-Lactam resistence as an example.
+In this environment, benign bacterial strains can harbor known resistance genes.
+We use a network analysis to visualize the spread of antibiotic resistance gene $\emph{mecA}$ into nonnative phyla.
+Each indidivual has a unique microbiome, and we speculate that microbiome typing of this sort may useful in developing personalized antibiotic therapies.
+These results suggest an important role for topological data mining of -omics scale data in clinical applications and personalized medicine.
+
+\begin{table}
+\centering
+\caption{Pathogenic bacteria selected for study and sample sizes in each analysis.}
+\begin{tabularx}{\textwidth}{Xcc}
+\toprule
+Species & \hspace{10mm}MLST profiles\hspace{10mm} & PATRIC profiles \\
+\midrule
+\emph{Campylobacter jejuni}      & 7216  & 91 \\
+\emph{Escherichia coli}          & 616   & 1621 \\
+\emph{Enterococcus faecalis}     & 532   & 301 \\
+\emph{Haemphilus influenzae}     & 1354  & 22 \\
+\emph{Helicobacter pylori}       & 2759  & 366 \\
+\emph{Klebsiella pneumoniae}     & 1579  & 161 \\
+\emph{Neisseria spp.}            & 10802 & 234 \\
+\emph{Pseudomonas aeruginosa}    & 1757  & 181 \\
+\emph{Staphylococcus aureus}     & 2650  & 461 \\
+\emph{Salmonella enterica}       & 1716  & 638 \\
+\emph{Streptococcus pneumoniae}  & 9626  & 293 \\
+\emph{Streptococcus pyogenes}    & 627   & 48 \\
+\bottomrule
+\end{tabularx}
+\label{table:samplesizes}
+\end{table}
+
+\subsection{MLST Analysis}
+\label{subsec:mlst}
+%
+Multilocus sequence typing (MLST) data was used to examine scales of recombination in the core bacterial genome.
+MLST is a method of rapidly assigning a sequence profile to a sample bacterial strain.
+For each species, a predetermined set of loci on a small number of housekeeping genes are selected as representative of the core genome of the species.
+As new strains are sequenced, they can be annotated with a profile corresponding to the type at each locus.
+If a sample has a previously unseen type at a given locus, it is appended to the list of types at that locus.
+Large online databases have curated MLST data from labs around the world; significant pathogens can have several thousand typed strains (over 10,000 in the case of \emph{Neisseria spp.}).
+Because different species will be typed at different loci, examining direct interspecies genetic exchange with this data is unfeasible, however MLST provides a large quantity of data with which to examine intraspecies exchange in the core genome.
+However, because the selected loci are generally all housekeeping genes, this type of recombination analysis will tell you only about genetic exchane in the core genome.
+Mobile genetic elements may have a separate rates of exchange.
+
+We investigate genetic exchange in the twelve pathogens using MLST data from PubMLST \cite{Jolley:2010}.
+For each strain, a pseudogenome can be constructed by concatenating the typed sequence at each locus.
+Using a Hamming metric, we construct a pairwise distance matrix between strains and compute persistent homology on the resulting metric space.
+Because of the large number of sample strains, we employ a Lazy Witness complex with 250 landmark points and $\nu=0$ \cite{deSilva:2004}.
+The computation is performed using javaplex \cite{Tausz:2011}.
+An example of our output is shown in Figure~\ref{fig:pathogen_barcodes}, where we plot the $H_1$ barcode diagrams for \emph{K. pneumoniae} and \emph{S. enterica}.
+The two species have distinct recombination profiles, characterized by the range of recombinations: \emph{K. pneumoniae} recombines at only one short-lived scale, while \emph{S. enterica} recombines both at the short-lived scale and a longer-lived scale.
+We repeat this analysis for each species, and plot the results as a persistence diagram in Figure~\ref{fig:pathogen_persistence_diagram}.
+Among the bulk of pathogens there appears to be three major scales of recombination, a short-lived scale at intermediate distances, a longer-lived scale at intermediate distances, and a short-lived scale at longer distances.
+\emph{H. polyori} is a clear outlier, tending to recombine at scales significantly lower than the other pathogens.
+
+\begin{figure}
+    \centering
+    \subbottom[\emph{Klebsiella pneumoniae}]{
+        \includegraphics[width=.4\textwidth]{./fig/kpneumoniae_barcode.pdf}}
+    \subbottom[\emph{Salmonella enterica}]{
+        \includegraphics[width=.4\textwidth]{./fig/senterica_barcode.pdf}}
+    \caption{Barcode diagrams reflect different scales of genomic exchange in \emph{K. pneumoniae} and \emph{S. enterica}.}
+    \label{fig:pathogen_barcodes}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{./fig/pathogen_persistence_diagram.pdf}
+    \caption{The $H_1$ persistence diagram for the twelve pathogenic strains selected for this study using MLST profile data. There are three broad scales of recombination. To the right is the birth time distribution for each strain. \emph{H. pylori} has an earlier scale of recombination not present in the other species.}
+    \label{fig:pathogen_persistence_diagram}
+\end{figure}
+
+We define a relative rate of recombination by counting the number of $H_1$ loops across the filtration and dividing by the number of samples for that species.
+The results are shown in Figure~\ref{fig:pathogen_barchart}, where we observe that different species can have vastly different recombination profiles.
+For example, \emph{S. enterica} and \emph{E. coli} have the highest recombination rates, while \emph{H. pylori} is substantially lower than the others.
+Coupled with the smaller scale of recombinations suggests that the \emph{H. pylori} core genome is relatively resistant to recombination except within closely related strains.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{./fig/pathogen_barchart.pdf}
+    \caption{Relative recombination rates computed by persistent homology from MLST profile data.}
+    \label{fig:pathogen_barchart}
+\end{figure}
+
+\subsection{PATRIC Analysis}
+\label{subsec:patric_analysis}
+
+Protein family annotations cluster proteins into sets of isofunctional homologs, i.e., clusters of proteins with both similar sequence composition and similar function.
+A particular strain is represented as a binary vector indicating the presence or absence of a given protein family.
+Correlations between strains can reveal genome-wide patterns of genetic exchange, unlike the MLST data which could only provide evidence of exchange in the core genome.
+We use the FigFam protein annotations in the Pathosystems Resource Institute Center (PATRIC) database because of the breadth of pathogenic strain coverage and depth of genomic annotations \cite{Wattam:2013}.
+The FigFam annotation scheme consists of over 100,000 protein families curated from over 950,000 unique proteins \cite{Meyer:2009}.
+
+For each strain we compute a transformation into FigFam space.
+We transform into this space because the frequency of genome rearrangements and differences in mobile genetic elements makes whole genome alignments unreliable, even for strains within the same species.
+As justification for performing this step, it has been shown experimentally that recombination rates decrease with increasing genetic distance \cite{Fraser:2007}.
+After transforming, we construct a strain-strain correlation matrix and compute the persistent homology in this space.
+In Figure~\ref{fig:figfam_persistence_diagram} we show the persistence diagram relating the structure and scale between different species.
+We find that different species have a much more diverse topological structure in this space than in MLST space, and a wide variety of recombination scales.
+The large scales of exchange in \emph{H. influenzae} suggest it can regularly acquire novel genetic material from distantly related strains.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{./fig/figfam_persistent_diagram.pdf}
+\caption{Persistence diagram for a subset of pathogenic bacteria, computed using the FigFam annotations compiled in PATRIC. Compared to the MLST persistence diagram, the Figfam diagram has a more diverse scale of topological structure.}
+\label{fig:figfam_persistence_diagram}
+\end{figure}
+
+\subsection{Antibiotic Resistance in \emph{Staphylococcus aureus}}
+\label{subsec:staph_aureus}
+%
+\emph{S. aureus} is a gram positive bacteria commonly found in the nostrils and upper respiratory tract.
+Certain strains can cause severe infection in high-risk populations, particulary in the hospital setting.
+The emergence of antibiotic resistant \emph{S. aureus} is therefore of significant clinical concern.
+Methicillin resistant \emph{S. aureus} (MRSA) strains are resistant to $\beta$-lactam antibiotics including penicillin and cephalosporin.
+Resistance is conferred by the gene \emph{mecA}, an element of the Staphyloccoccal cassette chromosome mec (\emph{SCCmec}).
+\emph{mecA} codes for a dysfunctional penicillin-binding protein 2a (PBP2a), which inhibits $\beta$-lactam antibiotic binding, the primary mechanism of action \cite{Jensen:2009}.
+Of substantial clinical importance are methods for characterizing the spread of MRSA within the \emph{S. aureus} population.
+
+To address this question, we use the FigFam annotations in PATRIC, as described in the previous section.
+PATRIC contains genomic annotations for 461 strains of \emph{S. aureus}, collectively spanning 3,578 protein families.
+We perform a clustering analysis using the Mapper algorithm as implemented in Ayasdi Iris \cite{AyasdiIris:2015}.
+Principal and second metric singular value decomposition are used as filter functions, with a 4x gain and an equalized resolution of 30.
+This results in a graph structure with two large clusters, with a smaller bridge connecting the two, as shown in Figure~\ref{fig:saureus_figfam_network}.
+The two clusters are consistent with previous phylogenetic studies using multilocus sequence data to identify two major population groups \cite{Cooper:2006}.
+
+Of the 461 \emph{S. aureus} strains in PATRIC, 142 carry the \emph{mecA} gene.
+When we color nodes in the network based on an enrichment for the presence of \emph{mecA}, we observe a much stronger enrichment in one of the two clusters.
+This suggests that $\beta$-lactam resistance has already begun to dominate in that clade, likely due to selective pressures.
+More strikingly, we observe that while \emph{mecA} enrichment is not as strong in the second cluster, there is a distinct path of enrichment emanating along the connecting bridge between the two clusters and into the less enriched cluster.
+This suggests the hypothesis that antibiotic resistance has spread from the first cluster into the second cluster via strains intermediate to the two, and will likely continue to be selected for in the second cluster.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{./fig/saureus_figfam_network.png}
+\caption{The FigFam similarity network of \emph{S. aureus} constructed using Mapper as implemented in Ayasdi Iris. We use a Hamming metric and Primary and Secondary Metric SVD filters (res: 30, gain 4x, eq.). Node color is based on strain enrichment for \emph{mecA}, the gene conferring $\beta$-Lactam resistance. Two distinct clades of \emph{S. aureus} are visible, one of which has already been compromised for resistance. Of important clinical significance is the growing enrichment for \emph{mecA} in the second clade.}
+\label{fig:saureus_figfam_network}
+\end{figure}
