@@ -20,6 +20,9 @@
 \usepackage{tocloft}
 \usepackage{paralist}
 \usepackage{capt-of}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{multirow}
 \usepackage{bookmark} % loads hyperref
 
 % hyperref settings
@@ -35,13 +38,15 @@
 
 % bibliography setup
 \usepackage[backend=biber,
-            url=false,
-            isbn=false,
-            style=numeric,
+            bibstyle=numeric,
+            citestyle=authoryear,
+            natbib=true,
             sorting=nyt,
             maxcitenames=3,
-            bibencoding=utf8,
-            natbib=true]{biblatex}
+            url=false,
+            isbn=false,
+            doi=true,
+            bibencoding=utf8]{biblatex}
 
 % skip line between bib entries
 \setlength{\bibitemsep}{\baselineskip}

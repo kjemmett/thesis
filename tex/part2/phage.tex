@@ -1,17 +1,110 @@
-%!TEX root = ../thesis.tex
-\chapter{Bacteriophage Reticulate Evolution}
+%!TEX root = ../../thesis.tex
+\chapter{Bacteriophage Mosaicism}
 \label{ch:phage}
 
-Phage are the most abundant organism on the planet [how many? $10^31$].
-They are very diverse
-Current taxonomy is based on ICTV.
+\section{Introduction}
+\label{phage:sec:introduction}
 
-Current taxonomy is classic example of taxonomy based on morphology.
-This leads to some funny business.
-For example
+Bacteriophages, bacteria-infecting viruses, are the most abundant organism on the planet: $10^31$ organisms [cite].
+[More background info: metagenomics, ocean phage, etc.]
+The current bacteriophage taxonomy is compiled by the International Committee on Taxonomy of Viruses (ICTV) and is based on virus morphology, host range, lifestyle, and nucleic acid composition \cite{ICTV:2012}.
+XX families are defined.
+Nucleic acid composition is either double-stranded DNA (dsDNA), single-stranded DNA (ssDNA), double-stranded RNA (dsRNA), or single-stranded RNA (ssRNA).
+Of these dsDNA is the most common.
+Morphological classification is primarily based on head/capsid shape and tail length.
+In Table~\ref{phage:table:families} we show an overview of phage families defined by the ICTV.
 
-Methods:
-We downloaded phage genomes from NCBI.
-X number of genomes
-X dsDNA, ssDNA, dsRNA, ssRNA
-Protein families
+\begin{table}[t]
+    \caption{Phage families defined by the ICTV}
+    \centering
+    \scriptsize
+    \begin{tabularx}{\textwidth}{lXlX}
+    \toprule
+    Order & Family & Morphology & Nucleic acid \\
+    \midrule
+    \multirow{3}{*}{\emph{Caudovirales}} & \emph{Myoviridae} & Nonenveloped, contractile tail & linear dsDNA \\
+                                  & \emph{Siphoviridae} & Nonenveloped, noncontractile tail (long) & linear dsDNA \\
+                                  & \emph{Podoviridae} & Nonenveloped, noncontractile tail (short) & linear dsDNA \\
+    \midrule
+    \multirow{2}{*}{\emph{Ligamenvirales}} & \emph{Lipothrixviridae} & Enveloped, rod-shaped & linear dsDNA \\
+                                    & \emph{Rudiviridae} & Nonenveloped, rod-shaped & linear dsDNA \\
+    \midrule
+    \multirow{13}{*}{Unassigned} & \emph{Ampullaviridae} & Enveloped, bottle-shaped & linear dsDNA\\
+                                 & \emph{Bicaudaviridae} & Nonenveloped, lemon-shaped & circular dsDNA \\
+                                 & \emph{Clavaviridae}   & Nonenveloped, rod-shaped & circular dsDNA \\
+                                 & \emph{Corticoviridae} & Nonenveloped, isometric & circular dsDNA \\
+                                 & \emph{Cystoviridae}   & Enveloped, spherical & segmented dsRNA \\
+                                 & \emph{Fuselloviridae} & Nonenveloped, lemon-shaped & circular dsDNA \\
+                                 & \emph{Globuloviridae} & Enveloped, isometric& linear dsDNA \\
+                                 & \emph{Guttaviridae}   & Nonenveloped, ovoid & circular dsDNA \\
+                                 & \emph{Inoviridae}     & Nonenveloped, filamentou& circular ssDNA \\
+                                 & \emph{Leviviridae}    & Nonenveloped, isometric & linear ssRNA \\
+                                 & \emph{Microviridae}   & Nonenveloped, isometric & circular ssDNA \\
+                                 & \emph{Plasmaviridae}  & Enveloped, pleomorph& circular dsDNA \\
+                                 & \emph{Tectiviridae}   & Nonenveloped, isometric & linear dsDNA \\
+    \bottomrule
+    \end{tabularx}
+    \label{phage:table:families}
+\end{table}
+
+
+It has been long known that phage species are genetic mosaic with high rates of lateral exchange.
+The advent of genome sequencing solidified this observation and brought to bear questions about the applicability and interpretation of the ICTV taxonomy.
+Unlike prokaryotes and eukaryotes, phages do not have ribosomal RNA.
+Indeed there is substantial debate over whether phages are truly alive and whether or not they should be a component in the tree of life.
+Given the substantial amount of genetic diversity 
+
+The current bacteriophage taxonomy is inconsistent with recently collected genomic data.
+In Figure~\ref{phage:fig:inconsistency} we see three different bacteriophage species.
+HK97 is a Siphoviridae infecting \emph{E. coli}.
+L5 is a Siphoviridae infecting \emph{M. smegmatis}.
+P22 is a Podoviridae infecting \emph{S. enterica}.
+HK97 and L5 belong to the Siphoviridae family comprised of long tail noncontracile phages.
+P22 belongs to the Podoviridae family comprised of short tail phages.
+Visually, it appears that HK97 and L5 should indeed be classified as distinct from P22.
+However, genomic analysis indicates that HK97 and L5 share no gene content.
+Despite belonging to different viral families, HK97 and P22 share 20\% gene content.
+If we are to take genomic data as the core information defining.
+
+\begin{figure}
+\centering
+\includegraphics[width=.5\linewidth]{./fig/LAWRENCE_phage_comparative.png}
+\caption[Inconsistency of morphological classification in bacteriophage.]{Inconsistency of genomic and morphological approaches. HK97 and L5 are classified under same viral family, despite sharing no homologous genetic content. P22 on the other hand shares many genes. Figure adapted from \parencite{Lawrence:2002eg}}
+\label{phage:fig:inconsistency}
+\end{figure}
+
+Alternatives have been proposed based on whole genome analysis.
+For example, see Rohwer and Edwards and the phage proteomic tree.
+However these models still assume a tree like structure.
+
+We used topological approaches to define a systematic way of structuting phage relationships based on gene content.
+We first use persistent homology to characterize reticulation in phage genomes, and then use mapper to provide a network representation of genome similarity.
+
+\section{Approach}
+\label{phage:sec:approach}
+
+\subsection{Data}
+
+306 bacteriophage genomies.
+250 dsDNA, 36 ssDNA, 12 dsRNA, and 8 ssRNA.
+19537 genes clustered into 8576 gene families using BlastP
+Construct Phyletic profile: nxp binary gene presence/absence matrix.
+29 outlier phages, discard and keep only subset S277.
+
+\section{Results}
+\label{phage:sec:results}
+
+cycles in b1 can be mapped to specific reticulation patterns.
+Phage phylogeny taken from \cite{Glazko:2007dc}.
+
+Connection with lifestyle and environment.
+
+Finally, we use Ayasdi Iris to construct a network visualization of the phage phyletic profiles.
+We see several interesting things.
+
+\section{Phage Ecological Properties}
+
+\section{Conclusions}
+\label{phage:sec:conclusions}
+
+We showed that we can charact

@@ -1,26 +1,29 @@
 %!TEX root = ../../thesis.tex
-\chapter{Pathogen Evolution}
+\chapter{Reticulate Evolution in Pathogenic Bacteria}
 \label{ch:pathogens}
+
+\section{Introduction}
+\label{sec:pathogen_introduction}
 
 Pathogenic bacteria can lead to severe infection and mortality and presents an enormous burden on human populations and public health systems.
 One of the achievements of twentieth century medicine was the development of a wide range of antibiotic drugs to control and contain the spread of pathogenic bacteria, leading to vastly increased life expectancies and global economic development.
-However, rapidly rising levels of multidrug antibiotic resistance in several common pathogens, including \emph{Escherichia coli}, \emph{Klebsiella pneumoniae}, \emph{Staphylococcus aureus}, and \emph{Neisseria gonorrhoea}, is recognized as a pressing global issue with near-term consequences \cite{Neu:1992,Thomas:2005,WHO:2014}.
+However, rapidly rising levels of multidrug antibiotic resistance in several common pathogens, including \emph{Escherichia coli}, \emph{Klebsiella pneumoniae}, \emph{Staphylococcus aureus}, and \emph{Neisseria gonorrhoea}, is recognized as a pressing global issue with near-term consequences \cite{Neu:1992gk,Thomas:2005hp,WHO:2014wa}.
 The threat of a post-antibiotic 21st century is serious, and new methods to characterize and monitor the spread of resistance are urgently needed.
 
 Antibiotic resistance can be acquired through point mutation or through horizontal transfer of resistance genes.
 Horizontal exchange occurs when a donor bacteria transmits foreign DNA into a genetically distinct bacteria strain.
-Three mechanisms of horizontal transfer are identified, depending on the route by which foreign DNA is acquired \cite{Ochman:2000}.
+Three mechanisms of horizontal transfer are identified, depending on the route by which foreign DNA is acquired \cite{Ochman:2000dr}.
 Foreign DNA can be acquired via uptake from an external environment (transformation), via viral-mediated processes (transduction), or via direct cell-to-cell contact between bacterial strains (conjugation).
 Resistance genes can be transferred between strains of the same species, or can be acquired from different species in the same environment.
-While the former is generally more common, an example of the latter is the phage-mediated acquisition of Shiga toxin in \emph{E. coli} in Germany in 2011 \cite{Rohde:2011}.
+While the former is generally more common, an example of the latter is the phage-mediated acquisition of Shiga toxin in \emph{E. coli} in Germany in 2011 \cite{Rohde:2011ju}.
 Elements of the bacterial genome that show evidence of foreign origin are called genomic islands, and are of particular concern when associated with phenotypic effects such as virulence or antibiotic resistance.
 
 The presence of horizontal gene transfer precludes accurate phylogenetic characterization, because different segments of the genome will have different evolutionary histories.
 Bacterial species definitions and taxonomic classifications are made on the basis of 16S ribosomal RNA, a highly conserved genomic region between bacteria and archaea species \cite{Woese:1977vd}.
-However, the region generally accounts for less than 1\% of the complete genome, implying that the vast majority of evolutionary relationships are not accounted for in the taxonomy \cite{Dagan:2006}.
+However, the region generally accounts for less than 1\% of the complete genome, implying that the vast majority of evolutionary relationships are not accounted for in the taxonomy \cite{Dagan:2006up}.
 Because of the important role played by lateral gene transfer, new ways of characterizing evolutionary and phenotypic relationships between microorganisms are needed.
 
-In this paper we explore topics relating to horizontal gene transfer in bacteria and the emergence of antibiotic resistance in pathogenic strains.
+In this chapter we explore topics relating to horizontal gene transfer in bacteria and the emergence of antibiotic resistance in pathogenic strains.
 We show that TDA can not only quantify gene transfer events, but also characterize the scale of gene transfer.
 The scale of recombination can be measured from the distribution of birth times of the $H_1$ invariants in the barcode diagram.
 It has been shown that recombination rates decrease with increasing sequence divergence \cite{Fraser:2007ep}.
@@ -64,7 +67,7 @@ Species & \hspace{10mm}MLST profiles\hspace{10mm} & PATRIC profiles \\
 \label{table:samplesizes}
 \end{table}
 
-\subsection{MLST Analysis}
+\section{Evolutionary Scales of Recombination in the Core Genome}
 \label{subsec:mlst}
 %
 Multilocus sequence typing (MLST) data was used to examine scales of recombination in the core bacterial genome.
@@ -77,10 +80,10 @@ Because different species will be typed at different loci, examining direct inte
 However, because the selected loci are generally all housekeeping genes, this type of recombination analysis will tell you only about genetic exchane in the core genome.
 Mobile genetic elements may have a separate rates of exchange.
 
-We investigate genetic exchange in the twelve pathogens using MLST data from PubMLST \cite{Jolley:2010}.
+We investigate genetic exchange in the twelve pathogens using MLST data from PubMLST \cite{Jolley:2010gf}.
 For each strain, a pseudogenome can be constructed by concatenating the typed sequence at each locus.
 Using a Hamming metric, we construct a pairwise distance matrix between strains and compute persistent homology on the resulting metric space.
-Because of the large number of sample strains, we employ a Lazy Witness complex with 250 landmark points and $\nu=0$ \cite{deSilva:2004}.
+Because of the large number of sample strains, we employ a Lazy Witness complex with 250 landmark points and $\nu=0$ \cite{deSilva:2004tg}.
 The computation is performed using javaplex \cite{Tausz:2011}.
 An example of our output is shown in Figure~\ref{fig:pathogen_barcodes}, where we plot the $H_1$ barcode diagrams for \emph{K. pneumoniae} and \emph{S. enterica}.
 The two species have distinct recombination profiles, characterized by the range of recombinations: \emph{K. pneumoniae} recombines at only one short-lived scale, while \emph{S. enterica} recombines both at the short-lived scale and a longer-lived scale.
@@ -94,7 +97,7 @@ Among the bulk of pathogens there appears to be three major scales of recombinat
         \includegraphics[width=.4\textwidth]{./fig/kpneumoniae_barcode.pdf}}
     \subbottom[\emph{Salmonella enterica}]{
         \includegraphics[width=.4\textwidth]{./fig/senterica_barcode.pdf}}
-    \caption{Barcode diagrams reflect different scales of genomic exchange in \emph{K. pneumoniae} and \emph{S. enterica}.}
+    \caption[Core genome exchange in \emph{K. pneumoniae} and \emph{S. enterica}]{Barcode diagrams reflect different scales of core genomic exchange in \emph{K. pneumoniae} and \emph{S. enterica}.}
     \label{fig:pathogen_barcodes}
 \end{figure}
 
@@ -117,18 +120,18 @@ Coupled with the smaller scale of recombinations suggests that the \emph{H. pylo
     \label{fig:pathogen_barchart}
 \end{figure}
 
-\subsection{PATRIC Analysis}
-\label{subsec:patric_analysis}
+\section{Protein Families as a Proxy for Genome Wide Reticulation}
+\label{sec:patric_analysis}
 
 Protein family annotations cluster proteins into sets of isofunctional homologs, i.e., clusters of proteins with both similar sequence composition and similar function.
 A particular strain is represented as a binary vector indicating the presence or absence of a given protein family.
-Correlations between strains can reveal genome-wide patterns of genetic exchange, unlike the MLST data which could only provide evidence of exchange in the core genome.
-We use the FigFam protein annotations in the Pathosystems Resource Institute Center (PATRIC) database because of the breadth of pathogenic strain coverage and depth of genomic annotations \cite{Wattam:2013}.
-The FigFam annotation scheme consists of over 100,000 protein families curated from over 950,000 unique proteins \cite{Meyer:2009}.
+Correlations between strains can reveal genome-wide patterns of genetic exchange, unlike the MLST data which can only provide evidence of exchange in the core genome.
+We use the FigFam protein annotations in the Pathosystems Resource Institute Center (PATRIC) database because of the breadth of pathogenic strain coverage and depth of genomic annotations \cite{Wattam:2013jy}.
+The FigFam annotation scheme consists of over 100,000 protein families curated from over 950,000 unique proteins \cite{Meyer:2009iq}.
 
 For each strain we compute a transformation into FigFam space.
 We transform into this space because the frequency of genome rearrangements and differences in mobile genetic elements makes whole genome alignments unreliable, even for strains within the same species.
-As justification for performing this step, it has been shown experimentally that recombination rates decrease with increasing genetic distance \cite{Fraser:2007}.
+As justification for performing this step, it has been shown experimentally that recombination rates decrease with increasing genetic distance \cite{Fraser:2007ep}.
 After transforming, we construct a strain-strain correlation matrix and compute the persistent homology in this space.
 In Figure~\ref{fig:figfam_persistence_diagram} we show the persistence diagram relating the structure and scale between different species.
 We find that different species have a much more diverse topological structure in this space than in MLST space, and a wide variety of recombination scales.
@@ -141,15 +144,15 @@ The large scales of exchange in \emph{H. influenzae} suggest it can regularly ac
 \label{fig:figfam_persistence_diagram}
 \end{figure}
 
-\subsection{Antibiotic Resistance in \emph{Staphylococcus aureus}}
-\label{subsec:staph_aureus}
+\section{Antibiotic Resistance in \emph{Staphylococcus aureus}}
+\label{sec:staph_aureus}
 %
 \emph{S. aureus} is a gram positive bacteria commonly found in the nostrils and upper respiratory tract.
 Certain strains can cause severe infection in high-risk populations, particulary in the hospital setting.
 The emergence of antibiotic resistant \emph{S. aureus} is therefore of significant clinical concern.
 Methicillin resistant \emph{S. aureus} (MRSA) strains are resistant to $\beta$-lactam antibiotics including penicillin and cephalosporin.
 Resistance is conferred by the gene \emph{mecA}, an element of the Staphyloccoccal cassette chromosome mec (\emph{SCCmec}).
-\emph{mecA} codes for a dysfunctional penicillin-binding protein 2a (PBP2a), which inhibits $\beta$-lactam antibiotic binding, the primary mechanism of action \cite{Jensen:2009}.
+\emph{mecA} codes for a dysfunctional penicillin-binding protein 2a (PBP2a), which inhibits $\beta$-lactam antibiotic binding, the primary mechanism of action \cite{Jensen:2009fu}.
 Of substantial clinical importance are methods for characterizing the spread of MRSA within the \emph{S. aureus} population.
 
 To address this question, we use the FigFam annotations in PATRIC, as described in the previous section.
@@ -157,7 +160,7 @@ PATRIC contains genomic annotations for 461 strains of \emph{S. aureus}, collect
 We perform a clustering analysis using the Mapper algorithm as implemented in Ayasdi Iris \cite{AyasdiIris:2015}.
 Principal and second metric singular value decomposition are used as filter functions, with a 4x gain and an equalized resolution of 30.
 This results in a graph structure with two large clusters, with a smaller bridge connecting the two, as shown in Figure~\ref{fig:saureus_figfam_network}.
-The two clusters are consistent with previous phylogenetic studies using multilocus sequence data to identify two major population groups \cite{Cooper:2006}.
+The two clusters are consistent with previous phylogenetic studies using multilocus sequence data to identify two major population groups \cite{Cooper:2006dp}.
 
 Of the 461 \emph{S. aureus} strains in PATRIC, 142 carry the \emph{mecA} gene.
 When we color nodes in the network based on an enrichment for the presence of \emph{mecA}, we observe a much stronger enrichment in one of the two clusters.
@@ -168,6 +171,54 @@ This suggests the hypothesis that antibiotic resistance has spread from the firs
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{./fig/saureus_figfam_network.png}
-\caption{The FigFam similarity network of \emph{S. aureus} constructed using Mapper as implemented in Ayasdi Iris. We use a Hamming metric and Primary and Secondary Metric SVD filters (res: 30, gain 4x, eq.). Node color is based on strain enrichment for \emph{mecA}, the gene conferring $\beta$-Lactam resistance. Two distinct clades of \emph{S. aureus} are visible, one of which has already been compromised for resistance. Of important clinical significance is the growing enrichment for \emph{mecA} in the second clade.}
+\caption[FigFam similarity network of \emph{S. aureus}]{The FigFam similarity network of \emph{S. aureus} constructed using Mapper as implemented in Ayasdi Iris. We use a Hamming metric and Primary and Secondary Metric SVD filters (res: 30, gain 4x, eq.). Node color is based on strain enrichment for \emph{mecA}, the gene conferring $\beta$-Lactam resistance. Two distinct clades of \emph{S. aureus} are visible, one of which has already been compromised for resistance. Of important clinical significance is the growing enrichment for \emph{mecA} in the second clade.}
 \label{fig:saureus_figfam_network}
 \end{figure}
+
+\section{Microbiome as a Reservoir of Antibiotic Resistance Genes}
+
+While antibiotic resistance can be acquired through gene exchange between strains of the same species, it is also possible for gene exchange to occur between distantly related species.
+It has been recognized that an individual's microbiome, the set of microorganisms that exist symbiotically within a human host, can act as a reservoir of antimicrobial resistance genes \cite{Sommer:2010uh,Penders:2013wt}.
+It is of substantial clinical interest to characterize to what extent an individual's microbiome may pose a risk for a pathogenic bacteria acquiring a resistance gene through lateral transfer.
+
+To address this question, we use data from the Human Microbiome Project (HMP), a major research initiative performing metagenomic characterization of hundreds of healthy human microbiomes \cite{Consortium:2012bm}.
+The HMP has defined a set of reference strains that have been observed in human microbiomes.
+We collect FigFam annotations from PATRIC for the reference strain list in the gastrointestinal tract.
+We focus on the gastrointestinal tract because it is an isolated environment and likely to undergo higher rates of exchange than other anatomic regions.
+Of the 717 reference strains, 321 had FigFam annotations.
+We computed a similarity matrix as in previous sections, using correlation as distance.
+The resulting network is shown in Figure~\ref{fig:microbiome_network}, where strains are colored by phyla-level classifications.
+While largely recapitulating phylogeny, the network depicts interesting correlations between phya, such as the loop between Firmicutes, Bacteroides, and Proteobacteria.
+
+Next, we searched for genomic annotations relating to $\beta$-lactam resistance.
+10 strains in the reference set had matching annotations, and we highlight those strains in the network with green diamonds.
+We observe resistance mostly concentrated in the Firmicutes, of which \emph{S. aureus} is a member, however there is a strain of Proteobacteria that has acquired the resistance gene.
+Transfer of beta-lactam resistance into the Protebacteria is clinically worrisome.
+Pathogenic proteobacteria include \emph{S. enterica}, \emph{V. cholerae}, and \emph{H. pylori}, and emergence of $\beta$-lactam resistance will severely impact antibiotic drug therapies.
+
+The species composition of each individual's microbiome can differ substantially due to a wide variety of poorly understood factors \cite{Consortium:2012bm}.
+In this case, an individuals personal microbiome network will differ from the network we show in Figure~\ref{fig:microbiome_network}, which was constructed from the set of \emph{all} strains that have been reported across studies of multiple individuals.
+The relative risk for acquiring self-induced resistance will therefore vary from person to person and by the infectious strain acquired.
+However, a network analysis of this type will give clues as to possible routes by which antibiotic resistance may be acquired.
+In the clinical setting, this could assist in developing personalized antibiotic treatment regimens.
+We propose a more thorough expansion of this work, examining the full range of antibiotic resistance genes in order to quantify microbiome risk factors for treatment failure.
+We foresee an era of genomically informed infectious disease management in the clinical setting, based on an understanding of a patient's personal microbiome profile.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{./fig/microbiome_network.pdf}
+\caption{The FigFam similarity network of gastrointestinal tract reference strains identified in the Human Microbiome Project. The green diamond identifies the strains carrying resistance to $\beta$-Lactam antibiotics.}
+\label{fig:microbiome_network}
+\end{figure}
+
+\section{Conclusions}
+
+In this chapter we have used some ideas from topological data analysis to bear on problems in pathogenic microbial genetics.
+First, we used persistent homology to evaluate recombination rates in the core genome using MLST profile data.
+We showed that different pathogens have different recombination rates.
+We expanded this to gene transfer across the whole genome by using protein family annotations in the PATRIC database.
+We found different scales of recombination in different pathogens.
+Second, we explored the spread of MRSA in \emph{S. aureus} populations using topological methods.
+We noted increasing resistance in a previously isolated population.
+Finally, we studied the emergence of $\beta$-lactam resistance in the microbiome, and proposed methods by which personal risk could be assessed by microbiome typing.
+These results point to a role for graph mining and topological data mining in health and personalized medicine.
