@@ -6,13 +6,13 @@
 \label{phage:sec:introduction}
 
 Bacteriophages, bacteria-infecting viruses, are the most abundant organism on the planet: $10^31$ organisms [cite].
-[More background info: metagenomics, ocean phage, etc.]
+\kje{[More background info: metagenomics, ocean phage, etc.]}
 The current bacteriophage taxonomy is compiled by the International Committee on Taxonomy of Viruses (ICTV) and is based on virus morphology, host range, lifestyle, and nucleic acid composition \cite{ICTV:2012}.
-XX families are defined.
+Unlike the constituents of the generall accepted tree of life, phages lack a universal replicative machinery, rRNA, that can be used to define a species tree.
 Nucleic acid composition is either double-stranded DNA (dsDNA), single-stranded DNA (ssDNA), double-stranded RNA (dsRNA), or single-stranded RNA (ssRNA).
-Of these dsDNA is the most common.
+Of these dsDNA is by far the most common.
 Morphological classification is primarily based on head/capsid shape and tail length.
-In Table~\ref{phage:table:families} we show an overview of phage families defined by the ICTV.
+Table~\ref{phage:table:families} presents an overview of phage families defined by the ICTV.
 
 \begin{table}[t]
     \caption{Phage families defined by the ICTV}
@@ -47,8 +47,7 @@ In Table~\ref{phage:table:families} we show an overview of phage families define
     \label{phage:table:families}
 \end{table}
 
-
-It has been long known that phage species are genetic mosaic with high rates of lateral exchange.
+It has long been known that phage species are genetic mosaics with extremeley high rates of lateral exchange.
 The advent of genome sequencing solidified this observation and brought to bear questions about the applicability and interpretation of the ICTV taxonomy.
 Unlike prokaryotes and eukaryotes, phages do not have ribosomal RNA.
 Indeed there is substantial debate over whether phages are truly alive and whether or not they should be a component in the tree of life.
@@ -74,35 +73,59 @@ If we are to take genomic data as the core information defining.
 \end{figure}
 
 Alternatives have been proposed based on whole genome analysis.
-For example, see Rohwer and Edwards and the phage proteomic tree.
-However these models still assume a tree like structure.
+For example, see Rohwer and Edwards and the phage proteomic tree \cite{Rohwer:2002uo}.
+However, these models still broadly assume a tree like structure.
 
-We used topological approaches to define a systematic way of structuting phage relationships based on gene content.
-We first use persistent homology to characterize reticulation in phage genomes, and then use mapper to provide a network representation of genome similarity.
+In this chapter, we use topological approaches to define a systematic way of structuring phage relationships based on gene content.
+This work is based on data collected by Lima-Mendea \emph{et al.} \cite{LimaMendez:2008ki} and Kristensen \emph{et al.} \cite{Kristensen:2013tt}.
+First, we use persistent homology to characterize reticulation in phage genomes.
+We find $H_0$ consistent with existing phage taxonomies.
+We interpret $H_1$ as evidence for genetic exchange due to shared ecology and host-range. 
+Second, we visualize phage relationships using mapper, identifying non-obvious relationships between phages of varying nucleic acid content.
 
 \section{Approach}
 \label{phage:sec:approach}
 
 \subsection{Data}
 
-306 bacteriophage genomies.
+First data set follows that from \cite{LimaMendez:2008ki}
+Input data is 306 bacteriophage genomes.
 250 dsDNA, 36 ssDNA, 12 dsRNA, and 8 ssRNA.
-19537 genes clustered into 8576 gene families using BlastP
+1,9537 genes clustered into 8,576 gene families using BlastP.
 Construct Phyletic profile: nxp binary gene presence/absence matrix.
 29 outlier phages, discard and keep only subset S277.
+
+Second data set follows that from \cite{Kristensen:2013tt} and is more extensive.
+This dataset defines phage orthologous groups (POGs) and includes viruses of prokaryotic host including bacteria and archaea.
+Input data is 1,005 phage genomes.
 
 \section{Results}
 \label{phage:sec:results}
 
-cycles in b1 can be mapped to specific reticulation patterns.
-Phage phylogeny taken from \cite{Glazko:2007dc}.
+We show the barcode diagrams in Figure~\ref{phage:fig:limamendez_barcode}.
+$H_0$ gives an initial classification.
+Cycles in $H_1$ can be mapped to specific reticulation patterns.
+These cycles reflect shared environment.
 
-Connection with lifestyle and environment.
+\begin{figure}
+\centering
+\includegraphics[width=.8\linewidth]{./fig/limamendez_barcode.png}
+\caption[Bacteriophage Barcode Diagram]{Bacteriophage Barcode Diagram using the Lima-Mendez dataset.}
+\label{phage:fig:limamendez_barcode}
+\end{figure}
+
+In Figure~XXX we show the barcode diagram.
+We show the relationship of these bars within an existing phage taxonomy.
+Extract multiscale patterns of reticulation.
+Phage phylogeny taken from \cite{Glazko:2007dc}.
 
 Finally, we use Ayasdi Iris to construct a network visualization of the phage phyletic profiles.
 We see several interesting things.
+Using Ayasdi, we can identify gene enrichment in particular clusters.
+We can also correlate with lifestyle and ecological properties.
 
 \section{Phage Ecological Properties}
+\label{phage:sec:ecological_properties}
 
 \section{Conclusions}
 \label{phage:sec:conclusions}
