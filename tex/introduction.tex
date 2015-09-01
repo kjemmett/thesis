@@ -99,39 +99,53 @@ These and other similar situations, further described below, call for new method
 
 \section{Evolution as a Topological Space}
 
-In this thesis, we propose the use of new computational techniques, borrowed from the field of algebraic topology, to capture and represent complex patterns of nonvertical evolution.
+In this work, we propose the use of new computational techniques, borrowed from the field of algebraic topology, to capture and represent complex patterns of nonvertical evolution.
 While this may sound obscure, let us unpack the basic idea.
 
-Topology as a field is concerned with properties of spaces that are invariant under continous deformation.
-Algebraic topology quantifies notions of shape by associating groups to invariants.
-These invariants can include things such as connected components and holes in a topological space.
-As a paradigmatic example, consider the coffee mug and donut (Figure~\ref{intro:fig:topology_example}.
-The coffee mug can be continuously deformed into a donut without tearing.
+Topology as a field is concerned with properties of spaces that are invariant under continuous deformation.
+Such properties can include connectedness and the presence of holes, for example.
+As a paradigmatic example, consider the coffee mug and the donut (Figure~\ref{intro:fig:coffeemug_to_donut}).
+These two objects are topologically equivalent to $D^2\times S^1$.
+That is, there is one connected component and one hole.
+Algebraic topology quantifies our intuitive notions of shape by associating algebraic structures to different invariants.
+The most relevant invariants for our purposes will be the \emph{Betti numbers}, which measure.
+We give a more complete characterization of Betti numbers in Chapter~\ref{ch:background}, but a flavor is as follows.
+First, we can think of $b_0$ as representing the number of connected components, or clusters, in our space.
+Next, we can think of $b_1$ as representing the number of loops in our space.
+Equivalently, this is the number of cuts needed to transform the space into something contractible to a point.
+Higher Betti numbers, $b_n$ for $n>1$ will correspond to higher dimensional holes.
+In our coffee mug example, we have $b_0=1$, $b_1=1$, and $b_n=0$ for $n>1$.
 
 Consider again Darwin's branching phylogeny (Figure~\ref{fig:darwin_origin}) and Doolittle's modified tree accounting for nonvertical processes (Figure~\ref{fig:doolittle_tree}).
-The tree is trivially contractible and has relatively simple topology.
-In contrast, Doolittle's construction has holes and is not contractible.
-Here the topology is be much more complex.
-However, we can adopt a similar perspective to the coffee mug example and characterize this space using homology.
+Imagine these representations as topological spaces.
+The branching phylogeny has a simple topology, being trivially contractible to a point.
+In contrast, Doolittle's construction has a much more complex topology, with many holes formed at points where nonvertical processes have occurred.
+We will adopt a similar perspective to the coffee mug example and characterize evolutionary spaces as topological spaces using Betti numbers.
 
-To give the very simplest example, consider Figure~XX.
+To give the very simplest example, consider Figure~\ref{intro:fig:simple_tree_example}.
 On the left we have a simple rooted three leaf evolutionary topology.
-The topology is trivially contractible, which is captured by it's vanishing betti numbers above $d=1$.
+We have a single connected component that is trivially contractible, giving $b_0=1$ and $b_1=0$.
 On the right, we have a reticulate topology again involving three leaves.
-Here, we can envision the center leaf as being a reticulation of genetic parents that are ancestral to the left and right leaves.
-Betti numbers capture this.
+We can envision the center leaf as being a reticulate offspring of parents ancestral to the left and right leaves.
+Accounting for this generates a single loop, giving $b_0=1$ and $b_1=1$.
+The Betti numbers capture the essential difference in the two evolutionary histories.
 
-Obviously there are complications that arise from, this but that is the basic idea.
-First, deep evolutionary history consists of extinct organisms.
-Second, we do not have complete sampling.
-Third, not all organisms have compatible gene sets to make comparisons.
-This is of course why Woese focused on conserved ribosomal RNA, some of the oldest genomic information.
+The remainder of this thesis focuses on expanding upon this idea and applying it to real data sets with the gol of measuring the prevalence and scale of nonvertical evolutionary events.
+Several immediate questions arise, for instance: how to construct topological spaces from finite samples, how to make comparisons among gene sets, and how to handle extinct organisms.
+We will address these questions, and in doing so develop new techniques to construct and extract statistical information from topological spaces.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{./fig/introduction/coffeemug_to_donut.pdf}
+\caption[The coffee mug and the donut]{The paradigmatic topology example. The coffee mug can be continuously deformed into the donut and are therefore topologically equivalent. Both exhibit $D^2\times S^1$ topology.}
+\label{intro:fig:coffeemug_to_donut}
+\end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=.5\columnwidth]{./fig/introduction/topology_example.pdf}
-\caption[The Paradigmatic Topology Example]{The coffee cup is not trivially contractible. The tree is contractible. The network is not contractible. Betti numbers quantitatively capture these notuons of shape.}
-\label{intro:fig:topology_example}
+\includegraphics[width=.8\columnwidth]{./fig/introduction/simple_tree_example.pdf}
+\caption[Treelike and reticulate phylogenies]{(A) A simple treelike phylogeny is contractible to a point. (B) A reticulate phylogeny is equivalent to a circle and not contractible without a cut. The two spaces are no}
+\label{intro:fig:simple_tree_example}
 \end{figure}
 
 In this thesis, we use new computational techniques, borrowed from the field of algebraic topology, to capture and represent complex patterns of gene exchange that are obscurbed in current phylogenetic methods.
@@ -142,10 +156,6 @@ Techniques such as phylogenetic networks and ancestral recombination graphs have
 Linkage-based techniques have succeeded in measuring rates of recombination in medium-sized datasets (< 200 sequences), but they cannot reveal the scale of these exchanges (i.e., the genetic distance between parental sequences), and they have limited resolution in pinpointing where along a genome such exchanges have occurred.
 A new mathematical foundation is needed to break free of these limitations.
 Genome evolution is an extremely rich subject [cite Genome Architecture book].
-
-This thesis contains results of applying methods from topological data analysis to various problems in genomics and evolution.
-It primarily details the use of persistent homology as a tool to measure the prevalence and scale of nonvertical evolutionary events, such as reassortments and recombinations.
-In so doing, various techniques are developed to extract statistical information from the topological complexes that are constructed..
 
 \section{Thesis Organization}
 

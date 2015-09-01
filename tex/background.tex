@@ -1,11 +1,10 @@
 %!TEX root = ../thesis.tex
-
 \chapter{Background}
 \label{ch:background}
 
-This thesis integrates open problems in population genetics and evolutionary biology with powerful tools from applied topology.
-As few readers will likely have substantial exposure to both fields, we devote this initial chapter to prelimaries and motivation.
-Exposition required for specific results will be found in the individual chapters.
+This thesis integrates open problems in evolutionary biology with newly developed tools from applied topology.
+As few readers are likely to have substantial exposure to both fields, we devote this initial chapter to supplying minimal background to motivate the later discussion.
+Exposition required for specific results can be found in the individual chapters.
 
 \section{Biology}
 
@@ -29,8 +28,7 @@ Look at population structure.
 \subsection{Phylogenetics}
 
 Phylogenetics is concerned with relationships among species as inferred from evolutionary characters.
-
-Phylogenetics is how you build a tree from evolutionary characters.
+In practice: tree-building.
 
 Start with sequences.
 Perform an alignment.
@@ -97,6 +95,35 @@ Species Trees and Gene Trees.
 Recombination and reassortment.
 We will want to include discussion of 
 
+\subsection{Phylogenetic Networks}
+
+Several methods.
+Split Networks.
+
+
+\subsection{Space of Phylogenetic Trees}
+
+(This section may or may not be moved, but I want to get it on the page.)
+Studies of tree space were initiated by Billera, Holmes, and Vogtmann in \cite{Billera:2001tv}.
+Each point represents an unrooted binary tree with L leaves and positive branch lengths.
+Number of interior edges $r=L-3$, a particular daditive tree can be plotted as a point in the positive open orthant $(0,\infty)^{r}$.
+A single orthant corresponds to a single tree topology.
+
+four point condition.
+
+\subsubsection{Number of Trees}
+
+[should be in phylogenetics section].
+Unrooted, bifurcating, labeled trees
+Multiple tree topologies can exist.
+Number of unrooted bifurcating trees with $L$ leaves is $(2L-5)!!$.
+
+Number of tree topologies explodes with number of leaves.
+Fitch quote: more than 20 species, more than Avogadro's number of topologies.
+Phylogeny can be seen as projecting onto the space of trees.
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TOPOLOGICAL DATA ANALYSIS %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -119,7 +146,7 @@ Topology: characterize properties of spaces invariant under continuous deformati
 \subsection{Algebraic Topology}
 
 In this section we give background sufficient to define homology for our purposes, before moving on to applied topology and persistent homology.
-A more thorough exposition of algebraic topology can be found in [HATCHER].
+A more thorough exposition of algebraic topology can be found in \cite{Hatcher:2002ut}.
 
 \subsubsection{Simplicial Complex}
 
@@ -248,11 +275,6 @@ In topological data analysis, our spaces of interest are finite metric spaces.
 Condensed Representations.
 Exploratory data analysis.
 
-Can compare to dimensionality reduction.
-But is basically clustering.
-Reeb graph
-
-
 \subsection{Persistent Homology}
 \label{subsec:persistent_homology}
 
@@ -316,24 +338,34 @@ Persistent homology is computed using Dionysus \cite{Morozov:2012}.
 What happens if we perturb the original data slightly?
 Will bars change?
 Will new bars be formed?
-Stability result determined how a change in $D\rightarrow D'$ takes us to $H\rightarrow H'$.
+Stability result determine how a change in $D\rightarrow D'$ takes us to $H\rightarrow H'$.
 
 Couple of comments about different distances on topological space: Hausdorff, Gromov-Hausdorff.
 Distances between barcodes: Bottleneck, Wasserstein. Matchings.
 
-conclusion: small perturbations in data can only produce small changes in the barcode.
+Conclusion: small perturbations in data can only produce small changes in the barcode.
 
 \subsubsection{Statistical Persistent Homology}
 \label{subsubsec:ph_statistics}
 
-Currently the cutting edge in TDA.
-Primarily motivated
-Cutting edge in TDA.
-Primarily motivated by the idea that there is a true topology and we are given a finite sample of it.
-We are motivated by a slightly different problem in this thesis.
-We briefly discuss these results.
-Persistence Landscapes.
-Bootstrap resampling.
+Persistent homology says that short bars are topological noise.
+Can this statement be made precise?
+How short is short?
+How does noisy sampling effect the observed diagram?
+What is needed to confidently interpret the persistence diagram of a finite sample of a topological space as a reflection of the true topology?
+Substantial recent work in the TDA community has fcoused on these questions in order to develop statistical foundations for persistent homology.
+We give here a flavor of some of these results, and their relation to our own work.
+
+Fasy and coauthors have developed ways of generating confidence intervals for persistence diagrams.
+Based on some information about density, they can put a line off the diagonal below which points are to be considered noise (see example).
+Bubenik has developed the language of persistence landscapes, whereby multiple persistence diagrams can be 
+Several authors have examined the space of persistence diagrams as a Polish space, with notions of mean and variance.
+Thus, XXX et al have used the bootstrap to get estimates of the robustness of 
+Mukherjee et al.
+
+In our work, we will take a slightly different approach.
+Our operating principle will be 
+\kje{[Expand.]}
 
 \subsubsection{Multidimensional Persistence}
 \label{subsubsec:ph_multidim}
@@ -345,25 +377,3 @@ Include a bit of discussion of Lesnick's ideas.
 Our case is going to be slightly different.
 We will consider a set of points annotated with different metrics that we can put on it which will induce different homologies.
 Then we will see what happens we interpolate between those different metrics.
-
-\section{Space of Phylogenetic Trees}
-
-(This section may or may not be moved, but I want to get it on the page.)
-Studies of tree space were initiated by Billera, Holmes, and Vogtmann in \cite{Billera:2001tv}.
-Each point represents an unrooted binary tree with L leaves and positive branch lengths.
-Number of interior edges $r=L-3$, a particular daditive tree can be plotted as a point in the positive open orthant $(0,\infty)^{r}$.
-A single orthan corresponds to a single tree topology.
-
-
-four point condition.
-
-\subsection{Number of Trees}
-
-[should be in phylogenetics section].
-Unrooted, bifurcating, labeled trees
-Multiple tree topologies can exist.
-Number of unrooted bifurcating trees with $L$ leaves is $(2L-5)!!$.
-
-Number of tree topologies explodes with number of leaves.
-Fitch quote: more than 20 species, more than Avogadro's number of topologies.
-Phylogeny can be seen as projecting onto the space of trees.
