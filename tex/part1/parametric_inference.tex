@@ -15,7 +15,32 @@ to infinity''}{Isadore Singer}
 \end{center}
 \end{figure}
 
-\section{Coalescent Process}
+\section{Introduction}
+
+Computational topology is emerging as a new approach to data analysis, driven by efficient algorithms for computing topological structure in data.
+Perhaps the most mature tool is persistent homology, which summarizes multiscale topological information in a two-dimensional persistence diagram (see Figure \ref{fig:persistence_diagram} and Section \ref{sec:background}).
+Recent work has concentrated on developing the statistical foundations for data analysis using the persistent homology framework \cite{Fasy:2014,Blumberg:2014bq,Chazal:2014vl}.
+The focus of this work has been estimating the topology of an object from a finite, noisy sample.
+Doing so requires statistical methods to distinguish topological signal from noise.
+
+Here we consider a different scenario.
+Many simple stochastic models generate complex data that cannot be readily visualized as a manifold or summarized by a small number of topological features.
+These models will generate persistence diagrams whose complexity increases with the number of sampled points.
+Nevertheless, the collection of measured topological features may exhibit additional structure, providing useful information about the underlying data generating process.
+While the persistence diagram is itself a summary of the topological information contained in a sampled point cloud, to perform inference further summarization may be appropriate, e.g. by considering distributions of properties defined on the diagram.
+In other words, we are less interested in learning the topology of a particular sample, but rather in understanding the expected topological signal of different model parameters.
+
+In this chapter, we show that summary statistics computed on the persistence diagram can be used for likelihood-based parametric inference.
+We use genomic sequence data as a case study, examining the topological behavior of the coalescent process with recombination, a widely used stochastic model of biological evolution.
+We find that the process generates nontrivial topology in a way that depends sensitively on parameter in the model.
+The idea is presented as a proof of concept, in order to motivate the identification additional models with regular topological structure that may amenable to this type of inference.
+
+\section{Warmup: Gaussian Random Fields}
+
+Here we show that parametric inference of Gaussian Random Fields can be performed from the barcode diagram.
+Make reference to \cite{Adler:2010}.
+
+\section{The Coalescent Process}
 
 The coalescent process is a stochastic model that generates the genealogy of individuals sampled from an evolving population \cite{Wakeley:2009}.
 The genealogy is then used to simulate the genetic sequences of the sample.
@@ -111,3 +136,18 @@ We also observe tighter confidence intervals at higher recombination rates, cons
 \label{fig:param_inference}
 \end{center}
 \end{figure}
+
+\section{Conclusions}
+\label{parametric_inference:sec:discussion}
+
+In machine learning, the task is often to infer parameters of a model from observations.
+In this chapter we have presented a proof of concept for statistical inference based on topological information computed using persistent homology.
+Unlike previous work, what has primarily considered estimating the homology of a partially observed object, here we were interested in a statistical model which generates a complex, but 
+
+
+Unlike previous work, which considered estimating homology of a partially observed object, we were interested in a model which generates a complex, but stable, topological signal.
+Three conditions were required for the success of this approach:
+First, a well-defined statistical model.
+Second, an intuition that the observed topological structure is directly correlated with the parameters of interest in the model.
+Third, sufficient topological signal to reliably estimate statistics on the persistence diagram.
+It is an open question to identify classes of models for which these conditions will hold.

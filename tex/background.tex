@@ -16,7 +16,21 @@ What do we mean by horizontal and vertical evolution?
 Vertical, or clonal, evolution is mediated by stochastic mutations over multiple generations.
 Vertical evolution is consistent with a phylogenetic tree.
 
-\subsection{Population Genetics}
+\subsection{Evolutionary Processes}
+
+\subsubsection{Genes and Genomes}
+
+\subsubsection{Horizontal Gene Transfer}
+
+Here we should include discussion of nonvertical evolutionary processes.
+This will include references to Doolittle, Koonin, Gogarten.
+Lateral Gene Transfer.
+Species Trees and Gene Trees.
+Recombination and reassortment.
+We will want to include discussion of 
+
+\subsection{Mathematical Models of Evolution}
+\label{background:ss:evolutionary_models}
 
 Mathematical population genetics is concerned with properties of populations as they are subject to evolutionary forces over long time scales.
 These forces include natural selection, genetic drift, mutation, and recombination.
@@ -25,36 +39,10 @@ Large-scale genome surveys
 Develop genealogy.
 Look at population structure.
 
-\subsection{Phylogenetics}
+\subsubsection{The Wright-Fisher Process}
 
-Phylogenetics is concerned with relationships among species as inferred from evolutionary characters.
-In practice: tree-building.
-
-Start with sequences.
-Perform an alignment.
-From an alignment, one can then directly use parsimony or likelihood approaches.
-Alternatively, one can compute a matrix of pairwise distances and then construct a tree that best approximates these distances.
-Most relevant to this thesis are the distance-based approaches (because they can be viewed as finite metric spaces amenable to topological analysis).
-Only in the case of perfectly additive data will a tree be able to exactly fit the matrix.
-Identifying the pairwise distance matrix with a its finite metric space representation allows most of the results described here.
-
-Include discussion of rooted vs unrooted.
-
-\subsection{Distance Matrix Methods}
-
-Introduced by Cavalli-Sforza and Edwards in 1967 \cite{CavalliSforza:1967th} and Fitch and Margoliash in 1967 \cite{Fitch:1967we}.
-Compute a matrix of pairwise distances and then find the tree that best approximates those distances.
-Weighted and unweighted least squares.
-UPGMA.
-Neighbor joining is now the most common distance-matrix approach because it can perfectly reconstruct an additive tree.
-Neighbor joining was introduced by Saitou and Nei in 1987 \cite{Saitou:1987wo}.
-
-There are limitations of distance based methods.
-Do not use all the information.
-
-Need to include discussion of metrics on aligned sequences.
-
-\subsection{The Coalescent}
+\subsubsection{The Coalescent Process}
+\label{background:sss:coalescent}
 
 The coalescent process is a stochastic model that generates the genealogy of individuals sampled from an evolving population \cite{Wakeley:2009}.
 The genealogy is then used to simulate the genetic sequences of the sample.
@@ -78,30 +66,47 @@ Evolutionary histories are no longer represented by a tree, but rather by an \em
 Recombination is the component of the model generating nontrivial topology by introducing deviations from a contractibile tree structure, and is the component which we would like to quantify.
 Coalescent simulations were performed using \texttt{ms} \cite{Hudson:2002}.
 
-% \begin{figure}
-% \begin{center}
-% \centerline{\includegraphics[width=\columnwidth]{./fig/coalescent_sims.pdf}}
-% \caption{Distributions of statistics defined on the $H_1$ persistence diagram for different model parameters. Top left: Number of features. Top right: Birth time distribution. Bottom left: Death time distribution. Bottom right: Feature length distribution. Data generated from $1000$ coalescent simulations with $n=100$, $\theta=500$, and variable $\rho$.}
-% \label{fig:coalescent_sims}
-% \end{center}
-% \end{figure}
+\subsubsection{Metrics on Sequences}
 
-\subsection{Horizontal Gene Transfer}
+How to associate a distance between two aligned sequences.
+Hamming metric.
+Jukes-Cantor metric.
 
-Here we should include discussion of nonvertical evolutionary processes.
-This will include references to Doolittle, Koonin, Gogarten.
-Lateral Gene Transfer.
-Species Trees and Gene Trees.
-Recombination and reassortment.
-We will want to include discussion of 
+\subsection{Phylogenetic Reconstruction}
 
-\subsection{Phylogenetic Networks}
+Phylogenetics is concerned with relationships among species as inferred from evolutionary characters.
+In practice: tree-building.
+
+Start with sequences.
+Perform an alignment.
+From an alignment, one can then directly use parsimony or likelihood approaches.
+Alternatively, one can compute a matrix of pairwise distances and then construct a tree that best approximates these distances.
+Most relevant to this thesis are the distance-based approaches (because they can be viewed as finite metric spaces amenable to topological analysis).
+Only in the case of perfectly additive data will a tree be able to exactly fit the matrix.
+Identifying the pairwise distance matrix with a its finite metric space representation allows most of the results described here.
+
+Include discussion of rooted vs unrooted.
+
+\subsubsection{Distance Matrix Methods}
+
+Introduced by Cavalli-Sforza and Edwards in 1967 \cite{CavalliSforza:1967th} and Fitch and Margoliash in 1967 \cite{Fitch:1967we}.
+Compute a matrix of pairwise distances and then find the tree that best approximates those distances.
+Weighted and unweighted least squares.
+UPGMA.
+Neighbor joining is now the most common distance-matrix approach because it can perfectly reconstruct an additive tree.
+Neighbor joining was introduced by Saitou and Nei in 1987 \cite{Saitou:1987wo}.
+
+There are limitations of distance based methods.
+Do not use all the information.
+
+Need to include discussion of metrics on aligned sequences.
+
+\subsubsection{Phylogenetic Networks}
 
 Several methods.
 Split Networks.
 
-
-\subsection{Space of Phylogenetic Trees}
+\subsubsection{Space of Phylogenetic Trees}
 
 (This section may or may not be moved, but I want to get it on the page.)
 Studies of tree space were initiated by Billera, Holmes, and Vogtmann in \cite{Billera:2001tv}.
@@ -122,13 +127,29 @@ Number of tree topologies explodes with number of leaves.
 Fitch quote: more than 20 species, more than Avogadro's number of topologies.
 Phylogeny can be seen as projecting onto the space of trees.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TOPOLOGICAL DATA ANALYSIS %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Mathematics}
+\section{Topological Data Analysis}
+
+Topology is the branch of mathematics that aims to characterize spaces up to deformations.
+If we take a tree and change the branch lengths
+How can we addess if two spaces have the same topology?
+One trick is to assign to each space some algebraic object (a number, for instance) that does not change under deformation.
+That object is called a topological invariant.
+For instance, we can assign to an object the number of loops, which in the case of the mug will be one, and in the case of the tree will be zero.
+We can only continuously deform spaces with the same invariants.
+Algebraic topology provides tools to compute invariants of these spaces.
+
+Real data does not come in the form of perfect continuous spaces, as dealt with by classical topology.
+Instead, data can be viewed as a high-dimensional point cloud forming a discrete representation of a space.
+Topological data analysis (TDA) refers to a framework that has been developed in the last 15 years to compute topological properties from finite point clouds, building on developments in computational topology and statistics.
+Our primary tool is persistent homology, a branch of TDA that computes topological invariants representing multi-scale information about the connectivity and holes in a dataset.
 
 Topology is the study of shape.
 Algebraic topology associates algebraic structures to notions of shape.
@@ -139,16 +160,32 @@ Algebriac topology associates algebraic structures to qualitative notions of sha
 Principle tool is group theory.
 Groups count connected components.
 
-\subsection{Topology}
+\subsection{Intuition}
+
+Topological Data Analysis (TDA) studies structure in high-dimensional data such as connectedness and the presence of holes.
+In practice, we observe only a sample of data points, from which we wish to infer an underlying model or generating principle.
+TDA first builds topological complexes from data, then measures informative properties of these complexes. 
+Persistent homology (PH) is a method from TDA that uses algebraic topology to compute quantitative properties in data, including connectedness and the presence of holes (see Box 1).
+
+Make a connection with graph theory (see Horak). Prgoram: encode data as simplicial complex, combinatorial version of a topological space, properties studied from combinatorial, topological, algebraic perspective.
+
+For excellent review of topological data analysis, see the reviews.
+Start with point cloud data.
+Built a filtration.
+Filtration is a nested set of simplical complexes.
+
+Shape information is indexed by dimension. $H_0$ information tells us about connected components and is roughly equivalent to a hierarchical clustering.
+Higher dimensions represent loops ($H_1$), voids ($H_2$), and their generalizations in the data, giving a quantitative representation of shape.
+The topological invariants can be concisely represented ina barcode diagram, which tracks the shape across multiple scale parameters.
+Each horizontal line in the diagram represents a topological feature.
+
+\subsection{Mathematical Preliminaries}
 
 Topology: characterize properties of spaces invariant under continuous deformation.
-
-\subsection{Algebraic Topology}
+Our goal in this section is to get to the point of defining homology.
 
 In this section we give background sufficient to define homology for our purposes, before moving on to applied topology and persistent homology.
 A more thorough exposition of algebraic topology can be found in \cite{Hatcher:2002ut}.
-
-\subsubsection{Simplicial Complex}
 
 Associate a collection of algebraic objects with a topological space.
 Quantify global properties of space.
@@ -156,16 +193,27 @@ Homotopy and Homology.
 Homology: properties of chains composed of oriented simplices
 Elements of homology groups are cycles (chains with vanishing boundary).
 Two k-cycles are homologous if they differ by the boundary of a (k+1)-chain.
-Glue together simplices : simplicial complex.
+
+Incidence matrix representation...
+
+\subsubsection{Simplicial Complexes}
+
+\paragraph{Simplex}
+A simplex is something like a point, a line, a triangle, or a higher dimensional generalization.
+Simplex: generalization of triangle or tetrahedron to arbitraty dimensions. [see Zomorodian].
+k-simplex: k-dimensional polytope which is the convex hull of k+1 vertices.
+Faces. Boundary.
+See Example.
+
+\paragraph{Simplicial Complex}
+Glue together simplices.
 
 \begin{enumerate}
 \item Any face of a simplex in K is also in K
 \item The intersection of any two simplices in K is a face of both 
 \end{enumerate}
 
-Incidence matrix representation...
-
-\subsubsection{Chains, cycles and boundaries [rephrase]}
+\paragraph{Chains, cycles and boundaries}
 
 Boundary operator $\partial_{k}:C_{k}\rightarrow C_{k-1}$.
 Action of boundary operator on a simplex $\sigma$ is defined as: 
@@ -198,7 +246,6 @@ $Z_{k}$ defines the set of all cycles of dimension $k$.
 $B_{k}$ defines the set of all boundaries of dimension $k$.
 That is, elements of $B_{k}$ serve as boundaries of $(k+1)$-chains.
 
-
 TDA+PH: number and type of holes. which holes are essential and which are unimportant.
 
 Basically get to the point where can define homology.
@@ -207,7 +254,11 @@ Boundary operators
 Work only over $\mod 2$ Homology (0,1) coefficients.
 Torsion observed in teh image patch data set, but no reason to think it is present biologial data sets we examine.
 
-\subsubsection{Homology Groups}
+\subsubsection{Homology}
+
+Abelian groups generated by holes in the space.
+Betti number is the rank of the homology group.
+Intuitively
 
 Simplical homology.
 Abelian groups.
@@ -229,54 +280,86 @@ Elements are classes of homologous cycles.
 \label{fig:chain_complexes}
 \end{figure}
 
-\subsection{Simplicial Complexes}
 
-Simplex: generalization of triangle or tetrahedron to arbitraty dimensions. [see Zomorodian].
-k-simplex: k-dimensional polytope which is the convex hull of k+1 vertices.
-Faces. Boundary.
-Simplicial complex: collection of simplcies.
-Set of vertices: simplex.
-Vertices. Dimension.
-Abstract Simplicial Complex.
+\subsection{Constructing Spaces from Real Data}
 
-The \Cech complex consists of the set of simplices $\sigma$ with vertices $v_{1},...,v_{k}\in S$ such that
+In practice we have real data which comes to us as points in a high-dimensional space.
+With a metric we can represent this as a finite metric space.
+How can we apply the ideas of topology to these spaces?
 
-\begin{equation}
-\displaystyle\cap_{i}^{} B(v_{i},\epsilon)\neq0
-\end{equation}
-
-Cech Complex.
-Rips Complex.
-
-\section{Topological Data Analysis}
-
-Topological Data Analysis (TDA) studies structure in high-dimensional data such as connectedness and the presence of holes.
-In practice, we observe only a sample of data points, from which we wish to infer an underlying model or generating principle.
-TDA first builds topological complexes from data, then measures informative properties of these complexes. 
-Persistent homology (PH) is a method from TDA that uses algebraic topology to compute quantitative properties in data, including connectedness and the presence of holes (see Box 1).
-
-Make a connection with graph theory (see Horak). Prgoram: encode data as simplicial complex, combinatorial version of a topological space, properties studied from combinatorial, topological, algebraic perspective.
-
-For excellent review of topological data analysis, see the reviews.
-Start with point cloud data.
-Built a filtration.
-Filtration is a nested set of simplical complexes.
-
-\subsection{Finite Metric Spaces}
-
+\paragraph{Finite Metric Spaces}
 Finite metric spaces are really interesting objects of study.
 Lots of good work on embedding finite metric spaces, see Matousek.
 Metric space with a finite number of points.
 Combinatorics, geometric, and algorithms.
 In topological data analysis, our spaces of interest are finite metric spaces.
 
-\subsection{Mapper}
+\subsubsection{The \Cech\ and Vietoris-Rips Complexes}
+
+The \Cech\ complex consists of the set of simplices $\sigma$ with vertices $v_{1},...,v_{k}\in S$ such that
+
+\begin{equation}
+\displaystyle\cap_{i}^{} B(v_{i},\epsilon)\neq0
+\end{equation}
+
+\subsubsection{Filtrations}
+
+A series of inclusions.
+
+
+\subsection{Condensed Representations}
+
+\subsubsection{The Mapper Algorithm}
+\label{subsec:mapper}
 
 Condensed Representations.
-Exploratory data analysis.
+Exploratory data analysis seeks to represent high-dimensional datasets in .
+
+\begin{figure}
+\begin{tikzpicture}[node/.style={minimum height=.8cm,minimum width=2cm,draw}]
+\draw (0,0) node[node, align=center] (dr) {Dimensionality\\Reduction};
+\draw (3,1) node[node] (linear) {Linear};
+\draw (3,-1) node[node] (nonlinear) {Nonlinear};
+\draw (6,1) node[node] (pca) {PCA};
+\draw (6, -.5) node[node] (geometry) {Geometry};
+\draw (6, -1.5) node[node] (topology) {Topology};
+\draw (9, -.5) node[node,align=left] (manifold_learning) {Manifold\\Learning};
+\draw (9, -1.5) node[node] (mapper) {Mapper};
+\draw (12, -.5) node[node,align=center] (mds) {MDS\\PCA\\Isomap};
+
+
+\myline{dr}{linear};
+\myline{dr}{nonlinear};
+\draw[-latex] (linear) -- (pca);
+\myline{nonlinear}{geometry};
+\myline{nonlinear}{topology};
+\draw[-latex] (topology) -- (mapper);
+\draw[-latex] (geometry) -- (manifold_learning);
+\draw[-latex] (manifold_learning) -- (mds);
+
+\end{tikzpicture}
+\caption[Dimensionality Reduction for EDA]{Dimensionality Reduction for EDA}
+\label{background:fig:eda}
+\end{figure}
+
+
+Mapper algorithm was first developed in \cite{Singh:2007ve}.
+Mapper is coordinate free and depends onnly on the similarity of points as measured by the distance function.
+Further exposition can be found in \cite{Lum:2013cz}.
+Used in biology example in \cite{Nicolau:2011} top classify breast cancer subtypes.
+In our work we use the commercial Mapper implementation Ayasdi \cite{AyasdiIris:2015}.
+An open-source implementation of the Mapper algorithm is avvailable in the Python Mapper package \cite{Mullner:2013}.
+
+Steps:
+(1) Project using filter function.
+(2) Create overlapping bins
+(3) Cluster in the projected space.
+(3) Connect pairs of bins with shared points
 
 \subsection{Persistent Homology}
-\label{subsec:persistent_homology}
+\label{background:ss:persistent_homology}
+
+Persistent refers to capturing structure that extends over multiple spatial resolutions and is in some sense robust, while homology refers to the type of topological structure that is being computed.
 
 How to extend homology to finite metric spaces?
 Data -> Sets of complexes -> Vector spaces
@@ -305,8 +388,6 @@ Connected components.
 Loops.
 Voids.
 
-TOPOLOGICAL DATA ANALYSIS BABY!
-
 The intuition behind persistent homology is that is that good or interesting features will persist over longer scales
 That is, they will be more robust.
 In the barcode diagram this corresonds to long bars, and in the persistence diagram, this corresponds to points far from the diagonal.
@@ -314,7 +395,22 @@ Invariants that persist for only short scales are likely to be noise or artifact
 The questions of how to rigorously determine what makes a good interval is an open question that is currently being addressed by a number of different groups.
 We discuss this further in Section \ref{subsubsec:ph_statistics}.
 
+\begin{figure}
+\centering
+\includegraphics[]{./fig/LESNICK_ExpandingBalls.pdf}
+\caption[A filtration]{Example of constructing a filtration.}
+\label{background:fig:exanding balls}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[]{./fig/persistence_pipeline.pdf}
+\caption[The Persistence Pipeline]{The Persistence Pipeline.}
+\label{background:fig:persistence_pipeline}
+\end{figure}
+
 \subsubsection{The Persistence Algorithm}
+\label{subsubsec:ph_algorithm}
 
 While we act mostly as an end-user of persistent homology in this thesis, the algorithmics behind efficient computations of homology are interesting and worth including for comprehensiveness.
 Computing persistent homology is an exercise in linear algebra.
@@ -322,7 +418,7 @@ The initial algorithms first induce a matching on a set of simplices.
 This was Zomorodian and is the implementation used in Javaplex and Dionysus.
 Then you reduce a couple of matrices.
 You can read off each bar and its represetnative cycle from looking at the zeros on this one particular matrix.
-It's pretty nifty.
+Get it into smith normal form.
 
 More advanced algorithms have been developed that compute simplicial collapses: recognizing that the size of the simplciial set is often the limiting factor here, they collapse simplicies into simpler structures that will have identical homology.
 This uses Discrete Morse Theory and is the idea behind implementations such as Perseus.
@@ -335,45 +431,176 @@ Persistent homology is computed using Dionysus \cite{Morozov:2012}.
 \subsubsection{Stability}
 \label{subsubsec:ph_stability}
 
-What happens if we perturb the original data slightly?
-Will bars change?
-Will new bars be formed?
-Stability result determine how a change in $D\rightarrow D'$ takes us to $H\rightarrow H'$.
+An important aspect of peristent homology is stability.
+Stability refers to how the output of persistent homology will change when the original data is perturbed, for example due to noise or sampling.
+Will the existing bars change?
+Will new homology classes be formed?
+We would like the output of persistent homology to be stable under these perturbations.
+In general, our question is if I have some perturbation that takes my data from $D\rightarrow D'$, what can I say about the subsequent change in barcodes $B\rightarrow B'$?
+In general, if I have data $D$ that is perturbed to new data $D'$, how will change
+Luckily, there is a result that bounds changes in the diagram, due to Chazal and coauthors \citep{Chazal:2009wc}.
+After a few definitions, we state the stability theorem.
+First, we consider metrics on spaces.
 
-Couple of comments about different distances on topological space: Hausdorff, Gromov-Hausdorff.
-Distances between barcodes: Bottleneck, Wasserstein. Matchings.
+\begin{defn}
+\label{defn:hausdorff}
+The \emph{Hausdorff distance} measures the distance between two shapes.
+\begin{equation}
+d_{H}(X,Y) = \max\left\{ \sup_{x \in X} \inf_{y \in Y} d(x,y), \sup_{y \in Y} \inf_{x \in X} d(X,Y) \right\}
+\end{equation}
+And $d_H(X,Y)=0$ iff $X=Y$.
+\end{defn}
 
-Conclusion: small perturbations in data can only produce small changes in the barcode.
+\begin{defn}
+\label{defn:gromovhausdorff}
+The \emph{Gromov-Hausdorff distance} measures how far two spaces are from being isometric.
+It measures the longest distance from a point in one set to the closest point in another set within a metric space.
+\begin{equation}
+d_{GH}(X,Y)=\inf_{f,s} d_H(X,Y)
+\end{equation}
+\end{defn}
+
+Next, we consider how to define the distance between two persistance diagrams.
+To do so, we first need the concept of a \emph{matching}.
+For two persistence diagrams $A$ and $B$, a matching is a mapping from intervals in $A$ to intervals in $B$, where we allow points to match to the diagonal to account for cases with unequal number of points.
+For each matched pair of intervals $(a,b)$, we define the $L_{\infty}$ distance as
+
+\begin{equation}
+d_{\infty}(a,b) = \max\{ |a_{x}-b_{x}|, |a_{y}-b_{y}| \}.
+\end{equation}
+
+
+\begin{defn}
+\label{defn:bottleneck}
+The \emph{bottleneck cost} of a matching between two diagrams is the maximum $L_{\infty}$ for all matched points. The \emph{bottleneck distance} is defined to be the minimal bottleneck cost across all matchings. The matching with minimal bottleneck cost is the \emph{bottleneck matching}.
+\begin{equation}
+d_{B}(A,B) = \inf_{n:A\rightarrow B} \sup_{x\in X} ||x-\eta(x)||_{\infty}
+\end{equation}
+\end{defn}
+
+The result of \citet{Chazal:2009wc} states that the bottleneck distance between $B$ and $B'$ is bounded by the Gromov-Hausdorff distance between the finite metric spaces embedded in $A$ and $B$.
+
+\begin{thm}
+\label{thm:stability}
+The stability theorem.
+\begin{equation}
+d_{B}(H_{K}(X),H_{K}(Y)) \leq d_{GH}(X,Y)
+\end{equation}
+\end{thm}
+
+This bound establishes that small perturbations in the data will produce only small changes in the the persistence diagram.
 
 \subsubsection{Statistical Persistent Homology}
 \label{subsubsec:ph_statistics}
 
-Persistent homology says that short bars are topological noise.
-Can this statement be made precise?
-How short is short?
-How does noisy sampling effect the observed diagram?
-What is needed to confidently interpret the persistence diagram of a finite sample of a topological space as a reflection of the true topology?
-Substantial recent work in the TDA community has fcoused on these questions in order to develop statistical foundations for persistent homology.
-We give here a flavor of some of these results, and their relation to our own work.
+In persistent homology, long intervals are interpreted as large scale geometric features in the data, while short intervals correspond to noise or poor sampling.
+Can this statement be made more precise?
+How short is short, and how will noisy sampling effect the observed diagram?
+When can a long interval be interpreted as a real feature, and can we assign measures of confidence to our estimates?
+Substantial recent work in the TDA community has focused on these questions, in order to developer statistical foundations for persistent homology.
+We give here a brief flavor of some of these ideas and their relation to our own work.
 
-Fasy and coauthors have developed ways of generating confidence intervals for persistence diagrams.
+Fasy and coauthors have developed ways of generating confidence intervals for persistence diagrams \citep{Fasy:2014}.
 Based on some information about density, they can put a line off the diagonal below which points are to be considered noise (see example).
-Bubenik has developed the language of persistence landscapes, whereby multiple persistence diagrams can be 
+Bubenik has developed the language of persistence landscapes \cite{Bubenik:2007ux,Bubenik2015:um}.  
 Several authors have examined the space of persistence diagrams as a Polish space, with notions of mean and variance.
 Thus, XXX et al have used the bootstrap to get estimates of the robustness of 
 Mukherjee et al.
 
 In our work, we will take a slightly different approach.
 Our operating principle will be 
+
+Also see the work of Turner \cite{Turner:2012wb} and Mileyko \cite{Mileyko:2011jm}.
+
+In our work, we will consider
+In our work, we will take a slightly different approach.
+Our interest
 \kje{[Expand.]}
 
 \subsubsection{Multidimensional Persistence}
 \label{subsubsec:ph_multidim}
 
-Filtrations along different dimensions.
+First laid out in \cite{Carlsson:2009b}.
+More work in \cite{Lesnick:2012uv}.
+Filtrations along different dimensions; how to relate?.
 Prototypical example: density and distance.
-Include a bit of discussion of Lesnick's ideas.
 
 Our case is going to be slightly different.
 We will consider a set of points annotated with different metrics that we can put on it which will induce different homologies.
 Then we will see what happens we interpolate between those different metrics.
+
+\section{Applying TDA to Molecular Sequence Data}
+
+Aligned genomic sequences can be naturally viewed as points in a high-dimensional sequence space.
+As more genomes continue to be sequenced, this space becomes better and better sampled.
+Using standard genetic distance metrics, we can compute a pairwise distance matrix between genomes.
+This defines our finite metric space.
+From there, persistent homology can be applied, and the phylogenetic information contained in the dataset can be read off the resulting barcode diagram.
+If the evolution is tree-like, it has been proven that no loops will appear in the resulting diagram.
+In other words, the only topology will appear in dimension zero.
+If the set of genomes permits a phylogenetic representation, then positive-dimensional Betti numbers should vanish, since the topology of a tree is contractible to a point. 
+\kje{[More about Gunnar's proof?]}
+If the evolutionary history includes reticulate events that cannot be represented as a tree, these events will be captured as non-trivial higher dimensional homology in the barcode diagram.
+
+We illustrate a simple example of how TDA can capture horizontal evolution from populaton data in Figure~\ref{background:fig:tda_on_sequencedata}.
+Consider the reticulate phylogeny (Figure~\ref{background:fig:tda_on_sequencedata}A): five genetic sequences sampled today (yellow circles) originate from a single common ancestor due to clonal evolution (solid blue lines tracing parent to offspring) and reticulate evolution (dotted red lines).
+In Figure~\ref{background:fig:tda_on_sequencedata}B, these five samples are placed in the context of a larger dataset, where the data has been projected onto the plane using PCA.
+Persistent homology is then applied to this larger sample.
+In Figure~\ref{background:fig:tda_on_sequencedata}C we demonstrate the construction of a filtered simplicial complex, showing how the connectivity changes as the scale parameter $\epsilon$ is increased.
+Finally, in Figure~\ref{background:fig:tda_on_sequencedata}D we see the resulting barcode diagram.
+Using $H_0$ we can track the number of strains or subclades that persist, roughly corresponding to the tree-like component of the data.
+The $H_1$ bar near spanning roughly $\epsilon=0.13$ to $\epsilon=0.16$ identifies the presence of a reticulate event. involving the five higlighted sequences.
+The scale over which this bar persists represents the amount of evolutionary time separating the parents and the reticulate offspring.
+Additionally, the persistence algorithm will return a generating basis for a particular homology group, which we can use to identify the particular mixtures of sequences involved a reticulation.
+In this way, we can analyze both the scale and frequency of reticulation in genomic data sets.
+
+We summarize the connection between genomics and TDA in Table~\ref{table:dictionary}.
+
+\begin{table}
+\centering
+\caption{Preliminary dictionary connecting algebraic topology and evolutionary biology}
+\small
+\rowcolors{2}{gray!25}{white}
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+\setlength{\extrarowheight}{.75ex}
+\begin{tabularx}{\textwidth}{XX}
+\toprule\rowcolor{gray!50}
+Algebraic Topology                                         & Evolutionary Biology \\
+\midrule
+Filtration value $\epsilon$                                & Genetic distance (evolutionary scale) \\
+0-dimensional Betti number at filtration value $\epsilon$  & Number of clusters at scale $\epsilon$ \\
+Generators of 0-D homology                                 & A representative element of the cluster \\
+Hierarchical relationship among generators of 0-D homology & Hierarchical clustering \\
+1-D Betti number                                           & Lower bound on number of reticulate events \\
+Generators of 1-D Homology                                 & Reticulate events \\
+Generators of 2-D Homology                                 & Complex horizontal genomic exchange \\
+Non-zero high-dimensional homology (“topological obstruction to phylogeny”) & No treelike phylogenetic representation exists \\
+Number of higher-dimensional generators over a time interval (“irreducible cycle rate”) & Lower bound on recombination/reassortment rate \\
+\bottomrule
+\end{tabularx}
+\label{table:dictionary}
+\end{table}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{./fig/tda_on_sequencedata.pdf}
+\caption[Applying TDA to Sequence Data]{Applying persistent homology to genomic data. (A) An evolutionary genealogy including reticuation. (B) Data projected into 2-dimensions. (C) Construction of a filtered simplicial complex. (D) The resulting multiscale barcode diagram.}
+\label{background:fig:tda_on_sequencedata}
+\end{figure}
+
+\subsection{The Simplest Example}
+
+The simplest example is 00, 10, 01, 11.
+Under a Hamming metric this forms a loop.
+
+\subsection{The Space of Trees, Revisited}
+
+Recall our description of the space of trees in Section~XX.
+There, we made reference to the idea that the goal of phylogenetic reconstruction can be seen as finding the best projection onto tree space for some arbitrary dataset.
+Expand our search space.
+New goal is to characterize the space of finite metric spaces.
+As we move off tree space, we know there is no additive tree that represents the data.
+Then we want some topological measure of deviation from additivity.
+So our updated picture looks like Figure~XX.
+

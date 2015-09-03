@@ -10,8 +10,11 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 
-\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[table,usenames,dvipsnames]{xcolor}
 \usepackage{tikz}
+\usepackage{tikzscale}
+\usetikzlibrary{shapes,arrows}
+
 \usepackage{graphicx}
 %\usepackage{subcaption}
 \newsubfloat{figure}
@@ -55,8 +58,8 @@
 \setlength{\cftpartnumwidth}{2em}
 
 % set depth of section numbering and table of contents
-\setsecnumdepth{subsection}
-\settocdepth{subsection}
+\setsecnumdepth{subsubsection}
+\settocdepth{subsubsection}
 
 % pagesizes
 \paperwidth=8.5in
@@ -203,6 +206,11 @@
 
 % note
 \newcommand{\kje}[1]{\textcolor{Magenta}{#1}}
+
+% myline
+\newcommand{\myline}[2]{
+\path(#1.east) --(#2.west)  coordinate[pos=0.4](mid);
+\draw[-latex] (#1.east) -| (mid) |- (#2.west);}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -2,13 +2,12 @@
 \chapter{Quantifying Reticulation Using Topological Complex Constructions}
 \label{ch:complex_construction}
 
-In this chap
-In Chapter \ref{ch:background}, phylogenetic networks were introduced as a generalization of phylogenetic trees as a way of representing reticulation in an evolutionary dataset.
-
-In this chapter, we introduce a construction for phylogenetic networks and show how it 
-
 \section{Introduction}
 \label{sec:introduction}
+
+In Chapter~\ref{ch:background}, phylogenetic networks were introduced as a generalization of phylogenetic trees as a way of representing reticulation in an evolutionary dataset.
+In this chapter we introduce additional constructions to extract reticulation information from sequence datasets with higher sensitivity than Vietoris-Rips.
+We also introduce a method of computing \Cech\ comeplexes on binary sequence data.
 
 The application of persistent homology to molecular sequence data was introduced in \autocite{Chan:2013}, where recombination rates in viral populations were estimated by computing $L_p$ norms on barcode diagrams.
 In that paper, it was shown that persistent homology provides an intuitive quantification of reticulate evolution in sequence data by measuring deviations from tree-like additivity.
@@ -22,7 +21,6 @@ Using persistent homology asa tool to measure reticulate evolution is useful bec
 
 Our goal is to more clearly understand the topological signal that persistent homology captures when applied to sequence data.
 In doing so, we construct simple examples in which a genetic distance filtration is insensitive to reticulation.
-
 
 Due to the coarseness of the distance filtration, only those reticulations which have sufficiently strong support in the sequence data will be detected.
 By coarseness, we mean that thae distance filtration...
@@ -71,6 +69,7 @@ An additive metric can be written as a bifurcating tree such that the distance b
 
 To check that a given metric is additive, it is sufficient to check the \emph{four point condition}.
 The four point condition says that for every set of four points in the data, there is an ordering on the points such that
+
 \begin{equation}
 d_{ij}+d_{kl} \leq d_{ik}+d_{jl} = d_{il}+d_{jk}.
 \end{equation}
@@ -235,6 +234,12 @@ There is a common ancestor, two parents, and a recombinant child.
 Of course, we do not \emph{a priori} know which sequences played which role in a given loop, which is the same as the problem of rooting a phylogenetic tree.
 Persistent homology is simply a method of efficiently counting the number of such loops in the data, across all genetic scales.
 
+\section{Reticulation Quantification Using Homology}
+
+We can use persistent homology to quantify reticulation in a particular dataset.
+There are some flaws in the original Vietoris-Rips construction.
+This approach generalizes that construction in order to recover additive trees.
+
 \section{Examples}
 \label{sec:examples}
 
@@ -377,7 +382,7 @@ The conclusion to draw from this example is that multiple recombination events c
 %   \label{fig:fig4}
 % \end{figure}
 
-\section{The Median Graph Construction}
+\section{The Median Complex Construction}
 \label{sec:median_complex}
 %
 \begin{defn}
@@ -437,6 +442,58 @@ Information about the evolutionary complex is not available to us, however we ca
 Recovery of an optimal $\mathcal{EC}$ is the task of many ARG-based methods and is known to be an NP-hard problem and is not considered here.
 For example, given an $\mathcal{EC}$ as computed from some other tool, we might be able to say something useful about the topological complexity.
 
+\subsection{Split Decomposition}
+
+Split decomposition can take a distance matrix and reduce it to a set of weighted splits.
+
+
+\section{Interpretation of Higher Dimensional Homology}
+\label{sec:higher_homology}
+
+In \citet{Chan:2013} it was argued that higher dimensional homology ($H_d$ for $d>1$) is evidence for `more complex' reticulate events.
+Here we try to make this notion more precise, showing by way of examples that higher dimensional homology can be interpreted as evidence of multiple interacting reticulate events.
+First, we detour slightly and introduce a \Cech\ complex construction that will increase our sensitivity to these events.
+
+
+\section{\Cech\ Complex Construction as an Optimization Problem}
+\label{subsec:cech_complex}
+%
+The \Cech\ complex is defined on a set of points $S$ as
+\begin{equation}
+\mathrm{\check{C}ech}(r) = \left\{\sigma \subseteq S | \bigcap_{x\in\sigma} B_x(r) \neq \emptyset \right\},
+\end{equation}
+where $B_x(r)$ is the ball of radius $r$ centered at vertex $x$.
+By the nerve lemma, the homotopy type of the \Cech\ covering is guaranteed to be identical to that of the original topological space \citep{Borsuk:1948}.
+
+Computing the \Cech\ complex is often an expensive operation, such that in practice the Vietoris-Rips complex is used.
+Unlike the Vietoris-Rips complex, which is entirely defined by the 1-skeleton, the \Cech\ complex requires one to check each simplex $\sigma$ up to some maximum dimension $D$.
+The \Cech\ complex therefore requires one to know the ambient space the data is embedded in, unlike a Rips complex which can be built directly from distance data.
+Binary sequence data of length $d$ explicitly sits on the discrete lattice of $\{0,1\}^d$ with an $L_1$ norm.
+In this case, it is not immediately obvious how to define when three sequences should form a simplex.
+One
+Therefore, we expand the ambient space to $\mathbb{R}^d$ with an $L_1$ metric.
+This choice of metric is motivated by two reasons.
+First, the $L_1$ norm maintains the Hamming distance between sampled points.
+Second, the $L_1$ norm keeps the primary theorem intact, that is tree like data generates trivial homology.
+\footnote{This notion has a natural extension to multiallelic sites which is not detailed here.}
+
+The problem of deciding if a particular simplex $\sigma$ belongs in the \Cech\ complex at radius $r$ is the same as checking if a ball of radius $r$ can be placed such that each point $x$ in $\sigma$ is contained within the ball.
+In $\mathbb{R}^d$ with an $L_2$ metric there exists an efficient randomized algorithm for computing this radius known as the \emph{miniball algorithm}.\autocite{Gartner:1999}
+However, the efficiency of the miniball algorithm relies on the strict convexity of the $L_2$ metric and therefore is not applicable to a space with an $L_1$ metric.
+Instead, we pose the miniball problem in $L_1$ as a generic convex optimization problem, and use standard library solver.
+That is, we define a $d+1$ dimensional optimization problem where $x$ is the miniball center and $R$ is the miniball radius.
+
+The problem is stated as
+\begin{align*}
+\text{minimize}\qquad   &  R \\
+\text{subject to}\qquad & \forall p \in P: ||x-p||_{1} \leq R \\
+                        & x \in \mathbb{R}^d
+\end{align*}
+
+We implement the problem in \texttt{cvxpy}.
+TODO: A brief comment about the complexity of this routine.
+The randomized miniball algorithm has constant complexity in dimension.
+
 \subsection{Molecular Hypothesis}
 
 Gromov proved that a median graph is the 1-skeleton of a CAT(0) cubical complex \citep{Gromov:1987}.
@@ -478,9 +535,9 @@ $H_{6}$ & 0 & 0 & 0 & 0 & 0 &  0\\
 
 We include a simple proof of the numbers in this table [right here].
 
-\subsection{Examples}
+\section{Examples}
 
-\subsubsection{Kreitman data}
+\subsection{Kreitman Data}
 
 A benchmark dataset in recombination studies is the Kretiman data \citep{Kreitman:1983}.
 The dataset consists of eleven sequences (nine unique) of the Adh locus from \emph{Drosophilia melanogaster} collected from various locations, with 43 segregating sites.
@@ -493,56 +550,11 @@ The barcode plot is shown in Figure ??.
 Can we use the homology information to make a claim about the minimum recombination graph?
 Can we set an upper bound on the number of recombination graphs?
 
-Buttercup?
-Bacteria?
-Other data with medium levels of reticulation?
-A small \texttt{ms} example where we tune recombination parameter and compare non-median vs median, with maybe 50ish sequences?
+\subsection{Buttercup Data}
 
-\section{Interpretation of Higher Dimensional Homology}
-\label{sec:higher_homology}
+\subsection{Additional Examples}
 
-In \citet{Chan:2013} it was argued that higher dimensional homology ($H_d$ for $d>1$) is evidence for `more complex' reticulate events.
-Here we try to make this notion more precise, showing by way of examples that higher dimensional homology can be interpreted as evidence of multiple interacting reticulate events.
-First, we detour slightly and introduce a \Cech\ complex construction that will increase our sensitivity to these events.
-
-\subsection{\Cech\ Complex}
-\label{subsec:cech_complex}
-%
-The \Cech\ complex is defined on a set of points $S$ as
-\begin{equation}
-\mathrm{\check{C}ech}(r) = \left\{\sigma \subseteq S | \bigcap_{x\in\sigma} B_x(r) \neq \emptyset \right\},
-\end{equation}
-where $B_x(r)$ is the ball of radius $r$ centered at vertex $x$.
-By the nerve lemma, the homotopy type of the \Cech\ covering is guaranteed to be identical to that of the original topological space \citep{Borsuk:1948}.
-
-Computing the \Cech\ complex is often an expensive operation, such that in practice the Vietoris-Rips complex is used.
-Unlike the Vietoris-Rips complex, which is entirely defined by the 1-skeleton, the \Cech\ complex requires one to check each simplex $\sigma$ up to some maximum dimension $D$.
-The \Cech\ complex therefore requires one to know the ambient space the data is embedded in, unlike a Rips complex which can be built directly from distance data.
-Binary sequence data of length $d$ explicitly sits on the discrete lattice of $\{0,1\}^d$ with an $L_1$ norm.
-In this case, it is not immediately obvious how to define when three sequences should form a simplex.
-One
-Therefore, we expand the ambient space to $\mathbb{R}^d$ with an $L_1$ metric.
-This choice of metric is motivated by two reasons.
-First, the $L_1$ norm maintains the Hamming distance between sampled points.
-Second, the $L_1$ norm keeps the primary theorem intact, that is tree like data generates trivial homology.
-\footnote{This notion has a natural extension to multiallelic sites which is not detailed here.}
-
-The problem of deciding if a particular simplex $\sigma$ belongs in the \Cech\ complex at radius $r$ is the same as checking if a ball of radius $r$ can be placed such that each point $x$ in $\sigma$ is contained within the ball.
-In $\mathbb{R}^d$ with an $L_2$ metric there exists an efficient randomized algorithm for computing this radius known as the \emph{miniball algorithm}.\autocite{Gartner:1999}
-However, the efficiency of the miniball algorithm relies on the strict convexity of the $L_2$ metric and therefore is not applicable to a space with an $L_1$ metric.
-Instead, we pose the miniball problem in $L_1$ as a generic convex optimization problem, and use standard library solver.
-That is, we define a $d+1$ dimensional optimization problem where $x$ is the miniball center and $R$ is the miniball radius.
-
-The problem is stated as
-\begin{align*}
-\text{minimize}\qquad   &  R \\
-\text{subject to}\qquad & \forall p \in P: ||x-p||_{1} \leq R \\
-                        & x \in \mathbb{R}^d
-\end{align*}
-
-We implement the problem in \texttt{cvxpy}.
-TODO: A brief comment about the complexity of this routine.
-The randomized miniball algorithm has constant complexity in dimension.
+See \citet{Huson:2010}.
 
 \subsection{Simple Examples}
 \label{subsec:higher_dim_examples}
@@ -683,27 +695,3 @@ Here, we studied the sensitivity of our approach
 Ongoing work is computing estimators from coalescent process.
 
 An interesting additional observation is that the number of recombinations required to explain the fully saturated hypercube is exactly equal to the alternating sum of the homology ranks.
-
-\section{Phylogenetic Trees}
-
-Phylogenetic trees characterize evolutionary relationships.
-\subsection{Neighbor Joining}
-
-Neighbor Joining is a common distance-based phylogenetic method.
-
-\section{Phylogenetic Networks}
-
-Phylogenetic networks generalize phylogenetic trees.
-
-\subsection{Split Decomposition}
-
-Split decomposition can take a distance matrix and reduce it to a set of weighted splits.
-
-\section{Reticulation Quantification Using Homology}
-
-There are some flaws in the original Vietoris-Rips construction.
-This approach generalizes that construction in order to recover additive trees.
-
-\section{Experiments}
-
-Think of some experiments that we can do.
