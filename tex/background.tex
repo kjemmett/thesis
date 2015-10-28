@@ -3,8 +3,8 @@
 \label{ch:background}
 
 This thesis integrates open problems in evolutionary biology with newly developed tools from applied topology.
-As few readers are likely to have substantial exposure to both fields, we devote this initial chapter to supplying minimal background to motivate the later discussion.
-Exposition required for specific results can be found in the individual chapters.
+As few readers are likely to have substantial exposure to both fields, we use this initial chapter to supply sufficient background to motivate later discussion.
+Exposition required for specific results can be found in their respective individual chapters.
 
 \section{Biology}
 
@@ -18,7 +18,6 @@ Vertical evolution is consistent with a phylogenetic tree.
 
 \subsection{Evolutionary Processes}
 
-Many processes.
 Vertical: clonal.
 Mutation and drift.
 Horizontal; reticulate; lateral.
@@ -26,20 +25,18 @@ Recombination and reassortment.
 
 \subsubsection{Genes and Genomes}
 
-Information is contained in genomes.
-Genomes are long strings of bases.
-Embedded in the genome are discrete units representing genes.
-Genes code for proteins.
-Genes are a fundemental unit of evolution.
+Genome as a model of information.
+Nucleotides.
+Gene representations and protein coding.
+Fundamental unit of evolution.
 
 \subsubsection{Horizontal Gene Transfer}
 
-Here we should include discussion of nonvertical evolutionary processes.
+Discussion of nonvertical evolutionary processes.
 This will include references to Doolittle, Koonin, Gogarten.
 Lateral Gene Transfer.
 Species Trees and Gene Trees.
 Recombination and reassortment.
-We will want to include discussion of 
 
 \subsection{Mathematical Models of Evolution}
 \label{background:ss:evolutionary_models}
@@ -47,9 +44,8 @@ We will want to include discussion of
 Mathematical population genetics is concerned with properties of populations as they are subject to evolutionary forces over long time scales.
 These forces include natural selection, genetic drift, mutation, and recombination.
 Historically the input data for population genetics models was comparative studies of allele frequencies across populations.
-Large-scale genome surveys 
-Develop genealogy.
-Look at population structure.
+Large-scale genome surveys .
+Genealogy and population structure.
 
 \subsubsection{The Wright-Fisher Process}
 
@@ -86,7 +82,7 @@ Coalescent simulations were performed using \texttt{ms} \cite{Hudson:2002}.
 \subsubsection{Metrics on Sequences}
 
 What metrics can we put on aligned sequences?
-The simplest model, and the one most commonly adopted in this thesis, is the Hamming metric, which simply counts the differences 
+The simplest model, and the one most commonly adopted in this thesis, is the Hamming metric, which simply counts the differences.
 Hamming metric: simple count of differences between
 
 More biologically motivated metrics will incorporate some model of evolution and account for the possibility of back mutation.
@@ -128,18 +124,14 @@ Need to include discussion of metrics on aligned sequences.
 
 \subsubsection{Phylogenetic Networks}
 
-Several methods.
 Split Networks.
 
 \subsubsection{Space of Phylogenetic Trees}
 
-(This section may or may not be moved, but I want to get it on the page.)
 Studies of tree space were initiated by Billera, Holmes, and Vogtmann in \cite{Billera:2001tv}.
 Each point represents an unrooted binary tree with L leaves and positive branch lengths.
 Number of interior edges $r=L-3$, a particular daditive tree can be plotted as a point in the positive open orthant $(0,\infty)^{r}$.
 A single orthant corresponds to a single tree topology.
-
-four point condition.
 
 \subsubsection{Number of Trees}
 
@@ -473,15 +465,15 @@ We discuss this further in Section \ref{subsubsec:ph_statistics}.
 While we act mostly as an end-user of persistent homology in this thesis, the algorithmics behind efficient computations of homology are interesting and worth including for comprehensiveness.
 Computing persistent homology is an exercise in linear algebra.
 The initial algorithms first induce a matching on a set of simplices.
-This was Zomorodian and is the implementation used in Javaplex and Dionysus.
+This is due to Zomorodian and is the implementation used in Javaplex and Dionysus.
 Then you reduce a couple of matrices.
 You can read off each bar and its represetnative cycle from looking at the zeros on this one particular matrix.
-Get it into smith normal form.
+Smith normal form.
 
 More advanced algorithms have been developed that compute simplicial collapses: recognizing that the size of the simplciial set is often the limiting factor here, they collapse simplicies into simpler structures that will have identical homology.
 This uses Discrete Morse Theory and is the idea behind implementations such as Perseus.
 
-Include only simple implementation for $Z2$
+Include only simple implementation for $Z2$.
 
 Several packages for computing persistent homology have been developed [Dionysus, Javaplex, Guidi, phom] and TDA frontend for R.
 Persistent homology is computed using Dionysus \cite{Morozov:2012}.
@@ -555,25 +547,26 @@ In persistent homology, long intervals are interpreted as large scale geometric 
 Can this statement be made more precise?
 How short is short, and how will noisy sampling effect the observed diagram?
 When can a long interval be interpreted as a real feature, and can we assign measures of confidence to our estimates?
-Substantial recent work in the TDA community has focused on these questions, in order to developer statistical foundations for persistent homology.
+Substantial recent work in the TDA community has focused on these questions, in order to develop statistical foundations for persistent homology.
 We give here a brief flavor of some of these ideas and their relation to our own work.
 
 Fasy and coauthors have developed ways of generating confidence intervals for persistence diagrams \citep{Fasy:2014}.
 Based on some information about density, they can put a line off the diagonal below which points are to be considered noise (see example).
 Bubenik has developed the language of persistence landscapes \cite{Bubenik:2007ux,Bubenik2015:um}.  
 Several authors have examined the space of persistence diagrams as a Polish space, with notions of mean and variance.
-Thus, XXX et al have used the bootstrap to get estimates of the robustness of 
+XXX et al have used the bootstrap to get estimates of the diagram robustness.
 Mukherjee et al.
 
-In our work, we will take a slightly different approach.
-Our operating principle will be 
-
 Also see the work of Turner \cite{Turner:2012wb} and Mileyko \cite{Mileyko:2011jm}.
+Probability measures on the space of persistence diagrams.
 
-In our work, we will consider
-In our work, we will take a slightly different approach.
-Our interest
-\kje{[Expand.]}
+Wasserstein distance between diagrams.
+
+\begin{equation}
+W_{p}(D_{1},D_{2}) = \left( \inf_{\gamma} \sum_{x\in D_1} \|x-\gamma(x)\|^{p}_{\infty} \right)^{1/p}
+\end{equation}
+
+\kje{[Expand substantially, this section needs to be very strong.]}
 
 \subsubsection{Multidimensional Persistence}
 \label{subsubsec:ph_multidim}
@@ -586,6 +579,7 @@ Prototypical example: density and distance.
 Our case is going to be slightly different.
 We will consider a set of points annotated with different metrics that we can put on it which will induce different homologies.
 Then we will see what happens we interpolate between those different metrics.
+\kje{[Discuss with Michael.]}
 
 \section{Applying TDA to Molecular Sequence Data}
 
