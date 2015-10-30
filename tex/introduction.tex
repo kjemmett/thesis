@@ -14,7 +14,7 @@ Yet a tree is only accurate if the Darwinian model of descent with modification 
 However, it has long been recognized that there exist alterative evolutionary processes that allow organisms to exchange genetic material through means beyond simple reproduction.
 Notable examples include species hybridization, horizontal gene transfer in bacteria, and meiotic recombination in eukaryotes.
 Collectively, these processes are known as \emph{horizontal evolution}, in contrast to descent with modification, an example of \emph{vertical evolution}.
-Increasing genomic data, powered by new high-throughput sequencing technologies, has shown that these horizontal processes are much more prevalent than previously believed.
+Increasing genomic data, powered by new high-throughput sequencing technologies, has shown that these horizontal processes are more prevalent than originally expected.
 For some, this has called into question the tree of life hypothesis as an organizing principle and prompted the search for new ways of representing evolutionary relationships \cite{Doolittle:1999,OMalley:2011tu}.
 
 The aim of this thesis is to present a new ways of quantifying and representing nonvertical evolutionary processes using recently developed tools from algebraic and computational topology.
@@ -32,18 +32,18 @@ We then introduce the idea of representing evolution as a topological space and 
 \section{Molecular Evolution and the Tree Paradigm}
 
 The combination of Darwin's ideas of natural selection with Mendelian genetics led to the \emph{modern evolutionary synthesis}, outlined in the first half of the twentieth century in pioneering works by Fisher, Wright, Haldane, and others (see \cite{Huxley:1942} and \cite{Gould:2002ts} for historical detail).
-The synthesis was based largely on analysis of distributions of allele frequencies in distinct populations, the purview of classical population genetics.
+The modern synthesis was based largely on analysis of distributions of allele frequencies in distinct populations, the purview of classical population genetics.
 The field was placed on molecular foundations with the Watson and Crick's discovery of the DNA double-helix in 1953 \cite{Watson:1953wm}.
 These developments led to the modern study of \emph{molecular evolution}, the analysis of how processes such as mutation, drift, and recombination act at the cellular level to induce changes in populations and species.
-While molecular biology has focused on the biochemical and biophysial mechanisms underlying these processes, \emph{molecular phylogenetics} has focused on the comparison of the macromolecular sequences to infer genealogies and evolutionary relationships.
+While molecular biology has focused on the biochemical and biophysial mechanisms underlying these processes, \emph{molecular phylogenetics} has focused on comparison of macromolecular sequences to infer genealogies and evolutionary relationships.
 Molecular phylogenetics began with Zuckerkandl and Pauling's recognition that the information encoded in the molecular sequences could be used as a document of evolutionary history in the early 1960's \cite{Zuckerkandl:1962,Zuckerkandl:1965wi}.
 Since that time, the development of numerical approaches for inferring evolutionary relationships has evolved into a mature discipline, with new methods being frequently proposed.
 The use of molecular sequence data to infer phylogeny is a standard practice across a wide range of biology and ecology.
 
 Two historical results, one from molecular evolution and one from molecular phylogenetics, are worth mentioning.
-First, Motoo Kimura's neutral theory of evolution, first detailed in 1968 \cite{Kimura:1968vw} (see \cite{Kimura:1984} for a comprehensive introduction).
+First, Motoo Kimura's neutral theory of evolution, first detailed in 1968 \cite{Kimura:1968vw} (see \cite{Kimura:1984} for a comprehensive survey).
 The neutral theory holds that observed genetic diversity is largely a result of genetic drift.
-At the time it was proposed, most biologists assumed that natural selection was the driving force behind genetic diversity.
+At the time the neutral theory was proposed, most biologists assumed that natural selection was the driving force behind genetic diversity.
 Kimura argued that at the molecular level, the vast majority of mutations are selectively neutral, that is they confer no fitness advantage to the individual organism.
 With increased sequencing of organisms and populations, tests for selection based on the neutral theory have been developed.
 
@@ -83,7 +83,7 @@ Foreign DNA can be acquired via uptake from an external environment (transformat
 Nonvertical modes of evolution are more than just a theoretical concern:
 In HIV, frequent recombination confounds our understanding of the early and present epidemic’s history \kje{[cite]}.
 In influenza, gene reassortments lead to antigenic novelty and the emergenence of epidemics \kje{[cite]}.
-Horizontal gene transfer has been largely responsible for the spread of antibiotic resistance in pathogens of concern, including E. coli and S. aureus \kje{[cite]}.
+In several pathogenic bacteria, including E. coli and S. aureus, horizontal gene transfer has been responsbile for the spread of antibiotic resistance \kje{[cite]}.
 
 One wonders if the information deduced from small genomic sections can be extrapolated to other regions, as different gene sequences can yield vastly different tree topologies.
 Incompatibilities in the tree model now appear as the rule, not the exception, demonstrating the need for new representations of evolutionary relationships \autocite{Doolittle:1999,Doolittle:2006}.
@@ -165,10 +165,12 @@ In Chapter \ref{ch:background} we present background information on the wide ran
 This discussion is chiefly structured into two pieces: (1) background on phylogenetics and population genetics, and (2) background on algebraic topology and the methods of topological data analysis.
 
 In Part \ref{part:theory}, we develop two complementary approaches for analyzing genomic data using topological data analysis.
-In Chapter \ref{ch:parametric_inference}, we develop methods for performing statistical inference using summary statistics contained in the persistence diagram.
-This is the first such use of persistence diagrams as a tool for performing parametric inference.
 In Chapter \ref{ch:complex_construction}, we propose alternative methods of constructing topological complexes that generalize the traditional Vietoris-Rips and \Cech complexes but are suited to the particular demands of phylogenetic applications.
 We draw on previous work in phylogenetic networks and use homology theory to provide quantitative assessment of reticulation.
+This work was published in 
+In Chapter \ref{ch:parametric_inference}, we develop methods for performing statistical inference using summary statistics contained in the persistence diagram.
+This is the first such use of persistence diagrams as a tool for performing parametric inference. This work was published in \cite{Emmett:2014b}
+
 
 In Part \ref{part:application_microorganism} we apply our approach various microorganism datasets.
 In Chapter \ref{ch:phage} we study bacteriophages.
@@ -180,8 +182,37 @@ In Part \ref{part:applications_human}, we apply our approaches to a several prob
 In Chapter \ref{ch:human_recombination_rate} we measure the human recombination rate.
 In Chapter \ref{ch:human_population_structre} we reconstruct models of human demographic movements.
 In Chapter \ref{ch:human_chromatin_folding} we analyze Hi-C data to understand patterns of chromatin folding in the nucleus.
+This work was published in 
 \kje{[Reorganize..Hi-C results include caulobacter.]}
 
 \kje{[Possibly an appendix section of virus results: flu, ebola, etc.]}
 
 Finally, in Chapter \ref{ch:conclusions} we summarize our results and present possible avenues for future directions.
+
+\section{Original Contributions}
+
+(Section where I put the citation to all the papers I worked on.)
+
+Papers in thesis:
+
+\begin{itemize}
+\item Warsaw
+\item ICML
+\item Topdrim4bio 1
+\item Topdrim4bio 2
+\end{itemize}
+
+\begin{itemize}
+\item Vancouver (PIMS)
+\item Minnesota
+\item CSHL
+\end{itemize}
+
+Papers not in thesis:
+
+\begin{itemize}
+\item Paper with Ken's guy
+\item Stochseq
+\item Ebola
+\item Mendelian Diseases
+\end{itemize}

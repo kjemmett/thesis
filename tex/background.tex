@@ -226,7 +226,7 @@ See Example.
 
 \begin{figure}
 \centering
-\includegraphics[]{./fig/simplices.pdf}
+% \includegraphics[]{./fig/simplices.pdf}
 \caption[Simplices]{}
 \label{background:fig:simplices}
 \end{figure}
@@ -242,7 +242,7 @@ Glue together simplices such that the following holds:
 
 \begin{figure}
 \centering
-\includegraphics[]{./fig/simplicial_complex.pdf}
+% \includegraphics[]{./fig/simplicial_complex.pdf}
 \caption[Simplicial Complex]{}
 \label{background:fig:simplicial_complex}
 \end{figure}
@@ -258,7 +258,7 @@ Action of boundary operator on a simplex $\sigma$ is defined as:
 
 A chain $C\in C_{k}$ is called a cycle if $\partial_{k}C=0$.
 Chain with empty boundary.
-Set of cycles forms a group
+Set of cycles forms a group.
 
 Boundary operator defines a chain complex $C_{*}$:
 
@@ -290,7 +290,7 @@ Torsion observed in teh image patch data set, but no reason to think it is prese
 
 \begin{figure}
 \centering
-\includegraphics[]{./fig/boundary_example.pdf}
+% \includegraphics[]{./fig/boundary_example.pdf}
 \caption[]{}
 \label{background:fig:boundary_example}
 \end{figure}
@@ -543,12 +543,18 @@ This bound establishes that small perturbations in the data will produce only sm
 \subsubsection{Statistical Persistent Homology}
 \label{subsubsec:ph_statistics}
 
-In persistent homology, long intervals are interpreted as large scale geometric features in the data, while short intervals correspond to noise or poor sampling.
+In persistent homology, the intuition is developed that long intervals are to be interpreted as large-scale, or robust, geometric features in data, while short intervals are more likely to correspond to noise or incomplete sampling.
+
+
+More broadly, how can the information in the persistent diagram be used 
 Can this statement be made more precise?
 How short is short, and how will noisy sampling effect the observed diagram?
 When can a long interval be interpreted as a real feature, and can we assign measures of confidence to our estimates?
 Substantial recent work in the TDA community has focused on these questions, in order to develop statistical foundations for persistent homology.
 We give here a brief flavor of some of these ideas and their relation to our own work.
+
+
+We identify four main themes that work on the statistical 
 
 Fasy and coauthors have developed ways of generating confidence intervals for persistence diagrams \citep{Fasy:2014}.
 Based on some information about density, they can put a line off the diagonal below which points are to be considered noise (see example).
@@ -558,7 +564,14 @@ XXX et al have used the bootstrap to get estimates of the diagram robustness.
 Mukherjee et al.
 
 Also see the work of Turner \cite{Turner:2012wb} and Mileyko \cite{Mileyko:2011jm}.
-Probability measures on the space of persistence diagrams.
+
+\begin{itemize}
+\item Probability measures on the space of persistence diagrams
+\item Functional summaries of the persistence diagram
+\item Confidence intervals on the persistence diagram
+\item Statisical inference using persistence diagrams
+\item 
+\end{itemize}
 
 Wasserstein distance between diagrams.
 
