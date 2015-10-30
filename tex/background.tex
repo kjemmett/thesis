@@ -597,13 +597,19 @@ Then we will see what happens we interpolate between those different metrics.
 \section{Applying TDA to Molecular Sequence Data}
 
 Aligned genomic sequences can be naturally viewed as points in a high-dimensional sequence space.
-As more genomes continue to be sequenced, this space becomes better and better sampled.
-Using standard genetic distance metrics, we can compute a pairwise distance matrix between genomes.
+As more genomes continue to be sequenced, this space becomes more densely sampled.
+Using the standard genetic distance metrics described above, we can compute a pairwise distance matrix betwee genomes.
 This defines our finite metric space.
-From there, persistent homology can be applied, and the phylogenetic information contained in the dataset can be read off the resulting barcode diagram.
-If the evolution is tree-like, it has been proven that no loops will appear in the resulting diagram.
-In other words, the only topology will appear in dimension zero.
-If the set of genomes permits a phylogenetic representation, then positive-dimensional Betti numbers should vanish, since the topology of a tree is contractible to a point. 
+From there, methods from TDA can be applied.
+In particular, we can apply persistent homology, and phylogenetic information contained in the dataset can be read off the resulting barcode diagram.
+
+An important foundational point was described in \cite{Chan:2013}.
+In that paper, it was shown that if the evolutionary history contained in a particular data-set is tree-like, then there will be no higher homology in the resulting barcode diagram.
+In other words, the only nontrivial topology will appear in dimension zero.
+
+
+
+If the set of genomes permits a phylogenetic representation, then positive-dimensional Betti numbers should vanish, since the topology of a tree is contractible. 
 \kje{[More about Gunnar's proof?]}
 If the evolutionary history includes reticulate events that cannot be represented as a tree, these events will be captured as non-trivial higher dimensional homology in the barcode diagram.
 
@@ -623,7 +629,7 @@ We summarize the connection between genomics and TDA in Table~\ref{table:diction
 
 \begin{table}
 \centering
-\caption{Preliminary dictionary connecting algebraic topology and evolutionary biology}
+\caption{Dictionary connecting algebraic topology and evolutionary biology}
 \small
 \rowcolors{2}{gray!25}{white}
 \setlength{\aboverulesep}{0pt}
@@ -650,12 +656,13 @@ Number of higher-dimensional generators over a time interval (“irreducible cyc
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{./fig/tda_on_sequencedata.pdf}
-\caption[Applying TDA to Sequence Data]{Applying persistent homology to genomic data. (A) An evolutionary genealogy including reticuation. (B) Data projected into 2-dimensions. (C) Construction of a filtered simplicial complex. (D) The resulting multiscale barcode diagram.}
+\caption[Applying TDA to Sequence Data]{Applying persistent homology to genomic data. (A) An evolutionary genealogy including reticulation. (B) Data projected into 2-dimensions. (C) Construction of a filtered simplicial complex. (D) The resulting multiscale barcode diagram.}
 \label{background:fig:tda_on_sequencedata}
 \end{figure}
 
 \subsection{The Simplest Example}
 
+Recall the four gamete test, which tests for the prescence of reticulate evolution by searching for the simultaneous presence of 
 Recall the four gamete test.
 The simplest example is 00, 10, 01, 11.
 Under a Hamming metric this forms a loop.
