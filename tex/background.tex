@@ -14,7 +14,8 @@ More specific background relevant to the applications described in Part \ref{par
 
 What do we mean by horizontal and vertical evolution?
 Vertical, or clonal, evolution is mediated by stochastic mutations over multiple generations.
-Vertical evolution is consistent with a phylogenetic tree.
+Vertical evolution will be consistent with a phylogenetic tree.
+Horizontal evolution...
 
 \subsection{Evolutionary Processes}
 
@@ -22,13 +23,18 @@ Vertical: clonal.
 Mutation and drift.
 Horizontal; reticulate; lateral.
 Recombination and reassortment.
+Gene trees vs species trees.
 
 \subsubsection{Genes and Genomes}
 
-Genome as a model of information.
-Nucleotides.
-Gene representations and protein coding.
-Fundamental unit of evolution.
+The information required for biological function is contained in an organisms genome.
+The genome is the linear string of nucleotides that represent the set of genes in an organism.
+Following the fundamental dogma of biology, DNA is transcribed into RNA, RNA is translated into amino acids, and amino acids are folded into proteins.
+Proteins are the functional element of biology.
+
+Beyond simply coding for an organisms function, the genome includes an imprint of the evolutionary history that gave rise to that particular organism.
+Comparing the genomes of multiple organisms.
+This is the field of \emph{comparative genomics}.
 
 \subsubsection{Horizontal Gene Transfer}
 
@@ -44,15 +50,16 @@ Recombination and reassortment.
 Mathematical population genetics is concerned with properties of populations as they are subject to evolutionary forces over long time scales.
 These forces include natural selection, genetic drift, mutation, and recombination.
 Historically the input data for population genetics models was comparative studies of allele frequencies across populations.
-Large-scale genome surveys .
+Large-scale genome surveys.
 Genealogy and population structure.
 
-\subsubsection{The Wright-Fisher Process}
+\subsubsection{The Wright-Fisher Model}
 
+The Wright-Fischer model is a 
 Forward time simulation of population.
 Here we describe the simplest Wright-Fisher model: neutral, constant population size $N$.
 At each time step randomly choose a parent.
-\kje{Figure comparing Wright-Fisher and Coalescent.}
+\kje{[Figure comparing Wright-Fisher and Coalescent.]}
 
 \subsubsection{The Coalescent Process}
 \label{background:sss:coalescent}
@@ -124,29 +131,30 @@ Need to include discussion of metrics on aligned sequences.
 
 \subsubsection{Phylogenetic Networks}
 
+Several existing methods for representing reticulate evolution.
+Most assume the simplest generalization.
+However, the resulting networks can be complex and difficult to interpret quantitatively.
 Split Networks.
 
 \subsubsection{Space of Phylogenetic Trees}
 
 Studies of tree space were initiated by Billera, Holmes, and Vogtmann in \cite{Billera:2001tv}.
-Each point represents an unrooted binary tree with L leaves and positive branch lengths.
-Number of interior edges $r=L-3$, a particular daditive tree can be plotted as a point in the positive open orthant $(0,\infty)^{r}$.
+Tree space on $L$ leaves is modeled as a subspace of $\mathbb{R}^{(XX)}$, where 
+In their model, each point represents an unrooted binary tree with $L$ leaves and positive branch lengths.
+Number of interior edges $r=L-3$, a particular additive tree can be plotted as a point in the positive open orthant $(0,\infty)^{r}$.
 A single orthant corresponds to a single tree topology.
+[Include treespace figure].
 
 \subsubsection{Number of Trees}
 
-[should be in phylogenetics section].
-Unrooted, bifurcating, labeled trees
-Multiple tree topologies can exist.
-Number of unrooted bifurcating trees with $L$ leaves is $(2L-5)!!$.
-
-Number of tree topologies explodes with number of leaves.
-Fitch quote: more than 20 species, more than Avogadro's number of topologies.
+The number of rooted bifurcating tree topologies with $L$ leaves is $(2L-3)!!$
+The number of unrooted bifurcating tree topologies with $L$ leaves is $(2L-5)!!$.
+As can be seen, the number of tree topologies explodes with the number of leaves.
+Fitch quote: \emph{more than 20 species, more than Avogadro's number of topologies.}
 Phylogeny can be seen as projecting onto the space of trees.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TOPOLOGICAL DATA ANALYSIS %
