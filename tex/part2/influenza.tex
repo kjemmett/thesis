@@ -1,11 +1,21 @@
 %!TEX root = ../../thesis.tex
-\chapter{Influenza Evolution}
+\chapter{Reassortment in Influenza Evolution}
 \label{ch:influenza}
 
 \section{Introduction}
 
-In this chapter we analyze influenza.
-Influenza is useful to examine because there is a lot of data.
+In this chapter we analyze influenza A virus, a common human pathogen.
+Influenza is a segmented single-stranded RNA orthomyxovirus.
+It is well known that frequent reassortment punctuates the evolution of influenza.
+Reassortant strains can lead to antigenic novelty when ingernal segments adapted to humans pair up with novel external segments.
+Such events led to the human influenza pandemics of 1957 and 1968.
+Influenza provides a useful testbed for detection of reticulate evolution because of the large quantity of data that has been collected.
+
+We applied persistent homology to data for more than 3,000 avian influenza genomes from the NIH Influenza Sequence Database.
+Examining each genome segment separately, we recovered only zero-dimensional homology, consistent with no intra-segmental recombination.
+In other words, segment-by-segment the evolution of influenza is tree-like and amenable to a phylogenetic tree representation.
+
+However, a similar analysis of the concatenated full genome reveals a complex topology, with a large number of loops in one and two dimensions.
 
 \section{Influenza Virus}
 \label{sec:flu_introduction}
@@ -22,15 +32,15 @@ To characterize influenza evolution, we computed the persistent homology of four
 When applied to a single segment of the virus unaffected by reassortment, higher-dimensional homology groups vanish (Fig. 2).
 Alignments of single segments are therefore suitable for phylogenetic analysis.
 In settings of vertical evolution, we can directly transform a filtration of 0-D simplicial complexes into an equivalent distance-based dendrogram.
- Fig. 2A represents the zero-dimensional topology of the hemagglutinin segment of avian influenza viruses. 
- The zero-dimensional generators at higher genetic distances indicate the major clusters, coinciding with the antigenic subtypes H1-H16.
- From the bar sizes of the barcode plot, we can create a dendrogram that recapitulates classic phylogenetic analyses57,58 (Fig. 2B).
- Only when segments are concatenated does persistent homology indicate that reassortment precludes phylogenetic analysis (Fig. 2C).
- These results show that persistent homology can detect pervasive reassortment in influenza.
- Estimating ICR from one-dimensional homology provides a lower-bound on reassortment rate in influenza.
- We calculate an ICR of <1 event per year for classic H1N1 swine and H3N2 human influenza viruses, supported by previous phylogenetic estimates59,60.
- In contrast, we calculate a high reassortment rate of 22.16 events per year for avian influenza A.
-This difference could be explained by the high diversity and frequent co-infection of avian viruses and correlates with the high proportion of potential avian reassortants reported in previous studies61,62.
+Fig. 2A represents the zero-dimensional topology of the hemagglutinin segment of avian influenza viruses. 
+The zero-dimensional generators at higher genetic distances indicate the major clusters, coinciding with the antigenic subtypes H1-H16.
+From the bar sizes of the barcode plot, we can create a dendrogram that recapitulates classic phylogenetic analyses (Fig. 2B).
+Only when segments are concatenated does persistent homology indicate that reassortment precludes phylogenetic analysis (Fig. 2C).
+These results show that persistent homology can detect pervasive reassortment in influenza.
+Estimating ICR from one-dimensional homology provides a lower-bound on reassortment rate in influenza.
+We calculate an ICR of <1 event per year for classic H1N1 swine and H3N2 human influenza viruses, supported by previous phylogenetic estimates.
+In contrast, we calculate a high reassortment rate of 22.16 events per year for avian influenza A.
+This difference could be explained by the high diversity and frequent co-infection of avian viruses and correlates with the high proportion of potential avian reassortants reported in previous studies.
 
 \section{Multiscale Flu Reassortment}
 \label{sec:flu_multiscale_reassortment}

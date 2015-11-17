@@ -690,8 +690,9 @@ And if we examine
 \section{Conclusions}
 \label{sec:conclusion}
 %
-Recombination can be quantified by computing the persistent homology of sequence data.
-Here, we studied the sensitivity of our approach
-Ongoing work is computing estimators from coalescent process.
+Persistent homology can capture and quantify complex patterns of reticulation in genomic data.
+The standard Vietoris-Rips filtration is susceptible to reduced sensitivity due to incomplete sampling or interactions between reticulations.
+Constructing the median closure of the original sequence set increases the topological signal of reticulation.
+Future work will focus on efficient implementations of constructing this closure.
 
 An interesting additional observation is that the number of recombinations required to explain the fully saturated hypercube is exactly equal to the alternating sum of the homology ranks.
