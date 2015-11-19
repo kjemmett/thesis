@@ -482,7 +482,7 @@ Smith normal form.
 More advanced algorithms have been developed that compute simplicial collapses: recognizing that the size of the simplciial set is often the limiting factor here, they collapse simplicies into simpler structures that will have identical homology.
 This uses Discrete Morse Theory and is the idea behind implementations such as Perseus.
 
-Include only simple implementation for $Z2$.
+Include only simple implementation for $Z_2$.
 
 Several packages for computing persistent homology have been developed [Dionysus, Javaplex, Guidi, phom] and TDA frontend for R.
 Persistent homology is computed using Dionysus \cite{Morozov:2012}.
@@ -555,7 +555,7 @@ This bound establishes that small perturbations in the data will produce only sm
 In persistent homology, the intuition is developed that long intervals are to be interpreted as large-scale, or robust, geometric features in data, while short intervals are more likely to correspond to noise or incomplete sampling.
 
 
-More broadly, how can the information in the persistent diagram be used 
+More broadly, how can the information in the persistent diagram be used.
 Can this statement be made more precise?
 How short is short, and how will noisy sampling effect the observed diagram?
 When can a long interval be interpreted as a real feature, and can we assign measures of confidence to our estimates?
@@ -563,7 +563,7 @@ Substantial recent work in the TDA community has focused on these questions, in 
 We give here a brief flavor of some of these ideas and their relation to our own work.
 
 
-We identify four main themes that work on the statistical 
+We identify four main themes that work on the statistical aspects of TDA have concentrated on.
 
 Fasy and coauthors have developed ways of generating confidence intervals for persistence diagrams \citep{Fasy:2014}.
 Based on some information about density, they can put a line off the diagonal below which points are to be considered noise (see example).
@@ -609,20 +609,18 @@ Aligned genomic sequences can be naturally viewed as points in a high-dimensiona
 As more genomes continue to be sequenced, this space becomes more densely sampled.
 Using the standard genetic distance metrics described above, we can compute a pairwise distance matrix betwee genomes.
 This defines our finite metric space.
-From there, methods from TDA can be applied.
-In particular, we can apply persistent homology, and phylogenetic information contained in the dataset can be read off the resulting barcode diagram.
+From there, methods from TDA such as persistent homology and mapper can be applied.
+Phylogenetic information can be read off the resulting topological structures.
 
 An important foundational point was described in \cite{Chan:2013}.
 In that paper, it was shown that if the evolutionary history contained in a particular data-set is tree-like, then there will be no higher homology in the resulting barcode diagram.
 In other words, the only nontrivial topology will appear in dimension zero.
 
-
-
 If the set of genomes permits a phylogenetic representation, then positive-dimensional Betti numbers should vanish, since the topology of a tree is contractible. 
 \kje{[More about Gunnar's proof?]}
 If the evolutionary history includes reticulate events that cannot be represented as a tree, these events will be captured as non-trivial higher dimensional homology in the barcode diagram.
 
-We illustrate a simple example of how TDA can capture horizontal evolution from populaton data in Figure~\ref{background:fig:tda_on_sequencedata}.
+We illustrate a simple example of how TDA can capture horizontal evolution from population data in Figure~\ref{background:fig:tda_on_sequencedata}.
 Consider the reticulate phylogeny (Figure~\ref{background:fig:tda_on_sequencedata}A): five genetic sequences sampled today (yellow circles) originate from a single common ancestor due to clonal evolution (solid blue lines tracing parent to offspring) and reticulate evolution (dotted red lines).
 In Figure~\ref{background:fig:tda_on_sequencedata}B, these five samples are placed in the context of a larger dataset, where the data has been projected onto the plane using PCA.
 Persistent homology is then applied to this larger sample.
@@ -669,12 +667,19 @@ Number of higher-dimensional generators over a time interval (“irreducible cyc
 \label{background:fig:tda_on_sequencedata}
 \end{figure}
 
-\subsection{The Simplest Example}
+\subsection{The Four Gamete Test: The Simplest Example}
 
-Recall the four gamete test, which tests for the prescence of reticulate evolution by searching for the simultaneous presence of 
-Recall the four gamete test.
-The simplest example is 00, 10, 01, 11.
+In population genetics and phylogenetics, the four gamete test is a simple method for testing for the presence of reticulate evolution.
+In population genetics and phylogenetic, the four gamete test is a simple method of testing for the presence of reticulate 
+Recall the four gamete test, as described in Section~XX, which tests for the presence of reticulate evolution by searching for the simultaneous presence of haplotype patterns 00, 10, 01, and 11 in a population dataset.
+
+This simple example serves as motivation for much of the work that follows.
+
+Using a hamming metric
+This simple example serves as motivation for the 
+The simple example serves
 Under a Hamming metric this forms a loop.
+\kje{[Need a figure?]}
 
 \subsection{The Space of Trees, Revisited}
 
