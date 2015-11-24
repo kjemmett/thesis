@@ -60,7 +60,7 @@ Second, it positioned 16S rRNA profiling as the primary source of data for use i
 The use of this genomic region was justified on the basis of being one of the few universal gene segments  that is orthologous across all species.
 Finally, it solidified the tree paradigm as the organizing principle for relating extant species.
 
-However, despite the rousing impact this observation had, there remains a subtle difficulty, which Woese himself came to contemplate in later work.
+However, despite the significant impact this observation had, there remains a subtle difficulty, which Woese himself came to contemplate in later work.
 Woese's phylogeny was based on only 1,500 nucleotides in the ribosomal RNA, less than 1\% of the length of a typical bacterial genome (see \cite{Dagan:2006up}).
 Even more striking, this accounts for less than 0.00005\% of the human genome.
 While recent work has developed approaches for constructing universal trees from larger gene sets \cite{Ciccarelli:2006gw}, the fact remains that the vast majority of genomic information is \emph{not} incorporated into the tree.
@@ -130,7 +130,7 @@ We can envision the center leaf as being a reticulate offspring of parents ances
 Accounting for this generates a single loop, giving $b_0=1$ and $b_1=1$.
 The Betti numbers capture the essential difference in the two evolutionary histories.
 
-The remainder of this thesis focuses on expanding upon this idea and applying it to real data sets with the gol of measuring the prevalence and scale of nonvertical evolutionary events.
+The remainder of this thesis focuses on expanding upon this idea and applying it to real data sets with the goal of measuring the prevalence and scale of nonvertical evolutionary events.
 Several immediate questions arise, for instance: how to construct topological spaces from finite samples, how to make comparisons among gene sets, and how to handle extinct organisms.
 We will address these questions, and in doing so develop new techniques to construct and extract statistical information from topological spaces.
 
@@ -153,8 +153,8 @@ By doing so, we provide a fuller understanding of evolutionary relationships tha
 Genomic exchange can be characterized by the parental sequences involved in the exchange, by the amount and identity of material exchanged (i.e., the genes or loci involved), and the frequency with which similar exchanges occur.
 Techniques such as phylogenetic networks and ancestral recombination graphs have been developed to describe reticulate evolution, but they have had only limited success due to difficulties of biological interpretation and computational infeasibility in all but the smallest datasets.
 
-Linkage-based techniques have succeeded in measuring rates of recombination in medium-sized datasets (< 200 sequences), but they cannot reveal the scale of these exchanges (i.e., the genetic distance between parental sequences), and they have limited resolution in pinpointing where along a genome such exchanges have occurred.
-A new mathematical foundation is needed to break free of these limitations.
+Linkage-based techniques have succeeded in measuring rates of recombination in medium-sized datasets (<200 sequences), but they cannot reveal the scale of these exchanges (i.e., the genetic distance between parental sequences), and they have limited resolution in pinpointing where along a genome such exchanges have occurred.
+A new mathematical foundation is needed to move beyond these limitations.
 Genome evolution is an extremely rich subject [cite Genome Architecture book].
 
 \section{Thesis Organization}
@@ -166,53 +166,52 @@ This discussion is chiefly structured into two pieces: (1) background on phyloge
 
 In Part \ref{part:theory}, we develop two complementary approaches for analyzing genomic data using topological data analysis.
 In Chapter \ref{ch:complex_construction}, we propose alternative methods of constructing topological complexes that generalize the traditional Vietoris-Rips and \Cech complexes but are suited to the particular demands of phylogenetic applications.
-We draw on previous work in phylogenetic networks and use homology theory to provide quantitative assessment of reticulation.
-This work was published in 
+We draw on previous work in phylogenetic networks and use homology to provide a quantitative assessment of reticulation.
+This work was published in \cite{Emmett:2015a}.
 In Chapter \ref{ch:parametric_inference}, we develop methods for performing statistical inference using summary statistics contained in the persistence diagram.
 This is the first such use of persistence diagrams as a tool for performing parametric inference. This work was published in \cite{Emmett:2014b}
 
-
-In Part \ref{part:application_microorganism} we apply our approach various microorganism datasets.
+In Part \ref{part:application_microorganism} we apply our approach to various microorganism datasets.
 In Chapter \ref{ch:phage} we study bacteriophages.
 In Chapter \ref{ch:influenza} we study influenza.
 In Chapter \ref{ch:pathogens} we study pathogenic bacteria and use topological techniques to represent the spread of antibiotic resistance.
-In Chapter \ref{ch:prokaryotes} we study prokaryotes.
+In Chapter \ref{ch:prokaryotes} we study prokaryotic evolution and species tree topologies.
 
 In Part \ref{part:applications_human}, we apply our approaches to a several problems in human population genetics and biology.
-In Chapter \ref{ch:human_recombination_rate} we measure the human recombination rate.
-In Chapter \ref{ch:human_population_structre} we reconstruct models of human demographic movements.
-In Chapter \ref{ch:human_chromatin_folding} we analyze Hi-C data to understand patterns of chromatin folding in the nucleus.
-This work was published in 
-\kje{[Reorganize..Hi-C results include caulobacter.]}
+In Chapter \ref{ch:human_recombination_rate} we use population data to measure human recombination rates and identify recombination hotspots.
+We identify variation in recombination hotspots in different human populations.
+%In Chapter \ref{ch:human_population_structre} we reconstruct models of human demographic movements.
+In Chapter \ref{ch:human_chromatin_folding} we analyze Hi-C data toexplore patterns of chromatin folding in the nucleus in both prokaryotic and human datasets.
+\kje{[Hi-C work includes more than human data, and the population structure work will not be included -- rename this part?]}
 
-\kje{[Possibly an appendix section of virus results: flu, ebola, etc.]}
-
-Finally, in Chapter \ref{ch:conclusions} we summarize our results and present possible avenues for future directions.
+Finally, in Chapter \ref{ch:conclusions} we summarize these results and present future research directions.
 
 \section{Original Contributions}
-
-(Section where I put the citation to all the papers I worked on.)
 
 Papers in thesis:
 
 \begin{itemize}
-\item Warsaw
-\item ICML
+\item BIH 2014
+\item ICML 2014
 \item Topdrim4bio 1
 \item Topdrim4bio 2
+\item Microbes Review
+\item Cell Systems (submitted)
 \end{itemize}
+
+Additional references:
 
 \begin{itemize}
 \item Vancouver (PIMS)
-\item Minnesota
+\item Minnesota (IMA)
 \item CSHL
 \end{itemize}
 
-Papers not in thesis:
+Additional papers not in thesis:
 
 \begin{itemize}
-\item Paper with Ken's guy
-\item Stochseq
-\item Ebola
-\item Mendelian Diseases
+\item Biofilms / Nature Communications
+\item Stochseq / BPJ
+\item Ebola / PLoS Currents
+\item Mendelian Diseases / Nature Communications
 \end{itemize}
