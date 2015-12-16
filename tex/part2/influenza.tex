@@ -1,8 +1,25 @@
 %!TEX root = ../../thesis.tex
+
 \chapter{Reassortment in Influenza Evolution}
-\label{ch:influenza}
+\label{ch:flu}
 
 \section{Introduction}
+\label{flu:introduction}
+
+In this chapter we analyze influenza A virus, a common human pathogen.
+Influenza virus is a segmented single-stranded RNA virus of family Orthomyxoviridae.
+
+
+It is well-known that frequent reassortment of viral segments punctuates the evolution of influenza [cites].
+
+
+Since the influenza pandemic of 2009, substantial effort has been put into.
+The NCBI Influenza Virus Resource now contains over 400,000 unique viral isolates.
+The large quantity of genomic data that has been collected provides an ideal test bed for studying evolution in the reticulate limit.
+
+\section{Influenza Virus}
+\label{flu:introduction}
+
 
 In this chapter we analyze influenza A virus, a common human pathogen.
 Influenza is a segmented single-stranded RNA orthomyxovirus.
@@ -11,21 +28,57 @@ Reassortant strains can lead to antigenic novelty when ingernal segments adapted
 Such events led to the human influenza pandemics of 1957 and 1968.
 Influenza provides a useful testbed for detection of reticulate evolution because of the large quantity of data that has been collected.
 
+
+Influenza is a single-stranded RNA virus of family Orthomyxoviridae.
+Influenza has a segmented genome with eight segments coding for 11 proteins.
+The segments are generally ordered from longest to shortest.
+
+HA is the surface antigen that is responsible for binding the viral particle to the cell.
+HA binds to sialic acid groups on the cell surface.
+HA is the strongest determinant of host specificity: different hosts express different sialic acid types.
+Avian influenza binds to type 2-3 silaic acid receptors, while human influenza binds to type 2-6 sialic acid receptors.
+Human and avian adaptations.
+NA is the surface protein that cleaves the replicating virus from the cell surface.
+Together, HA and NA determine the subtype of virus and are a first marker of host transmission and specificity.
+
+PB1, PB2, and PA form the polymerase complex and are involved in viral replication.
+Mutations in these proteins can be among the most important in determining host adaptation and virulence.
+
+The remaining proteins, including NP, M1, M2, and NS1 are largely structural proteins involved in capsid formation and viral packaging.
+
+What is the estimated mutation rate of influenza?
+
+
+
+\begin{figure}
+\begin{center}
+\centerline{\includegraphics[width=.5\columnwidth]{./fig/flu_genome.jpg}}
+\caption[Structure of an influenza virus particle]{Structure of an influenza virus particle. The surface capsid is formed from matrix proteins M1 and M2. Surface antigens HA and NA coat this surface and are involved in cell entry and exit. PB1, PB2, and PA form a polymerase complex assisting in }
+\label{fig:flu_genome}
+\end{center}
+\end{figure}
+
+
+Natural host reservoir: aquatic birds.
+
+Origin of 2009 H1N1 pandemic: triple reassortment.
+Origin of 2013 H7N9 pandemic: triple reassortment.
+Also discuss H5N1 and H5N2.
+
+Therefore, ways of automatically characterizing and representing reassortment are necessary.
+
+We applied methods from TDA to data from more than 3,999 avian influenza genomes from the NIH Influenza Sequence Database.
+
+
 We applied persistent homology to data for more than 3,000 avian influenza genomes from the NIH Influenza Sequence Database.
 Examining each genome segment separately, we recovered only zero-dimensional homology, consistent with no intra-segmental recombination.
 In other words, segment-by-segment the evolution of influenza is tree-like and amenable to a phylogenetic tree representation.
 
 However, a similar analysis of the concatenated full genome reveals a complex topology, with a large number of loops in one and two dimensions.
 
-\section{Influenza Virus}
-\label{sec:flu_introduction}
-
-Influenza is a single-stranded RNA virus that is naturally found in avian populations.
-Each viral genome has eight genetic segments.
-\kje{[More background info.]}
 
 \section{Reassortment}
-\label{sec:flu_reassortment}
+\label{flu:reassortment}
 
 The evolution of influenza is punctuated by frequent reassortment.
 To characterize influenza evolution, we computed the persistent homology of four influenza datasets from avian, swine, and human hosts, each numbering as many as 1,000 genomic sequences.
@@ -41,6 +94,8 @@ Estimating ICR from one-dimensional homology provides a lower-bound on reassortm
 We calculate an ICR of <1 event per year for classic H1N1 swine and H3N2 human influenza viruses, supported by previous phylogenetic estimates.
 In contrast, we calculate a high reassortment rate of 22.16 events per year for avian influenza A.
 This difference could be explained by the high diversity and frequent co-infection of avian viruses and correlates with the high proportion of potential avian reassortants reported in previous studies.
+
+(More expanation of this figure!!)
 
 % figure
 \begin{figure}
@@ -85,13 +140,25 @@ The nature of this barrier warrants further study.
 This illustrates a real world example in which multiscale topological structure can be captured by persistent homology and given biological interpretation.
 
 \section{Prediction of Host Specific Residues}
-\label{sec:flu_flumarker}
+\label{flu:flumarker}
 
 In this section, we describe work in prediction of host specific residues using machine learning approaches.
 Host specific residues are important for viral surveillance in order to predict possible outbreaks.
 We describe here two methods and include preliminary validation from our collaborator in Wisconsin.
 
 \section{Conclusions}
-\label{sec:flu_conclusions}
+\label{flu:conclusions}
 
-............
+Coinfection of a single cell with multiple strains of influenza can lead to genomic reassortment.
+Reassortments can lead to novel pandemics.
+Therefore it is important that methods to characterize reassortment be developed.
+In this chapter we have applied methods from TDA to characterize reassortment in influenza.
+Using our approach, we have confirmed that intrasegmental recombination does not occur.
+We estimated reassortment rates
+We have estimated recombination rates.
+Further, from the persistence diagram we identified a bimodal presence of H1 invariants.
+This suggests a genetic barrier maintaining subtype diversity.
+
+
+
+

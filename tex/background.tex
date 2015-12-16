@@ -8,47 +8,41 @@ Exposition required for specific results can be found in their respective indivi
 
 \section{Biology}
 
-In this section we present biological background intended to motivate the problems discussed in this thesis.
-%More specific background relevant to the applications described in Part \ref{part:application_microorganism} and Part \ref{part:applications_human} is presented in those Parts.
+In this section we present biological background.
+This section is intended to motivate the problems discussed.
+More specific background relevant to the applications described in Part \ref{part:application_microorganism} and Part \ref{part:applications_human} is presented in those Parts.
 
-\subsubsection{Genes and Genomes}
-
-The information required to code for biological function is contained in an organism\'s genome.
-The genome is a linear string of nucleotides (DNA) that represents the set of genes in an organism.
-Following the central dogma of biology, DNA is transcribed into RNA, RNA is translated into amino acids, and amino acids are folded into proteins \cite{Crick:1970wb}.
-Proteins comprise the functional unit of biology.
-
-Beyond simply coding for function, the genome includes an imprint of the evolutionary history that gave rise to the organism.
-By comparing the genomes of multiple organisms, inferences can be drawn about the evolutionary relationships among extant organisms as well as the processes that generated biological diversity.
-The field concerned with exploring these relationships is \emph{comparative genomics}.
+What do we mean by horizontal and vertical evolution?
+Vertical, or clonal, evolution is mediated by stochastic mutations over multiple generations.
+Vertical evolution will be consistent with a phylogenetic tree.
+Horizontal evolution...
 
 \subsection{Evolutionary Processes}
 
-There are two main evolutionary processes that have generated the present universe of genomic diversity.
-These can be conveniently be distinguished as either vertical or horizontal evolution.
-Vertical, or clonal, evolution is mediated by the accumulation of stochastic mutations over multiple generations.
-It is vertical evolution that Darwin had in mind when he described the idea of descent with modification, whereby a parent passes genomic information to an offspring subject to random drift.
-Importantly, vertical evolution will be consistant with a phylogenetic tree model.
-Horizontal, or reticulate, evolution, refers to a more complex set of processes whereby genomic information can be exchanged between organisms without a parent-offspring relationship.
-We explain this in more detail below.
-
-Traditionally, evolutionary biology has concerned itself with characterizing relationships in light of vertical evolution alone.
-However, increasing evidence has pointed to the important role played by horizontal evolution, particularly in prokaryotic evolution.
-
-\kje{[Horizontal; reticulate; lateral.
+Vertical: clonal.
+Mutation and drift.
+Horizontal; reticulate; lateral.
 Recombination and reassortment.
-Gene trees vs species trees.]}
+Gene trees vs species trees.
+
+\subsubsection{Genes and Genomes}
+
+The information required for biological function is contained in an organisms genome.
+The genome is the linear string of nucleotides that represent the set of genes in an organism.
+Following the fundamental dogma of biology, DNA is transcribed into RNA, RNA is translated into amino acids, and amino acids are folded into proteins.
+Proteins are the functional element of biology.
+
+Beyond simply coding for an organisms function, the genome includes an imprint of the evolutionary history that gave rise to that particular organism.
+Comparing the genomes of multiple organisms.
+This is the field of \emph{comparative genomics}.
 
 \subsubsection{Horizontal Gene Transfer}
 
-Horizontal gene transfer refers to a set of processes where genes can be acquired by organisms through means other than reproduction.
-In prokaryotes, three mechanisms of horizontal transfer are identified, depending on the route by which foreign DNA is acquired \cite{Ochman:2000dr}.
-Foreign DNA can be acquired via uptake from an external environment (transformation), via viral-mediated processes (transduction), or via direct cell-to-cell contact between bacterial strains (conjugation).
-
-The presence of horizontal gene transfer in a set of organisms can be most clearly identified by comparing the phylogenetic trees built from different genes.
-If horizontal gene transfer has occurred, the set of \emph{gene trees} will reflect different evolutionary relationships and not be consistent with a single tree topology.
-A subfield of comparative genomics is concerned with building \emph{species trees} from sets of gene trees, however in the case where there is substantial disagreement among gene trees the very notion of a species tree may be flawed.
-\kje{[Further citations and exposition of Doolittle, Koonin, and Gogarten.]}
+Discussion of nonvertical evolutionary processes.
+This will include references to Doolittle, Koonin, Gogarten.
+Lateral Gene Transfer.
+Species Trees and Gene Trees.
+Recombination and reassortment.
 
 \subsection{Mathematical Models of Evolution}
 \label{background:ss:evolutionary_models}
@@ -56,17 +50,15 @@ A subfield of comparative genomics is concerned with building \emph{species tree
 Mathematical population genetics is concerned with properties of populations as they are subject to evolutionary forces over long time scales.
 These forces include natural selection, genetic drift, mutation, and recombination.
 Historically the input data for population genetics models was comparative studies of allele frequencies across populations.
-These studies have primarily been replaced by large-scale genomic surveys which have provided unprecedented insight into ancient population structure and historical migrations.
-\kje{[Give an example and cite work of reich / bustamente, etc.]}
+Large-scale genome surveys.
+Genealogy and population structure.
 
 \subsubsection{The Wright-Fisher Model}
 
-The Wright-Fischer model is a forward time simulation of an evolving population.
-In the simplest case, the model describes neutral evolution of a constant population size with no structure and constant genome length.
-The model proceeds in units of generations.
-At each generation, a member of the population is an offspring of a randomly selected ancestor from the previous generation.
-This offspring inherits its ancestors genomes, with mutations introduced at some base rate $\mu$.
-A member of previous generation with no offspring will be considered extinct.
+The Wright-Fischer model is a 
+Forward time simulation of population.
+Here we describe the simplest Wright-Fisher model: neutral, constant population size $N$.
+At each time step randomly choose a parent.
 \kje{[Figure comparing Wright-Fisher and Coalescent.]}
 
 \subsubsection{The Coalescent Process}
@@ -96,12 +88,18 @@ Coalescent simulations were performed using \texttt{ms} \cite{Hudson:2002}.
 
 \subsubsection{Metrics on Sequences}
 
+For the sequences from different organisms to be compared, they must first be aligned.
+A sequence alignment is an arrangement of the characters in a set of sequences into a set of columns such that characters sharing evolutionary identity are in the same column.
+In this case insertion and deletions can introduce gaps.
+Alignment can be a complex part of any sequence analysis, particularly when there is substantial divergence between sequences of interest.
+Performing sequence alignment is largely beyond the scope of this thesis, and in general we assume sufficient sequence similarity such that alignment can be performed without difficulty.
+
 What metrics can we put on aligned sequences?
-The simplest model, and the one most commonly adopted in this thesis, is the Hamming metric, which simply counts the differences between two aligned sequences.
+The simplest model, and the one most commonly adopted in this thesis, is the Hamming metric, which simply counts the differences.
+Hamming metric: simple count of differences between
 
 More biologically motivated metrics will incorporate some model of evolution and account for the possibility of back mutation.
 These include Jukes-Cantor, Nei-Tamura, etc.
-\kje{[Worth expanding?]}
 
 Jukes-Cantor metric is defined as 
 \begin{equation}
@@ -113,46 +111,56 @@ d=-\frac{3}{4}\ln(1-\frac{4}{3}p).
 Phylogenetics is concerned with relationships among species as inferred from evolutionary characters.
 In practice: tree-building.
 
-Starting with a set of sequences that share some similarity, an alignment is performed.
-The alignment allows columns of the sequence to be directly compared.
+Start with sequences.
+Perform an alignment.
 From an alignment, one can then directly use parsimony or likelihood approaches.
 Alternatively, one can compute a matrix of pairwise distances and then construct a tree that best approximates these distances.
 Most relevant to this thesis are the distance-based approaches (because they can be viewed as finite metric spaces amenable to topological analysis).
 Only in the case of perfectly additive data will a tree be able to exactly fit the matrix.
-\kje{(Define additivity -- four point condition.)}
-Identifying a pairwise distance matrix with a finite metric space representation is a crucial step that allows most of the machinery described later to be applied.
+Identifying the pairwise distance matrix with a its finite metric space representation allows most of the results described here.
+
+Include discussion of rooted vs unrooted.
 
 \subsubsection{Distance Matrix Methods}
 
 Introduced by Cavalli-Sforza and Edwards in 1967 \cite{CavalliSforza:1967th} and Fitch and Margoliash in 1967 \cite{Fitch:1967we}.
 Compute a matrix of pairwise distances and then find the tree that best approximates those distances.
+Weighted and unweighted least squares.
+UPGMA.
 Neighbor joining is now the most common distance-matrix approach because it can perfectly reconstruct an additive tree.
 Neighbor joining was introduced by Saitou and Nei in 1987 \cite{Saitou:1987wo}.
 
+There are limitations of distance based methods.
+Do not use all the information.
+
+Need to include discussion of metrics on aligned sequences.
+
 \subsubsection{Phylogenetic Networks}
 
-There are several existing methods for representing reticulate evolution.
-Most of these methods generalize phylogenetic trees into \emph{phylogenetic networks}, which attempt to reconcile the presence of horizontal evolution in sequence data.
-However, most simply present corrections to phylogenetic trees, which can fail in cases where horizontal evolution is pervasive, as in many prokaryote datasets.
-Additionally, the resulting neteworks can be complex and difficult to interpret quantitatively.
-\kje{[Expand.]}
+Several existing methods for representing reticulate evolution.
+Most assume the simplest generalization.
+However, the resulting networks can be complex and difficult to interpret quantitatively.
+Split Networks.
+(Look at Morrison Review.)
 
 \subsubsection{Space of Phylogenetic Trees}
 
 Studies of tree space were initiated by Billera, Holmes, and Vogtmann in \cite{Billera:2001tv}.
-%Tree space on $L$ leaves is modeled as a subspace of $\mathbb{R}^{\binom{n}{2}}$
+Tree space on $L$ leaves is modeled as a subspace of $\mathbb{R}^{(XX)}$, where 
 In their model, each point represents an unrooted binary tree with $L$ leaves and positive branch lengths.
 Number of interior edges $r=L-3$, a particular additive tree can be plotted as a point in the positive open orthant $(0,\infty)^{r}$.
 A single orthant corresponds to a single tree topology.
-
-\begin{figure}
-\centering
-\includegraphics[]{./fig/TreeSpace.pdf}
-\caption{Tree Space}
-\label{background:fig:TreeSpace}
-\end{figure}
+[Include treespace figure].
 
 \subsubsection{Number of Trees}
+
+The number of unrooted bifurcating tree topologies with $L$ leaves is $(2L-5)!!$.
+This can be most easily seen via induction.
+For $L=3$ leaves there is $1$ unrooted tree topology and $3$ line segments.
+To move to the case of $L=4$, we can add the fourth leaf to any of the $3$ segments.
+This results in $3$ possible topologies with $5$ total line segments (4 external leaves and 1 internal segment).
+
+
 
 The number of rooted bifurcating tree topologies with $L$ leaves is $(2L-3)!!$
 The number of unrooted bifurcating tree topologies with $L$ leaves is $(2L-5)!!$.
@@ -168,7 +176,6 @@ Phylogeny can be seen as projecting onto the space of trees.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Topological Data Analysis}
-\label{background:sec:tda}
 
 Topology is the branch of mathematics that aims to characterize spaces up to deformations.
 If we take a tree and change the branch lengths, the tree remains a tree.
@@ -184,22 +191,33 @@ Instead, data can be viewed as a high-dimensional point cloud forming a discrete
 Topological data analysis (TDA) refers to a framework that has been developed in the last 15 years to compute topological properties from finite point clouds, building on developments in computational topology and statistics.
 Our primary tool is persistent homology, a branch of TDA that computes topological invariants representing multi-scale information about the connectivity and holes in a dataset.
 
+Topology is the study of shape.
+Algebraic topology associates algebraic structures to notions of shape.
+Computational topology provides tools of computing invariants.
+Topological data analysis is the name for the field that has emerged from this work, offering a suite of approaches for analyzing real world data using topological information.
+
+Algebriac topology associates algebraic structures to qualitative notions of shape.
+Principle tool is group theory.
+Groups count connected components.
+
 \subsection{Intuition}
 
 Topological Data Analysis (TDA) studies structure in high-dimensional data such as connectedness and the presence of holes.
 In practice, we observe only a sample of data points, from which we wish to infer an underlying model or generating principle.
 TDA first builds topological complexes from data, then measures informative properties of these complexes. 
-Persistent homology (PH) is a method from TDA that uses algebraic topology to compute quantitative properties in data, including connectedness and the presence of holes.
-For excellent review of topological data analysis, see the reviews [Carlsson, Ghrist].
+Persistent homology (PH) is a method from TDA that uses algebraic topology to compute quantitative properties in data, including connectedness and the presence of holes (see Box 1).
 
-Shape information is indexed by dimension.
-$H_0$ information tells us about connected components and is roughly equivalent to a hierarchical clustering.
+Make a connection with graph theory (see Horak). Program: encode data as simplicial complex, combinatorial version of a topological space, properties studied from combinatorial, topological, algebraic perspective.
+
+For excellent review of topological data analysis, see the reviews.
+Start with point cloud data.
+Built a filtration.
+Filtration is a nested set of simplical complexes.
+
+Shape information is indexed by dimension. $H_0$ information tells us about connected components and is roughly equivalent to a hierarchical clustering.
 Higher dimensions represent loops ($H_1$), voids ($H_2$), and their generalizations in the data, giving a quantitative representation of shape.
 The topological invariants can be concisely represented ina barcode diagram, which tracks the shape across multiple scale parameters.
 Each horizontal line in the diagram represents a topological feature.
-
-\kje{[Program: encode data as simplicial complex, combinatorial version of a topological space.
-Properties studied from combinatorial, topological, algebraic perspective.]}
 
 \subsection{Mathematical Preliminaries}
 
@@ -210,7 +228,7 @@ In this section we give background sufficient to define homology for our purpose
 A more thorough exposition of algebraic topology can be found in \cite{Hatcher:2002ut}.
 
 Associate a collection of algebraic objects with a topological space.
-Quantify global properties of space.
+Quantify global properties of space.state
 Homotopy and Homology.
 Homology: properties of chains composed of oriented simplices
 Elements of homology groups are cycles (chains with vanishing boundary).
@@ -241,8 +259,8 @@ See Example.
 Glue together simplices such that the following holds:
 
 \begin{enumerate}
-\item Any face of a simplex in $K$ is also in $K$
-\item The intersection of any two simplices in $K$ is a face of both 
+\item Any face of a simplex in K is also in K
+\item The intersection of any two simplices in K is a face of both 
 \end{enumerate}
 
 \begin{figure}
@@ -287,11 +305,11 @@ That is, elements of $B_{k}$ serve as boundaries of $(k+1)$-chains.
 
 TDA+PH: number and type of holes. which holes are essential and which are unimportant.
 
-Get to the point where can define homology.
+Basically get to the point where can define homology.
 Chain complex.
 Boundary operators
 Work only over $\mod 2$ Homology (0,1) coefficients.
-Torsion observed in the image patch data set, but no reason to think it is present biologial data sets we examine.
+Torsion observed in teh image patch data set, but no reason to think it is present biologial data sets we examine.
 
 \begin{figure}
 \centering
@@ -304,6 +322,7 @@ Torsion observed in the image patch data set, but no reason to think it is prese
 
 Abelian groups generated by holes in the space.
 Betti number is the rank of the homology group.
+Intuitively
 
 Simplical homology.
 Abelian groups.
@@ -328,13 +347,17 @@ Elements are classes of homologous cycles.
 
 \subsection{Constructing Spaces from Real Data}
 
+In practice, we have data that comes as points in a high-dimensional space.
+With a
 In practice we have real data which comes to us as points in a high-dimensional space.
 With a metric we can represent this as a finite metric space.
 How can we apply the ideas of topology to these spaces?
 
 \paragraph{Finite Metric Spaces}
-
+Finite metric spaces are really interesting objects of study.
+Lots of good work on embedding finite metric spaces, see Matousek.
 Metric space with a finite number of points.
+Combinatorics, geometric, and algorithms.
 In topological data analysis, our spaces of interest are finite metric spaces.
 
 \subsubsection{The \Cech\ and Vietoris-Rips Complexes}
@@ -355,6 +378,7 @@ where $\mathrm{diam}(\sigma)=\{ \sup d(i,j) \:|\: i,j\in\sigma \}$
 \subsubsection{Filtrations}
 
 A series of inclusions.
+
 
 \subsection{Condensed Representations}
 
@@ -391,12 +415,13 @@ Exploratory data analysis seeks to represent high-dimensional datasets in .
 \label{background:fig:eda}
 \end{figure}
 
+
 Mapper algorithm was first developed in \cite{Singh:2007ve}.
 Mapper is coordinate free and depends onnly on the similarity of points as measured by the distance function.
 Further exposition can be found in \cite{Lum:2013cz}.
 Used in biology example in \cite{Nicolau:2011} top classify breast cancer subtypes.
 In our work we use the commercial Mapper implementation Ayasdi \cite{AyasdiIris:2015}.
-An open-source implementation of the Mapper algorithm is available in the Python Mapper package \cite{Mullner:2013}.
+An open-source implementation of the Mapper algorithm is avvailable in the Python Mapper package \cite{Mullner:2013}.
 
 Steps:
 (1) Project using filter function.
@@ -431,6 +456,10 @@ In the barcode diagram,
 The topological invariants in the filtration can be concisely represented in a barcode diagram, a set of line segments ordered by filtration value on the horizontal axis (Figure XXX).
 
 Invariants can be equivalently represented by a persistence diagram, a scatter plot with the birth time on the horizontal axis and the death time on the vertical axis.
+
+Connected components.
+Loops.
+Voids.
 
 The intuition behind persistent homology is that is that good or interesting features will persist over longer scales
 That is, they will be more robust.
@@ -467,7 +496,7 @@ Smith normal form.
 More advanced algorithms have been developed that compute simplicial collapses: recognizing that the size of the simplciial set is often the limiting factor here, they collapse simplicies into simpler structures that will have identical homology.
 This uses Discrete Morse Theory and is the idea behind implementations such as Perseus.
 
-Include only simple implementation for $Z_2$.
+Include only simple implementation for $Z2$.
 
 Several packages for computing persistent homology have been developed [Dionysus, Javaplex, Guidi, phom] and TDA frontend for R.
 Persistent homology is computed using Dionysus \cite{Morozov:2012}.
@@ -539,12 +568,16 @@ This bound establishes that small perturbations in the data will produce only sm
 
 In persistent homology, the intuition is developed that long intervals are to be interpreted as large-scale, or robust, geometric features in data, while short intervals are more likely to correspond to noise or incomplete sampling.
 
-More broadly, how can the information in the persistent diagram be used.
+
+More broadly, how can the information in the persistent diagram be used 
 Can this statement be made more precise?
 How short is short, and how will noisy sampling effect the observed diagram?
 When can a long interval be interpreted as a real feature, and can we assign measures of confidence to our estimates?
 Substantial recent work in the TDA community has focused on these questions, in order to develop statistical foundations for persistent homology.
 We give here a brief flavor of some of these ideas and their relation to our own work.
+
+
+We identify four main themes that work on the statistical 
 
 Fasy and coauthors have developed ways of generating confidence intervals for persistence diagrams \citep{Fasy:2014}.
 Based on some information about density, they can put a line off the diagonal below which points are to be considered noise (see example).
@@ -560,6 +593,7 @@ Also see the work of Turner \cite{Turner:2012wb} and Mileyko \cite{Mileyko:2011j
 \item Functional summaries of the persistence diagram
 \item Confidence intervals on the persistence diagram
 \item Statisical inference using persistence diagrams
+\item 
 \end{itemize}
 
 Wasserstein distance between diagrams.
@@ -589,18 +623,20 @@ Aligned genomic sequences can be naturally viewed as points in a high-dimensiona
 As more genomes continue to be sequenced, this space becomes more densely sampled.
 Using the standard genetic distance metrics described above, we can compute a pairwise distance matrix betwee genomes.
 This defines our finite metric space.
-From there, methods from TDA such as persistent homology and mapper can be applied.
-Phylogenetic information can be read off the resulting topological structures.
+From there, methods from TDA can be applied.
+In particular, we can apply persistent homology, and phylogenetic information contained in the dataset can be read off the resulting barcode diagram.
 
 An important foundational point was described in \cite{Chan:2013}.
 In that paper, it was shown that if the evolutionary history contained in a particular data-set is tree-like, then there will be no higher homology in the resulting barcode diagram.
 In other words, the only nontrivial topology will appear in dimension zero.
 
+
+
 If the set of genomes permits a phylogenetic representation, then positive-dimensional Betti numbers should vanish, since the topology of a tree is contractible. 
 \kje{[More about Gunnar's proof?]}
 If the evolutionary history includes reticulate events that cannot be represented as a tree, these events will be captured as non-trivial higher dimensional homology in the barcode diagram.
 
-We illustrate a simple example of how TDA can capture horizontal evolution from population data in Figure~\ref{background:fig:tda_on_sequencedata}.
+We illustrate a simple example of how TDA can capture horizontal evolution from populaton data in Figure~\ref{background:fig:tda_on_sequencedata}.
 Consider the reticulate phylogeny (Figure~\ref{background:fig:tda_on_sequencedata}A): five genetic sequences sampled today (yellow circles) originate from a single common ancestor due to clonal evolution (solid blue lines tracing parent to offspring) and reticulate evolution (dotted red lines).
 In Figure~\ref{background:fig:tda_on_sequencedata}B, these five samples are placed in the context of a larger dataset, where the data has been projected onto the plane using PCA.
 Persistent homology is then applied to this larger sample.
@@ -647,20 +683,20 @@ Number of higher-dimensional generators over a time interval (“irreducible cyc
 \label{background:fig:tda_on_sequencedata}
 \end{figure}
 
-\subsection{The Four Gamete Test: The Simplest Example}
+\subsection{The Simplest Example}
 
-In population genetics and phylogenetics, the four gamete test is a simple method for testing for the presence of reticulate evolution.
-In any given dataset, the simultaneous presence of haplotype patterns 00, 10, 01, and 11 is incompatible with strictly clonal evolution.
-\kje{[Needs more explanation why?]}
-
-Using a Hamming metric, we have a finite metric space which describes a simple diamond.
-The barcode diagram will reflect nontrivial topology in the interval $[1,2)$.
-This simple example serves as motivation for much of the work that follows.
+Recall the four gamete test, which tests for the prescence of reticulate evolution by searching for the simultaneous presence of 
+Recall the four gamete test.
+The simplest example is 00, 10, 01, 11.
+Under a Hamming metric this forms a loop.
 
 \subsection{The Space of Trees, Revisited}
 
-In Section~XX we introduced the tree space as a subspace of the space of finite metric spaces.
-Real data will not often sit in tree space, and the goal of phylogenetics can be seen as finding the best tree representation of data via some projection onto tree space.
-Our program can be interpreted in a similar fashion: data comes to us as a finite metric space.
-Rather than projecting onto tree space, we want to characterize it as it is, by defining topological invariants which characterize the deviation from tree-like additivity.
-The further the data sits from tree space, the more reticulation we expect to find.
+Recall our description of the space of trees in Section~XX.
+There, we made reference to the idea that the goal of phylogenetic reconstruction can be seen as finding the best projection onto tree space for some arbitrary dataset.
+Expand our search space.
+New goal is to characterize the space of finite metric spaces.
+As we move off tree space, we know there is no additive tree that represents the data.
+Then we want some topological measure of deviation from additivity.
+So our updated picture looks like Figure~XX.
+
