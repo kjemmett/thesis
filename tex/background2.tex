@@ -1,0 +1,61 @@
+%!TEX root = ../thesis.tex
+\subsection{Mapper}
+
+
+The field of exploratory data analysis is 
+\emph{Mapper} is an algorithm for the representation of
+The \emph{Mapper} algorithm belongs to the class of algorithms designed for \emph{condensed representation} and \emph{exploratory data analysis}.
+
+In contrast to persistent homology, which summarizes high-dimensional data 
+
+Mapper allows for qualitative analysis of high-dimensional data through direct visualization.
+In this sense it belongs within the larger category of dimensionality reduction techniques such as multidimensional scaling (MDS) and their nonlinear extensions, including Isomap and t-SNE.
+However, mapper has certain advantages over these approaches, as we will see.
+
+Taking an explicitly topological approach has three key advantages: coordinate freeness, invariance to deformation, and compressed representation of shape.
+
+(1) Coordinate free
+(2) Invariance to deformation - robustness to noise
+(3) Compressed representation - ability to handle large datasets.
+
+Compressed representation: if our dataset is large, a network analysis may be difficult to .
+Mapper allows us to control the resolution at which we explore the data.
+
+*multiresolution*
+
+
+In this way, mapper is well suited for interactive analysis and visualization.
+
+
+
+The \emph{Mapper} algorithm was developed by Gurjeet Singh and Gunnar Carlsson in \cite{Singh:2007ve}.
+
+High-dimensional data to graph/network representation.
+
+
+Mapper was first applied to problems in RNA folding in \cite{Bowman:2008esa} and breast cancer subtype identification in \cite{Nicolau:2011}.
+One of the earliest applications of mapper can be found in \cite{Nicolau:2011}, wher
+
+
+In our work we use the commercial implementation of Mapper developed by Ayasdi \cite{AyasdiIris:2015}.
+An open-source implementation of Mapper is available in the Python Mapper package \cite{Mullner:2013}.
+
+
+Mapper: a mathematical tool that builds a simple geometric representation of data along preassigned guiding functions called filters. Mapper provides both a method for mathematical data analysis and a visualization tool; the filter functions introduced through Mapper define a framework for supervised analysis. Approximates a collapse of the data into a simple, low dimensional shape, and the filter functions act as guides along which the collapse is done
+
+
+Mapper is coordinate free and depends only on the similarity of points as measured by the distance function.
+Further exposition can be found in \cite{Lum:2013cz}.
+
+
+
+Steps:
+(1) Project using filter function.
+(2) Create overlapping bins
+(3) Cluster in the projected space.
+(3) Connect pairs of bins with shared points
+
+
+
+How does mapper work:
+
