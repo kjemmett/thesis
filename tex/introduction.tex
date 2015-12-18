@@ -4,28 +4,29 @@
 
 %\epigraph{``As buds give rise by growth to fresh buds, and these, if vigorous, branch out and overtop on all sides many a feebler branch, so by generation I believe it has been with the great Tree of Life, which fills with its dead and broken branches the crust of the earth, and covers the surface with its ever-branching and beautiful ramifications.''}{Charles Darwin, 1872}
 
-\emph{On the Origin of Species} contains a single figure, depicting the ancestry of species as a branching genealogical tree \textcite{Darwin:1859uh} (see Figure \ref{fig:darwin_origin}).
+Darwin's \emph{On the Origin of Species} contains a single figure, depicting the ancestry of species as a branching genealogical tree \cite{Darwin:1859uh} (see Figure \ref{fig:darwin_origin}).
 Since then, the tree structure has been the dominant framework to understand, visualize, and communicate discoveries about evolution.
-Indeed, a primary focus of evolutionary biology has been to expand and fill the \emph{universal tree of life}, the set of evolutionary relationships among all extant organisms on Earth \cite{Bowler:2003uz}.
-Traditionally, this was the realm of phenotype-derived taxonomies \kje{[cite]}.
-With the advent of molecular data and computational approaches for tree-inference, evolutionary biology has become a bona fide quantitative discipline.
-Molecular phylogenetics --- tree building --- has become the standard tool for inferring evolutionary relationships.
-Yet a tree is only accurate if the Darwinian model of descent with modification via reproduction is the sole process driving evolution.
-However, it has long been recognized that there exist alterative evolutionary processes that allow organisms to exchange genetic material through means beyond simple reproduction.
-Notable examples include species hybridization, horizontal gene transfer in bacteria, and meiotic recombination in eukaryotes.
-Collectively, these processes are known as \emph{horizontal evolution}, in contrast to descent with modification, an example of \emph{vertical evolution}.
-Increasing genomic data, powered by new high-throughput sequencing technologies, has shown that these horizontal processes are more prevalent than originally expected.
+Indeed, a primary focus of evolutionary biology has been to expand the \emph{universal tree of life}, the set of evolutionary relationships among all extant and extinct organisms on Earth \cite{Bowler:2003uz}.
+Traditionally, this was the realm of phenotype-derived taxonomies.
+With the advent of molecular data and computational approaches for tree-inference, evolutionary biology has become a truly quantitative discipline.
+Molecular phylogenetics, which uses genetic sequence data to construct trees, has become the standard tool for inferring evolutionary relationships.
+A tree is only accurate if the Darwinian model of descent via reproduction with modification is the sole process driving evolution.
+Yet it has long been recognized that there exist alterative evolutionary processes that can allow organisms to exchange genetic material through means beyond reproduction \cite{Arnold:2007vq}.
+Notable examples include horizontal gene transfer in bacteria, species hybridization in plants, and meiotic recombination in eukaryotes.
+Collectively, these processes are known as \emph{reticulate evolution}.
+These stand in contast to descent with modification, an example of \emph{clonal evolution}.\footnote{Clonal and reticulate evolution are also known by the terms \emph{vertical} and \emph{horizontal}, respectively.}
+Increasing genomic data, powered by new high-throughput sequencing technologies, has shown that these reticulate processes are more prevalent than originally expected.
 For some, this has called into question the tree of life hypothesis as an organizing principle and prompted the search for new ways of representing evolutionary relationships \cite{Doolittle:1999,OMalley:2011tu}.
 
-The aim of this thesis is to present a new ways of quantifying and representing nonvertical evolutionary processes using recently developed tools from algebraic and computational topology.
+The aim of this thesis is to present new ways of quantifying and representing reticulate evolutionary processes using recently developed tools from algebraic and computational topology.
 These tools fall under the collective heading of \emph{topological data analysis}, a new branch of applied topology concerned with inferring structure in high-dimensional data sets.
 In the following brief introduction, we survey salient aspects of molecular evolution, the tree paradigm, and the challenges therein.
-We then introduce the idea of representing evolution as a topological space and give a flavor of our results.
+We then introduce the idea of representing evolution as a topological space and give a flavor of the results to be discussed.
 
 \begin{figure}
 \centering
-\includegraphics[width=.75\columnwidth]{./fig/introduction/Darwin_divergence.jpg}
-\caption[Charles Darwin's Tree]{The only figure in Darwin's Origin of Species.}
+\includegraphics[width=.5\columnwidth]{./fig/introduction/Darwin_divergence.jpg}
+\caption[Charles Darwin's Evolutionary Tree]{The only figure in Darwin's \emph{On the Origin of Species}. Darwin argued for descent with modification as the driving process underlining evolution. In this figure, Darwin sketched his idea for how species divergence would result in a tree structure. Reproduced from \cite{Darwin:1859uh}.}
 \label{fig:darwin_origin}
 \end{figure}
 
@@ -93,7 +94,7 @@ These and other similar situations, further described below, call for new method
 \begin{figure}
 \centering
 \includegraphics[width=.8\columnwidth]{./fig/introduction/doolittle_tree.png}
-\caption[Ford Doolittle's Tree]{W Ford Doolittle's representation of the universal tree of life with nonvertical evolution. (From \emph{Science}, vol. 284, issue 5423, page 2127. Reprinted with permission from AAAS.)}
+\caption[Ford Doolittle's Reticulate Tree of Life]{W Ford Doolittle's representation of the universal tree of life with reticulate evolution. While the three domains of life are still, patterns of divergence no longer follow a strictly treelike model. (From \emph{Science}, vol. 284, issue 5423, page 2127. Reprinted with permission from AAAS.)}
 \label{fig:doolittle_tree}
 \end{figure}
 
@@ -162,14 +163,17 @@ Genome evolution is an extremely rich subject [cite Genome Architecture book].
 The remainder of this thesis is organized as follows.
 
 In Chapter \ref{ch:background} we present background information on the wide range of topics discussed in this thesis.
-This discussion is chiefly structured into two pieces: (1) background on phylogenetics and population genetics, and (2) background on algebraic topology and the methods of topological data analysis.
+This discussion is chiefly structured into two pieces: (1) background on phylogenetics and population genetics, and (2) background on the methods we use from topological data analysis.
 
 In Part \ref{part:theory}, we develop two complementary approaches for analyzing genomic data using topological data analysis.
-In Chapter \ref{ch:complex_construction}, we propose alternative methods of constructing topological complexes that generalize the traditional Vietoris-Rips and \Cech complexes but are suited to the particular demands of phylogenetic applications.
+In Chapter \ref{ch:complex_construction}, we propose alternative methods of constructing topological complexes that generalize the traditional Vietoris-Rips and \Cech complexes but are suited to the particular requirements of phylogenetic applications.
 We draw on previous work in phylogenetic networks and use homology to provide a quantitative assessment of reticulation.
 This work was published in \cite{Emmett:2015a}.
 In Chapter \ref{ch:parametric_inference}, we develop methods for performing statistical inference using summary statistics contained in the persistence diagram.
 This is the first such use of persistence diagrams as a tool for performing parametric inference. This work was published in \cite{Emmett:2014b}
+
+In Part \ref{part:applications}, we apply our approach to several problems in evolution and genomics.
+
 
 In Part \ref{part:application_microorganism} we apply our approach to various microorganism datasets.
 In Chapter \ref{ch:phage} we study bacteriophages.
@@ -180,38 +184,7 @@ In Chapter \ref{ch:prokaryotes} we study prokaryotic evolution and species tree 
 In Part \ref{part:applications_human}, we apply our approaches to a several problems in human population genetics and biology.
 In Chapter \ref{ch:human_recombination_rate} we use population data to measure human recombination rates and identify recombination hotspots.
 We identify variation in recombination hotspots in different human populations.
-%In Chapter \ref{ch:human_population_structre} we reconstruct models of human demographic movements.
-In Chapter \ref{ch:human_chromatin_folding} we analyze Hi-C data toexplore patterns of chromatin folding in the nucleus in both prokaryotic and human datasets.
+In Chapter \ref{ch:human_chromatin_folding} we analyze Hi-C data to explore patterns of chromatin folding in the nucleus in both prokaryotic and human datasets.
 \kje{[Hi-C work includes more than human data, and the population structure work will not be included -- rename this part?]}
 
 Finally, in Chapter \ref{ch:conclusions} we summarize these results and present future research directions.
-
-\section{Original Contributions}
-
-Papers in thesis:
-
-\begin{itemize}
-\item BIH 2014
-\item ICML 2014
-\item Topdrim4bio 1
-\item Topdrim4bio 2
-\item Microbes Review
-\item Cell Systems (submitted)
-\end{itemize}
-
-Additional references:
-
-\begin{itemize}
-\item Vancouver (PIMS)
-\item Minnesota (IMA)
-\item CSHL
-\end{itemize}
-
-Additional papers not in thesis:
-
-\begin{itemize}
-\item Biofilms / Nature Communications
-\item Stochseq / BPJ
-\item Ebola / PLoS Currents
-\item Mendelian Diseases / Nature Communications
-\end{itemize}

@@ -77,13 +77,4 @@ We take a pipeline approach, where the input to each method is the data, and the
 Each step of the pipline involves some type of transformation of the data.
 We describe each step of the pipeline in turn.
 
-The exposition is designed to be straight-forward and self-contained.
-Further exposition can be found in Appendix \ref{ap:algtop}.
 
-\subsection{Persistent Homology}
-
-
-
-\subsection{Mapper}
-
-Mapper

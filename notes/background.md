@@ -60,8 +60,6 @@ Mapper
 - "Pipeline"
 
 
-
-
 ----------------------------------------------------------------------
 
 ### Applying TDA to Molecular Sequence Data
