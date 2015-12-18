@@ -1,9 +1,116 @@
 %!TEX root = ../thesis.tex
+
+\section{Topological Data Analysis}
+
+Topology is the branch of mathematics that formalizes our intuitive notions of shape.
+More concretely, topology provides the methods to characterize the properties of objects and spaces that remain invariant under deformation.
+For example, deforming a circle into an ellipse by compressing along one axis does not change the fact that the object encloses a single loop.
+Or, as we saw in the introduction, the coffee mug can be continuously deformed into the donut.
+Likewise, if we take a tree and change the lengths of its branches, the tree remains a tree.
+\footnote{It is important to draw a distinction between the notion of tree topology, in which the branch patterns determines the topology, and global topology, in which all trees are equivalent. While the former is more common in the phylogenetics community, here we consider the latter.}
+In each of these examples, while on a \emph{local} level we have substantially altered the properties of the space, on a \emph{global} level we have left certain essential characteristics unchanged.
+From a topological perspective, the spaces are identical.
+The question then is how to formalize our idea of shape in order to systematically reason about it.
+
+Algebraic topology solves this problem by associating algebraic objects (a number, for instance) that do not change under deformation.
+These objecys capture things like the number of connected components, the number of loops, and the number of holes in an object, and represent \emph{topological invariants} of a space.
+We can only deform spaces with the same invariants.
+The circle and ellipse are identified with the presence of one loop, but cannot be deformed into the tree without a cut.
+The circle is distinguished from the tree by the presence of a loop.
+Powerful ideas from abstract algebra can then be used to manipulate and reason about shape.
+
+While topology has traditionally developed through the study of abstract spaces, leading to very rich and beautiful constructions\footnote{For example, see the work of Thurstan on low-dimensional topology}, real data does not come in the form of perfect continuous spaces.
+Recent effort over the past 15 years has focused on developing methods to apply topology to real world problems in science and engineering.
+This work, collectively falling under the heading of \emph{topological data analysis}, has focused on efficient algorithms for computing topological invariants from finite, noisy data.
+TDA now encompasses a range of efforts and can now be considered a branch of applied mathematics in its own right.
+It has emerged from substantial interdisciplinary effort between mathematicians, computer scientists, and domain experts.
+
+In practice, we have data that comes as points in a high-dimensional space.
+This data does not forms only a finite sampling of some space, from which we wish to infer an underlying model or generating process.
+The data is viewed as a high-dimensional point cloud forming a discrete representation of the hidden continuous space.
+TDA studies global structure in this data such as connectedness and the presence of holes.
+As a first approximation, the basic approach of methods from TDA is to encode the original high-dimensional data as a type of topological complex, and then measure informative topological properties from these complexes.
+
+In this thesis, we use methods from TDA to study problems in evolutionary biology and genomics.
+Our data is typically drawn from high-dimensional sequence space.
+The two main methods we employ are \emph{persistent homology} and \emph{mapper}.
+Persistent homology provides a way to efficiently compute the topological invariants of a space across multiple scales, while mapper provides an approach for a condensed representation and visualization.
+In this section, we provide an overview and discussion of these two methods from the perspective of an end-user.
+We treat each method as a pipeline for transforming from raw data to a topological summary.
+While the mathematical literature on these methods is extremely deep, our goal is to explain things in sufficient detail for a wide audience to grasp the main ideas.
+As such, we will define technical terms where necessary, but focus primarily on developing a working understanding of the main aspects of each method as they are used in practice.
+The primary concept we require is \emph{homology}, a particular way in which topological invariants can be assigned to spaces.
+We include a more thorough review of the requisite mathematical concepts leading to a definition of simplicial homology in Appendix XX.
+
+This section draws on several excellent reviews of TDA, including \cite{Carlsson:2009a}, \cite{Edelsbrunner:2010}, and \cite{Ghrist:2008}.
+
+\subsection{Persistent Homology}
+
+Persistent homology computes topological invariants representing multi-scale information about the connectivity and holes in a dataset.
+Persistent refers to capturing structure that extends over multiple spatial resolutions, while homology refers to the type of topological structure that is being computed.
+Persistence is equated with robustness.
+
+A description of the persistent homology pipeline is shown in Figure XX.
+The pipeline is as follows:
+A dataset, $S=(s_{1},\ldots,s_{N})$, is represented as a point cloud in a high-dimensional space (not necessarily Euclidean).
+From the point cloud, a nested series of simplicial complexes, or a filtration, is constructed, parameterized by a filtration value $\epsilon$.
+Start with point cloud data.
+Built a filtration.
+Filtration is a nested set of simplical complexes.
+A simplicial complex is a combinatorial version of a topological space.
+
+How the persistence algorithm works on a mathematical level is beyond the scope of this thesis.
+
+In fact, the algorithm is more powerful than that, and can return not only the intervals associated with the invariants, but \emph{representative cycles} of each invariant.
+The representative cycles correspond to the set of simplicies that surround an invariant, and can be used to determine which data points are somehow involved in a particular invariant.
+
+Shape information is indexed by dimension. $H_0$ information tells us about connected components and is roughly equivalent to a hierarchical clustering.
+Higher dimensions represent loops ($H_1$), voids ($H_2$), and their generalizations in the data, giving a quantitative representation of shape.
+
+The topological invariants in the filtration can be concisely represented as a barcode diagram, a set of line segments ordered by filtration value on the horizontal axis.
+Each horizontal line in the diagram corresponds to the persistence of a single invariant.
+Equivalently, invariants can be represented as a persistence diagram, a scatter plot with the birth time on the horizontal axis and the death time on the vertical axis.
+\kje{[Figure.]}
+
+The intuition behind persistent homology is that is that good or interesting features will persist over longer scales
+That is, they will be more robust.
+In the barcode diagram this corresonds to long bars, and in the persistence diagram, this corresponds to points far from the diagonal.
+Invariants that persist for only short scales are likely to be noise or artifacts of incomplete sampling.
+The questions of how to rigorously determine what makes a good interval is an open question that is currently being addressed by a number of different groups.
+We discuss this further in Section \ref{subsubsec:ph_statistics}.
+
+A few important properties of the barcode daigram
+
+\subsubsection{Statistical Persistent Homology}
+
+In persistent homology, the intuition is developed that long intervals are to be interpreted as large-scale, robust, or in some sense real geometric features of the data, while short intervals are more likely to correspond to noise or random effects due to incomplete sampling.
+However, this leaves open the question of determining.
+How short is short, and how will noisy sampling effect the observed diagram?
+When can a long interval be interprested as a real feature?
+In general, one would like to be able to develop statistics from the barcode diagram and assign measures of confidence to our estimates.
+Substantial recent work in the TDA community has focused on these questions in order to develop statistical foundations for persistent homology.
+
+A downstream goal of this work, and one which we take up in this thesis, is performing statistical inference from the topological summary in the barcode diagram.
+For example, if you wanted to do machine learning using the persistence diagram.
+
+There are two main approaches to statistical peristent homology.
+In the first, functional summaries of the persistence diagram are computed.
+These functional summaries can be fit to known distributions and used to make inferences.
+In the second, probability measures on the space of persistence diagrams are directly computed.
+These approaches require the space of persistence diagrams to satisfy certain properties, such as being a Polish space.
+A Polish space has a well defined notion of mean and variance.
+
+
+The question is then if this intuition can be made more precise.
+
+
+
+In this section we describe statistical peristent homology.
+
 \subsection{Mapper}
 
-
-The field of exploratory data analysis is 
-\emph{Mapper} is an algorithm for the representation of
+The field of exploratory data analysis is vast.
+\emph{Mapper} is an algorithm for the representation of high-dimensional datasets as a network.
 The \emph{Mapper} algorithm belongs to the class of algorithms designed for \emph{condensed representation} and \emph{exploratory data analysis}.
 
 In contrast to persistent homology, which summarizes high-dimensional data 
@@ -25,8 +132,6 @@ Mapper allows us to control the resolution at which we explore the data.
 
 
 In this way, mapper is well suited for interactive analysis and visualization.
-
-
 
 The \emph{Mapper} algorithm was developed by Gurjeet Singh and Gunnar Carlsson in \cite{Singh:2007ve}.
 

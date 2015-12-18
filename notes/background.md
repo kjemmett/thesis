@@ -4,16 +4,16 @@
 
 btw papers
 ----------
-1. icml paper
-2. warsaw paper
-3. bict paper 1
-4. bict paper 2
-5. microbes article
-6. ebola paper
+1. icml paper [FA]
+2. warsaw paper [FA]
+3. bict paper 1 [FA]
+4. bict paper 2 [FA]
+5. microbes article [FA]
+6. ebola paper [FA]
 7. mendelian paper
 8. (ip) human recomb paper
-9. (ip) flu paper
-10. stochseq paper
+9. (ip) flu paper [cFA]
+10. stochseq paper [FA]
 11. biofilm paper
 12. dream paper
 
