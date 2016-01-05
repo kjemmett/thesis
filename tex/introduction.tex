@@ -8,66 +8,90 @@ Darwin's \emph{On the Origin of Species} contains a single figure, depicting the
 Since then, the tree structure has been the dominant framework to understand, visualize, and communicate discoveries about evolution.
 Indeed, a primary focus of evolutionary biology has been to expand the \emph{universal tree of life}, the set of evolutionary relationships among all extant and extinct organisms on Earth \cite{Bowler:2003uz}.
 Traditionally, this was the realm of phenotype-derived taxonomies.
-With the advent of molecular data and computational approaches for tree-inference, evolutionary biology has become a truly quantitative discipline.
-Molecular phylogenetics, which uses genetic sequence data to construct trees, has become the standard tool for inferring evolutionary relationships.
-A tree is only accurate if the Darwinian model of descent via reproduction with modification is the sole process driving evolution.
-Yet it has long been recognized that there exist alterative evolutionary processes that can allow organisms to exchange genetic material through means beyond reproduction \cite{Arnold:2007vq}.
+With the advent of molecular sequene data and computational approaches for tree-inference, molecular phylogenetics has become the standard tool for inferring evolutionary relationships.
+However, a tree is only accurate if the Darwinian model of descent via reproduction with modification is the sole process driving evolution.
+It has long been recognized that there exist alterative evolutionary processes that can allow organisms to exchange genetic material through means beyond reproduction \cite{Arnold:2007vq}.
 Notable examples include horizontal gene transfer in bacteria, species hybridization in plants, and meiotic recombination in eukaryotes.
 Collectively, these processes are known as \emph{reticulate evolution}.
-These stand in contast to descent with modification, an example of \emph{clonal evolution}.\footnote{Clonal and reticulate evolution are also known by the terms \emph{vertical} and \emph{horizontal}, respectively.}
+These stand in contast to descent with modification, an example of \emph{clonal evolution}.\footnote{Clonal and reticulate evolution are also known by the terms \emph{vertical} and \emph{horizontal} evolution, respectively.}
 Increasing genomic data, powered by new high-throughput sequencing technologies, has shown that these reticulate processes are more prevalent than originally expected.
 For some, this has called into question the tree of life hypothesis as an organizing principle and prompted the search for new ways of representing evolutionary relationships \cite{Doolittle:1999,OMalley:2011tu}.
 
-The aim of this thesis is to present new ways of quantifying and representing reticulate evolutionary processes using recently developed tools from algebraic and computational topology.
-These tools fall under the collective heading of \emph{topological data analysis}, a new branch of applied topology concerned with inferring structure in high-dimensional data sets.
-In the following brief introduction, we survey salient aspects of molecular evolution, the tree paradigm, and the challenges therein.
+This thesis presents a new approach to quantifying and representing reticulate evolutionary processes using recently developed ideas from algebraic and computational topology.
+The methods we employ fall under the collective heading of \emph{topological data analysis} (henceforth TDA), a new branch of applied topology concerned with inferring structure in high-dimensional data sets.
+The thesis consists of three aims: (1) introduce the methods of TDA and their application to biological data, (2) develop approaches tailored to the unique problems and assumptions inherent in genomic data, and (3) apply these approaches to a wide range of biological datasets in which reticulate processes play an important role.
+
+In the following brief introduction, we survey salient aspects of molecular evolution, the tree paradigm, and the challenges posed by reticulate processes.
 We then introduce the idea of representing evolution as a topological space and give a flavor of the results to be discussed.
 
 \begin{figure}
 \centering
 \includegraphics[width=.5\columnwidth]{./fig/introduction/Darwin_divergence.jpg}
-\caption[Charles Darwin's Evolutionary Tree]{The only figure in Darwin's \emph{On the Origin of Species}. Darwin argued for descent with modification as the driving process underlining evolution. In this figure, Darwin sketched his idea for how species divergence would result in a tree structure. Reproduced from \cite{Darwin:1859uh}.}
+\caption[Charles Darwin's Evolutionary Tree]{The only figure in Darwin's \emph{On the Origin of Species}. Darwin argued for descent with modification and natural selection as the driving processes underscoring evolution. In this figure, Darwin sketched his idea for how diverging species would result in a tree structure. Reproduced from \cite{Darwin:1859uh}.}
 \label{fig:darwin_origin}
 \end{figure}
 
 \section{Molecular Evolution and the Tree Paradigm}
 
-The combination of Darwin's ideas of natural selection with Mendelian genetics led to the \emph{modern evolutionary synthesis}, outlined in the first half of the twentieth century in pioneering works by Fisher, Wright, Haldane, and others (see \cite{Huxley:1942} and \cite{Gould:2002ts} for historical detail).
-The modern synthesis was based largely on analysis of distributions of allele frequencies in distinct populations, the purview of classical population genetics.
-The field was placed on molecular foundations with the Watson and Crick's discovery of the DNA double-helix in 1953 \cite{Watson:1953wm}.
-These developments led to the modern study of \emph{molecular evolution}, the analysis of how processes such as mutation, drift, and recombination act at the cellular level to induce changes in populations and species.
-While molecular biology has focused on the biochemical and biophysial mechanisms underlying these processes, \emph{molecular phylogenetics} has focused on comparison of macromolecular sequences to infer genealogies and evolutionary relationships.
-Molecular phylogenetics began with Zuckerkandl and Pauling's recognition that the information encoded in the molecular sequences could be used as a document of evolutionary history in the early 1960's \cite{Zuckerkandl:1962,Zuckerkandl:1965wi}.
-Since that time, the development of numerical approaches for inferring evolutionary relationships has evolved into a mature discipline, with new methods being frequently proposed.
-The use of molecular sequence data to infer phylogeny is a standard practice across a wide range of biology and ecology.
+The combination of Darwin's theory of natural selection with Mendelian genetics led to the \emph{modern evolutionary synthesis}, outlined in the first half of the twentieth century in pioneering works by Fisher, Wright, Haldane, and others.
+\footnote{See \cite{Huxley:1942} and \cite{Gould:2002ts} for historical detail.}
+The modern synthesis was based largely on an analysis of distributions of allele frequencies in distinct populations, the purview of classical population genetics.
+The field was placed on a molecular foundation with Watson and Crick's discovery of the DNA double-helix in 1953 \cite{Watson:1953wm}.
+These developments led to the establishment of \emph{molecular evolution}, the analysis of how processes such as mutation, drift, and recombination act at a cellular level to induce changes in populations and species.
 
-Two historical results, one from molecular evolution and one from molecular phylogenetics, are worth mentioning.
-First, Motoo Kimura's neutral theory of evolution, first detailed in 1968 \cite{Kimura:1968vw} (see \cite{Kimura:1984} for a comprehensive survey).
-The neutral theory holds that observed genetic diversity is largely a result of genetic drift.
-At the time the neutral theory was proposed, most biologists assumed that natural selection was the driving force behind genetic diversity.
-Kimura argued that at the molecular level, the vast majority of mutations are selectively neutral, that is they confer no fitness advantage to the individual organism.
-With increased sequencing of organisms and populations, tests for selection based on the neutral theory have been developed.
+Described briefly, the information underlying an organism's form and function is encoded in its genome, the complete sequence of DNA contained in each cell.
+Embedded within the genome are regions defining the genes which code for functional proteins, as well as non-coding regions which have as-yet unknown function.
+\footnote{In humans, only 1.5\% of the genome is protein-coding, the rest largely non-functional. \cite{Lander:2001hk}. Up to 5-8\% of the human genome is believed to consist of endogeneous retroviruses, dead viruses which have integrated their genome into the human genome.}
+When an organism reproduces, either sexually or asexually, a complete copy of the genomic information is passed to the offspring.
+Because the molecular mechanisms that control this copying are not exact, errors in replication are introduced.
+These errors can take the form of single point mutations (or single nucleotide polymorphisms, SNPs) or small insertions and deletions of a few bases (indels).
+\footnote{Mutation rates vary across species. In humans, $10^{-8}$ per site per generation. In single cell bacteria, $10^{-10}$ per site per generation.}
+Under the neutral theory of evolution, the majority of these errors will have very little impact, either positive or negative, on the descendant organism.
+A small fraction of mutations will result in an appreciable fitness differential compared to other organisms, and it is on these organisms that natural selection will act.
 
-Second, Carl Woese's organization of bacteria, eukarya, and archaea into the three domains of life \cite{Woese:1977vd}.
+While molecular biology has largely focused on the biochemical and biophysical mechanisms underlying these processes, \emph{molecular phylogenetics} has focused on the comparative analysis of macromolecular sequences to infer genealogical and evolutionary relationships.
+Molecular phylogenetics began with Zuckerkandl and Pauling's recognition in the early 1960's that the information encoded in a set of molecular sequences could itself be used as a document of evolutionary history \cite{Zuckerkandl:1962,Zuckerkandl:1965wi}.
+Since that time, the development of numerical approaches for inferring evolutionary relationships has evolved into a mature discipline and the use of molecular sequence data to infer phylogeny has become a standard practice across a wide range of biology and ecology.
+
+% NEUTRAL THEORY: Not necessary to include?
+% Two historical results, one from molecular evolution and one from molecular phylogenetics, are worth mentioning.
+% First, Motoo Kimura's neutral theory of evolution, first detailed in 1968 \cite{Kimura:1968vw} (see \cite{Kimura:1984} for a comprehensive survey).
+% The neutral theory holds that observed genetic diversity is largely a result of genetic drift.
+% At the time the neutral theory was proposed, most biologists assumed that natural selection was the driving force behind genetic diversity.
+% Kimura argued that at the molecular level, the vast majority of mutations are selectively neutral, that is they confer no fitness advantage to the individual organism.
+% With increased sequencing of organisms and populations, tests for selection based on the neutral theory have been developed.
+
+One important early result from molecular phylogenetics was Carl Woese's organization of bacteria, eukarya, and archaea into the three domains of life \cite{Woese:1977vd}.
 Prior to Woese, there were two recognized domains of life: prokaryotes, single-celled organisms lacking a nucleus, and eukaryotes, multi-celled organisms with an enveloped nucleus.
-Using 16S subunit ribosomal RNA sequencing, Woese discovered that the prokaryotic domain actually split into two evolutionarily distinct classes.
+Using 16S subunit ribosomal RNA sequencing, Woese discovered that the prokaryotic domain actually split into two evolutionarily distinct groups.
 One of these, which he termed \emph{archaebacteria} was more closely related to eukaryotes than were there the rest of the prokaryotes.
-This led to the three-domain system of life.
+This led to the three-domain system of life (see Figure \ref{fig:woese_tree}).
+
+\begin{figure}
+\centering
+\includegraphics[width=.7\columnwidth]{./fig/introduction/woese_tree.png}
+\caption[Carl Woese's Three Kingdom Tree of Life]{Carl Woese's three kingdom tree of life. Using 16S subunit ribosomal RNA, Carl Woese identified archaea as a distinct phylogenetic kingdom. Previously, based on morphological similarity (specifically, unicellular and lacking a nucleus), archaea had been grouped with bacteria. This result was an early success for molecular phylogenetics and the use of conserved gene segments for molecular classification. Figure adapted from \cite{Woese:1990uc}.}
+\label{fig:woese_tree}
+\end{figure}
 
 This work had several important consequences.
 First, it established the use of molecular data to inform about patterns of evolutionary history.
 Using only morphological data led to an inconsistent classification of archaea.
 Second, it positioned 16S rRNA profiling as the primary source of data for use in comparative genomics.
-The use of this genomic region was justified on the basis of being one of the few universal gene segments  that is orthologous across all species.
+The use of this genomic region was justified on the basis of being one of the few universal gene segments that is conserved across all species.
+Constructing a universal tree is predicated on there being orthologous genes, or genes that are related through speciation events, that provide a common foundation for comparative study.
 Finally, it solidified the tree paradigm as the organizing principle for relating extant species.
 
-However, despite the significant impact this observation had, there remains a subtle difficulty, which Woese himself came to contemplate in later work.
+However, despite the significant impact this observation had, there remains a subtle difficulty, which Woese himself would come to contemplate in later work.
 Woese's phylogeny was based on only 1,500 nucleotides in the ribosomal RNA, less than 1\% of the length of a typical bacterial genome (see \cite{Dagan:2006up}).
 Even more striking, this accounts for less than 0.00005\% of the human genome.
 While recent work has developed approaches for constructing universal trees from larger gene sets \cite{Ciccarelli:2006gw}, the fact remains that the vast majority of genomic information is \emph{not} incorporated into the tree.
 
-The reason for this situation is the presence of nonvertical evolutionary forces, as alluded to above.
-If one were to use a different genomic region to construct atree of species, a different tree topology would be generated.
+The reason for this situation is twofold.
+First, not all genes are shared universally across all species.
+Second, even among universal genes, the presence of reticulate evolutionary processes will confound systematic analysis.
+
+If one were to use a different genomic region to construct a tree of species, a different tree topology would be generated.
 These processes have been well known for some time!
 Horizontal exchange occurs when a donor bacteria transmits foreign DNA into a genetically distinct bacteria strain.
 Three mechanisms of horizontal transfer are identified, depending on the route by which foreign DNA is acquired \cite{Ochman:2000dr}.
@@ -78,23 +102,22 @@ Foreign DNA can be acquired via uptake from an external environment (transformat
 % Darwin: evolution in terms of organisms not molecules [Pace2009]
 % Gene tree disconcordance.
 % How to make a molecular phylogeny? 1. align, 2. evaluate differences; 3. fit a topology
-
-\kje{(Expand more of the Doolittle story and the tree paradigm. Species concepts, etc..)}
-
-Nonvertical modes of evolution are more than just a theoretical concern:
-In HIV, frequent recombination confounds our understanding of the early and present epidemic’s history \kje{[cite]}.
-In influenza, gene reassortments lead to antigenic novelty and the emergenence of epidemics \kje{[cite]}.
-In several pathogenic bacteria, including E. coli and S. aureus, horizontal gene transfer has been responsbile for the spread of antibiotic resistance \kje{[cite]}.
+%\kje{(Expand more of the Doolittle story and the tree paradigm. Species concepts, etc..)}
 
 One wonders if the information deduced from small genomic sections can be extrapolated to other regions, as different gene sequences can yield vastly different tree topologies.
 Incompatibilities in the tree model now appear as the rule, not the exception, demonstrating the need for new representations of evolutionary relationships \autocite{Doolittle:1999,Doolittle:2006}.
 Many have argued that, in light of genomic evidence of HGT, the very notion of a universal tree of life must be discarded. \kje{[cite Doolittle, Koonin]}.
 These and other similar situations, further described below, call for new methods of characterizing evolutionary relationships.
 
+Finally, reticulate evolutionary processes are of more than just theoretical concern:
+In HIV, frequent homologous recombination confounds our understanding of the epidemic's early and present history \cite{Burke:1997ep}.
+In influenza, segmental gene reassortments lead to antigenic novelty and the emergenence of epidemics \cite{Nelson:2007bc}.
+In several pathogenic bacteria, including \emph{E. coli} and \emph{S. aureus}, horizontal gene transfer has been responsibile for the spread of antibiotic resistance \cite{Ochman:2000dr,Alekshun:2007bq}.
+
 \begin{figure}
 \centering
 \includegraphics[width=.8\columnwidth]{./fig/introduction/doolittle_tree.png}
-\caption[Ford Doolittle's Reticulate Tree of Life]{W Ford Doolittle's representation of the universal tree of life with reticulate evolution. While the three domains of life are still, patterns of divergence no longer follow a strictly treelike model. (From \emph{Science}, vol. 284, issue 5423, page 2127. Reprinted with permission from AAAS.)}
+\caption[Ford Doolittle's Reticulate Tree of Life]{W Ford Doolittle's representation of the universal tree of life with reticulate evolution. While the three domains of life are still recognizable, patterns of divergence no longer follow a strictly treelike model. (From \emph{Science}, vol. 284, issue 5423, page 2127. Reprinted with permission from AAAS.)}
 \label{fig:doolittle_tree}
 \end{figure}
 
@@ -109,7 +132,7 @@ As a paradigmatic example, consider the coffee mug and the donut (Figure~\ref{in
 These two objects are topologically equivalent to $D^2\times S^1$.
 That is, there is one connected component and one hole.
 Algebraic topology quantifies our intuitive notions of shape by associating algebraic structures to different invariants.
-The most relevant invariants for our purposes will be the \emph{Betti numbers}, which measure.
+The most relevant invariants for our purposes will be the \emph{Betti numbers}, which measure xxxxxxxxx.
 We give a more complete characterization of Betti numbers in Chapter~\ref{ch:background}, but a flavor is as follows.
 First, we can think of $b_0$ as representing the number of connected components, or clusters, in our space.
 Next, we can think of $b_1$ as representing the number of loops in our space.
