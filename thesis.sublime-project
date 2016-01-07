@@ -4,7 +4,7 @@
         {
             "path": ".",
             "name": "Main",
-            "file_exclude_patterns": ["*.aux", "*-blx.bib", "*.bib.bak", "*.bbl", "*.bcf", "*.blg", "*.fdb_latexmk", "*.lof", "*.lot", "*.log", "*.out", "*.pdf", "*.xml", "*.synctex.gz*", "*.toc", ".gitignore", ".DS_Store"],
+            "file_exclude_patterns": ["*.aux", "*-blx.bib", "*.bib.bak", "*.bbl", "*.bcf", "*.blg", "*.dvi", "*.fdb_latexmk", "*.fls", "*.lof", "*.lot", "*.log", "*.out", "*.pdf", "*.xml", "*.synctex.gz*", "*.toc", ".gitignore", ".DS_Store"],
             "folder_exclude_patterns": [".git", "fig", "tex"]
         },
         {
@@ -15,7 +15,7 @@
         {
             "path": "./tex",
             "name": "TeX",
-            "file_exclude_patterns": ["*.pdf", "*.pptx", "*.png", "*.gif", "*.jpg"]
+            "file_exclude_patterns": ["*.aux", "*.fdb_latexmk", "*.log", "*.pdf", "*.pptx", "*.png", "*.gif", "*.jpg"]
         }
     ]
 }
