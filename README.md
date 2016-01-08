@@ -29,6 +29,7 @@ Things to cover...
 * Recapitulate the Doolittle story and run through some history.
 * Darwin -> Zuckerkandl/Pauling -> Woese -> Modern Genomics
 * Doolittle; evidence for nonvertical evolution; new models
+
 * Propose topological data analysis as a possible framework
 * Describe the basic idea behind TDA
 * Give a simple picture for how TDA is applied to sequence data

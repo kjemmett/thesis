@@ -1,12 +1,10 @@
 ### Topological Data Analysis
 
-
-
-
 Note: We want to rearrange this section so it flows better.
 To that end we will do the following.
 Move the more preliminary mathematical definitions into an appendix.
 Use the background section to work through the full TDA pipeline using a simple example.
+Then work through a simple example using sequence-like data.
 
 One subsection on Persistent Homology.
 One subsection on Mapper.

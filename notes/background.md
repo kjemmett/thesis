@@ -33,6 +33,7 @@ While this may seem like a strong assumption, it holds quite well for
 
 ------------------------------------------------------
 
+(Where is this going?)
 We give a concrete example on four leaves.
 We consider only segregating sites.
 Consider the set of four sequences S = {00000, 11000, 10110, 10101}.
@@ -58,10 +59,3 @@ Persistent Homology
 
 Mapper
 - "Pipeline"
-
-
-----------------------------------------------------------------------
-
-### Applying TDA to Molecular Sequence Data
-
-
