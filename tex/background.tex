@@ -15,7 +15,6 @@ In this section we present a basic introduction to molecular sequence data: what
 The information required to express an organism's biological form and function is contained in the genome, the complete sequence of nucleotides (DNA) contained in every cell\footnote{While often represented as a linear string of characters, this representation can be misleading, as many organisms, primarily viruses and bacteria, have circular genomes.}
 Embedded in this sequence are subsequences representing genes, which code for the protein products
 
-
 Embedded in the genome is a complex regulatory pattern of transcription factors controlling the expression of particular genes controlling cell differentiation and development.
 that controls the differential expression of particular 
 Embedded in this sequence is a complex regulatory pattern of transcription factors controlling the expression of particular genes.
@@ -69,12 +68,16 @@ Horizontal exchange occurs when a donor bacteria transmits foreign DNA into a ge
 Three mechanisms of horizontal transfer are identified, depending on the route by which foreign DNA is acquired \cite{Ochman:2000dr}.
 Foreign DNA can be acquired via uptake from an external environment (transformation), via viral-mediated processes (transduction), or via direct cell-to-cell contact between bacterial strains (conjugation).
 
-In eukaryotes, several reticulation processes 
+\begin{figure}
+\centering
+\includegraphics[]{./fig/background/bacterial_reticulation.pdf}
+\caption[Three modes of bacterial reticulation]{The three modes of viral reticulation. (1) Conjugation. (2) Transformation. (3) Transduction}
+\label{fig:bacterial_reticulation}
+\end{figure}
 
+In eukaryotes, several reticulation processes including hybridization.
+Indeed, Mendel's early experiments in hybrdization were themselves artifically induced forms of reticulate evolution.
 \footnote{One might wonder about sexual reproduction -- a descendent can be seen as a hybridization of both mother and father. Indeed, sexual reproduction can itself be considered a form of reticulate evolution. In the case of \emph{H. sapiens}, a diploid species with two copies of each chromosome, XXX. However, from an evolutionary perspective, the process can be decoupled into two independent clonal processes. When discussing the human species, researchers will commonly refer to the most recent common ancestor on the patrilineal as Y-chromosomal Adam and the most recent common ancestor on the matrilineal as mitochondrial Eve.}
-
-In eukaryotes: hybridization and meiotic recombination.
-Patterns of meiotic recombination can be 
 
 \begin{tabularx}{\textwidth}{lll}
 \toprule
@@ -146,7 +149,10 @@ Evolutionary histories are no longer represented by a tree, but rather by an \em
 Recombination is the component of the model generating nontrivial topology by introducing deviations from a contractibile tree structure, and is the component which we would like to quantify.
 Coalescent simulations were performed using \texttt{ms} \cite{Hudson:2002}.
 
-\subsubsection{Metrics on Sequeces}
+\subsubsection{Metrics on Sequences}
+\label{bg:subsubsec:metrics}
+
+Evolutionary models require a notion of genetic divergence between sequences.
 
 
 What metrics can we put on aligned sequences?
@@ -170,40 +176,76 @@ d=-\frac{3}{4}\ln(1-\frac{4}{3}p).
 
 \subsection{Phylogenetic Methods}
 
-A phylogenetic tree is XXX.
+A phylogenetic tree is a binary tree in which leaves are associated with particular species or taxa, and the branching pattern of the tree reflects diverging evolutionary relationships.
+Branch lengths on the tree are associated with evolutionary divergence between sets of taxa.
+Molecular phylogenetics refers to a large collection of methods for inferring branching patterns from aligned molecular sequence data.\footnote{See Felsenstein, \emph{Inferring Phylogenies} for a readable and thorough introduction to the field \cite{Felsenstein:2004ws}.}
+In general, the problem of finding an optimal tree associated with sequence data is NP-complete \cite{Foulds:1982fn}, however several approximate methods have been developed.
+The primary types of methods include maximum parsimony, distance-matrix methods, maximum likelihood (ML), and Bayesian inference.
+Maximum parsimony attempts to find the phylogenetic tree that minimizes the number of evolutionary changes required to explain the observed sequences.
+Distance-matrix methods first compute a matrix of pairwise distances between taxa and then find the tree that best approximates these distances.
+ML and Bayesian methods use specific models of evolution to assign probability distributions over trees.
+In this work we concentrate on distance-matrix methods because of their close connection with the finite metric spaces considered in applied topology.
 
+\subsubsection{Distance-Matrix Methods}
 
-Molecular phylogenetics refers to a large collection of methods for inferring evolutionary relationships among a set of species from molecular sequence data.
-In practice, this 
-In practice: tree-building.
+Given a set of aligned molecular sequences, distance-matrix methods first compute the pairwise matrix of genetic distances using one of the metrics as described in Section~\ref{bg:subsubsec:metrics}.
+Then, the binary tree that best approximates those distances is iteratively fit to this data
+This approach to phylogenetic inference were introduced by Cavalli-Sforza and Edwards in 1967 \cite{CavalliSforza:1967th} and Fitch and Margoliash in 1967 \cite{Fitch:1967we}.
+The Fitch-Margoliash method uses a weighted least squares approach to tree-fitting, such that larger distances are weighted less, due to higher chances for random error.
+Distance-matrix methods are popular for their high speed and scalability as well as high accuracy in most cases.
 
-Starting with a set of sequences that share some similarity, an alignment is performed.
-The alignment allows columns of the sequence to be directly compared.
-From an alignment, one can then directly use parsimony or likelihood approaches.
-Alternatively, one can compute a matrix of pairwise distances and then construct a tree that best approximates these distances.
-Most relevant to this thesis are the distance-based approaches (because they can be viewed as finite metric spaces amenable to topological analysis).
+Currently, the most widely implemented distance-matrix method is neighbor-joining.\footnote{Neighbor joining was introduced by Saitou and Nei in 1987 \cite{Saitou:1987wo}.}
+One particular reason neighbor-joining is popular is that under certain conditions, discussed below, it has been shown to exactly recover the correct tree.
+The neighbor-joining algorithm is described in Algorithm~\ref{bg:alg:nj}.
+
+\begin{algorithm}
+    \KwData{$n \times n$ distance matrix $D$}
+    \KwResult{Phylogenetic tree on $n$ leaves}
+    \While{blah} {
+        Compute $Q$ matrix\;
+    }
+    \label{bg:alg:nj}
+    \caption{The Neighbor Joining Algorithm. Adapated from Wikipedia entry on Neighbor-Joining.}
+\end{algorithm}
+
+\subsubsection{Additive Metrics and the Four Point Condition}
+
+Arbitrary distance matrices are unlikely to admit a tree representation.
+Those that do are called \emph{additive metrics}, because they can be represented as an additive tree.
+Additivity is the property that the distance between any two nodes will be equal to the sum of the branch lengths between them.
+A distance matrix admits a tree representation if and only if it is additive.
+
+There is a straight-forward condition that must be satisfied for additivity, known as the \emph{four point condition}.
+For a distance matrix to admit a tree representation, 
+\begin{equation}
+d_{ij} + d_{kl} \leq \max\{d_{ik} + d_{jl} ,  d_{il} + d_{jk} \}
+\end{equation}
+for any four nodes $\{i,j,k,l\}$.
+The condition implies that there is a labeling on the four nodes such that
+\begin{equation}
+d_{ij} + d_{kl} \leq d_{ik} + d_{jl} =  d_{il} + d_{jk}.
+\end{equation}
+A visual interpretation of this condition is shown in Figure~\ref{background:fig:four_point_condition}.
+
+\begin{figure}
+\centering
+\includegraphics[]{./fig/background/four_point_condition.pdf}
+\caption[The four point condition for additivity]{A visual interpretation of the four point condition for additivity. For any four leaves, there exists a labeling $\{i,j,k,l\}$ such that $d_{ij}+d_{kl}\leq d_{ik}+d_{il} = d_{il}+d_{jk}$. Of the three possible ways of arranging the sums of distances, two will involve traversing the internal branch, while one will involve only external branches.}
+\label{background:fig:four_point_condition}
+\end{figure}
+
+Given that we can associate a distance matrix to se
 Only in the case of perfectly additive data will a tree be able to exactly fit the matrix.
 \kje{(Define additivity -- four point condition.)}
-Identifying a pairwise distance matrix with a finite metric space representation is a crucial step that allows most of the machinery described later to be applied.
-\kje{Rooted vs unrooted.}
 
-\subsubsection{Distance Matrix Methods}
-
-Introduced by Cavalli-Sforza and Edwards in 1967 \cite{CavalliSforza:1967th} and Fitch and Margoliash in 1967 \cite{Fitch:1967we}.
-Fitch-Margoliash method is a weighted least squares tree-fitting method (larger distances are weighted less, due to higher random error).
-Compute a matrix of pairwise distances and then find the tree that best approximates those distances.
-Neighbor joining is now the most commonly used distance-matrix approach because it can perfectly reconstruct an additive tree.
-Neighbor joining was introduced by Saitou and Nei in 1987 \cite{Saitou:1987wo}.
-
-Limitation: Distance methods do not make use of all of the information in the sequence.
-
-\subsubsection{Phylogenetic Networks}
-
-There are several existing methods for representing reticulate evolution.
-Most of these methods generalize phylogenetic trees into \emph{phylogenetic networks}, which attempt to reconcile the presence of horizontal evolution in sequence data.
-However, most simply present corrections to phylogenetic trees, which can fail in cases where horizontal evolution is pervasive, as in many prokaryote datasets.
-Additionally, the resulting neteworks can be complex and difficult to interpret quantitatively.
-\kje{[Expand. See Morrison review. Split Networks.]}
+Sequence data can fail to be additive for several reasons.
+First, sequencing error.
+Errors can introduce noise into the measured genetic distances.
+Second, homoplasy.
+A homoplasy occurs when the same mutation is introduced multiple times in a set of organisms.
+The presence of homoplasy will underestimate genetic distance between taxa.
+Third, reticulate evolution.
+As described previously, in cases of reticulate evolution no tree will accurately describe the observed data.
 
 \subsubsection{Number of Tree Topologies}
 
@@ -238,4 +280,12 @@ A single orthant corresponds to a single tree topology.
 \caption{Tree Space}
 \label{background:fig:TreeSpace}
 \end{figure}
+
+\subsubsection{Phylogenetic Networks}
+
+There are several existing methods for representing reticulate evolution.
+Most of these methods generalize phylogenetic trees into \emph{phylogenetic networks}, which attempt to reconcile the presence of horizontal evolution in sequence data.
+However, most simply present corrections to phylogenetic trees, which can fail in cases where horizontal evolution is pervasive, as in many prokaryote datasets.
+Additionally, the resulting neteworks can be complex and difficult to interpret quantitatively.
+\kje{[Expand. See Morrison review. Split Networks.]}
 
