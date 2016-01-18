@@ -86,7 +86,7 @@ Beause these mechanisms can often lead to the acqusition of novel sequences codi
 
 In eukaryotes, several reticulate processes have been identified.
 We mention two such processes: hybrid speciation and meitotic recombination.
-These two processes act at very different scales, but the outcome is the same: a distinct offspring with genetic material 
+These two processes act at very different scales, but the outcome is the same: a unique offspring with genetic material drawing from both parents.
 
 First, hybrid speciation refers to the cross-breeding of animals or plants of different species.
 This mixing of genetic material can lead to the development of a third species with a phenotype distinct from both parents.
@@ -105,45 +105,36 @@ The two sets of chromosomes then pair with each other and exchange DNA through p
 This is another example of homologous recombination and results in new allelic patterns mixing genetic information from both parents.\footnote{Patterns of shared alleles define the concept of \emph{linkage}.}
 After crossover occurs, two phases of cellular division result in gametes with $n/2$ copies of each chromosome.
 
-At this junction, one might wonder about sexual reproduction -- an offspring can be seen as a hybridization of genetic material from both mother and father.
-Is sex then a form of reticulate evolution?
-On the one hand, the answer could be yes, particularly because the presence of meiotic recombination involves a shuffling of genomic material such that the chromosome each parent donates is a unique combination of sequence not previously present.
-On the other hand, the answer could be no, because both mother and father donate a complete copy of the genome to the offspring.
-Each copy can be considered an independent transfer and defined to be a pattern
-On the other hand, the answer could be no, because each mother and father donates an entire copy of the genome to the offspring.
-Each copy can be considered an independent transfer.
-Indeed, researchers in human population genetics generally disintinguish between the most common ancestor on the patrilineal line and the matrilineal line.
-On the other
-
-
-In fact, reproduction of $n$-ploid organisms is often analyzed mathematically as the 
-
-
-One might wonder about sexual reproduc
-
-\footnote{One might wonder about sexual reproduction -- a descendent can be seen as a hybridization of both mother and father. Indeed, sexual reproduction can itself be considered a form of reticulate evolution. In the case of \emph{H. sapiens}, a diploid species with two copies of each chromosome, XXX. However, from an evolutionary perspective, the process can be decoupled into two independent clonal processes. When discussing the human species, researchers will commonly refer to the most recent common ancestor on the patrilineal as Y-chromosomal Adam and the most recent common ancestor on the matrilineal as mitochondrial Eve.}
+At this point, one might wonder about sexual reproduction -- an offspring can be seen as a hybridization of genetic material donated from both mother and father.
+On the one hand, the answer could be yes, particulare because the presence of meiotic recombination involves a shuffling of genomic material such that the chromosome each parent donates is a unique combination of alleles not previously present in the donor organism.
+On the other hand, the answer could be no, because both mother and father donte a complete copy of the genome to the offspring.
+Each copy can be considered as an independent transfer of genetic information defining both a matrilineal and a patrilineal line of inheritence.
+Indeed, researchers in human population genetics generally distinguish between these two cases -- looking at genomic regions that do not recombine they define a matrilinearl common ancestor known as \emph{Mitochondrial Eve} and a patrilineal common ancestor known as \emph{Y-chromosomal Adam}.
+Mathematically, the evolutionary relationships of a population of $N$ organisms with ploidy $n$ are often analyzed as a haploid population of size $nN$ with random mating.
 
 \begin{tabularx}{\textwidth}{lll}
 \toprule
 Organism & Process & Description \\
 \midrule
-\multirow{2}{*}{Virus} & Reassortment & INSERT FIGURE \\
-                       & Recombination & INSERT FIGURE \\
+\multirow{2}{*}{Virus} & Reassortment & Exchange of discrete genomic segments \\
+                       & Recombination & Intragenomic homologous crossover \\
 \midrule
-\multirow{3}{*}{Bacteria} & Transformation & xx \\
-                          & Transduction   & xx \\
-                          & Conjugation    & xx \\
+\multirow{3}{*}{Bacteria} & Transformation & Acqusition of foreign DNA in environment \\
+                          & Transduction   & Viral-mediated exchange \\
+                          & Conjugation    & Cell-to-cell contact and exchange \\
 \midrule
-\multirow{2}{*}{Eukaryotes} & Meiotic Recombination & Description \\
-                            & Hybrid Speciation         & Description \\
+\multirow{2}{*}{Eukaryotes} & Meiotic Recombination & Homologous crossover during meiosis \\
+                            & Hybrid Speciation         & Fertilization across species boundaries \\
 \bottomrule
 \label{table:reticulation_processes}
 \end{tabularx}
 
-The presence of horizontal gene transfer in a set of organisms can be most clearly identified by comparing the phylogenetic trees built from different genes.
-If horizontal gene transfer has occurred, the set of \emph{gene trees} will reflect different evolutionary relationships and not be consistent with a single tree topology.
-A subfield of comparative genomics is concerned with building \emph{species trees} from sets of gene trees, however in the case where there is substantial disagreement among gene trees the very notion of a species tree may be flawed.
+The presence of reticulate processes in a set of organisms can be most clearly identified by comparing phylogenetic relationships built from different genomic segments.
+A general practice is to construct the set of \emph{gene trees} which reflect ancestral branching patterns at specific loci.
+If a reticulate event has occurred, it implies that the branching patterns of different genes will not agree.
+A subfield of comparative genomics is concerned with building \emph{species trees} from sets of gene trees.
 
+However, in the case where there is substantial disagreement among gene trees, the very notion of a species tree may be flawed.
 Traditionally, evolutionary biology has concerned itself with characterizing relationships in light of vertical evolution alone.
 However, increasing evidence \kje{(what evidence?)} has pointed to the important role played by horizontal evolution, particularly in prokaryotic evolution.
 \kje{[Further citations and exposition of Doolittle, Koonin, and Gogarten.]}
@@ -154,9 +145,8 @@ Mathematical population genetics is concerned with properties of populations as 
 These forces include natural selection, genetic drift, mutation, and recombination.
 Historically the input data for population genetics models was comparative studies of allele frequencies across populations.
 These studies have primarily been replaced by large-scale genomic surveys which have provided unprecedented insight into ancient population structure and historical migrations.
-\kje{[Give an example and cite work of reich / bustamente, etc.]}
 
-Incorporate understanding of real data
+
 These models allow two things: 1) simulate genomic data under realistic processes and 2) build statistical models to estimate biological parameters from real data.
 
 \subsubsection{The Wright-Fisher Model}
@@ -167,7 +157,6 @@ The model proceeds in units of generations.
 At each generation, a member of the population is an offspring of a randomly selected ancestor from the previous generation.
 This offspring inherits its ancestors genomes, with mutations introduced at some base rate $\mu$.
 A member of previous generation with no offspring will be considered extinct.
-\kje{[Figure comparing Wright-Fisher and Coalescent.]}
 
 \subsubsection{The Coalescent Process}
 
@@ -193,30 +182,45 @@ Evolutionary histories are no longer represented by a tree, but rather by an \em
 Recombination is the component of the model generating nontrivial topology by introducing deviations from a contractibile tree structure, and is the component which we would like to quantify.
 Coalescent simulations were performed using \texttt{ms} \cite{Hudson:2002}.
 
+\begin{figure}
+\centering
+  \subbottom[Wright-Fisher Model]{%
+    \includegraphics[width=0.3\linewidth]{fig/background/wright-fisher_example.jpg}}
+  \subbottom[Coalescent Model]{%
+    \includegraphics[width=0.3\linewidth]{fig/background/coalescent_example.jpg}}
+    \caption{Two models for simulating evolutionary data.}
+\end{figure}
+
+% \begin{subfigure}[b]{.1\textwidth}
+% \includegraphics{fig/background/wright-fisher_example.jpg}
+% \caption{Wright-Fisher Model}
+% \end{subfigure}
+% \begin{subfigure}[b]{.1\textwidth}
+% \includegraphics{fig/background/coalescent_example.jpg}
+% \caption{Coalescent Process}
+% \end{subfigure}
+% \end{figure}
+
 \subsubsection{Metrics on Sequences}
 \label{bg:subsubsec:metrics}
 
 Evolutionary models require a notion of genetic divergence between sequences.
+This leads to a discussion of the types of metrics that can be put on sets of sequences.\footnote{Before sequence can be compared, they must first be \emph{aligned}. A sequence alignment arranges the characters in a set of sequences into coluns such that characters sharing evolutionary identity are in the same column. Alignment is necessary because random insertions and deletions can change . The difficulty of performing an alignment will largely depend on the amount of evolutionary divergence in the set of sequences under consideration. Sequence alignment is a well studied topic but largely beyond the scope of this thesis, where we assume sufficient sequence similarity such that alignment can be performed with high confidence.}
 
+The simplest model, and the one most commonly adopted in this thesis, is the Hamming metric, which simply counts the proporation of sites that differ between two aligned sequences.
+For example, for two sequence $s_1=ACTTGAC$ and $s_2=AAGTGGC$, $d_{H}(s_1,s_2)=3/7$.
+In general, the Hamming metric will underestimate divergences by not accounting for the possibility of back mutations.\footnote{A double mutation of the form $A\rightarrow C\rightarrow A$.}
 
-What metrics can we put on aligned sequences?
-
-For the sequences from different organisms to be compared, they must first be aligned.
-A sequence alignment is an arrangement of the characters in a set of sequences into a set of columns such that characters sharing evolutionary identity are in the same column.
-In this case insertion and deletions can introduce gaps.
-Alignment can be a complex part of any sequence analysis, particularly when there is substantial divergence between sequences of interest.
-Performing sequence alignment is largely beyond the scope of this thesis, and in general we assume sufficient sequence similarity such that alignment can be performed without difficulty.
-
-The simplest model, and the one most commonly adopted in this thesis, is the Hamming metric, which simply counts the differences between two aligned sequences.
-
-More biologically motivated metrics will incorporate some model of evolution and account for the possibility of back mutation.
-These include Jukes-Cantor, Nei-Tamura, etc.
-\kje{[Worth expanding?]}
-
-Jukes-Cantor metric is defined as 
+More biologically motivated models will introduce corrections to account for assumptions about how sequences evolve.
+These assumptions include the base frequency of each nucleotide as well as the substitution rates for each type of mutation.
+The simplest of these models is the \emph{Jukes-Cantor model}.
+This model defines an equal substitution rate $\mu$.
+Inverting the probability of an alteration gives the divergence.
+The Jukes-Cantor metric is defined as 
 \begin{equation}
-d=-\frac{3}{4}\ln(1-\frac{4}{3}p).
+d_{JC}=-\frac{3}{4}\ln(1-\frac{4}{3}p),
 \end{equation}
+where $p$ is the proporation of sites that are different.
 
 \subsection{Phylogenetic Methods}
 
@@ -233,7 +237,7 @@ In this work we concentrate on distance-matrix methods because of their close co
 \subsubsection{Distance-Matrix Methods}
 
 Given a set of aligned molecular sequences, distance-matrix methods first compute the pairwise matrix of genetic distances using one of the metrics as described in Section~\ref{bg:subsubsec:metrics}.
-Then, the binary tree that best approximates those distances is iteratively fit to this data
+Then, the binary tree that best approximates those distances is iteratively fit to this data.
 This approach to phylogenetic inference were introduced by Cavalli-Sforza and Edwards in 1967 \cite{CavalliSforza:1967th} and Fitch and Margoliash in 1967 \cite{Fitch:1967we}.
 The Fitch-Margoliash method uses a weighted least squares approach to tree-fitting, such that larger distances are weighted less, due to higher chances for random error.
 Distance-matrix methods are popular for their high speed and scalability as well as high accuracy in most cases.
@@ -248,8 +252,8 @@ The neighbor-joining algorithm is described in Algorithm~\ref{bg:alg:nj}.
     \While{blah} {
         Compute $Q$ matrix\;
     }
-    \label{bg:alg:nj}
     \caption{The Neighbor Joining Algorithm. Adapated from Wikipedia entry on Neighbor-Joining.}
+    \label{bg:alg:nj}
 \end{algorithm}
 
 \subsubsection{Additive Metrics and the Four Point Condition}
@@ -278,10 +282,6 @@ A visual interpretation of this condition is shown in Figure~\ref{background:fig
 \label{background:fig:four_point_condition}
 \end{figure}
 
-Given that we can associate a distance matrix to se
-Only in the case of perfectly additive data will a tree be able to exactly fit the matrix.
-\kje{(Define additivity -- four point condition.)}
-
 Sequence data can fail to be additive for several reasons.
 First, sequencing error.
 Errors can introduce noise into the measured genetic distances.
@@ -303,27 +303,25 @@ For $L=n$, we have $\mathcal{T}(n)=(2n-5)!!$ and $2n-3$ branches.
 For $L=n+1$, we can add the new external branch to any of the current $2n-3$ branches.
 A rooted tree with $L$ leaves can be considered as an unrooted tree with $L+1$ leaves.
 Therefore, the number of rooted bifurcating tree topologies with $L$ leaves is $(2L-3)!!$
-As can be seen, the number of tree topologies explodes with the number of leaves.
-Fitch quote: \emph{more than 20 species, more than Avogadro's number of topologies.}
+As can be seen, the number of tree topologies explodes with the number of leaves.\footnote{It was observed by Walter Fitch that for more than 20 species there are more than Avogadro's number of topologies.}
 
-\subsubsection{Space of Phylogenetic Trees}
-
-** Needs work.
+\subsubsection{Space of Phylogenetic Trees \kje{(Needs Expansion)}}
 
 A phylogenetic tree is characterized by its number of leaves, the particular tree topology, and the length of each branch.
 Tree space refers to an abstract construction that represents each possible tree as a point in a geometric space.
 Abstract studies of tree space were initiated by Billera, Holmes, and Vogtmann (BHV) in \cite{Billera:2001tv}.
 
 In the BHV model, each point represents an unrooted binary tree with $L$ leaves and strictly positive branch lengths.
-
 Number of interior edges $r=L-3$, a particular additive tree can be plotted as a point in the positive open orthant $(0,\infty)^{r}$.
-
 A single orthant corresponds to a single tree topology.
+
+The tree space construction allows one to define statistics, such as means and variance, on sets of trees.
+This has been utilized 
 
 \begin{figure}
 \centering
 \includegraphics[]{./fig/TreeSpace.pdf}
-\caption{Tree Space}
+\caption[Tree Space Construction]{The construction of Tree Space. Each point in this space represented a particular unrooted tree topology with branch lengths.}
 \label{background:fig:TreeSpace}
 \end{figure}
 
@@ -332,6 +330,16 @@ A single orthant corresponds to a single tree topology.
 There are several existing methods for representing reticulate evolution.
 Most of these methods generalize phylogenetic trees into \emph{phylogenetic networks}, which attempt to reconcile the presence of horizontal evolution in sequence data.
 However, most simply present corrections to phylogenetic trees, which can fail in cases where horizontal evolution is pervasive, as in many prokaryote datasets.
-Additionally, the resulting neteworks can be complex and difficult to interpret quantitatively.
-\kje{[Expand. See Morrison review. Split Networks.]}
+Additionally, the resulting networks can be complex and difficult to interpret quantitatively.
+This can make it difficult to distinguish between phylogenetic incompatibilities due to noisy sampling and due to true reticulations.
+An example of a phylogenetic network using the split network approach is shown in Figure~\ref{background:fig:split_network}.
+
+\kje{[Expand. See Morrison review..]}
+
+\begin{figure}
+\centering
+\includegraphics[width=.8\textwidth]{fig/background/split_network.pdf}
+\caption[Example of a Splits Network]{Example of a split network of genus Branchiopoda and outgroups. Computed using the Neighbor-Net algorithm. Phylogenetic incompatibilities are represented by conflicting splits. reprinted from BMC Evolutionary Biology 7:147 (2007).}
+\label{background:fig:split_network}
+\end{figure}
 
