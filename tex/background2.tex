@@ -4,53 +4,10 @@
 
 \section{Topological Data Analysis}
 
-Topology is the branch of mathematics that formalizes our intuitive notions of shape.
-More concretely, topology provides the methods to characterize the properties of objects and spaces that remain invariant under deformation.
-For example, deforming a circle into an ellipse by compressing along one axis does not change the fact that the object encloses a single loop.
-Or, as we saw in the introduction, the coffee mug can be continuously deformed into the donut.
-Likewise, if we take a tree and change the lengths of its branches, the tree remains a tree.
-\footnote{It is important to draw a distinction between the notion of tree topology, in which the branch patterns determines the topology, and global topology, in which all trees are equivalent. While the former is more common in the phylogenetics community, here we consider the latter.}
-In each of these examples, while the deformation has substantially altered \emph{local} properties of the space, on a \emph{global} level we have left certain essential characteristics unchanged.
-From a topological perspective, the spaces are identical.
-The question then is how to formalize our idea of shape in order to systematically reason about it.
-
-Algebraic topology solves this problem by associating algebraic objects (a number, for instance) that do not change under deformation.
-These objects capture things like the number of connected components, the number of loops, and the number of holes in an object, and represent \emph{topological invariants} of a space.
-We can only deform spaces with the same invariants.
-The circle and ellipse are identified with the presence of one loop, but cannot be deformed into a tree without a cut.
-The presence of a loop, a topologica invariant, distinguishes the circle and ellipse from the tree.
-Using these invariants, powerful ideas from abstract algebra can then be used to manipulate and reason about shape.
-
-While topology has traditionally developed through the study of abstract spaces, leading to very rich and beautiful constructions\footnote{For example, see the work of Thurstan on low-dimensional topology}, real data does not come in the form of perfect continuous spaces.
-Recent effort over the past 15 years has focused on developing methods to apply topology to real world problems in science and engineering.
-This work, collectively falling under the heading of \emph{topological data analysis}, has focused on efficient algorithms for computing topological invariants from finite, noisy data.
-TDA now encompasses a range of efforts and can now be considered a branch of applied mathematics in its own right.
-It has emerged from substantial interdisciplinary effort between mathematicians, computer scientists, and domain experts.
-
-In practice, we have data that comes as points in a high-dimensional space.
-This data forms only a finite sampling of some space, from which we wish to infer an underlying model or generating process.
-The data is viewed as a high-dimensional point cloud forming a discrete representation of the hidden continuous space.
-TDA studies global structure in this data such as connectedness and the presence of holes.
-As a first approximation, the basic approach of methods from TDA is to encode the original high-dimensional data as a type of topological complex, and then measure informative topological properties from these complexes.
-
-In this thesis, we use methods from TDA to study problems in evolutionary biology and genomics.
-Our data is typically drawn from high-dimensional sequence space.
-The two main methods we employ are \emph{persistent homology} and \emph{mapper}.
-Persistent homology provides a way to efficiently compute the topological invariants of a space across multiple scales, while mapper provides an approach for a condensed representation and visualization.
-In this section, we provide an overview and discussion of these two methods from the perspective of an end-user.
-We treat each method as a pipeline for transforming from raw data to a topological summary.
-While the mathematical literature on these methods is extremely deep, our goal is to explain things in sufficient detail for a wide audience to grasp the main ideas.
-As such, we will define technical terms where necessary, but focus primarily on developing a working understanding of the main aspects of each method as they are used in practice.
-The primary concept we require is \emph{homology}, a particular way in which topological invariants can be assigned to spaces.
-We include a more thorough review of the requisite mathematical concepts leading to a definition of simplicial homology in Appendix XX.
-
-This section draws on several excellent reviews of TDA, including \cite{Carlsson:2009a}, \cite{Edelsbrunner:2010}, and \cite{Ghrist:2008}.
-
 \subsection{Persistent Homology}
 
 Persistent homology computes topological invariants representing multi-scale information about the connectivity and holes in a dataset.
 Homology is the aspect of a space which captures things like connected components, loops, and voids.
-
 
 Persistent refers to capturing structure that extends over multiple spatial resolutions, while homology refers to the type of topological structure that is being computed.
 Persistence is equated with robustness.

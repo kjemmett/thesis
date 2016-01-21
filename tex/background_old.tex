@@ -36,27 +36,12 @@
 \section{Topological Data Analysis}
 \label{background:sec:tda}
 
-Topology is the branch of mathematics that aims to characterize spaces up to deformations.
-If we take a tree and change the branch lengths, the tree remains a tree.
-How can we addess if two spaces have the same topology?
-One trick is to assign to each space some algebraic object (a number, for instance) that does not change under deformation.
-That object is called a topological invariant.
-For instance, we can assign to an object the number of loops, which in the case of the mug will be one, and in the case of the tree will be zero.
-We can only continuously deform spaces with the same invariants.
-Algebraic topology provides tools to compute invariants of these spaces.
-
-Real data does not come in the form of perfect continuous spaces, as dealt with by classical topology.
-Instead, data can be viewed as a high-dimensional point cloud forming a discrete representation of a space.
-Topological data analysis (TDA) refers to a framework that has been developed in the last 15 years to compute topological properties from finite point clouds, building on developments in computational topology and statistics.
-Our primary tool is persistent homology, a branch of TDA that computes topological invariants representing multi-scale information about the connectivity and holes in a dataset.
-
 \subsection{Intuition}
 
 Topological Data Analysis (TDA) studies structure in high-dimensional data such as connectedness and the presence of holes.
 In practice, we observe only a sample of data points, from which we wish to infer an underlying model or generating principle.
 TDA first builds topological complexes from data, then measures informative properties of these complexes. 
 Persistent homology (PH) is a method from TDA that uses algebraic topology to compute quantitative properties in data, including connectedness and the presence of holes.
-For excellent review of topological data analysis, see the reviews [Carlsson, Ghrist].
 
 Shape information is indexed by dimension.
 $H_0$ information tells us about connected components and is roughly equivalent to a hierarchical clustering.
@@ -478,40 +463,6 @@ The scale over which this bar persists represents the amount of evolutionary tim
 Additionally, the persistence algorithm will return a generating basis for a particular homology group, which we can use to identify the particular mixtures of sequences involved a reticulation.
 In this way, we can analyze both the scale and frequency of reticulation in genomic data sets.
 
-We summarize the connection between genomics and TDA in Table~\ref{table:dictionary}.
-
-\begin{table}
-\centering
-\caption{Dictionary connecting algebraic topology and evolutionary biology}
-\small
-\rowcolors{2}{gray!25}{white}
-\setlength{\aboverulesep}{0pt}
-\setlength{\belowrulesep}{0pt}
-\setlength{\extrarowheight}{.75ex}
-\begin{tabularx}{\textwidth}{XX}
-\toprule\rowcolor{gray!50}
-Algebraic Topology                                         & Evolutionary Biology \\
-\midrule
-Filtration value $\epsilon$                                & Genetic distance (evolutionary scale) \\
-0-dimensional Betti number at filtration value $\epsilon$  & Number of clusters at scale $\epsilon$ \\
-Generators of 0-D homology                                 & A representative element of the cluster \\
-Hierarchical relationship among generators of 0-D homology & Hierarchical clustering \\
-1-D Betti number                                           & Lower bound on number of reticulate events \\
-Generators of 1-D Homology                                 & Reticulate events \\
-Generators of 2-D Homology                                 & Complex horizontal genomic exchange \\
-Non-zero high-dimensional homology (“topological obstruction to phylogeny”) & No treelike phylogenetic representation exists \\
-Number of higher-dimensional generators over a time interval (“irreducible cycle rate”) & Lower bound on recombination/reassortment rate \\
-\bottomrule
-\end{tabularx}
-\label{table:dictionary}
-\end{table}
-
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{./fig/tda_on_sequencedata.pdf}
-\caption[Applying TDA to Sequence Data]{Applying persistent homology to genomic data. (A) An evolutionary genealogy including reticulation. (B) Data projected into 2-dimensions. (C) Construction of a filtered simplicial complex. (D) The resulting multiscale barcode diagram.}
-\label{background:fig:tda_on_sequencedata}
-\end{figure}
 
 \subsection{The Four Gamete Test: The Simplest Example}
 

@@ -343,3 +343,111 @@ An example of a phylogenetic network using the split network approach is shown i
 \label{background:fig:split_network}
 \end{figure}
 
+% NEXT: TDA SECTION. 
+
+\section{Topological Data Analysis}
+\label{bg:s:tda}
+
+Topology is the branch of mathematics that formalizes our intuitive notions of shape.
+More concretely, topology provides the methods to characterize the properties of objects and spaces that remain invariant under continuous deformation.
+For example, squeezing a circle into an ellipse by compressing along one axis does not change the fact that the object encloses a single loop.
+Or, as we saw in the introduction, the coffee mug can be continuously deformed into the donut.
+Likewise, if we take a tree and change the lengths of its branches, the tree remains a tree.\footnote{It is important to draw a distinction between the notion of tree topology, in which the branch patterns determines the topology, and global topology, in which all trees are equivalent. While the former is more common in the phylogenetics community, here we consider the latter.}
+In each of these examples, while the deformation has substantially altered \emph{local} properties of the space, on a \emph{global} level certain essential characteristics have remained unchanged.
+From the perspective of topology, the spaces are considered identical.
+The question then is how to formalize our idea of global shape in order to systematically reason about it.
+
+Algebraic topology solves this problem by associating algebraic objects (an integer, for instance) that do not change under continuous deformation.
+These objects may capture properties like the number of connected components, the number of loops, and the number of holes in an object, and represent \emph{topological invariants} of a space.
+Two spaces can only be deformed into one other if they share the same invariants.
+The circle and ellipse are identified as equivalent by the presence of one loop.
+Neither can be deformed into a tree without introducing a cut, which would be a type of discontinuous deformation.
+Using these invariants, powerful ideas from abstract algebra can then be used to manipulate and reason about shape.
+
+While topology has traditionally developed through the study of abstract spaces, leading to very rich and beautiful constructions\footnote{For example, see the work of Thurstan on low-dimensional topology}, real data does not come in the form of perfect continuous spaces.
+Recent effort over the past 15 years has focused on developing methods to apply topology to real world problems in science and engineering.
+This work, collectively falling under the heading of \emph{topological data analysis} (TDA), has focused on efficient algorithms for computing topological invariants from finite, noisy data.
+TDA now encompasses a range of efforts and can now be considered a branch of applied mathematics in its own right.
+It has emerged from substantial interdisciplinary effort between mathematicians, computer scientists, and domain experts.
+
+In practice, a typical workflow for applying TDA to real data is as follows.
+Data comes in the form of a set of $n$ observations with $p$ attributes, where $p$ is often very large.
+The data is assumed to be a finite sample from some more complex space, from which we wish to infer either some sort of global structure or underlying model.
+The data is represented as a finite point cloud: a set of $n$ points in $p$ dimensions with an associated notion of distance.
+The point cloud is then transformed into a topological space by associating different sets of points with each other.
+The associations can be constructed in different ways -- for instance, one of the most common constructions associates points within a certain distance $d$ from one another.
+Computational approaches are then used to measure informative topological properties from the space.
+
+In this thesis, we use methods from TDA to study problems in evolutionary biology and genomics.
+Our data is typically aligned genomic sequences from sets of related organisms.
+If our sequences are each of length $l$, then we can imagine our data as points in an $l$-dimensional sequence space.
+A sequence metric, such as the Hamming metric, measures distance.
+
+The two main methods from TDA that we employ are \emph{persistent homology} and \emph{mapper}.
+Persistent homology provides a way to efficiently compute the topological invariants of a space across multiple scales, while mapper provides an approach for a condensed representation and visualization.
+In this section, we provide an overview and discussion of these two methods from the perspective of an end-user.
+We treat each method as a pipeline for transforming from raw data to a topological summary.
+While the mathematical literature on these methods is extremely deep, our goal is to explain things in sufficient detail for a wide audience to grasp the main ideas.
+As such, we will define technical terms where necessary, but focus primarily on developing a working understanding of the main aspects of each method as they are used in practice.
+The primary concept we require is \emph{homology}, a particular way in which topological invariants can be assigned to spaces.
+We include a more thorough review of the requisite mathematical concepts leading to a definition of simplicial homology in Appendix XX.
+
+The following sections draw on several excellent reviews of TDA, including \cite{Carlsson:2009a}, \cite{Edelsbrunner:2010}, and \cite{Ghrist:2008}.
+
+\subsection{Persistent Homology}
+
+
+\subsection{Mapper}
+
+
+\section{Applying TDA to Molecular Sequence Data}
+
+Aligned genomic sequences can be naturally viewed as points in a high-dimensional squence space.
+
+
+Given a sample of aligned sequences, we can use standard genetic distance metrics to compute the pairwise distance matrix.
+We now have a finite metric space representing our sample which we would like to understand the topology of.
+
+We summarize the connection between genomic data and TDA in Table~\ref{table:dictionary}.
+
+\begin{table}
+\centering
+\caption{Dictionary connecting algebraic topology and evolutionary biology}
+\small
+\rowcolors{2}{gray!25}{white}
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+\setlength{\extrarowheight}{.75ex}
+\begin{tabularx}{\textwidth}{XX}
+\toprule\rowcolor{gray!50}
+Algebraic Topology                                         & Evolutionary Biology \\
+\midrule
+Filtration value $\epsilon$                                & Genetic distance (evolutionary scale) \\
+0-dimensional Betti number at filtration value $\epsilon$  & Number of clusters at scale $\epsilon$ \\
+Generators of 0-D homology                                 & A representative element of the cluster \\
+Hierarchical relationship among generators of 0-D homology & Hierarchical clustering \\
+1-D Betti number                                           & Lower bound on number of reticulate events \\
+Generators of 1-D Homology                                 & Reticulate events \\
+Generators of 2-D Homology                                 & Complex horizontal genomic exchange \\
+Non-zero high-dimensional homology (“topological obstruction to phylogeny”) & No treelike phylogenetic representation exists \\
+Number of higher-dimensional generators over a time interval (“irreducible cycle rate”) & Lower bound on recombination/reassortment rate \\
+\bottomrule
+\end{tabularx}
+\label{table:dictionary}
+\end{table}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{./fig/tda_on_sequencedata.pdf}
+\caption[Applying TDA to Molecular Sequence Data]{Applying persistent homology to genomic data. (A) An evolutionary genealogy including reticulation. (B) Data projected into 2-dimensions. (C) Construction of a filtered simplicial complex. (D) The resulting multiscale barcode diagram.}
+\label{background:fig:tda_on_sequencedata}
+\end{figure}
+
+\subsection{The Fundamental Unit of Reticulation}
+
+Describe the four-gamete test.
+
+\subsection{The Space of Trees, Revisited}
+
+In Section~XX we introduced Tree Space as an abstract construction to represent the space of trees.
+Tree Space was shown to be the subspace of the space of finite metrics that satisfy the condition of additivity.

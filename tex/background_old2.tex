@@ -319,40 +319,6 @@ The scale over which this bar persists represents the amount of evolutionary tim
 Additionally, the persistence algorithm will return a generating basis for a particular homology group, which we can use to identify the particular mixtures of sequences involved a reticulation.
 In this way, we can analyze both the scale and frequency of reticulation in genomic data sets.
 
-We summarize the connection between genomics and TDA in Table~\ref{table:dictionary}.
-
-\begin{table}
-\centering
-\caption{Dictionary connecting algebraic topology and evolutionary biology}
-\small
-\rowcolors{2}{gray!25}{white}
-\setlength{\aboverulesep}{0pt}
-\setlength{\belowrulesep}{0pt}
-\setlength{\extrarowheight}{.75ex}
-\begin{tabularx}{\textwidth}{XX}
-\toprule\rowcolor{gray!50}
-Algebraic Topology                                         & Evolutionary Biology \\
-\midrule
-Filtration value $\epsilon$                                & Genetic distance (evolutionary scale) \\
-0-dimensional Betti number at filtration value $\epsilon$  & Number of clusters at scale $\epsilon$ \\
-Generators of 0-D homology                                 & A representative element of the cluster \\
-Hierarchical relationship among generators of 0-D homology & Hierarchical clustering \\
-1-D Betti number                                           & Lower bound on number of reticulate events \\
-Generators of 1-D Homology                                 & Reticulate events \\
-Generators of 2-D Homology                                 & Complex horizontal genomic exchange \\
-Non-zero high-dimensional homology (“topological obstruction to phylogeny”) & No treelike phylogenetic representation exists \\
-Number of higher-dimensional generators over a time interval (“irreducible cycle rate”) & Lower bound on recombination/reassortment rate \\
-\bottomrule
-\end{tabularx}
-\label{table:dictionary}
-\end{table}
-
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{./fig/tda_on_sequencedata.pdf}
-\caption[Applying TDA to Sequence Data]{Applying persistent homology to genomic data. (A) An evolutionary genealogy including reticulation. (B) Data projected into 2-dimensions. (C) Construction of a filtered simplicial complex. (D) The resulting multiscale barcode diagram.}
-\label{background:fig:tda_on_sequencedata}
-\end{figure}
 
 \subsection{The Simplest Example}
 
