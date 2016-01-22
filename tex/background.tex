@@ -445,9 +445,55 @@ Number of higher-dimensional generators over a time interval (“irreducible cyc
 
 \subsection{The Fundamental Unit of Reticulation}
 
+In population genetics, there is a simple test for the presence of reticulate evolution in sequence data.
+The test is called the \emph{four-gamete test} and is originally due to Richard Hudson and Norman Kaplan \cite{Hudson:1985}.
+The test assumes only no back mutation.\footnote{Also known as the \emph{infinite-sites assumption}.}
+The test identifies reticulate evolution by looking at pairs of segregating sites.
+If 
+
+
+
+
+In population genetics, there is a simple test for the presence of reticulate evolution in a sequence dataset.
+The test is called the \emph{four-gamete test} and is originally due to Richard Hudson and Norman Kaplan \cite{Hudson:1985}.
+The test identifies reticulate evolution by looking four pairs
+
+
+In phylogenetics, 
 Describe the four-gamete test.
+
+In any given dataset, the simultaneous presence of haplotype patterns 00, 10, 01, and 11 is incompatible with strictly clonal evolution.
+\kje{[Needs more explanation why?]}
+
+Using a Hamming metric, we have a finite metric space which describes a simple diamond.
+The barcode diagram will reflect nontrivial topology in the interval $[1,2)$.
+This simple example serves as motivation for much of the work that follows.
+
+The simplest example is 00, 10, 01, 11.
+Under a Hamming metric this forms a loop.
 
 \subsection{The Space of Trees, Revisited}
 
-In Section~XX we introduced Tree Space as an abstract construction to represent the space of trees.
-Tree Space was shown to be the subspace of the space of finite metrics that satisfy the condition of additivity.
+In Section~XX, Tree Space was introduced as an abstract construction to represent the set of all possible unrooted binary trees.
+Tree Space was shown to be a subspace of the space of finite metrics that satisfy the additivity condition.
+Real data will very rarely satisfy this condition, and one possible interpretation of phylogenetic reconstruction is finding the best projection onto tree space for arbitrary data.
+
+The program we propose is very closely related to this interpretation.
+As we move off tree space, we know there is no additive tree that can represent that data.
+We would like a topological measure of deviation from additivity.
+Finite data comes represented as a metric space.
+On top of this metric space we can associate some topological invariants, as computed using methods from TDA.
+We will interpret these invariants as a measure of deviation from tree-like additivity.
+The further the data sits from tree space, the more prominent these invariants should be, and the more reticulation we will associate with the data.
+
+Rather than attempt to characterize arbitrary data as a projection onto tree space, we will use methods of TDA to compute topological invariants.
+
+An ambitious goal would be a complete characterization of the space of finite metrics in terms of their topological invariants -- this is likely difficult.
+Our updated picture looks as Figure~XX.
+
+Note that this is an abstract construction and for data sets with an appreciable number of leaf nodes it will be difficult to directly visualize their position.
+
+As data moves off tree space
+Our hope is that the topological tools we develop here are sensitive enough to capture these deviations in interpretable ways.
+
+Unfortunately, as we will see, it does not appear that a complete characterization 
