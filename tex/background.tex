@@ -396,9 +396,11 @@ The following sections draw on several excellent reviews of TDA, including \cite
 
 \subsection{Persistent Homology}
 
+% insert Persistent Homology Description Here.
 
 \subsection{Mapper}
 
+% insert Mapper description here.
 
 \section{Applying TDA to Molecular Sequence Data}
 
@@ -447,30 +449,18 @@ Number of higher-dimensional generators over a time interval (“irreducible cyc
 
 In population genetics, there is a simple test for the presence of reticulate evolution in sequence data.
 The test is called the \emph{four-gamete test} and is originally due to Richard Hudson and Norman Kaplan \cite{Hudson:1985}.
-The test assumes only no back mutation.\footnote{Also known as the \emph{infinite-sites assumption}.}
-The test identifies reticulate evolution by looking at pairs of segregating sites.
-If 
+The test assumes only an infinite-sites model, which states that a mutation can only occur once at a particular position.
+Put another way, there is no back-mutation or multiple-mutation.
+The assumption will hold generally for long genomes.
+The four-gamete test identifies reticulate evolution by looking at pairs of segregating sites, or sites that have undergone a mutation.
 
 
-
-
-In population genetics, there is a simple test for the presence of reticulate evolution in a sequence dataset.
-The test is called the \emph{four-gamete test} and is originally due to Richard Hudson and Norman Kaplan \cite{Hudson:1985}.
-The test identifies reticulate evolution by looking four pairs
-
-
-In phylogenetics, 
-Describe the four-gamete test.
 
 In any given dataset, the simultaneous presence of haplotype patterns 00, 10, 01, and 11 is incompatible with strictly clonal evolution.
-\kje{[Needs more explanation why?]}
-
 Using a Hamming metric, we have a finite metric space which describes a simple diamond.
 The barcode diagram will reflect nontrivial topology in the interval $[1,2)$.
 This simple example serves as motivation for much of the work that follows.
-
-The simplest example is 00, 10, 01, 11.
-Under a Hamming metric this forms a loop.
+See Figure~XX.
 
 \subsection{The Space of Trees, Revisited}
 
