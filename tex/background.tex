@@ -404,11 +404,23 @@ The following sections draw on several excellent reviews of TDA, including \cite
 
 \section{Applying TDA to Molecular Sequence Data}
 
-Aligned genomic sequences can be naturally viewed as points in a high-dimensional squence space.
-
+Aligned sequence data can be naturally viewed as a point cloud in a high-dimensional space, which we loosely call \emph{sequence space}.
+A particular sequence space will be determined by the length of the aligned sequences, $L$, and the alphabet $Q$ over which the sequences are defined.
+The sequence alphabet will typically be either nucleotide or amino acid.
+The dimension of the space is determined by the length of the sequences, $L$.
+There are $||Q||^L$ possible sequences.
+The process of evolution can be seen as the process of exploring sequence space.
+Clonal reproduction is a way of smoothly exploring this space, while reticulate evolution explores this space uses discontinuous jumps.
+Inherent also is the idea that we can observe and sample only a small fraction of extant organisms in sequence space.
+As more genomes continued to be sequenced, this space becomes more densely sampled.
 
 Given a sample of aligned sequences, we can use standard genetic distance metrics to compute the pairwise distance matrix.
 We now have a finite metric space representing our sample which we would like to understand the topology of.
+
+--------------------------------------------------
+
+We illustrate a simple example of how TDA can capture reticulate evolution from sequence data in Figure~\ref{background:fig:tda_on_sequencedata}.
+Consider the reticulate phylogeny
 
 We summarize the connection between genomic data and TDA in Table~\ref{table:dictionary}.
 
@@ -447,20 +459,41 @@ Number of higher-dimensional generators over a time interval (“irreducible cyc
 
 \subsection{The Fundamental Unit of Reticulation}
 
-In population genetics, there is a simple test for the presence of reticulate evolution in sequence data.
-The test is called the \emph{four-gamete test} and is originally due to Richard Hudson and Norman Kaplan \cite{Hudson:1985}.
-The test assumes only an infinite-sites model, which states that a mutation can only occur once at a particular position.
-Put another way, there is no back-mutation or multiple-mutation.
-The assumption will hold generally for long genomes.
-The four-gamete test identifies reticulate evolution by looking at pairs of segregating sites, or sites that have undergone a mutation.
+In population genetics, there is a simple test for the presence of reticulate evolution in sequence data called the \emph{four-gamete test} \cite{Hudson:1985}.
+The test assumes only an infinite-sites model, which states that for a sufficiently long genome, a particular residue will only ever undergo a single mutation.
+Put another way, there is no multiple-mutation or back mutation.
+The infinite-sites model has three consequences: first, one need only consider segregating sites, or nucleotide positions that have undergone a mutation.
+Second, because a given position can mutate only once, it is sufficient to represent sequences as binary strings, where a $0$ indicates the unmutated state and $1$ the mutated state.
+Third, for a given position we can arbitrarily assign the unmutated and mutated states.
+The infinite-sites model is considered a reasonably good model for long genomes.
 
+The four-gamete test identifies reticulate evolution by looking at pairs of segregating sites.
+Given biallelic data, there are four possible haplotype patterns, or states, for a pair of segregating sites: $00$, $10$, $01$, or $11$.\footnote{These sites need not be adjacent.}
+The statement of the four gamete test is this: in any given dataset, the simultaneous presence of all four haplotype states in any pair of segregating sites is incompatible with strictly clonal evolution, and indicates reticulate evolution.
+To see this, assume state $00$ as the ancestor to states $10$ and $01$, which arise from two independent mutations.
+Because of the no multipe-mutation assumption, it is not possible for either of these two states to then independently mutate into state $11$.
+The only way for state $11$ to arise is via a reticulate event that brings together the left site from state $10$ and the right site from $01$.\footnote{It is entirely possible for the reticulate event to have had a reversed pattern of ancestry, in which case the reticulation would result in a state $00$ and would not be detectable from the sequence data.}
+This process is illustrated in Figure~XXA.
 
+Under a Hamming metric, the distance matrix for the set of four sequences $s_1=00$, $s_2=10$, $s_3=01$, and $s_4=11$ is
+\begin{equation}
+d = 
+\begin{pmatrix}
+0 & 1 & 1 & 2 \\
+1 & 0 & 2 & 1 \\
+1 & 2 & 0 & 1 \\
+2 & 1 & 1 & 2 \\
+\end{pmatrix}
+\end{equation}
+The Vietoris-Rips filtration of this space is shown in Figure~XXB.
+At $\epsilon=0$ the four sequences are disconnected.
+At $\epsilon=1$, four edges are drawn, forming a loop.
+At $\epsilon=2$, the space is completely connected and the loop is killed.
+Persistent homology captures the presence of this loop as an $H_1$ feature in the interval $[1,2)$.
+In this way, the reticulate event is associated with the presence of a nonzero $H_1$ bar.
 
-In any given dataset, the simultaneous presence of haplotype patterns 00, 10, 01, and 11 is incompatible with strictly clonal evolution.
-Using a Hamming metric, we have a finite metric space which describes a simple diamond.
-The barcode diagram will reflect nontrivial topology in the interval $[1,2)$.
-This simple example serves as motivation for much of the work that follows.
-See Figure~XX.
+We consider this example to be the minimal, or fundamental, unit of reticulation.
+All more complicated patterns of reticulation can be seen as extensions of this example.
 
 \subsection{The Space of Trees, Revisited}
 
