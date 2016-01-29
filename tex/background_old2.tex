@@ -292,36 +292,7 @@ Then we will see what happens we interpolate between those different metrics.
 
 \section{Applying TDA to Molecular Sequence Data}
 
-As more genomes continue to be sequenced, this space becomes more densely sampled.
-Using the standard genetic distance metrics described above, we can compute a pairwise distance matrix betwee genomes.
-This defines our finite metric space.
-From there, methods from TDA can be applied.
-In particular, we can apply persistent homology, and phylogenetic information contained in the dataset can be read off the resulting barcode diagram.
-
-An important foundational point was described in \cite{Chan:2013}.
-In that paper, it was shown that if the evolutionary history contained in a particular data-set is tree-like, then there will be no higher homology in the resulting barcode diagram.
-In other words, the only nontrivial topology will appear in dimension zero.
-
-If the set of genomes permits a phylogenetic representation, then positive-dimensional Betti numbers should vanish, since the topology of a tree is contractible. 
-\kje{[More about Gunnar's proof?]}
-If the evolutionary history includes reticulate events that cannot be represented as a tree, these events will be captured as non-trivial higher dimensional homology in the barcode diagram.
-
-We illustrate a simple example of how TDA can capture horizontal evolution from populaton data in Figure~\ref{background:fig:tda_on_sequencedata}.
-Consider the reticulate phylogeny (Figure~\ref{background:fig:tda_on_sequencedata}A): five genetic sequences sampled today (yellow circles) originate from a single common ancestor due to clonal evolution (solid blue lines tracing parent to offspring) and reticulate evolution (dotted red lines).
-In Figure~\ref{background:fig:tda_on_sequencedata}B, these five samples are placed in the context of a larger dataset, where the data has been projected onto the plane using PCA.
-Persistent homology is then applied to this larger sample.
-In Figure~\ref{background:fig:tda_on_sequencedata}C we demonstrate the construction of a filtered simplicial complex, showing how the connectivity changes as the scale parameter $\epsilon$ is increased.
-Finally, in Figure~\ref{background:fig:tda_on_sequencedata}D we see the resulting barcode diagram.
-Using $H_0$ we can track the number of strains or subclades that persist, roughly corresponding to the tree-like component of the data.
-The $H_1$ bar near spanning roughly $\epsilon=0.13$ to $\epsilon=0.16$ identifies the presence of a reticulate event. involving the five higlighted sequences.
-The scale over which this bar persists represents the amount of evolutionary time separating the parents and the reticulate offspring.
-Additionally, the persistence algorithm will return a generating basis for a particular homology group, which we can use to identify the particular mixtures of sequences involved a reticulation.
-In this way, we can analyze both the scale and frequency of reticulation in genomic data sets.
-
-
 \subsection{The Simplest Example}
-
-
 
 \subsection{The Space of Trees, Revisited}
 
