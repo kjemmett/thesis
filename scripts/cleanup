@@ -7,9 +7,11 @@ rm ${thesis_path}/*.bbl
 rm ${thesis_path}/*.bcf
 rm ${thesis_path}/*.blg
 rm ${thesis_path}/*.fdb_latexmk
+rm ${thesis_path}/*.fls
 rm ${thesis_path}/*.lof
 rm ${thesis_path}/*.log
 rm ${thesis_path}/*.lot
 rm ${thesis_path}/*.run.xml
 rm ${thesis_path}/*.synctex.gz
 rm ${thesis_path}/*.toc
+rm ${thesis_path}/*.fls

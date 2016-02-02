@@ -37,9 +37,6 @@ While this may seem like a strong assumption, it holds quite well for
 We give a concrete example on four leaves.
 We consider only segregating sites.
 Consider the set of four sequences S = {00000, 11000, 10110, 10101}.
-A po
-A possible evo
-To give
 One possible unrooted tree topology representing the data is shown in Figure XX.
 
 A few things are worth noting in this example.

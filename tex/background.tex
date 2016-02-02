@@ -3,6 +3,11 @@
 \label{ch:background}
 
 This thesis uses newly developed approaches from applied topology to study problems in evolutionary biology and genomics.
+In this chapter we provide background material on the 
+In Section~\ref{bg:bio}
+In Section~\ref{bg:tda}
+Finally, in Section~\ref{bg:top4bio}
+
 Here we supply sufficient background to motivate our approach.
 
 \section{Biology}
@@ -329,13 +334,13 @@ Number of interior edges $r=L-3$, a particular additive tree can be plotted as a
 A single orthant corresponds to a single tree topology.
 
 The tree space construction allows one to define statistics, such as means and variance, on sets of trees.
-This has been utilized 
+This has been utilized ....
 
 \begin{figure}
 \centering
 \includegraphics[]{./fig/TreeSpace.pdf}
 \caption[Tree Space Construction]{The construction of Tree Space. Each point in this space represented a particular unrooted tree topology with branch lengths.}
-\label{background:fig:TreeSpace}
+\label{fig:bg:tree_space}
 \end{figure}
 
 \subsubsection{Phylogenetic Networks \kje{Needs Expansion}}
@@ -346,7 +351,7 @@ Most of these methods generalize phylogenetic trees into \emph{phylogenetic netw
 However, most simply present corrections to phylogenetic trees, which can fail in cases where horizontal evolution is pervasive, as in many prokaryote datasets.
 Additionally, the resulting networks can be complex and difficult to interpret quantitatively.
 This can make it difficult to distinguish between phylogenetic incompatibilities due to noisy sampling and due to true reticulations.
-An example of a phylogenetic network using the split network approach is shown in Figure~\ref{background:fig:split_network}.
+An example of a phylogenetic network using the split network approach is shown in Figure~\ref{fig:bg:split_network}.
 
 \kje{[See Morrison review..]}
 
@@ -354,7 +359,7 @@ An example of a phylogenetic network using the split network approach is shown i
 \centering
 \includegraphics[width=.8\textwidth]{fig/background/split_network.pdf}
 \caption[Example of a Splits Network]{Example of a split network of genus Branchiopoda and outgroups. Computed using the Neighbor-Net algorithm. Phylogenetic incompatibilities are represented by conflicting splits. reprinted from BMC Evolutionary Biology 7:147 (2007).}
-\label{background:fig:split_network}
+\label{fig:bg:split_network}
 \end{figure}
 
 % NEXT: TDA SECTION. 
@@ -407,91 +412,128 @@ The primary concept we require is \emph{homology}, a particular way in which top
 The following sections draw on several excellent reviews of TDA, including \cite{Carlsson:2009a}, \cite{Edelsbrunner:2010}, and \cite{Ghrist:2008}.
 A more thorough introduction to algebraic topology can be found in \cite{Hatcher:2002ut}.
 
-\subsection{Mathematical Preliminaries}
+\subsection{Preliminaries}
 \label{bg:tda:math}
 
-As state above, our data comes as $n$ points with $p$ features, $D=(n,p)$.
-To our data we will associate a collection of algebraic objects, which begins by first building a topological complex on top of the point cloud.
-We will mostly be concerened with discrete complexes built from simplices.
-A simplex is something like a point, a line, a triangle, or a higher-dimensional generalization.
-Formally, a $k$-simplex is a $k$-dimensional polytope which is the convex hull of $k+1$ vertices (see Figure~XX).
+As stated above, our data is a set of $n$ points, $S=\{s_1,\ldots,s_n\}$.
+Each point is a vector with $p$ features, $s_i=(s_{i1},\ldots,s_{ip})$.
+We refer to the collection of points, embedded in a space with an appropriate metric structure, as a point cloud.
+We wish to associate a collection of algebraic objects to the point cloud in order to quantify its shape.
+To do so, our first step is to construct a topological structure on top of the point cloud, called a \emph{simplicial complex}.
+The structure will consist of a set of simplices pieced together in such a way that they approximate the shape of the point cloud in a sensible way.
+Shape is then quantified using the notion of \emph{homology}.
+This section provides the definitions necessary to understand homology.
 
-A simplicial complex is built from simplices, glued together in a way such that (1) any face of a simplex in $K$ is also in $K$, and (2) the intersection of any two simplices in $K$ is a face of both simplices.
-An example of a simplicial complex is shown in Figure~XX.
+\subsubsection{Simplices and Simplicial Complexes}
+\label{bg:tda:math:simplices}
+
+The building blocks of our topological structures are simplices.
+A \emph{simplex} is something like a point, a line, a triangle, or any higher-dimensional generalization of such.
+Formally, a $k$-simplex is a $k$-dimensional polytope which is the convex hull of $k+1$ vertices, as shown in Figure~\ref{fig:bg:simplices}.
+A simplex can be represented by its list of vertices, i.e. $\sigma=(s_{1},s_{2},s_{3})$.
+An $m$-face of a simplex is the space spanned by the set of $m+1$ vertices, and is itself a simplex.
+For example, the $0$-faces and $1$-faces of a simplex are its vertices and edges, respectively.
+The $(k-1)$-faces (faces of co-dimension $1$) of a $k$-simplex are called facets.
+Facets are represented as $\sigma_{(-i)}$, which implies the facet generated by elimination of the $i$-th vertex.
+
+A \emph{finite simplicial complex} $K$ is built on the vertex set $S$ from simplices glued together in such a way that (1) any face of a simplex in $K$ is also in $K$, and (2) the intersection of any two simplices in $K$ is a face of both simplices.
+An example of a simplicial complex is shown in Figure~\ref{fig:bg:simplicial_complex}.
 
 \begin{figure}
 \centering
-% \includegraphics[]{./fig/simplices.pdf}
-\caption[Simplices]{}
-\label{bg:fig:simplices}
+\includegraphics[]{./fig/background/simplices.pdf}
+\caption[Simplices: The building blocks of topological complexes]{Simplices are the fundamental building blocks of our topological structures. They can be thought of as triangles generalized to arbitrary dimension. Here we show $k$-simplices for $k=0$ to $k=4$.}
+\label{fig:bg:simplices}
 \end{figure}
 
 \begin{figure}
 \centering
-% \includegraphics[]{./fig/simplicial_complex.pdf}
-\caption[Simplicial Complex]{}
-\label{bg:fig:simplicial_complex}
+\includegraphics[]{./fig/background/simplicial_complex.pdf}
+\caption[Simplicial Complex: A discrete topological space]{A finite simplicial complex is an object built from finite number of simplices glued together in a sensibly nice way.}
+\label{fig:bg:simplicial_complex}
 \end{figure}
 
-One nice property is that a boundary has no boundary.
+We are interested in combinatorial operations that can be performed on a simplicial complex $K$.
+In general, these operations will act on subsets of simplices of fixed dimension $k$.
+These subsets are called $k$-\emph{chains}, and can be represented as formal sums $C_{k}=\sum_{j}\alpha_{j}\sigma_{j}$.
+The coefficients $\alpha_j$ will be taken to be over $\mathbb{Z}_2$ (i.e. $0$ and $1$).
+Two consequences of this choice are (1) $\sigma+\sigma=0$, and (2) we consider simplices without regard to orientation.\footnote{In general, an algebraic topology can be defined with coefficients in arbitrary fields. We use $\mathbb{Z}_2$ for simplicity, efficiency, and because properties, such as torsion, that arise over more complex fields are not expected to be present in the biological data we consider. It is important to keep this in mind, as it was in fact shown that torsion can arise in real data in \cite{Carlsson:2008up}. In that paper, an association was shown between the space of natural images and the Klein bottle.}
+
+An important operator is the boundary operator, $\partial:C_{k}\rightarrow{C_{k-1}}$.
+The boundary of a simplex $\sigma$, $\partial_{k}\sigma$, is the sum of its facets.
 \begin{equation}
-\partial_{k-1}\partial_{k} = 0 \forall k
+\partial_{k}\sigma = \sum_{i}{\sigma_{(-i)}}
 \end{equation}
+The boundary of a chain is $\partial C = \sum_{j}\partial\sigma_{j}$.
+As a simple example, consider the $2$-simplex $\triangle$ defined by vertices $\triangle=(a,b,c)$.
+We have $\partial\triangle = (a,b) + (b,c) + (a,c)$.
+Further, we have $\partial\partial\triangle = 2(a) + 2(b) + 2(c) = 0$.
+In fact, the property $\partial\partial C = 0$ will hold for any chain $C$.
 
-$C$ is the set of XXXX.
-The $k$-th cycle group is $Z_{k}=\ker \partial_{k}$.
-$Z_{k}$ defines the set of all cycles of dimension $k$.
-$B_{k}$ defines the set of all boundaries of dimension $k$.
-That is, elements of $B_{k}$ serve as boundaries of $(k+1)$-chains.
-The relationship between these different groups is shown in Figure~\ref{fig:chain_complexes}.
+We can additionally define more refined types of chains.
+A \emph{cycle} is a chain with empty boundary, $\partial C=0$.
+A \emph{boundary cycle} is a $k$-cycle that is the boundary of a chain in dimension $k+1$.
 
+We can use these definitions to construct various groups on a simplicial complex $K$.
+The set of all chains of dimension $k$ forms the chain group $C_{k}$.
+The set of all cycles of dimension $k$ forms the cycle group $Z_{k}$.
+The set of all boundary cycles of dimension $k$ forms the a group $B_{k}$.
+The latter two groups can be understood in terms of the boundary operator $\partial$ acting on $K$.
+The group $Z_{k}$ is the kernel of the boundary operator, $Z_{k}=\ker\partial_{k}$.
+That is, it is the set of all $k$-chains that are sent to $0$ by the boundary operator.
+The group $B_{k}$ is the image of the boundary operator, $B_{k}=\im\partial_{k+1}$.
+That is, it is the set of all $k$-chains which are themselves the boundary of $(k+1)$-chains in $K$.
+These groups have a particularly simple relationship to one another which is shown in Figure~\ref{fig:bg:chain_complexes}.
 
-Boundary operator $\partial_{k}:C_{k}\rightarrow C_{k-1}$.
-Action of boundary operator on a simplex $\sigma$ is defined as: 
+% Boundary operator defines a chain complex $C_{*}$:
 
-\begin{equation}
-\partial_{k}\sigma = \displaystyle\sum_{i}(-1)^{i}[v_{0},v_{1},...,\hat{v}_{i},...,v_{n}].
-\end{equation}
-
-A chain $C\in C_{k}$ is called a cycle if $\partial_{k}C=0$.
-Chain with empty boundary.
-The set of cycles forms a group.
-
-Boundary operator defines a chain complex $C_{*}$:
-
-\begin{equation}
-\dots \overset{\partial_{n+1}}{\longrightarrow} C_n \overset{\partial_{n}}{\longrightarrow} C_{n-1} \overset{\partial_{n-1}}{\longrightarrow}  ... \overset{\partial_{2}}{\longrightarrow} C_n \overset{\partial_{1}}{\longrightarrow} C_{n-1} \overset{\partial_{0}}{\longrightarrow}  0
-\end{equation}
-
-Chain complex.
+% \begin{equation}
+% \dots \overset{\partial_{n+1}}{\longrightarrow} C_n \overset{\partial_{n}}{\longrightarrow} C_{n-1} \overset{\partial_{n-1}}{\longrightarrow}  ... \overset{\partial_{2}}{\longrightarrow} C_n \overset{\partial_{1}}{\longrightarrow} C_{n-1} \overset{\partial_{0}}{\longrightarrow}  0
+% \end{equation}
 
 \begin{figure}
-\centering\includegraphics[width=\columnwidth]{./fig/FASY_chain_complexes.pdf}
+\centering
+\includegraphics[width=\columnwidth]{./fig/FASY_chain_complexes.pdf}
 \caption[Relationship between the chain group, cycle group, and boundary group.]{Relationship between the chain group ($C_p$), cycle group ($Z_p$), and boundary group ($B_p$). We show the action of the boundary operator $\partial_p$ on each group at each dimension. Adapted from \cite{Fasy:2014}.}
-\label{fig:chain_complexes}
+\label{fig:bg:chain_complexes}
 \end{figure}
 
+\subsubsection{Homology}
+\label{bg:tda:math:homology}
 
-We can now define homology as
-
+We are now ready to define homology, which will allow us to discuss and compare shape in a quantitative way.
+The $j$-th homology of a simplicial complex $K$ is defined as the quotient group
 \begin{equation}
-H_{k} = Z_{k} / B_{k} = \ker\partial_{k} / \im\partial_{k+1}.
+H_{j}(K) = Z_{j} / B_{j} = \ker\partial_{j} / \im\partial_{j+1}.
 \end{equation}
+In words, homology is the group generated by equivalence classes of the cycle group $Z_{j}$, where equivalence is defined up to $B_{j}$.
+Elements of the homology group are classes of homologous cycles.
+Two $j$-cycles are homologous is they differ by the boundary of a $(j+1)$-chain.
+We work through a simple example in Figure~\ref{fig:bg:homology_example}.
 
-In words, homology is the set of closed chains (cycles) up to the boundary of higher dimensional cycles.
-Elements are classes of homologous cycles.
-The rank of the homology group at a particular dimension $n$ is the betti number $b_n$.
-Intuitively, it is the number of $n$-dimensional holes in the simplicial complex.
-Elements of homology groups are cycles (chains with vanishing boundary).
-Two k-cycles are homologous if they differ by the boundary of a (k+1)-chain.
+The rank of the homology group $\|H_{j}(K)\|$ is the Betti number $b_j$.
+Intuitively, the Betti number represents the number of $j$-dimensional holes in the simplicial complex.
 
+\begin{figure}
+\centering
+\includegraphics[]{./fig/background/homology_example.pdf}
+\caption[Example]{(A) A simplicial complex defined on a set of 7 vertices, $S$. The object has one connected component ($b_0=1$) and two holes ($b_1=2$). (B) Four cycles that can be defined on the complex. Cycles $z_1=\{(a,b)+(b,f)+(f,d)+(d,a)\}$ and $z_2=\{(a,b)+(b,g)+(g,f)+(d,f)+(d,a)\}$ are homologous, differing only by the cycle $c_1=\{(b,g)+(g,f)+(f,b)\}$ which is the itself the boundary of the closed triangle $(b,f,g)$. Likewise with cycles $z_3$ and $z_4$. The two sets of cycles are not homologous with each other, and there are therefore two independent elements in the homology group $H_1(S)$. Note that the basis is not unique.}
+\label{fig:bg:homology_example}
+\end{figure}
 
-Finally, we must decide how to construct a simplicial complex from $S$.
-There are two ways of doing so: \Cech\ complex and Vietoris-Rips complex.
+\subsubsection{Constructing Complexes From Data}
+\label{bg:tda:math:complexes}
+
+Finally, we must consider how to construct a simplicial complex from a point cloud $S$.\footnote{In fact, this step is arguably the most important step in applying a TDA pipeline.}
+There are two common complex constructions: the \Cech\ complex and the Vietoris-Rips complex.
+Both construction 
+Both constructions involve 
+
 The \Cech\ complex consists of the set of simplices $\sigma$ with vertices $v_{1},...,v_{k}\in S$ such that
 \begin{equation}
-\displaystyle\cap_{i}^{} B(v_{i},\epsilon)\neq0
+\displaystyle\cap_{i}^{} B(v_{i},\epsilon)\neq0.
 \end{equation}
+
 The Vietoris-Rips complex, $VR(S,\epsilon)$, which is defined as
 \begin{equation}
 \mathrm{VietorisRips}(r) = \{ \sigma\in S\:|\:\mathrm{diam}(\sigma) \leq 2r \}
@@ -499,14 +541,27 @@ The Vietoris-Rips complex, $VR(S,\epsilon)$, which is defined as
 where $\mathrm{diam}(\sigma)=\{ \sup d(i,j) \:|\: i,j\in\sigma \}$.
 
 
+\begin{figure}
+  \centering
+  \subbottom[Three Points]{%
+    \includegraphics[width=0.25\linewidth]{fig/background/triangle_three_points.pdf}}
+  \subbottom[Vietoris-Rips Complex]{%
+    \includegraphics[width=0.25\linewidth]{fig/background/triangle_rips_complex.pdf}}
+  \subbottom[\Cech\ Complex]{%
+    \includegraphics[width=0.25\linewidth]{fig/background/triangle_cech_complex.pdf}}
+  \caption{An example of the difference between Vietoris-Rips and \Cech .}
+  \label{fig:bg:triangle_complexes}
+\end{figure}
+
+The distinction between these two approach will be clear 
+
 \subsection{Persistent Homology}
 \label{bg:tda:ph}
 
+Persistent homology (PH) is a method from TDA that allows us to use 
 Persistent homology (PH) is a method from TDA that uses algebraic topology to compute quantitative properties in data, including connectedness and the presence of holes.
 
 Persistent homology (PH) computes topological invariants representing multi-scale information about the connectivity and holes in a dataset.
-Homology is the aspect of a space which captures things like connected components, loops, and voids.
-
 
 The topological invariants can be concisely represented ina barcode diagram, which tracks the shape across multiple scale parameters.
 Each horizontal line in the diagram represents a topological feature.
@@ -516,7 +571,6 @@ The pipeline is as follows:
 A dataset, $S=(s_{1},\ldots,s_{N})$, is represented as a point cloud in a high-dimensional space (not necessarily Euclidean).
 From the point cloud, a nested series of simplicial complexes, or a filtration, is constructed, parameterized by a filtration value $\epsilon$.
 The filtration is represented as a list of simplices defined on the vertices of $S$, annotated with the $\epsilon$ at which the simplex appears.
-
 
 
 Given a filtration, the persistence algorithm is used to compute homology groups.
@@ -676,7 +730,7 @@ Then we will see what happens we interpolate between those different metrics.
 % insert Mapper description here.
 
 \section{Applying TDA to Molecular Sequence Data}
-\label{bg:tda_genomics}
+\label{bg:top4bio}
 
 Aligned molecular sequence data can be naturally viewed as a point cloud in a high-dimensional space, which we loosely call \emph{sequence space}.
 The particular structure of sequence space will be determined by the length, $L$, of the aligned sequences, and the alphabet, $Q$, over which the sequences are defined.
@@ -697,18 +751,20 @@ In particular, we apply persistent homology, and read phylogenetic information c
 We make two preliminary remarks before considering a more complete example.
 
 \subsection{Topology of Tree-like Metrics}
+\label{bg:top4bio:treemetrics}
 
 An important foundational point was demonstrated by G. Carlsson in \cite{Chan:2013}.
-Recall that tree-like data will have an additive metric space, as described in Section~XX.
-In that paper, it was proven that for additive metric spaces, then the Vietoris-Rips filtration of the data will consist of a nested set of acyclic complexes.
+Recall that tree-like data will have an additive metric space, as described in Section~\ref{bg:bio:phylo:additivity}.
+In \cite{Chan:2013}, it was proven that for additive metric spaces, the Vietoris-Rips filtration of the data will consist of a nested set of acyclic complexes.
 Consequently, the persistent homology of additive data will have nontrivial topology only in dimension zero.
 Furthermore, while noise in the data an introduce small deviations from additivity, the theorem puts bounds on the size of the topological features that can arise in this manner.
-These bounds rely on the Gromov-Hausdorff stability conditions described in Section~XX.
+These bounds rely on the Gromov-Hausdorff stability conditions described in Section~\ref{bg:tda:ph:stability}.
 
 On the other hand, if the evolutionary history includes reticulate events that cannot be represented as a tree, these events will be captured as non-trivial higher dimensional homology in the barcode diagram, an idea which we develop below.
 This theorem provides an important positive control in using TDA to characterize reticulate evolution.
 
 \subsection{The Fundamental Unit of Reticulation}
+\label{bg:top4bio:fundamental_unit}
 
 In population genetics, there is a simple test for the presence of reticulate evolution in sequence data called the \emph{four-gamete test} \cite{Hudson:1985}.
 The test assumes only an infinite-sites model, which states that for a sufficiently long genome, a particular residue can only ever undergo a single mutation.
@@ -754,6 +810,7 @@ All more complicated patterns of reticulation can be seen as extensions of this 
 \end{figure}
 
 \subsection{A Complete Example}
+\label{bg:top4bio:full_example}
 
 We illustrate a complete example of how TDA can capture horizontal evolution from complex populaton data in Figure~\ref{background:fig:tda_on_sequencedata}.
 Consider the reticulate phylogeny (Figure~\ref{background:fig:tda_on_sequencedata}A): five genetic sequences sampled today (yellow circles) originate from a single common ancestor due to clonal evolution (solid blue lines tracing parent to offspring) and reticulate evolution (dotted red lines).
@@ -803,12 +860,11 @@ Number of higher-dimensional generators over a time interval (“irreducible cyc
 \end{figure}
 
 \subsection{The Space of Trees, Revisited}
+\label{bg:top4bio:tree_space}
 
 In Section~XX, Tree Space was introduced as an abstract construction to systematically represent the set of all possible unrooted binary trees.
 Tree Space was shown to be a subspace of the space of finite metrics that satisfy the additivity condition.
 Real data will very rarely satisfy this condition, and one possible interpretation of phylogenetic reconstruction is finding the best projection onto tree space for arbitrary data.
-
-
 
 
 The program we propose is very closely related to this interpretation.
