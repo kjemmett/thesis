@@ -524,22 +524,34 @@ Intuitively, the Betti number represents the number of $j$-dimensional holes in 
 \subsubsection{Constructing Complexes From Data}
 \label{bg:tda:math:complexes}
 
-Finally, we must consider how to construct a simplicial complex from a point cloud $S$.\footnote{In fact, this step is arguably the most important step in applying a TDA pipeline.}
-There are two common complex constructions: the \Cech\ complex and the Vietoris-Rips complex.
-Both construction 
-Both constructions involve 
+Finally, we must consider how to construct a simplicial complex from a given point cloud $S$.\footnote{In fact, this step is arguably the most important step in applying a TDA pipeline.}
+There are two common constructions we will describe: the \emph{\Cech\ complex} and the \emph{Vietoris-Rips complex}.
+Both constructions involve a scale parameter $\epsilon$, and balls of radius $\epsilon$ placed at the center of each vertex in $S$.
+Edges are drawn between vertices when balls overlap, that is, when $d(v_{a},v_{b})<2\epsilon$.
+Where the two constructions differ is in how higher-dimensional simplices are filled in.
 
-The \Cech\ complex consists of the set of simplices $\sigma$ with vertices $v_{1},...,v_{k}\in S$ such that
+The \Cech\ complex consists of the set of simplices $\sigma$ with vertices $s_{1},\ldots,s_{k}\in S$ such that
 \begin{equation}
-\displaystyle\cap_{i}^{} B(v_{i},\epsilon)\neq0.
+\mathrm{\Cech}(S, \epsilon) = \left\{ \sigma\in S \:|\: \displaystyle\cap_{i}^{} B(s_{i},\epsilon)\neq0 \right\}.
 \end{equation}
-
-The Vietoris-Rips complex, $VR(S,\epsilon)$, which is defined as
+That is, the simplex $\sigma_{(s_{x},\ldots,s_{z})}$ is present if the intersection of balls of radius $\epsilon$ centered on vertices $(s_{x},\ldots,s_{z}	)$ is nonempty.
+The Vietoris-Rips complex, $VR(S,\epsilon)$, is defined as
 \begin{equation}
-\mathrm{VietorisRips}(r) = \{ \sigma\in S\:|\:\mathrm{diam}(\sigma) \leq 2r \}
+\mathrm{VR}(S, \epsilon) = \{ \sigma\in S\:|\:\mathrm{diam}(\sigma) \leq 2\epsilon \}
 \end{equation}
 where $\mathrm{diam}(\sigma)=\{ \sup d(i,j) \:|\: i,j\in\sigma \}$.
+In the Vietoris-Rips complex, a higher-dimensional simplex is filled in if every pairwise distance is less than $2\epsilon$.
+The difference between the two constructions is shown in Figure~\ref{fig:bg:triangle_complexes}.
+In general, $\mathrm{\Cech}(S,\epsilon)\in VR(S,\epsilon)$.
 
+The \Cech\ complex is theoretically preferable because it comes with a \emph{Nerve theorem}, which essentially states that the topology of the resulting complex will be equivalent to the topology of the union of balls used to create it.
+However, the \Cech\ complex has drawbacks that prevent it from being widely applied to real data.
+First, computing the intersection of arbitrary balls is an expensive operation.
+While efficient algorithms exist in Euclidean space (the miniball algorithm \cite{Gartner:1999}), it is much more difficult in arbitrary metric spaces.
+Furthermore, the \Cech\ construction explicitly requires an ambient space in which the data is embedded.
+For data which comes in the form of a finite metric space, it may not be clear what is the ambient space.\footnote{This is indeed the case for the genomic data we consider: it is not immediately obvious what the intersection of three sequences defined over a finite alphabet should be. We discuss this further in Section~XX.}
+In practice, the Vietoris-Rips complex is more widely applied, because it requires only the set of pairwise distances between each vertex and a scale parameter $\epsilon$.
+The complex can be directly read off from the set of edges (known as the \emph{1-skeleton}), making it extremely fast to compute.
 
 \begin{figure}
   \centering
@@ -549,30 +561,70 @@ where $\mathrm{diam}(\sigma)=\{ \sup d(i,j) \:|\: i,j\in\sigma \}$.
     \includegraphics[width=0.25\linewidth]{fig/background/triangle_rips_complex.pdf}}
   \subbottom[\Cech\ Complex]{%
     \includegraphics[width=0.25\linewidth]{fig/background/triangle_cech_complex.pdf}}
-  \caption{An example of the difference between Vietoris-Rips and \Cech .}
+  \caption[Vietoris-Ripps and \Cech Complexes]{An example of the difference between Vietoris-Rips and \Cech\ complex on an equilateral triangle. Consider each point to be $1$ unit apart. In the Vietoris-Rips complex, the triangle is filled in when every pairwise edge is connected ($\epsilon=0.5$). In the \Cech\ complex, the triangle is only filled in when all three balls intersect ($\epsilon=0.577$).}
   \label{fig:bg:triangle_complexes}
 \end{figure}
-
-The distinction between these two approach will be clear 
-
+	
 \subsection{Persistent Homology}
 \label{bg:tda:ph}
 
-Persistent homology (PH) is a method from TDA that allows us to use 
-Persistent homology (PH) is a method from TDA that uses algebraic topology to compute quantitative properties in data, including connectedness and the presence of holes.
+Persistent homology is a tool developed under the umbrella of TDA that allows us to computationally study the shape of a point cloud across multiple scales simultaneously.
+Shape is quantified in terms of topological invariants representing homology, as discussed in the previous section.
+To understand why multiscale information might be of interest, consider the example in Figure~\ref{fig:bg:expanding_balls}.
+The data is sparse and noisy, but, to the eye, immediately appears to consist of two circles joined at a point along their edges.
+The two circles, however, are of a different radius.
+In the Figure, we show Vietoris-Rips complexes constructed at different scale parameters on the data.
+We observe that while some scale parameters are sufficient to resolve one or the other of the two circles, no single scale parameter is sufficient to simultaneously capture the two shapes.
+Persistent homology solves this by providing a way to track the shape information across \emph{all} scale parameters.
 
-Persistent homology (PH) computes topological invariants representing multi-scale information about the connectivity and holes in a dataset.
+Our object of study is the nested set of simplicial complexes, called a \emph{filtration}, that is produced by tuning the scale parameter up to some threshold.
+At the smallest scale, $\epsilon=0$, the complex consists only of disconnected points.
+As the scale parameter is increased, the topology of the complex changes -- clusters merge, holes and loops form, other holes and loops are filled -- until the complex is fully connected.
+Each aspect of shape represents a topological invariant, and as the scale is changed, the birth and death of different invariants encoded as an interval $(b_i, d_i)$.
 
-The topological invariants can be concisely represented ina barcode diagram, which tracks the shape across multiple scale parameters.
-Each horizontal line in the diagram represents a topological feature.
+The shape information can be concisely summarized in a \emph{barcode diagram}.
+The barcode diagram represents topological features as horizontal line segments, annotated with a birth-death interval, and a dimension.
+The birth time is when a particular invariant first appears in the complex, and the death time is when the invariant is collapsed in the complex.
+Shape information by dimension.
+$H_0$ represents the number of connected components and is roughly equivalent to a hierarchical clustering of the data.
+Higher dimensions represent loops ($H_1$), voids ($H_2$), and their generalizations in the data.
+The number of bars at a particular scale will be the Betti number $b_n$ for that complex.
+Taken together, the barcode diagram represents a complete and quantitative picture of the shape of the data.
 
-A description of the persistent homology pipeline is shown in Figure~\ref{background:fig:persistence_pipeline}.
+The information can be equivalently represented as a persistence diagram, which is a scatter plot of invariants with birth time on the $x$ axis and death time on the $y$ axis.
+The barcode diagram and persistence diagram for the two circles data is shown in Figure~\ref{fig:bg:expanding_balls_barcode}.
+First, looking at $H_0$, we see that the data begins disconnected and becomes connected at around $\epsilon=24$.
+Next, looking at $H_1$, we count eight loops across a range from \~5 to \~80.
+Two of these loops persist for what appears to be an appreciable length of time.
+We associate these two loops with the two circles that we identified qualitatively from the raw point cloud data.
+
+The intuition behind persistent homology is exactly that: somehow the good or interesting features will be robust and persist over long scales.
+In the barcode diagram, this corresponds to longer bars; in the persistence diagram, this corresponds to points sitting far from the diagonal.
+Invariants that we observe persisting for only short scales are likely to be noise or other artifacts.\footnote{The obvious question of how to rigorously determine what makes a good interval is an open question that is currently being addressed by a number of different groups.We discuss this further in Section~\ref{bg:tda:ph:statistics}.}
+And because a single scale is not capable of representing all features of the data, we examine all scales simultaneously.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{./fig/background/expanding_balls.pdf}
+\caption[Multiscale Topological Structure]{An example of constructing a filtration. The nested series of complexes form a filtration. Persistent homology will compute and track the homology at each scale. Adapted from Lesnick.}
+\label{fig:bg:expanding_balls}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=.75\textwidth]{fig/background/expanding_balls_barcode.pdf}
+\caption[Barcode Diagram for the Two Circles Example]{Barcode Diagram for the example in Figure~\ref{fig:bg:expanding_balls}. $H_0$ represents connectivity. $H_1$ represents the holes. Two holes are present at two different scales. Also some noise in the data.}
+\label{fig:bg:expanding_balls_barcode}
+\end{figure}
+
+In fact, the persistence algorithm is more powerful than that, and can return not only the intervals associated with the invariants, but \emph{representative cycles} of each invariant.
+The representative cycles correspond to the set of simplicies that surround an invariant, and can be used to determine which data points are somehow involved in a particular invariant.
+
+To summarize, a complete description of the persistent homology pipeline is shown in Figure~\ref{fig:bg:persistence_pipeline}.
 The pipeline is as follows:
 A dataset, $S=(s_{1},\ldots,s_{N})$, is represented as a point cloud in a high-dimensional space (not necessarily Euclidean).
 From the point cloud, a nested series of simplicial complexes, or a filtration, is constructed, parameterized by a filtration value $\epsilon$.
 The filtration is represented as a list of simplices defined on the vertices of $S$, annotated with the $\epsilon$ at which the simplex appears.
-
-
 Given a filtration, the persistence algorithm is used to compute homology groups.
 The $0$-dimensional homology ($H_0$) represents a hierarchical clustering of the data.
 Higher dimensional homology groups represent loops, holes, and higher dimensional voids in the data.
@@ -581,52 +633,24 @@ These filtration values are the \emph{birth} and \emph{death} times, respectivel
 
 \begin{figure}
 \centering
-\includegraphics[]{./fig/persistence_pipeline.pdf}
+\includegraphics[]{./fig/background/persistence_pipeline.pdf}
 \caption[The Persistence Pipeline]{The Persistence Pipeline.}
-\label{background:fig:persistence_pipeline}
+\label{fig:bg:persistence_pipeline}
 \end{figure}
-
-\begin{figure}
-\centering
-\includegraphics[]{./fig/LESNICK_ExpandingBalls.pdf}
-\caption[An example of a filtration]{Example of constructing a filtration. Adapted from Lesnick.}
-\label{background:fig:exanding balls}
-\end{figure}
-
-
-Shape information is indexed by dimension.
-$H_0$ information tells us about connected components and is roughly equivalent to a hierarchical clustering.
-Higher dimensions represent loops ($H_1$), voids ($H_2$), and their generalizations in the data, giving a quantitative representation of shape.
-
-
-
-The topological invariants in the filtration can be concisely represented as a barcode diagram, a set of line segments ordered by filtration value on the horizontal axis.
-Each horizontal line in the diagram corresponds to the persistence of a single invariant.
-Equivalently, invariants can be represented as a persistence diagram, a scatter plot with the birth time on the horizontal axis and the death time on the vertical axis.
-\kje{[Include figure.]}
-
-
-The intuition behind persistent homology is that is that good or interesting features will persist over longer scales.
-That is, they will be more robust.
-In the barcode diagram this corresonds to long bars, and in the persistence diagram, this corresponds to points far from the diagonal.
-Invariants that persist for only short scales are likely to be noise or artifacts of incomplete sampling.
-The questions of how to rigorously determine what makes a good interval is an open question that is currently being addressed by a number of different groups.
-We discuss this further in Section~\ref{bg:tda:ph:statistics}.
-
-In fact, the algorithm is more powerful than that, and can return not only the intervals associated with the invariants, but \emph{representative cycles} of each invariant.
-The representative cycles correspond to the set of simplicies that surround an invariant, and can be used to determine which data points are somehow involved in a particular invariant.
-
 
 As primarily end-users of persistent homology, the details of the persistence algorithm are largely beyond the scope of this thesis.
 Effectively, it involves manipulating the boundary matrix into a particular reduced form, from which each bar and representative cycle can be read off.
 Several packages for computing persistent homology have been developed, including Javaplex \cite{Tausz:2011}, Dionysus \cite{Morozov:2012}, Perseus \cite{Nanda:2013}, Gudhi \cite{maria:hal-01108461}, and PHAT \cite{Bauer:PHAT:2015}.
-Additionally, there is a TDA package for R which wraps functions from Dionysus and Gudhi in a user-friendly frontend \cite{Fasy:TDA:2015}.\footnote{In our work we have relied on a variety of these packages. For straight-forward construction of the barcode diagram, we find the R package TDA easiest to use. If one needs to directly build and manipulate filtered simplicial complexes, Dionysus has relatively easy to use Python bindings. For large datasets, PHAT and it's parallel implementation DIPHA \cite{Bauer:DIPHA:2015,Bauer:2014gd} are recommended.}
+Additionally, there is a TDA package for R which wraps functions from Dionysus and Gudhi in a user-friendly frontend \cite{Fasy:TDA:2015}.\footnote{In our work we have relied on a variety of these packages. For straight-forward construction of the barcode diagram, we find the R package TDA easiest to use. If one needs to directly build and manipulate filtered simplicial complexes, Dionysus has convenient Python bindings. For large datasets, PHAT and it's parallel implementation DIPHA \cite{Bauer:DIPHA:2015,Bauer:2014gd} are recommended.}
 
 \subsubsection{Stability of the Persistence Algorithm}
 \label{bg:tda:ph:stability}
 
+While not directly utilized in this thesis, the statement of stability is important to include for
 While not directly utilized in this thesis, the statement is important to include.
 The stability result establishes that small perturbations in the data will produce only small changes in the the persistence diagram.
+The stability result is 
+
 
 The result of \citet{Chazal:2009wc} states that the bottleneck distance between $B$ and $B'$ is bounded by the Gromov-Hausdorff distance between the finite metric spaces embedded in $A$ and $B$.
 
