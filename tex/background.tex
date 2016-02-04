@@ -264,10 +264,10 @@ The neighbor-joining algorithm is described in Algorithm~\ref{bg:alg:nj}.
 \begin{algorithm}
     \KwData{$n \times n$ distance matrix $D$}
     \KwResult{Phylogenetic tree on $n$ leaves}
-    \While{blah} {
+    \While{rule} {
         Compute $Q$ matrix\;
     }
-    \caption{The Neighbor Joining Algorithm. Adapated from Wikipedia entry on Neighbor-Joining.}
+    \caption{The Neighbor Joining Algorithm. Adapted from Wikipedia entry on Neighbor-Joining.}
     \label{bg:alg:nj}
 \end{algorithm}
 
@@ -289,13 +289,13 @@ The condition implies that there is a labeling on the four nodes such that
 \begin{equation}
 d_{ij} + d_{kl} \leq d_{ik} + d_{jl} =  d_{il} + d_{jk}.
 \end{equation}
-A visual interpretation of this condition is shown in Figure~\ref{background:fig:four_point_condition}.
+A visual interpretation of this condition is shown in Figure~\ref{fig:bg:four_point_condition}.
 
 \begin{figure}
 \centering
 \includegraphics[]{./fig/background/four_point_condition.pdf}
 \caption[The four point condition for additivity]{A visual interpretation of the four point condition for additivity. For any four leaves, there exists a labeling $\{i,j,k,l\}$ such that $d_{ij}+d_{kl}\leq d_{ik}+d_{il} = d_{il}+d_{jk}$. Of the three possible ways of arranging the sums of distances, two will involve traversing the internal branch, while one will involve only external branches.}
-\label{background:fig:four_point_condition}
+\label{fig:bg:four_point_condition}
 \end{figure}
 
 Sequence data can fail to be additive for several reasons.
@@ -322,28 +322,43 @@ A rooted tree with $L$ leaves can be considered as an unrooted tree with $L+1$ l
 Therefore, the number of rooted bifurcating tree topologies with $L$ leaves is $(2L-3)!!$
 As can be seen, the number of tree topologies explodes with the number of leaves.\footnote{It was observed by Walter Fitch that for more than 20 species there are more than Avogadro's number of topologies.}
 
-\subsubsection{Space of Phylogenetic Trees \kje{(Needs Expansion)}}
+\subsubsection{The Space of Phylogenetic Trees}
 \label{bg:bio:phylo:space}
 
-A phylogenetic tree is characterized by its number of leaves, the particular tree topology, and the length of each branch.
-Tree space refers to an abstract construction that represents each possible tree as a point in a geometric space.
-Abstract studies of tree space were initiated by Billera, Holmes, and Vogtmann (BHV) in \cite{Billera:2001tv}.
+A phylogenetic tree with $L$ leaves is characterized by its topology and the lengths of each branch.
+As shown in the previous section, there are $(2L-5)!!$ possible unrooted topologies.
+There are $2L-3$ branches: $L$ external branches and $L-3$ internal branches.
+Tree space refers to an abstract construction for representing each possible tree as a point in a geometric space.
+Studies of tree space were initiated by Billlera, Holmes, and Vogtmann (BHV) in \cite{Billera:2001tv}.
+In that paper, the authors studied rooted trees with zero-length external branches, a space we denote as $\mathrm{BHV}_{L}$.
+A geodesic distance was defined between trees of different topology.
+This analysis was extended by Zairis \emph{et al.} in \cite{Zairis:2014wa}, in which unrooted trees with non-zero external branches were considered.
+The external branches are constrained to sit in the positive open orthan $(\mathbb{R}^{\geq 0})^{L}$.
+An evolutionary moduli space is then defined as the product
+\begin{equation}
+\Sigma_{L} = \mathrm{BHV}_{L-1} \times (\mathbb{R}^{\geq 0})^{L}.
+\end{equation}
+The tree space construction allows one to define statistics, such as means and variances, on collections of trees in a meaningful way.
+An interesting statement that can be made within this framework is that phylogenetics is essentially the projection of real data onto tree space.
 
-In the BHV model, each point represents an unrooted binary tree with $L$ leaves and strictly positive branch lengths.
-Number of interior edges $r=L-3$, a particular additive tree can be plotted as a point in the positive open orthant $(0,\infty)^{r}$.
-A single orthant corresponds to a single tree topology.
-
-The tree space construction allows one to define statistics, such as means and variance, on sets of trees.
-This has been utilized ....
+We show an exaple of the tree space construction on $L=4$ and $L=5$ leaves in Figure~\ref{fig:bg:tree_space}.
+The case of $L=4$ is particularly simple to analyze.
+There are three topologies, corresponding to the patterns $((a,b),(c,d))$, $((a,c),(b,d))$, and $((a,d),(b,c))$.
+Each topology has a single internal branch.
+Attached to each external topology is a space $\mathbb{R}^4$ for the external branches.
+The case of $L=5$ also has a relatively simple structure.
+There are fifteen possible topologies, each with two internal branches.
+The topologies are arranged as a Petersen graph, a common construction in graph theory.
+Vertices of the Petersen graph correspond to degenerate points on one of the two internal branches.
 
 \begin{figure}
 \centering
-\includegraphics[]{./fig/TreeSpace.pdf}
-\caption[Tree Space Construction]{The construction of Tree Space. Each point in this space represented a particular unrooted tree topology with branch lengths.}
+\includegraphics[]{fig/background/tree_space.pdf}
+\caption[Tree Space]{Examples of Tree Space. (A) Tree space on 4 leaves. (B) Tree space on 5 leaves.}
 \label{fig:bg:tree_space}
 \end{figure}
 
-\subsubsection{Phylogenetic Networks \kje{Needs Expansion}}
+\subsubsection{Phylogenetic Networks}
 \label{bg:bio:phylo:networks}
 
 There are several existing methods for representing reticulate evolution.
@@ -352,8 +367,6 @@ However, most simply present corrections to phylogenetic trees, which can fail i
 Additionally, the resulting networks can be complex and difficult to interpret quantitatively.
 This can make it difficult to distinguish between phylogenetic incompatibilities due to noisy sampling and due to true reticulations.
 An example of a phylogenetic network using the split network approach is shown in Figure~\ref{fig:bg:split_network}.
-
-\kje{[See Morrison review..]}
 
 \begin{figure}
 \centering
@@ -517,7 +530,7 @@ Intuitively, the Betti number represents the number of $j$-dimensional holes in 
 \begin{figure}
 \centering
 \includegraphics[]{./fig/background/homology_example.pdf}
-\caption[Example]{(A) A simplicial complex defined on a set of 7 vertices, $S$. The object has one connected component ($b_0=1$) and two holes ($b_1=2$). (B) Four cycles that can be defined on the complex. Cycles $z_1=\{(a,b)+(b,f)+(f,d)+(d,a)\}$ and $z_2=\{(a,b)+(b,g)+(g,f)+(d,f)+(d,a)\}$ are homologous, differing only by the cycle $c_1=\{(b,g)+(g,f)+(f,b)\}$ which is the itself the boundary of the closed triangle $(b,f,g)$. Likewise with cycles $z_3$ and $z_4$. The two sets of cycles are not homologous with each other, and there are therefore two independent elements in the homology group $H_1(S)$. Note that the basis is not unique.}
+\caption[Simplicial Homology]{(A) A simplicial complex defined on a set of 7 vertices, $S=\{a,\ldots,g\}$. The object has one connected component ($b_0=1$) and two holes ($b_1=2$). (B) Four cycles that can be defined on the complex. Cycles $z_1=\{(a,b)+(b,f)+(f,d)+(d,a)\}$ and $z_2=\{(a,b)+(b,g)+(g,f)+(d,f)+(d,a)\}$ are homologous, differing only by the cycle $c_1=\{(b,g)+(g,f)+(f,b)\}$ which is the itself the boundary of the closed triangle $(b,f,g)$. Likewise with cycles $z_3$ and $z_4$. The two sets of cycles are not homologous with each other, and there are therefore constitute two independent elements of the homology group $H_1(S)$. Note that the basis is not unique.}
 \label{fig:bg:homology_example}
 \end{figure}
 
@@ -532,7 +545,7 @@ Where the two constructions differ is in how higher-dimensional simplices are fi
 
 The \Cech\ complex consists of the set of simplices $\sigma$ with vertices $s_{1},\ldots,s_{k}\in S$ such that
 \begin{equation}
-\mathrm{\Cech}(S, \epsilon) = \left\{ \sigma\in S \:|\: \displaystyle\cap_{i}^{} B(s_{i},\epsilon)\neq0 \right\}.
+\text{\Cech}(S, \epsilon) = \left\{ \sigma\in S \:|\: \displaystyle\cap_{i}^{} B(s_{i},\epsilon)\neq0 \right\}.
 \end{equation}
 That is, the simplex $\sigma_{(s_{x},\ldots,s_{z})}$ is present if the intersection of balls of radius $\epsilon$ centered on vertices $(s_{x},\ldots,s_{z}	)$ is nonempty.
 The Vietoris-Rips complex, $VR(S,\epsilon)$, is defined as
@@ -542,14 +555,14 @@ The Vietoris-Rips complex, $VR(S,\epsilon)$, is defined as
 where $\mathrm{diam}(\sigma)=\{ \sup d(i,j) \:|\: i,j\in\sigma \}$.
 In the Vietoris-Rips complex, a higher-dimensional simplex is filled in if every pairwise distance is less than $2\epsilon$.
 The difference between the two constructions is shown in Figure~\ref{fig:bg:triangle_complexes}.
-In general, $\mathrm{\Cech}(S,\epsilon)\in VR(S,\epsilon)$.
+In general, $\text{\Cech}(S,\epsilon)\in VR(S,\epsilon)$.
 
 The \Cech\ complex is theoretically preferable because it comes with a \emph{Nerve theorem}, which essentially states that the topology of the resulting complex will be equivalent to the topology of the union of balls used to create it.
 However, the \Cech\ complex has drawbacks that prevent it from being widely applied to real data.
 First, computing the intersection of arbitrary balls is an expensive operation.
 While efficient algorithms exist in Euclidean space (the miniball algorithm \cite{Gartner:1999}), it is much more difficult in arbitrary metric spaces.
 Furthermore, the \Cech\ construction explicitly requires an ambient space in which the data is embedded.
-For data which comes in the form of a finite metric space, it may not be clear what is the ambient space.\footnote{This is indeed the case for the genomic data we consider: it is not immediately obvious what the intersection of three sequences defined over a finite alphabet should be. We discuss this further in Section~XX.}
+For data which comes in the form of a finite metric space, it may not be clear what is the ambient space.\footnote{This is indeed the case for the genomic data we consider: it is not immediately obvious what the intersection of three sequences defined over a finite alphabet should be. We discuss this further in Chapter~XX.}
 In practice, the Vietoris-Rips complex is more widely applied, because it requires only the set of pairwise distances between each vertex and a scale parameter $\epsilon$.
 The complex can be directly read off from the set of edges (known as the \emph{1-skeleton}), making it extremely fast to compute.
 
@@ -605,7 +618,7 @@ And because a single scale is not capable of representing all features of the da
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{./fig/background/expanding_balls.pdf}
+\includegraphics[width=.8\textwidth]{./fig/background/expanding_balls.pdf}
 \caption[Multiscale Topological Structure]{An example of constructing a filtration. The nested series of complexes form a filtration. Persistent homology will compute and track the homology at each scale. Adapted from Lesnick.}
 \label{fig:bg:expanding_balls}
 \end{figure}
@@ -631,7 +644,7 @@ Higher dimensional homology groups represent loops, holes, and higher dimensiona
 Each feature is annotated with an interval, representing the $\epsilon$ at which the feature appears and the $\epsilon$ at which the feature contracts in the filtration.
 These filtration values are the \emph{birth} and \emph{death} times, respectively.
 
-\begin{figure}
+\begin{figure}[t]
 \centering
 \includegraphics[]{./fig/background/persistence_pipeline.pdf}
 \caption[The Persistence Pipeline]{The Persistence Pipeline.}
@@ -645,6 +658,8 @@ Additionally, there is a TDA package for R which wraps functions from Dionysus a
 
 \subsubsection{Stability of the Persistence Algorithm}
 \label{bg:tda:ph:stability}
+
+While not strictly necessary in this thesis, the stability result is important 
 
 While not directly utilized in this thesis, the statement of stability is important to include for
 While not directly utilized in this thesis, the statement is important to include.
@@ -701,6 +716,10 @@ d_{B}(H_{K}(X),H_{K}(Y)) \leq d_{GH}(X,Y)
 \subsubsection{Statistical Persistent Homology}
 \label{bg:tda:ph:statistics}
 
+%% write this section today (just briefly)
+
+Statistical persistent homology addresses two questions: (1) how to distinguish 
+
 In persistent homology, the intuition is developed that long intervals are to be interpreted as large-scale, robust, or in some sense real geometric features of the data, while short intervals are more likely to correspond to noise or random effects due to incomplete sampling.
 
 However, this leaves open the question of determining how long a bar must be to be considered significant.
@@ -752,6 +771,57 @@ Then we will see what happens we interpolate between those different metrics.
 \label{bg:tda:mapper}
 
 % insert Mapper description here.
+Mapper sits within the large universe of dimensionality reduction algorithms for exploratory data analysis.
+Mapper allows for qualitative analysis of high-dimensional data through direct visualization.
+In this sense it belongs within the larger category of dimensionality reduction techniques such as multidimensional scaling (MDS) and their nonlinear extensions, including Isomap and t-SNE.
+
+Mapper has the following advantages:
+
+(1) Coordinate free
+(2) Invariance to deformation - robustness to noise
+(3) Compressed representation - ability to handle large datasets.
+
+The \emph{Mapper} algorithm was developed by Gurjeet Singh and Gunnar Carlsson in \cite{Singh:2007ve}.
+Further exposition can be found in \cite{Lum:2013cz}.
+Mapper was first applied to problems in RNA folding in \cite{Bowman:2008esa} and breast cancer subtype identification in \cite{Nicolau:2011}.
+
+Steps:
+(1) Project using filter function.
+(2) Create overlapping bins
+(3) Cluster in the projected space.
+(3) Connect pairs of bins with shared points
+
+Our use of the Mapper algorithm will be relatively minimal.
+We use it as a means to visualize our sequence data in such a awy
+In our work we use the commercial implementation of Mapper developed by Ayasdi \cite{AyasdiIris:2015}.
+An open-source implementation of Mapper is available in the Python Mapper package \cite{Mullner:2013}.
+
+\begin{figure}
+\begin{tikzpicture}[node/.style={minimum height=.8cm,minimum width=2cm,draw}]
+\draw (0,0) node[node, align=center] (dr) {Dimensionality\\Reduction};
+\draw (3,1) node[node] (linear) {Linear};
+\draw (3,-1) node[node] (nonlinear) {Nonlinear};
+\draw (6,1) node[node] (pca) {PCA};
+\draw (6, -.5) node[node] (geometry) {Geometry};
+\draw (6, -1.5) node[node] (topology) {Topology};
+\draw (9, -.5) node[node,align=left] (manifold_learning) {Manifold\\Learning};
+\draw (9, -1.5) node[node] (mapper) {Mapper};
+\draw (12, -.5) node[node,align=center] (mds) {MDS\\PCA\\Isomap};
+
+
+\myline{dr}{linear};
+\myline{dr}{nonlinear};
+\draw[-latex] (linear) -- (pca);
+\myline{nonlinear}{geometry};
+\myline{nonlinear}{topology};
+\draw[-latex] (topology) -- (mapper);
+\draw[-latex] (geometry) -- (manifold_learning);
+\draw[-latex] (manifold_learning) -- (mds);
+
+\end{tikzpicture}
+\caption[Dimensionality Reduction for EDA]{Dimensionality Reduction for EDA}
+\label{fig:bg:eda}
+\end{figure}
 
 \section{Applying TDA to Molecular Sequence Data}
 \label{bg:top4bio}
@@ -816,11 +886,11 @@ d =
 2 & 1 & 1 & 2 \\
 \end{pmatrix}
 \end{equation}
-The Vietoris-Rips filtration of this space is shown in Figure~\ref{background:fig:four_gamete_test}C.
+The Vietoris-Rips filtration of this space is shown in Figure~\ref{fig:bg:four_gamete_test}C.
 At $\epsilon=0$ the four sequences are disconnected.
 At $\epsilon=1$, four edges are drawn, forming a loop.
 At $\epsilon=2$, the space is completely connected and the loop is killed.
-Persistent homology captures the presence of this loop as an $H_1$ feature in the interval $[1,2)$ (Figure~\ref{background:fig:four_gamete_test}D).
+Persistent homology captures the presence of this loop as an $H_1$ feature in the interval $[1,2)$ (Figure~\ref{fig:bg:four_gamete_test}D).
 In this way, the reticulate event is associated with the presence of a nonzero $H_1$ bar.
 
 We consider this example to be the minimal, or fundamental, unit of reticulation.
@@ -830,18 +900,18 @@ All more complicated patterns of reticulation can be seen as extensions of this 
 \centering
 \includegraphics[width=\textwidth]{./fig/background/four_gamete_test.pdf}
 \caption[Fundamental Unit of Reticulation]{The Fundamental Unit of Reticulation. (A) A set of four sequences. (B) An evolutionary genealogy including two mutations ($m_1$ and $m_2$) and a single reticulation ($r_1$). (C) Vietoris-Rips Filtration. (D) Barcode Diagram.}
-\label{background:fig:four_gamete_test}
+\label{fig:bg:four_gamete_test}
 \end{figure}
 
 \subsection{A Complete Example}
 \label{bg:top4bio:full_example}
 
-We illustrate a complete example of how TDA can capture horizontal evolution from complex populaton data in Figure~\ref{background:fig:tda_on_sequencedata}.
-Consider the reticulate phylogeny (Figure~\ref{background:fig:tda_on_sequencedata}A): five genetic sequences sampled today (yellow circles) originate from a single common ancestor due to clonal evolution (solid blue lines tracing parent to offspring) and reticulate evolution (dotted red lines).
-In Figure~\ref{background:fig:tda_on_sequencedata}B, these five samples are placed in the context of a larger dataset, where the data has been projected onto the plane using PCA.
+We illustrate a complete example of how TDA can capture horizontal evolution from complex populaton data in Figure~\ref{fig:bg:tda_on_sequence_data}.
+Consider the reticulate phylogeny (Figure~\ref{fig:bg:tda_on_sequence_data}A): five genetic sequences sampled today (yellow circles) originate from a single common ancestor due to clonal evolution (solid blue lines tracing parent to offspring) and reticulate evolution (dotted red lines).
+In Figure~\ref{fig:bg:tda_on_sequence_data}B, these five samples are placed in the context of a larger dataset, where the data has been projected onto the plane using PCA.
 Persistent homology is then applied to this larger sample.
-In Figure~\ref{background:fig:tda_on_sequencedata}C we demonstrate the construction of a filtered simplicial complex, showing how the connectivity changes as the scale parameter $\epsilon$ is increased.
-Finally, in Figure~\ref{background:fig:tda_on_sequencedata}D we see the resulting barcode diagram.
+In Figure~\ref{fig:bg:tda_on_sequence_data}C we demonstrate the construction of a filtered simplicial complex, showing how the connectivity changes as the scale parameter $\epsilon$ is increased.
+Finally, in Figure~\ref{fig:bg:tda_on_sequence_data}D we see the resulting barcode diagram.
 Using $H_0$ we can track the number of strains or subclades that persist, roughly corresponding to the tree-like component of the data.
 The $H_1$ bar near spanning roughly $\epsilon=0.13$ to $\epsilon=0.16$ identifies the presence of a reticulate event. involving the five higlighted sequences.
 The scale over which this bar persists represents the amount of evolutionary time separating the parents and the reticulate offspring.
@@ -880,33 +950,40 @@ Number of higher-dimensional generators over a time interval (“irreducible cyc
 \centering
 \includegraphics[width=\textwidth]{./fig/tda_on_sequencedata.pdf}
 \caption[Applying TDA to Molecular Sequence Data]{Applying persistent homology to genomic data. (A) An evolutionary genealogy including reticulation. (B) Data projected into 2-dimensions. (C) Construction of a filtered simplicial complex. (D) The resulting multiscale barcode diagram.}
-\label{background:fig:tda_on_sequencedata}
+\label{fig:bg:tda_on_sequence_data}
 \end{figure}
 
 \subsection{The Space of Trees, Revisited}
 \label{bg:top4bio:tree_space}
 
-In Section~XX, Tree Space was introduced as an abstract construction to systematically represent the set of all possible unrooted binary trees.
-Tree Space was shown to be a subspace of the space of finite metrics that satisfy the additivity condition.
-Real data will very rarely satisfy this condition, and one possible interpretation of phylogenetic reconstruction is finding the best projection onto tree space for arbitrary data.
+In Section~\ref{bg:bio:phylo:space}, tree space was introduced as an abstract construction to systematically represent the set of all possible binary trees.
+Further, we have shown that additive metrics can be represented as binary trees in tree space.
+Because real sequence data will very rarely satisfy the additivity condition, one possible interpretation of phylogenetic reconstruction is of finding the best projection onto tree space for arbitrary data.
 
+The complete space of finite metrics on $L$ vertices is $(\mathbb{R}^{\geq 0})^{\binom{L}{2}}$
+Tree space will be a set of $(2L-5)!!$ subspaces of dimension $\mathbb{R}^{L-3}$.
 
-The program we propose is very closely related to this interpretation.
-As we move off tree space, we know there is no additive tree that can represent that data.
-We would like a topological measure of deviation from additivity.
-Finite data comes represented as a metric space.
-On top of this metric space we can associate some topological invariants, as computed using methods from TDA.
-We will interpret these invariants as a measure of deviation from tree-like additivity.
-The further the data sits from tree space, the more prominent these invariants should be, and the more reticulation we will associate with the data.
-
+The program we propose can be understood as an extension of the tree space framework.
 Rather than attempt to characterize arbitrary data as a projection onto tree space, we will use methods of TDA to compute topological invariants.
-
-An ambitious goal would be a complete characterization of the space of finite metrics in terms of their topological invariants -- this is likely difficult.
-Our updated picture looks as Figure~XX.
+The intuition we develop is that as we move off of tree space, there is no additive tree that can represent the data.
+We would like a topological measure of deviation from addivity.
+Luckily, from the theorem due to Carlsson, we know we can use homology as this measure.
+Higher homology will vanish for additive, tree-like, metrics.
+The hypothesis is that the further the data lives from tree space, the larger or more these invariants will be.
+The deviations from additivity are telling us something about the scale and frequency of reticulate evolution in the dataset.
+Our updated picture looks as Figure~\ref{fig:bg:tree_space_revisited}.
+We have tree space, however it is now e
+Tree space is a subspace of 
 
 Note that this is an abstract construction and for data sets with an appreciable number of leaf nodes it will be difficult to directly visualize their position.
-
-As data moves off tree space
 Our hope is that the topological tools we develop here are sensitive enough to capture these deviations in interpretable ways.
 
-Unfortunately, as we will see, it does not appear that a complete characterization is possible.
+Finally, we note that at the outset of this work, an ambitious goal was set to provide a complete characterization of the space of finite metrics in terms of their topological invariants as measured by persistent homology.
+While some interesting work has explored the combinatorial structure of the space of metrics on low numbers of points (see \cite{Sturmfels:2004vc}), it does not appear feasible in general to provide a complete decomposition.
+
+\begin{figure}
+\centering
+\includegraphics[]{./fig/background/tree_space_revisited.pdf}
+\caption[Tree Space Revisited]{In light of reticulate evolution, our domain of interest can be expanded from the original tree space construction. We are now interested in data that lies off of tree space. We will use topology and TDA to characterize the deviations from additivity.}
+\label{fig:bg:tree_space_revisited}
+\end{figure}
