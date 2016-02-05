@@ -4,23 +4,25 @@
 
 %\epigraph{``As buds give rise by growth to fresh buds, and these, if vigorous, branch out and overtop on all sides many a feebler branch, so by generation I believe it has been with the great Tree of Life, which fills with its dead and broken branches the crust of the earth, and covers the surface with its ever-branching and beautiful ramifications.''}{Charles Darwin, 1872}
 
-Darwin's \emph{On the Origin of Species} contains a single figure, depicting the ancestry of species as a branching genealogical tree \cite{Darwin:1859uh} (see Figure \ref{fig:darwin_origin}).
-Since then, the tree structure has been the dominant framework to understand, visualize, and communicate discoveries about evolution.
-Indeed, a primary focus of evolutionary biology has been to expand the \emph{universal tree of life}, the set of evolutionary relationships among all extant and extinct organisms on Earth \cite{Bowler:2003uz}.
-Traditionally, this was the realm of phenotype-derived taxonomies.
-With the advent of molecular sequene data and computational approaches for tree-inference, molecular phylogenetics has become the standard tool for inferring evolutionary relationships.
-However, a tree is accurate only if the Darwinian model of descent via reproduction with modification is the sole process driving evolution.
+Darwin's \emph{On the Origin of Species} contains a single figure, depicting the ancestry of species as a branching genealogical tree, or \emph{phylogeny} \cite{Darwin:1859uh} (see Figure \ref{fig:darwin_origin}).
+Darwin argued that evolution was mediated by descent with modification; that is, the gradual change in heritable traits under the pressure of natural selection.
+Since that time, the tree structure has been the dominant framework to understand, visualize, and communicate discoveries about evolution.
+Indeed, an important aim of evolutionary biology has been expanding the \emph{universal tree of life}, the set of evolutionary relationships among all extant and extinct organisms on Earth \cite{Bowler:2003uz}.
+
+Traditionally, evolutionary relationships were established on the basis of phenotype, i.e. the observable traits of each organism.
+With the advent of molecular models of evolution and rapidly increasing genomic sequence data, the genotype has supplanted phenotype as the primary focus of evolutionary studies.
+Molecular phylogenetics has become established as the standard tool for inferring phylogenetic relationships.
+However, a tree is accurate only if the Darwinian model of descent with modification is the sole process driving evolution.
 It has long been recognized that there exist alterative evolutionary processes that can allow organisms to exchange genetic material through means beyond reproduction \cite{Arnold:2007vq}.
 Notable examples include horizontal gene transfer in bacteria, species hybridization in plants, and meiotic recombination in eukaryotes.
 Collectively, these processes are known as \emph{reticulate evolution}.
-These stand in contast to descent with modification, an example of \emph{clonal evolution}.
-\footnote{Clonal and reticulate evolution are also known by the terms \emph{vertical} and \emph{horizontal} evolution, respectively.}
+These stand in contrast to descent with modification, an example of \emph{clonal evolution}.\footnote{Clonal and reticulate evolution are also known by the terms \emph{vertical} and \emph{horizontal} evolution, respectively.}
 Increasing genomic data, powered by new high-throughput sequencing technologies, has shown that these reticulate processes are more prevalent than originally expected.
 For some, this has called into question the tree of life hypothesis as an organizing principle and prompted the search for new ways of representing evolutionary relationships \cite{Doolittle:1999,OMalley:2011tu}.
 
 This thesis presents a new approach to quantifying and representing reticulate evolutionary processes using recently developed ideas from algebraic and computational topology.
 The methods we employ fall under the collective heading of \emph{topological data analysis} (henceforth TDA), a new branch of applied topology concerned with inferring structure in high-dimensional data sets.
-The thesis consists of three aims: (1) introduce the methods of TDA and their application to biological data, (2) develop approaches tailored to the unique problems and assumptions inherent in genomic data, and (3) apply these approaches to a wide range of biological datasets in which reticulate processes play an important role.
+The thesis consists of three aims: (1) introduce the methods of TDA and their application to biological and genomic data; (2) develop approaches tailored to the unique features of molecular sequence data; and (3) apply these approaches to a wide range of biological problems in which reticulate processes are believed to play an important role.
 
 In the following brief introduction, we survey salient aspects of molecular evolution, the tree paradigm, and the challenges posed by reticulate processes.
 We then introduce the idea of representing evolution as a topological space and give a flavor of the results to be discussed.
@@ -34,31 +36,28 @@ We then introduce the idea of representing evolution as a topological space and 
 
 \section{Molecular Evolution and the Tree Paradigm}
 
-The combination of Darwin's theory of natural selection with Mendelian genetics led to the \emph{modern evolutionary synthesis}, outlined in the first half of the twentieth century in pioneering works by Ronald Fisher, Sewall Wright, JBS Haldane, and others.
-\footnote{See \cite{Huxley:1942} and \cite{Gould:2002ts} for historical detail.}
+The combination of Darwin's theory of natural selection with Mendelian genetics led to the \emph{modern evolutionary synthesis}, outlined in the first half of the twentieth century in pioneering works by Ronald Fisher, Sewall Wright, JBS Haldane, and others.\footnote{See \cite{Huxley:1942} and \cite{Gould:2002ts} for comprehensive historical detail.}
 The modern synthesis was based largely on an analysis of distributions of allele frequencies in distinct populations, the purview of classical population genetics.
 The field was placed on a molecular foundation with Watson and Crick's discovery of the DNA double-helix in 1953 \cite{Watson:1953wm}.
 These developments led to the establishment of \emph{molecular evolution}, the analysis of how processes such as mutation, drift, and recombination act to induce changes in populations and species.
 
 The information underlying an organism's form and function is encoded in its genome, the complete sequence of DNA contained in each cell.
 The genome can be represented as a string of nucleotides, indexed by position.
-Embedded within the genome are regions defining the genes which code for functional proteins, as well as non-coding regions which have as-yet unknown function.
-\footnote{In humans, only 1.5\% of the genome is protein-coding, the rest largely non-functional. \cite{Lander:2001hk}. Up to 5-8\% of the human genome is believed to consist of endogeneous retroviruses, dead viruses which have integrated their genome into the human genome.}
+Embedded within the genome are regions defining the genes which code for functional proteins, as well as non-coding regions which have as-yet unknown function.\footnote{In humans, only 1.5\% of the genome is protein-coding, the rest largely non-functional. \cite{Lander:2001hk}. Up to 5-8\% of the human genome is believed to consist of endogeneous retroviruses, dead viruses which have integrated their genome into the human genome.}
 When an organism reproduces, either sexually or asexually, a complete copy of the genomic information is passed to the offspring.
 Because the molecular mechanisms that control this copying are not exact, errors in replication are introduced.
-These errors can take the form of single point mutations (or single nucleotide polymorphisms, SNPs) or small insertions and deletions of a few nucleotides (indels).
-\footnote{Mutation rates vary across species. In humans, $10^{-8}$ per site per generation. In single cell bacteria, $10^{-10}$ per site per generation.}
+These errors can take the form of single point mutations (or single nucleotide polymorphisms, SNPs), small insertions and deletions of a few nucleotides (indels), or larger effects including copy numbers variations (CNVs) and chromosomal duplications.\footnote{Mutation rates vary across species. In humans, $10^{-8}$ per site per generation. In single cell bacteria, $10^{-10}$ per site per generation.}
 Under the neutral theory of evolution, the majority of these errors will have very little impact, either positive or negative, on the descendant organism.
 A small fraction of mutations will result in an appreciable fitness differential compared to other organisms, and it is on these organisms that natural selection will act.
 
 While molecular biology has largely focused on the biochemical and biophysical mechanisms underlying these processes, \emph{molecular phylogenetics} has focused on the comparative analysis of macromolecular sequences to infer genealogical and evolutionary relationships.
 Molecular phylogenetics began with Emile Zuckerkandl and Linus Pauling's recognition in the early 1960's that the information encoded in a set of molecular sequences could itself be used as a document of evolutionary history \cite{Zuckerkandl:1962,Zuckerkandl:1965wi}.
-It became apparent that given two sequenced organisms, counting the differences between their respective sequences could be used as a quantitative measure of the amount of evolutionary divergence between the two.
-If one has a larger set of sequenced organisms, computing the complete set of pairwise distances gives a \emph{distance matrix} for the organisms.
-From the distance matrix, one attempts to associate a tree to the data such that pairwise distances along the tree are close to the pairwise sequence distances.
+It became clear that given two sequenced organisms, counting the differences between their respective sequences could be used as a quantitative measure of the amount of evolutionary divergence between the two organisms.
+If one had a larger set of sequenced organisms, computing the complete set of pairwise distances yields a \emph{distance matrix}.
+From the distance matrix, one attempts to associate a tree to the data such that pairwise distances along the tree are close to the observed pairwise sequence distances.
 Walter Fitch and Emanuel Margolish helped popularized this approach by constructing a weighted least squares approach to fitting phlyogenetic trees from distance matrices \cite{Fitch:1967we}.
 Since that time, the development of numerical approaches for inferring evolutionary relationships has evolved into a mature discipline and the use of molecular sequence data to infer phylogeny has become a standard practice across a wide range of biology and ecology.
-While other approaches to tree inference have been developed, including parsimony, quartet analysis, and Bayesian methods, we will focus on distance matrix methods because of their close connection with the topological ideas we employ later.
+While other approaches to tree inference have been developed, including parsimony, maximum likelihood (ML) and Bayesian methods, our focus will be on distance matrix methods because of their close connection with the topological ideas we employ later.
 
 % NEUTRAL THEORY: Not necessary to include?
 % Two historical results, one from molecular evolution and one from molecular phylogenetics, are worth mentioning.
@@ -88,14 +87,14 @@ Second, it positioned 16S rRNA profiling as the primary source of data for use i
 The use of this genomic region was justified on the basis of being one of the few universal gene segments that is conserved across all species.
 Constructing a universal tree is predicated on there being orthologous genes, shared genes related through speciation events, that can provide a common foundation for comparative study.
 Finally, it solidified the tree paradigm as an organizing principle for relating extant species.
-Even though reticulate processes had been known since the nineteenth century, the idea that evolutionary relationships should be described by a bifurcating tree had been paramount since Darwin. 
+Even though reticulate processes had been known since the early twentieth century\footnote{Beginning with Frederick Griffith's experiments in 1928 showing that non-virulent strains of \emph{Streptococcus pneumoniae} could acquire virulence factors by being exposed to dead virulent strains.}, the idea that evolutionary relationships should be described by a bifurcating tree had been paramount since Darwin. 
 Reticulate processes were either ignored completely, or expected to occur at such low frequencies that they need not be considered.
 
 \section{Reticulate Processes and the Universal Tree}
 
 Despite the significant impact of Woese's observation, there remains a subtle difficulty, which Woese himself would come to contemplate in later work \cite{Woese:2004ba,Goldenfeld:2007im}.
-Woese's phylogeny was based on only 1,500 nucleotides in the ribosomal RNA, less than 1\% of the length of a typical bacterial genome (see \cite{Dagan:2006up}).
-Even more striking, this accounts for less than 0.00005\% of the human genome.
+Woese's phylogeny was based on only 1,500 nucleotides in the ribosomal RNA, less than 1\% of the total length of a typical bacterial genome (see \cite{Dagan:2006up}).
+Even more striking to consider, this accounts for less than 0.00005\% of the human genome.
 While recent work has developed approaches for constructing reference trees from larger gene sets \cite{Ciccarelli:2006gw}, the fact remains that the vast majority of genomic information is \emph{not} incorporated into the tree.
 
 The reason for this situation is twofold.
@@ -111,18 +110,22 @@ Historically, reticulate processes were believed to occur at such a low frequenc
 However, new genomic data has shown that, particularly in microorganisms such as bacteria and archaea, reticulate processes are much more prevalent than originally expected \cite{Ochman:2000dr}.
 Incompatibilities in the tree paradigm now appear as the rule, not the exception, which has led to calls for new representations of evolutionary relationships \cite{Doolittle:1999,Doolittle:2006}.
 Many have argued that, in light of new genomic evidence, the very notion of a universal tree of life must be discarded \cite{Koonin:2008bt,Koonin:2008tj}.
+This point has been argued most strongly by Ford Doolittle.
+In Figure~\ref{fig:doolittle_tree}, we see Doolittle's simplified representation of Tree of Life as it stands today, including only the most well-known examples of reticulations, the acqusition of mitochondria and chloroplasts from bacterial ancestors.
+We also see his representation of the Tree of Life as it would stand if additional large-scale reticulations were contained -- no long is it clear that the tree is an appropriate metaphor.
+
+\begin{figure}
+\centering
+\includegraphics[]{./fig/introduction/doolittle_trees.pdf}
+\caption[Ford Doolittle's Reticulate Tree of Life]{Left: W Ford Doolittle's representation of the consensus universal tree of life. Only the most well known reticulations are reflected: the endosymbiosis of mitochondria and chloroplasts. Right: Doolittle's representation of the universal tree of life with reticulate evolution. While the three domains of life are still recognizable, patterns of divergence no longer follow a strictly treelike model. (From \emph{Science}, vol. 284, issue 5423, page 2127. Reprinted with permission from AAAS.)}
+\label{fig:doolittle_tree}
+\end{figure}
 
 Finally, reticulate evolutionary processes are of more than just theoretical concern.
 In HIV, frequent homologous recombination confounds our understanding of the epidemic's early and present history \cite{Burke:1997ep}.
 In influenza, segmental gene reassortments lead to antigenic novelty and the emergenence of epidemics \cite{Nelson:2007bc}.
 In several pathogenic bacteria, including \emph{E. coli} and \emph{S. aureus}, horizontal gene transfer has been responsibile for the spread of antibiotic resistance genes \cite{Alekshun:2007bq,Davies:2010dv}.
-
-\begin{figure}
-\centering
-\includegraphics[width=.8\columnwidth]{./fig/introduction/doolittle_tree.png}
-\caption[Ford Doolittle's Reticulate Tree of Life]{W Ford Doolittle's representation of the universal tree of life with reticulate evolution. While the three domains of life are still recognizable, patterns of divergence no longer follow a strictly treelike model. (From \emph{Science}, vol. 284, issue 5423, page 2127. Reprinted with permission from AAAS.)}
-\label{fig:doolittle_tree}
-\end{figure}
+For example, the 2011 German \emph{E. coli} outbreak was caused by a strain of \emph{E. coli} that had acquired the ability to produce Shiga toxin \cite{Rohde:2011ju}.
 
 \section{Evolution as a Topological Space}
 
@@ -146,7 +149,7 @@ Topologically, the two objects are equivalent.\footnote{The two objects are topo
 Algebraic topology quantifies our intuitive notions of shape by associating algebraic structures to different invariants.
 For our purposes, the most relevant invariants will be the \emph{Betti numbers}.
 We give a more complete characterization of Betti numbers in Chapter~\ref{ch:background}, but the intuition is as follows.
-The Betti numbers are a collection of integers indexed by integer $n$ describing the connectivity of a space at different dimensions.
+The Betti numbers are a collection of integers indexed by an integer $n$ describing the connectivity of a space at different dimensions.
 First, we can think of $b_0$ as representing the number of connected components, or clusters, in our space.
 Next, we can think of $b_1$ as representing the number of one-dimensional loops in our space.
 Equivalently, this is the number of cuts needed to transform the space into something simply connected.
@@ -190,11 +193,7 @@ In doing so, we provide a fuller understanding of evolutionary relationships tha
 \label{intro:fig:simple_tree_example}
 \end{figure}
 
-% (a good sentence but move to background)
-% Techniques such as phylogenetic networks and ancestral recombination graphs have been developed to describe reticulate evolution, but they have had only limited success due to difficulties of biological interpretation and computational infeasibility in all but the smallest datasets.
-
-% Linkage-based techniques have succeeded in measuring rates of recombination in medium-sized datasets (<200 sequences), but they cannot reveal the scale of these exchanges (i.e., the genetic distance between parental sequences), and they have limited resolution in pinpointing where along a genome such exchanges have occurred.
-% A new mathematical foundation is needed to move beyond these limitations.
+% Linkage-based techniques have succeeded in measuring rates of recombination in medium-sized datasets (<200 sequences), but they cannot reveal the scale of these exchanges (i.e., the genetic distance between parental sequences), and they have limited resolution in pinpointing where along a 
 % Genome evolution is an extremely rich subject [cite Genome Architecture book].
 
 \section{Thesis Organization}
