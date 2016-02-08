@@ -332,11 +332,13 @@ As can be seen, the number of tree topologies explodes with the number of leaves
 \subsubsection{The Space of Phylogenetic Trees}
 \label{bg:bio:phylo:space}
 
-A phylogenetic tree with $L$ leaves is characterized by its topology and the lengths of each branch.
+An unrooted phylogenetic tree with $L$ leaves is characterized by its topology and the lengths of each branch.
 As shown in the previous section, there are $(2L-5)!!$ possible unrooted topologies.
-There are $2L-3$ branches: $L$ external branches and $L-3$ internal branches.
-Tree space refers to an abstract construction for representing each possible tree as a point in a geometric space.
-Studies of tree space were initiated by Billlera, Holmes, and Vogtmann (BHV) in \cite{Billera:2001tv}.
+There are $2L-3$ total branches, of which $L$ are external branches and $L-3$ are internal branches.
+Tree spaces refers to an abstract construction for representing each possible tree as a point in a geometric space.
+Studies of tree space were initiated by Billera, Holmes, and Vogtman (BHV) in \cite{Billera:2001tv}.
+In that paper, the authors studied rooted trees with zero-length external branches, a space denoted as $\mathrm{BHV}_{L}$
+A geodesic 
 In that paper, the authors studied rooted trees with zero-length external branches, a space we denote as $\mathrm{BHV}_{L}$.
 A geodesic distance was defined between trees of different topology.
 This analysis was extended by Zairis \emph{et al.} in \cite{Zairis:2014wa}, in which unrooted trees with non-zero external branches were considered.
@@ -503,7 +505,7 @@ The group $Z_{k}$ is the kernel of the boundary operator, $Z_{k}=\ker\partial_{k
 That is, it is the set of all $k$-chains that are sent to $0$ by the boundary operator.
 The group $B_{k}$ is the image of the boundary operator, $B_{k}=\im\partial_{k+1}$.
 That is, it is the set of all $k$-chains which are themselves the boundary of $(k+1)$-chains in $K$.
-These groups have a particularly simple relationship to one another which is shown in Figure~\ref{fig:bg:chain_complexes}.
+These groups have a particularly simple relationship to one another which is shown in Figure~\ref{fig:bg:chain_complex_maps}.
 
 % Boundary operator defines a chain complex $C_{*}$:
 
@@ -513,9 +515,9 @@ These groups have a particularly simple relationship to one another which is sho
 
 \begin{figure}
 \centering
-\includegraphics[width=\columnwidth]{./fig/FASY_chain_complexes.pdf}
-\caption[Relationship between the chain group, cycle group, and boundary group.]{Relationship between the chain group ($C_p$), cycle group ($Z_p$), and boundary group ($B_p$). We show the action of the boundary operator $\partial_p$ on each group at each dimension. Adapted from \cite{Fasy:2014}.}
-\label{fig:bg:chain_complexes}
+\includegraphics[]{fig/background/chain_complex_maps.pdf}
+\caption[Relationship between the chain group, cycle group, and boundary group]{Relationship between the chain group ($C_k$), cycle group ($Z_k$), and boundary group ($B_k$). Specifically, $B_{k} \subset Z_{k} \subset C_{k}$. We show the action of the boundary map $\partial_k$ on each group at each dimension. Of particular note are the relations $\partial_{k} : C_{k} \rightarrow B_{k-1}$ and $\partial_{k} : Z_{k} \rightarrow \emptyset$. Figure adapted from \cite{Fasy:2014}.}
+\label{fig:bg:chain_complex_maps}
 \end{figure}
 
 \subsubsection{Homology}
