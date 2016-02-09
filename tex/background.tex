@@ -211,16 +211,6 @@ Coalescent simulations were performed using \texttt{ms} \cite{Hudson:2002}.
     \caption[Two models for simulating evolutionary data]{Two models for simulating evolutionary data.}
 \end{figure}
 
-% \begin{subfigure}[b]{.1\textwidth}
-% \includegraphics{fig/background/wright-fisher_example.jpg}
-% \caption{Wright-Fisher Model}
-% \end{subfigure}
-% \begin{subfigure}[b]{.1\textwidth}
-% \includegraphics{fig/background/coalescent_example.jpg}
-% \caption{Coalescent Process}
-% \end{subfigure}
-% \end{figure}
-
 \subsubsection{Metrics on Sequences}
 \label{bg:bio:models:metrics}
 
@@ -247,7 +237,7 @@ where $p$ is the proporation of sites that are different.
 
 A phylogenetic tree is a binary tree in which leaves are associated with particular species or taxa, and the branching pattern of the tree reflects diverging evolutionary relationships.
 Branch lengths on the tree are associated with evolutionary divergence between sets of taxa.
-Molecular phylogenetics refers to a large collection of methods for inferring branching patterns from aligned molecular sequence data.\footnote{See Felsenstein, \emph{Inferring Phylogenies} for a readable and thorough introduction to the field \cite{Felsenstein:2004ws}.}
+Molecular phylogenetics refers to a large collection of methods for inferring branching patterns from aligned molecular sequence data.\footnote{See Felsenstein's \emph{Inferring Phylogenies} for a readable and thorough introduction to the field \cite{Felsenstein:2004ws}.}
 In general, the problem of finding an optimal tree associated with sequence data is NP-complete \cite{Foulds:1982fn}, however several approximate methods have been developed.
 The primary types of methods include maximum parsimony, distance-matrix methods, maximum likelihood (ML), and Bayesian inference.
 Maximum parsimony attempts to find the phylogenetic tree that minimizes the number of evolutionary changes required to explain the observed sequences.
@@ -313,6 +303,7 @@ A homoplasy occurs when the same mutation is introduced multiple times in a set 
 The presence of homoplasy will underestimate genetic distance between taxa.
 Third, reticulate evolution.
 As described previously, in cases of reticulate evolution no tree will accurately describe the observed data.
+In this case, one can either attempt to find the tree that best fits the data, or search for an alternative representation of phylogenetic relationships.
 
 \subsubsection{Number of Tree Topologies}
 \label{bg:bio:phylo:topologies}
@@ -327,7 +318,7 @@ For $L=n$, we have $\mathcal{T}(n)=(2n-5)!!$ and $2n-3$ branches.
 For $L=n+1$, we can add the new external branch to any of the current $2n-3$ branches.
 A rooted tree with $L$ leaves can be considered as an unrooted tree with $L+1$ leaves.
 Therefore, the number of rooted bifurcating tree topologies with $L$ leaves is $(2L-3)!!$
-As can be seen, the number of tree topologies explodes with the number of leaves.\footnote{As was observed by Walter Fitch, for more than 20 species there are more than Avogadro's number of topologies. ($N_{20}=8.02e$, $N_{A}=6.02\times 10^{23}$)}
+As can be seen, the number of tree topologies explodes with the number of leaves.\footnote{As was observed by Walter Fitch, for $22$ species there are on the order of Avogadro's number of topologies. ($N_{22}=3.20e23$, $N_{A}=6.02\times 10^{23}$)}
 
 \subsubsection{The Space of Phylogenetic Trees}
 \label{bg:bio:phylo:space}
@@ -336,34 +327,51 @@ An unrooted phylogenetic tree with $L$ leaves is characterized by its topology a
 As shown in the previous section, there are $(2L-5)!!$ possible unrooted topologies.
 There are $2L-3$ total branches, of which $L$ are external branches and $L-3$ are internal branches.
 Tree spaces refers to an abstract construction for representing each possible tree as a point in a geometric space.
-Studies of tree space were initiated by Billera, Holmes, and Vogtman (BHV) in \cite{Billera:2001tv}.
-In that paper, the authors studied rooted trees with zero-length external branches, a space denoted as $\mathrm{BHV}_{L}$
-A geodesic 
-In that paper, the authors studied rooted trees with zero-length external branches, a space we denote as $\mathrm{BHV}_{L}$.
-A geodesic distance was defined between trees of different topology.
+These studies were initiated by Andreas Dress and colleagues, who introduced a formalism known as \emph{T-theory} (see \cite{Dress:1998vq,Dress:1996di,Dress:1614018}).
+We give here a brief flavor of these ideas; additional exposition can be found in \cite[\S 7]{Pachter:2005vo}.
+
+Consider a set of $L$ taxa.
+A dissimilarity map is defined on $L$ as $\delta : L \times L \rightarrow \mathbb{R}$, where $\delta(l,l)=0$ and $\delta(l,m)=\delta(m,l)$.
+There are $\binom{L}{2}$ distances; the set of dissimilarity maps forms a vector space of dimension $\binom{L}{2}$.
+Furthermore, the set of all metrics will be the subspace of $\mathbb{R}^{\binom{L}{2}}$ that satisfies the triangle inequality.
+The space of trees is defined as the set $\mathcal{T}_{L}$ of dissimilarity maps that satisfy the four-point condition.
+The space can be logically decomposed into subspaces corresponding to a particular choice of topology.
+This will be taken as the union of $(2L-5)!!$ subspaces, each of dimension $2L-3$.
+Each subspace will have the structure of a metric cone in the space $\mathbb{R}^{\binom{L}{2}}$.
+
+The geometric structure of this space was carefully studied by Billera, Holmes, and Vogtman (BHV) in \cite{Billera:2001tv}.
+In that paper, the authors specifically considered rooted trees with zero-length external branches, a space denoted as $\mathrm{BHV}_{L}$, but the basic intuition generalizes to other types of trees.
+They defined a geodesic distance between trees of different topology and used it to define various metric properties on tree space.
 This analysis was extended by Zairis \emph{et al.} in \cite{Zairis:2014wa}, in which unrooted trees with non-zero external branches were considered.
-The external branches are constrained to sit in the positive open orthan $(\mathbb{R}^{\geq 0})^{L}$.
+The external branches are constrained to sit in the positive open orthant $(\mathbb{R}^{\geq 0})^{L}$.
 An evolutionary moduli space is then defined as the product
 \begin{equation}
-\Sigma_{L} = \mathrm{BHV}_{L-1} \times (\mathbb{R}^{\geq 0})^{L}.
+\Sigma_{L} = \mathrm{BHV}_{L-1} \times (\mathbb{R}_{\geq 0})^{L}.
 \end{equation}
 The tree space construction allows one to define statistics, such as means and variances, on collections of trees in a meaningful way.
-An interesting statement that can be made within this framework is that phylogenetics is essentially the projection of real data onto tree space.
 
-We show an exaple of the tree space construction on $L=4$ and $L=5$ leaves in Figure~\ref{fig:bg:tree_space}.
+We show an example of the tree space construction on $L=4$ and $L=5$ leaves in Figure~\ref{fig:bg:tree_space}.
 The case of $L=4$ is particularly simple to analyze.
-There are three topologies, corresponding to the patterns $((a,b),(c,d))$, $((a,c),(b,d))$, and $((a,d),(b,c))$.
-Each topology has a single internal branch.
-Attached to each external topology is a space $\mathbb{R}^4$ for the external branches.
+The metric cone is a subspace of $\mathbb{R}^{\binom{4}{2}=6}$.
+There are $(2*4-5)!!=3$ tree topologies, corresponding to the patterns $((a,b),(c,d))$, $((a,c),(b,d))$, and $((a,d),(b,c))$.
+There are $(2*4-3)=5$ branches: each topology will be a subspace in $\mathbb{R}^5$.
+The intersection of the subspace of each topology is a space in $\mathbb{R}^4$.
 The case of $L=5$ also has a relatively simple structure.
 There are fifteen possible topologies, each with two internal branches.
-The topologies are arranged as a Petersen graph, a common construction in graph theory.
-Vertices of the Petersen graph correspond to degenerate points on one of the two internal branches.
+Each topology forms a hyperplane of dimension $\mathbb{R}^7$
+Combinatorially, the topologies can be arranged as a Petersen graph.
+Intersections of three hyperplanes will correspond to degenerate cases with one internal branch is not resolved, as shown in Figure~\ref{fig:bg:tree_space}B.
+These facets sit in $\mathbb{R}^6$.
+It is important to think of the entire Petersen structure as being a cone, the origin of which is the $5$-dimensional subspace consisting of only external leaves (see \cite[Figure~14]{Billera:2001tv}).
+
+Naturally, most data will not sit in $\mathcal{T}$.
+Whether or not this is simply due to noise or reflects reticulate processes will depend on the particular dataset.
+We can view the goal of phylogenetics as finding the best tree projection $\delta_{T} \in \mathcal{T}$ for arbitrary metric data $X$.
 
 \begin{figure}
 \centering
 \includegraphics[]{fig/background/tree_space.pdf}
-\caption[Tree Space]{Examples of Tree Space. (A) Tree space on 4 leaves. (B) Tree space on 5 leaves.}
+\caption[Tree Space]{Examples of geometric representations of the space of trees on $L=4$ and $L=5$ leaves. (A) On four leaves the metric cone is a subspace of $\mathbb{R}^{6}$. There are three tree topologies, each of which corresponds to a 5-dimensional cone inside. The three topologies share a $\mathbb{R}^1$ facet corresponding to the degenerate topology.(B) On five leaves the metric cone is a subspace of $\mathbb{R}^{}$. There are fifteen tree topologies, each of which corresponds to a 7-dimensional cone. The geometric structure of the space will map to a \emph{Petersen graph}, as shown. There are 10 degenerate cases in which one internal branch is not resolved; these correspond to 6-dimensional facets, each joining three distinct topologies. The $n=5$ subfigure is an adaptation of Figure~3.5 in \cite[Ch~3]{Pachter:2005vo}.}
 \label{fig:bg:tree_space}
 \end{figure}
 
