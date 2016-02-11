@@ -1,0 +1,22 @@
+\begin{tikzpicture}[node/.style={minimum height=.8cm,minimum width=2cm,draw}]
+
+\draw (0,0) node[node, align=center] (dr) {Dimensionality\\Reduction};
+\draw (3,1) node[node] (linear) {Linear};
+\draw (3,-1) node[node] (nonlinear) {Nonlinear};
+\draw (6,1) node[node] (pca) {PCA};
+\draw (6, -.5) node[node] (geometry) {Geometry};
+\draw (6, -1.5) node[node] (topology) {Topology};
+\draw (9, -.5) node[node,align=left] (manifold_learning) {Manifold\\Learning};
+\draw (9, -1.5) node[node] (mapper) {Mapper};
+\draw (12, -.5) node[node,align=center] (mds) {MDS\\PCA\\Isomap};
+
+\myline{dr}{linear};
+\myline{dr}{nonlinear};
+\draw[-latex] (linear) -- (pca);
+\myline{nonlinear}{geometry};
+\myline{nonlinear}{topology};
+\draw[-latex] (topology) -- (mapper);
+\draw[-latex] (geometry) -- (manifold_learning);
+\draw[-latex] (manifold_learning) -- (mds);
+
+\end{tikzpicture}
