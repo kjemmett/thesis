@@ -45,9 +45,7 @@ One, each segregating site is associated with an edge in the
 
 ------------------------------------------------------------------
 
-
 ## MAPPER NOTES
-
 # NEW NOTES:
 
 The field of exploratory data analysis is vast.
