@@ -207,7 +207,7 @@ Coalescent simulations were performed using \texttt{ms} \cite{Hudson:2002}.
     \includegraphics[width=0.3\linewidth]{fig/background/wright-fisher_example.jpg}}
   \subbottom[Coalescent Model]{%
     \includegraphics[width=0.3\linewidth]{fig/background/coalescent_example.jpg}}
-    \caption[Two models for simulating evolutionary data]{Two models for simulating evolutionary data.}
+    \caption[Two models for simulating evolutionary data]{Two models for simulating evolutionary data. On the left, the Wright-Fisher model simulates a sample of $n$ individuals in the forward direction. At each generation, $n$ offspring choose a parent from the previous generation at random. After $t$ generations, some initial lineages will have died off, while others will become dominant in the population. On the right, the coalescent model simulates the sample in the reverse direction. At each reverse generation, individuals merge, or coalesce, with some probability, until they reach a single most recent common ancestor (MRCA). The intuition behind the approach is that lineages that have gone extinct will not contribute to the present day observed diversity, are therefore inaccesible, and do not need to be simulated. This approach reduces the data that needs to be simulated and increases the computational performance of the models.}
 \end{figure}
 
 \subsubsection{Metrics on Sequences}
@@ -258,7 +258,7 @@ One particular reason neighbor-joining is popular is that under certain conditio
 The neighbor-joining algorithm is a greedy approach to tree construction that iteratively joins the two closest nodes until a tree is fully resolved.
 The neighbor-joining algorithm is described in Algorithm~\ref{bg:alg:nj}.
 
-\begin{algorithm}
+\begin{algorithm}[t]
     \KwData{$n \times n$ distance matrix $D$}
     \KwResult{Phylogenetic tree on $n$ leaves}
     \While{\emph{Tree not fully resolved ($n>3$)}} {
@@ -801,6 +801,7 @@ An example of the persistent landscape and silhouette is shown in Figure~\ref{fi
 \end{figure}
 
 A second approach has been taken by Schweinhart and MacPherson in \cite{MacPherson:2012eq}, in which a transformation of the intervals is used to characterize random polymers in terms of a fractal dimension.
+A related approach has recently been proposed by Kwitt \emph{et al.} that represents the persistence diagram in a kernel space for use in machine learning \cite{Kwitt:2015,Reininghaus:2015a}.
 We explore the use of functional summaries of the barcode diagram in a statistical inference setting in Chapter~\ref{ch:parametric_inference}.
 
 Finally, probability measures on the space of persistence diagrams.
@@ -845,8 +846,8 @@ Mapper has been applied to problems in RNA folding \cite{Bowman:2008esa}, breast
 A simple example of the Mapper algorithm is shown in Figure~\ref{fig:bg:mapper}, which is adapted from \cite{Lum:2013cz}.
 As input, a point cloud $X$ with an associated metric, Euclidean or not (Figure~\ref{fig:bg:mapper})A.
 First, a filter function is applied to the data (Figure~\ref{fig:bg:mapper}B).
-Filter function maps the original points onto the real line, $X\rightarrow\mathbb{R}$.
-Standard filter functions include things like the mean, density, $L_1$-centrality, and components of a PCA decomposition.
+The filter function maps the original points onto the real line, $X\rightarrow\mathbb{R}$.
+Standard filters include things like the mean, density, $L_1$-centrality, and the first and second components of a PCA decomposition.
 Second, the projected space is split into overlapping bins based on a resolution (bin size) and overlap parameter.\footnote{Multiple filter functions can be used and binned on a grid.}
 Third, the bins are then clustered in the original high-dimensional space (Figure~\ref{fig:bg:mapper}).
 Each cluster will form a node in the graph representation.\footnote{Nodes in a Mapper graph consist of multiple points in the original data; this is essence of the compressed representation.}
@@ -875,7 +876,7 @@ Sequence space will therefore consist of the $||Q||^L$ possible sequences.
 Together with any of the standard genetic distance measures, this forms a metric space.
 
 The processes of evolution can be seen as an exploration of sequence space.
-An individual genotype can be assigned a fitness, $w$, which will describe the probability of reproductive success in a particular environment.
+An individual genotype can be assigned a fitness which will describe the probability of reproductive success in a particular environment.
 Clonal evolution is the process of smoothly moving through sequence space, while reticulate evolution is the process of making discontinuous jumps through the space.
 Our data consists of a subset of points sampled from sequence space.
 These points reflect a particular evolutionary history.
@@ -1001,17 +1002,17 @@ Number of higher-dimensional generators over a time interval (“irreducible cyc
 \label{bg:top4bio:tree_space}
 
 In Section~\ref{bg:bio:phylo:space}, tree space was introduced as an abstract construction to systematically represent the set of all possible binary trees as a geometric space.
-Tree space on $X$ leaves, $\mathcal{T}_X$, was shown to be the subspace of the complete space of finite metrics on $\mathbb{R}^{\binom{X}{2}}$ consisting of those metrics that satisfy the four-point condition (or additivity).
+Tree space on $n$ leaves, $\mathcal{T}_n$, was shown to be the subspace of the complete space of finite metrics on $\mathbb{R}^{\binom{n}{2}}$ consisting of those metrics that satisfy the four-point condition (or additivity).
 Because real sequence data will very rarely satisfy this condition, one possible interpretation of phylogenetics is of finding the best projection onto tree space for arbitrary data.
 
 The program we propose can be understood as an extension of the tree space framework.
 We would like to use topological invariants, specifically homology, to measure the frequency and scale of reticulate evolution in sequence data.
-From the theorem due to Carlsson, we know that higher homology will vanish for additive, tree-like, data.
-And from the simple example in Section~\ref{bg:top4bio:fundamental_unit}, we know that nonadditive reticulate processes will have nonvanishing higher homology.
-Rather than attempt to characterize arbitrary data by projecting onto tree space, we can use persistent homology to compute homological invariants that will characterize our space.
+From the theorem due to Carlsson, we know that higher homology will vanish for on tree space.
+And from the simple example in Section~\ref{bg:top4bio:fundamental_unit}, we know that non-additive reticulate processes will have nonvanishing higher homology.
+Rather than attempt to characterize arbitrary data by projecting onto tree space, we will use persistent homology to compute homological invariants that will characterize our space.
 Our hypothesis, then, is that as the data moves further from tree space, the less additive it will be, and the stronger from higher homology will be.
-Our updated picture is shown in Figure~\ref{fig:bg:tree_space_revisited}, where we depict Tree Space embedded in the larger space of finite metrics.
-We anticipate for appreciable datasets, our sensitivity will be such that those close to the tree space will have little to no signal, while those further will have an increasing signal.
+Our updated picture is shown in Figure~\ref{fig:bg:tree_space_revisited}, where we depict tree space embedded in the larger space of finite metrics.
+We anticipate for appreciable datasets, our sensitivity will be such that those close to the tree space will have little to no homological signal, while those further will have an increasing homological signal.
 A second point to make is that the metric structure will now allow us to pass through regions of space that are nonadditive.
 Hence, one could conceivably compare two trees by drawing the direct path between them in metric space, and evaluating the persistent homology at each point.
 
@@ -1021,6 +1022,6 @@ While some interesting work has explored the combinatorial structure of the spac
 \begin{figure}
 \centering
 \includegraphics[]{./fig/background/tree_space_revisited_v2.pdf}
-\caption[Tree Space Revisited]{Tree space, $\mathcal{T}_{n}$ is a subspace of the larger space of the metric cone on $\mathbb{R}^{\binom{n}{2}}$. In the presence of reticulate evolution, data may not sit near an additive tree, as for example data $X$ (pink circle). The invariant $\TOP$ (topological obstruction to phylogeny) is one way to characterize these spaces and can be computed using persistent homology. In theory, as one moves further from tree space $\TOP$ should increase. We study this in more detail in Chapter~XX. The orange lines indicate regions close to tree space in which $\TOP$ is insensitive to nonadditivity. In this example we also indicate two trees $\mathcal{T}_{1}$ and $\mathcal{T}_{2}$ which sit on subspaces of different topology in tree space. The direct path between the two topologies will pass into a ${\TOP}{\neq}{0}$ region.}
+\caption[Tree Space Revisited]{Tree space, $\mathcal{T}_{n}$ is a subspace of the larger space of the metric cone on $\mathbb{R}^{\binom{n}{2}}$. In the presence of reticulate evolution, data may not sit near an additive tree, as for example data $X$ (pink circle). The invariant $\TOP$ (topological obstruction to phylogeny) is one way to characterize these spaces and can be computed using persistent homology. In theory, as one moves further from tree space $\TOP$ should increase. We study this in more detail in Chapter~XX. The orange lines indicate regions close to tree space in which $\TOP$ is insensitive to non-additivity. In this example we also indicate two trees $\mathcal{T}_{1}$ and $\mathcal{T}_{2}$ which sit on subspaces of different topology in tree space. The direct path between the two topologies will pass through a ${\TOP}{\neq}{0}$ region.}
 \label{fig:bg:tree_space_revisited}
 \end{figure}
