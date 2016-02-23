@@ -1,5 +1,6 @@
 library(TDA)
 
+
 n <- 100
 x <- matrix(seq(0, 10, length.out=n), nrow=1, ncol=n)
 

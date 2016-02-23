@@ -6,110 +6,105 @@
 \section{Introduction}
 \label{flu:introduction}
 
-In this chapter we analyze influenza A virus, a common human pathogen.
-Influenza is an enveloped single-stranded negative-sense RNA virus of family Orthomyxoviridae.
+In this chapter, we study influenza virus, a common human pathogen with a substantial burden on human health.
+Seasonal influenza epidemics have an annual mortality of between 250,000 and 500,000 \cite{WHO:2014b}.
+Influenza pandemics, which have historically occurred roughly once every thirty years, can infect between 20-40\% of the global population.
+For example, the Spanish influenza pandemic of 1918-1919 is estimated to have infected approximately 500 million people and lead to the death of between 50-100 million people \cite{Taubenberger:2006kl}.
+This amounts to an infection of approximately 33\% of the population and a case fatality ratio of 5-6\% of global population.
 
+The natural host reservoir of influenza is waterfowl.
+Within this reservoir, several distinct subtypes circulate.
+Subtypes are labeled by the antigenic type of two surface proteins, hemagglutinin (HA) and neuraminidase (NA).\footnote{An antigen is a molecule that elicits a host immune response. The adaptive immune system learns to recognize an antigenic type. Antigenic variation occurs when sufficient genomic alteration has occurred for a protein to evade the immune response.}
+There are presently eighteen types of HA (H1 to H18) and eleven types of NA (N1 to N11).
+Zoonotic adaptations have led to multiple introductions to human populations, which have resulted in both isolated outbreaks and sustained transmission \cite{Nelson:2007bc}.\footnote{Understanding the genetic basis for host adaptation is an important and controversial research area. Our work in this area in collaboration with Yoshihiro Kawaoka is forthcoming \cite{Walters:2016a}.}
 
-It is well known that frequent reassortment punctuates the evolution of influenza.
-Reassortant strains can lead to antigenic novelty when internal segments adapted to humans pair up with novel external segments.
-Indeed, such events led to the human influenza pandemics of 1957 and 1968.
-Influenza provides a useful testbed for detection of reticulate evolution because of the large quantity of data that has been collected.
+The evolution of influenza is punctuated by frequent reassortment.
+Reassortment occurs when two virus particles coinfect the same host cell, and is a consequence of influenza having a segmented genome.
+The result is viral progeny that carries genomic information from two independent parental strains.
+This mode of evolution is known as \emph{antigenic shift}, because it can rapidly lead to antigenically distinct viral strains.\footnote{As opposed to \emph{antigenic drift}, due to random mutation and genetic drift.}
+Antigenic shifts have historically been the cause of major pandemics, which can occur when novel surface proteins reassort with internal segments already adapted to the human host.
+Reassortments of this type led to Asian flu pandemic of 1957 and the Hong Kong flu pandemic of 1968 \cite{Lindstrom:2004il}.
+The 2009 H1N1 pandemic strain emerged from a triple reassortment between avian, swine, and human circulating strains \cite{Hernandez:2011ud,Smith:2009io}.
+The pandemic had a global infection rate of between 11\%-21\% but a lower mortality rate than initially expected.\footnote{The 2009 H1N1 pandemic is an excellent example of the delicate balance between virulence and transmissibility.}
+The 2013 H7N9 outbreak was caused by a triple reassortment of three distinct avian strains \cite{Chen:2013kp}.
+Traditionally, reassortments have been identified by hand by comparing phylogenetic trees constructed from different genomic segments \cite{Nelson:2006bx}.
 
-It is well-known that frequent reassortment of viral segments punctuates the evolution of influenza [cites].
-
-Since the influenza pandemic of 2009, substantial effort has been put into.
+Recent years have seen increased concerns about the pandemic potential for zoonotic adaptation of highly pathogenic strains of influenza.
+Of particular concern is H5N1, which has an estimated case fatality rate of 50\% (449 deaths from 846 confirmed human cases) \cite{WHO:2016a}, but has so far not exhibited sustained person-to-person transmission \cite{WHO:2014b}.
+These concerns underscore the need to efficiently characterize and represent reticulate evolution in influenza.
+Since the 2009 H1N1 pandemic, substantial effort has been put into collected fully sequenced influenza genomes.
 The NCBI Influenza Virus Resource now contains over 400,000 unique viral isolates \cite{Bao:2008cq}.
-The large quantity of genomic data that has been collected provides an ideal test bed for studying evolution in the reticulate limit.
-Also because it allows for temporal analysis 
-
-To test our model on biological data, we considered reassortment in avian influenza virus.
-Influenza is a single-stranded RNA virus that is naturally found in avian populations.
-Each viral genome has eight genetic segments.
-Subtypes are defined by two segments, hemagglutinin (HA) and neuraminidase (NA), e.g. H1N1 and H3N2.
-When a host cell is coinfected with two different viral strains, reassortment of these segments can occur, such that viral offspring is a genetic mixture of the two parental strains.
-Reassortment is of substantial medical interest, and has been connected with the outbreak of influenza epidemics.
-
-In fact, reassortment has been shown to be quite frequent even 
-
-Natural host reservoir: aquatic birds.
-Origin of 2009 H1N1 pandemic: triple reassortment.
-Origin of 2013 H7N9 pandemic: triple reassortment.
-Also discuss H5N1 and H5N2.
-
-things we did:
-applied PH to flu sequences
-applied to segments individually -- no H1 homology
-applied PH to concatenated sequences -- lots of higher homology
-used to estimate recombination rates
-looked at $H_1$ pairwise - determined that polymerase complex goes together.
-[consistent with Greenbaum]
-
-Important question: human adaptation
-Pandemics: 1918 Spanish flu, 1957 Asian flu, 1968 Hong Kong, 2009 H1N1
-Outbreaks: 2015 H5N2
-
-Eight RNA segments that code for eleven proteins.
-In recent years, there has been substantial concern over H5N1 and H7N9.
-Total genome length approximately 13.5 kb
-
-[from nelson 2007]
-Host species barriers.
-Pandemic potential.
-Natural host reservoir.
- Wild waterfowl are the reservoir hosts for type A influenza viruses, harboring numerous antigenically distinct subtypes (serotypes) of the two main viral antigens, the haemagglutinin (HA) and neuraminidase (NA) sur- face glycoproteins (16 HA and 9 NA subtypes).
-
-Include discussion of antigenic effects.
-Combined effect of genetic drift and reassortment.
-
-Experimental studies have shown that reassortment occurs at high frequency when segments do not mismatch \cite{Marshall:2013kn}.
-This type of reassortment would be difficult to capture in our approach.
-
-Rates of reassortment were first measured in \cite{Macken:2006jw}
+The large quantity of genomic data that has been collected provides an ideal environment for studying reticulate evolution with high resolution.
 
 \section{Influenza Virology}
 \label{flu:virology}
 
-Influenza has a segmented genome
-Influenza is a single-stranded RNA virus of family Orthomyxoviridae.
-Influenza has a segmented genome with eight segments coding for 11 proteins.
-The segments are generally ordered from longest to shortest.
-
-HA is the surface antigen that is responsible for binding the viral particle to the cell.
-HA binds to sialic acid groups on the cell surface.
+Influenza is an enveloped single-stranded negative-sense RNA virus of family Orthomyxoviridae.
+The virus has a segmented genome with eight segments coding for eleven proteins.
+The genome length is approximately 13.5~kb.
+The viral structure is shown in Figure~\ref{fig:flu:genome}.
+The segments are typically ordered from longest to shortest and are detailed in Table~\ref{table:influenza_genome_segments}.
+Of these segments, hemagglutinin (HA) and neuraminidase (NA) are the two most important.
+HA and NA form the two surface protein markers and 
+On the surface of the viral particle are HA and NA.
+HA regulates host cell binding and entry into host epithelial cells.
 HA is the strongest determinant of host specificity: different hosts express different sialic acid types.
 Avian influenza binds to type 2-3 sialic acid receptors, while human influenza binds to type 2-6 sialic acid receptors.
-Human and avian adaptations.
-NA is the surface protein that cleaves the replicating virus from the cell surface.
-Together, HA and NA determine the subtype of virus and are a first marker of host transmission and specificity.
-
-PB1, PB2, and PA form the polymerase complex and are involved in viral replication.
+NA is the surface protein that cleaves the newly replicated virus particles from the cell surface.
+Together, HA and NA determine the strain subtype and are a primary marker of host transmission and specificity.
+Both are antigens.
+PA, PB1, and PB2 form a polymerase complex and are involved in viral replication.
 Mutations in these proteins can be among the most important in determining host adaptation and virulence.
-
 The remaining proteins, including NP, M1, M2, and NS1 are largely structural proteins involved in capsid formation and viral packaging.
+
+\begin{table}
+\centering
+\caption{Influenza Genome Segments}
+\small
+\rowcolors{2}{gray!25}{white}
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+\setlength{\extrarowheight}{.75ex}
+\begin{tabularx}{\textwidth}{XXXXX}
+\toprule\rowcolor{gray!50}
+Segment & Length (aa) & Name & Abbreviation & Proteins \\
+\midrule
+1 & xx & Polymerase basic 2 & PB2 & PB2 \\
+2 & xx & Polymerase basic 1 & PB1 & PB1,PB1-F2 \\
+3 & xx & Polymerase acidic & PA & PA \\
+4 & xx & Hemagglutinin & HA & HA \\
+5 & xx & Nucleoprotein & NP & NP \\
+6 & xx & Neuraminidase & NA & NA \\
+7 & xx & Matrix        & M  & M1,M2 \\
+8 & xx & Nonstructural & NS & NS1 \\
+\bottomrule
+\end{tabularx}
+\label{table:influenza_genome_segments}
+\end{table}
 
 \begin{figure}
 \begin{center}
 \centerline{\includegraphics[width=.5\columnwidth]{./fig/influenza/flu_genome.jpg}}
-\caption[Structure of an influenza virus particle]{Structure of an influenza virus particle. The surface capsid is formed from matrix proteins M1 and M2. Surface antigens HA and NA coat this surface and are involved in cell entry and exit. PB1, PB2, and PA form a polymerase complex assisting in }
+\caption[Structure of an influenza virus particle]{Structure of an influenza virus particle. Surface antigens HA and NA coat this surface and are involved in cell entry and exit. The surface capsid is formed from matrix proteins M1 and M2. PB1, PB2, and PA form a polymerase complex assisting in viral replication in the infected cell.}
 \label{fig:flu:genome}
 \end{center}
 \end{figure}
 
-Therefore, ways of automatically characterizing and representing reassortment are necessary.
-
-We applied persistent homology to data for more than 3,000 avian influenza genomes from the NIH Influenza Sequence Database.
-Examining each genome segment separately, we recovered only zero-dimensional homology, consistent with no intra-segmental recombination.
-In other words, segment-by-segment the evolution of influenza is tree-like and amenable to a phylogenetic tree representation.
-
-However, a similar analysis of the concatenated full genome reveals a complex topology, with a large number of loops in one and two dimensions.
-
 \section{Influenza Reassortment}
 \label{flu:reassortment}
 
-The evolution of influenza is punctuated by frequent reassortment.
-To characterize influenza evolution, we computed the persistent homology of four influenza datasets from avian, swine, and human hosts, each numbering as many as 1,000 genomic sequences.
-When applied to a single segment of the virus unaffected by reassortment, higher-dimensional homology groups vanish (Fig. 2).
-Alignments of single segments are therefore suitable for phylogenetic analysis.
+We characterized reassortment in avian influenza using persistent homology.
+We first compiled an aligned dataset of 3,105 complete avian influenza genomes from the NIH Influenza Sequence Database.
+These sequences span in time from 1956 to 2012. 
+We collected samples from all influenza subtypes.
+The distribution of collected HA types is shown in Figure~XX.
+The majority of our sequences are of the H5 and H6 type, with a smaller proportion of H3, H7, and H9.
+
+We first applied persistent homology to each genomic segment individually, as shown in Figure~\ref{fig:flu:segment_barcodes}.
+Here we see broadly only zero-dimensional homology, consistent with no intra-segmental recombination.
+The presence of higher homology is likely due to back mutation, which is expected to be more common in viruses with high mutation rates and shorter genomes (i.e. the infinite sites model does not hold).
+However, an analysis of the concatenated full genome reveals a complex topology, with a large number of homological invariants in one and two dimensions.
+
 In settings of vertical evolution, we can directly transform a filtration of 0-D simplicial complexes into an equivalent distance-based dendrogram.
 Fig. 2A represents the zero-dimensional topology of the hemagglutinin segment of avian influenza viruses. 
 The zero-dimensional generators at higher genetic distances indicate the major clusters, coinciding with the antigenic subtypes H1-H16.
@@ -126,28 +121,42 @@ As an example, the [G3] generator with the longest bar (Dataset S1, Table S5) is
 The number of sequences in the generator serves as an upper bound on the number of candidate reassortants.
 Simple observation of the resulting sequence alignment reveals two divergent allelic patterns between informative sites in PB2 and HA, as reflected in incongruent trees (SI Appendix, Fig. S8 A and B) and reticulate cycles of the phylogenetic network (SI Appendix, Fig. S8C).
 
-Our analysis of the concatenated H1N1pdm genome identified two nontrivial cycles, nominating candidate H1N1pdm reassortments in humans (Dataset S1, Table S6).
-Given the greater homogeneity of H1N1pdm sequences due to increased sampling, the number of informative sites among [G2] sequences was too small to perform maximum likelihood phylogenetic analysis.
-We therefore visually inspected informative sites, which suggested potential reassortment of two viral strains each contributing [PB2, M1, NS1] and [PB1, PA, HA] (SI Appendix, Fig. S9A).
-Phylogenetic network analysis supports these incompatibilities (SI Appendix, Fig. S9B).
-
 One-dimensional $\ICR$ provides a lower-bound estimate of reassortment rate (SI Appendix, Fig. S10B).
 We calculate $\ICR < 1$ event per year for classic H1N1 swine and H3N2 human influenza, supported by previous phylogenetic estimates \cite{Lycett:2012fqa,Holmes:2005cia}.
 In contrast, we calculate a high rate of 22.16 reassortments per year for avian influenza A (Dataset S1, Table S16).
 This difference could be explained by the high diversity and frequent coinfection of avian viruses \cite{Lubeck:1979ws} and correlates with the high proportion of avian reassortants reported in previous studies \cite{Dugan:2008iba}.
 
-% figure
 \begin{figure}
-\begin{center}
-\centerline{\includegraphics[width=\columnwidth]{./fig/influenza/influenza_Fig3.pdf}}
-\caption[Influenza Megaplot]{Influenza Megaplot}
-\label{fig:flu:megaplot}
-\end{center}
+\centering
+\includegraphics[]{fig/influenza/flu_segment_barcodes.pdf}
+\caption[Influenza Segment Barcodes]{Influenza Segment Barcodes. Very little $H_1$ present.}
+\label{fig:flu:segment_barcodes}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[]{fig/influenza/flu_concat_barcode.pdf}
+\caption[Influenza Concatenated Genome Barcode]{Influenza Concatenated Genome Barcode}
+\label{fig:flu:concatenated_genome_barcode}
+\end{figure}
+
+We used mapper to visualize the relationships in our influenza dataset.
+A series of mapper networks is shown in Figure~\ref{fig:flu:networks_by_subtype}.
+The networks were generated using a Hamming metric and the first and second MDS component as a 2d lens.
+In each subfigure we color the network by the prevalence of each HA subtype in the particular node.
+It is interesting to note how this is different than a traditional phylogeny based on HA.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/influenza/flu_networks_by_subtype.pdf}
+\caption[Influenza Networks By HA Subtype]{Influenza Networks By HA Subtype. The networks were generated using Ayasdi. }
+\label{fig:flu:networks_by_subtype}
 \end{figure}
 
 \section{Nonrandom Association of Genome Segments}
 \label{flu:nonrandom_reassortment}
 
+% (This section needs more details)
 We observed nonrandom association of flu segments.
 Statistical inference on the loops corresponding to reassortments identified segments that tend to co-segregate with each other during reassortment.In particular, polymerases co-segregate, while genes coding for envelope and capsid proteins show independent reassortment patterns.
 Cosegregation of polymerases suggests that effective protein–protein interaction between the polymerase complex and the NP protein constrain reassortment. 
@@ -158,6 +167,14 @@ We first considered all pairs of concatenated segments and estimated the number 
 We then ascertained the significance of observing a number of reassortments between each pair of segments given the total estimate of reassortments in the concatenated genome (SI Appendix, Supplementary Text).
 Analysis of avian influenza reveals a statistically significant configuration of four cosegregating segments: polymerase basic 2 (PB2), polymerase basic 1 (PB1), polymerase acidic (PA), and nucleoprotein (NP) (Fig. 3D).
 Interestingly, this pattern mimics previous in vitro results that suggest that effective protein-–protein interaction between the polymerase complex and the NP protein constrain reassortment \cite{Lubeck:1979ws}.
+
+\begin{figure}
+\begin{center}
+\centerline{\includegraphics[width=\columnwidth]{./fig/influenza/flu_reassortment_correlations.pdf}}
+\caption[Influenza Nonrandom Reassortment]{Influenza Nonrandom Reassortment}
+\label{fig:flu:nonrandom_reassortment}
+\end{center}
+\end{figure}
 
 \section{Multiscale Flu Reassortment}
 \label{flu:multiscale_reassortment}

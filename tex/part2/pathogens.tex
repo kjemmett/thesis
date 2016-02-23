@@ -3,25 +3,25 @@
 \label{ch:pathogens}
 
 \section{Introduction}
-\label{sec:pathogen_introduction}
+\label{pathogens:introduction}
 
-Pathogenic bacteria can lead to severe infection and mortality and presents an enormous burden on human populations and public health systems.
+Pathogenic bacteria can lead to severe infection and mortality and present an enormous burden on human populations and public health systems.
 One of the achievements of twentieth century medicine was the development of a wide range of antibiotic drugs to control and contain the spread of pathogenic bacteria, leading to vastly increased life expectancies and global economic development.
 However, rapidly rising levels of multidrug antibiotic resistance in several common pathogens, including \emph{Escherichia coli}, \emph{Klebsiella pneumoniae}, \emph{Staphylococcus aureus}, and \emph{Neisseria gonorrhoea}, is recognized as a pressing global issue with near-term consequences \cite{Neu:1992gk,Thomas:2005hp,WHO:2014wa}.
 The threat of a post-antibiotic 21st century is serious, and new methods to characterize and monitor the spread of resistance are urgently needed.
 
 Antibiotic resistance can be acquired through point mutation or through horizontal transfer of resistance genes.
 Horizontal exchange occurs when a donor bacteria transmits foreign DNA into a genetically distinct bacteria strain.
-Three mechanisms of horizontal transfer are identified, depending on the route by which foreign DNA is acquired \cite{Ochman:2000dr}.
+As discussed in Chapter~\ref{ch:background}, three mechanisms of horizontal transfer have been identified, depending on the route by which foreign DNA is acquired \cite{Ochman:2000dr}.
 Foreign DNA can be acquired via uptake from an external environment (transformation), via viral-mediated processes (transduction), or via direct cell-to-cell contact between bacterial strains (conjugation).
 Resistance genes can be transferred between strains of the same species, or can be acquired from different species in the same environment.
 While the former is generally more common, an example of the latter is the phage-mediated acquisition of Shiga toxin in \emph{E. coli} in Germany in 2011 \cite{Rohde:2011ju}.
 Elements of the bacterial genome that show evidence of foreign origin are called genomic islands, and are of particular concern when associated with phenotypic effects such as virulence or antibiotic resistance.
 
-The presence of horizontal gene transfer precludes accurate phylogenetic characterization, because different segments of the genome will have different evolutionary histories.
-Bacterial species definitions and taxonomic classifications are made on the basis of 16S ribosomal RNA, a highly conserved genomic region between bacteria and archaea species \cite{Woese:1977vd}.
-However, the region generally accounts for less than 1\% of the complete genome, implying that the vast majority of evolutionary relationships are not accounted for in the taxonomy \cite{Dagan:2006up}.
-Because of the important role played by lateral gene transfer, new ways of characterizing evolutionary and phenotypic relationships between microorganisms are needed.
+% The presence of horizontal gene transfer precludes accurate phylogenetic characterization, because different segments of the genome will have different evolutionary histories.
+% Bacterial species definitions and taxonomic classifications are made on the basis of 16S ribosomal RNA, a highly conserved genomic region between bacteria and archaea species \cite{Woese:1977vd}.
+% However, the region generally accounts for less than 1\% of the complete genome, implying that the vast majority of evolutionary relationships are not accounted for in the taxonomy \cite{Dagan:2006up}.
+% Because of the important role played by lateral gene transfer, new ways of characterizing evolutionary and phenotypic relationships between microorganisms are needed.
 
 In this chapter we explore topics relating to horizontal gene transfer in bacteria and the emergence of antibiotic resistance in pathogenic strains.
 We show that TDA can not only quantify gene transfer events, but also characterize the scale of gene transfer.
@@ -45,7 +45,7 @@ These results suggest an important role for topological data mining of -omics sc
 
 \begin{table}
 \centering
-\caption{Pathogenic bacteria selected for study and sample sizes in each analysis.}
+\caption[List of pathogenic bacteria selected for study]{Pathogenic bacteria selected for study and sample sizes in each analysis.}
 \begin{tabularx}{\textwidth}{Xcc}
 \toprule
 Species & \hspace{10mm}MLST profiles\hspace{10mm} & PATRIC profiles \\
@@ -68,7 +68,7 @@ Species & \hspace{10mm}MLST profiles\hspace{10mm} & PATRIC profiles \\
 \end{table}
 
 \section{Evolutionary Scales of Recombination in the Core Genome}
-\label{subsec:mlst}
+\label{pathogens:mlst}
 %
 Multilocus sequence typing (MLST) data was used to examine scales of recombination in the core bacterial genome.
 MLST is a method of rapidly assigning a sequence profile to a sample bacterial strain.
@@ -102,10 +102,10 @@ Among the bulk of pathogens there appears to be three major scales of recombinat
 \end{figure}
 
 \begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{./fig/pathogen_persistence_diagram.pdf}
-    \caption{The $H_1$ persistence diagram for the twelve pathogenic strains selected for this study using MLST profile data. There are three broad scales of recombination. To the right is the birth time distribution for each strain. \emph{H. pylori} has an earlier scale of recombination not present in the other species.}
-    \label{fig:pathogen_persistence_diagram}
+\centering
+\includegraphics[width=\textwidth]{./fig/pathogen_persistence_diagram.pdf}
+\caption[$H_1$ persistence diagram for twelve pathogenic strains using MLST profile data]{The $H_1$ persistence diagram for the twelve pathogenic strains selected for this study using MLST profile data. There are three broad scales of recombination. To the right is the birth time distribution for each strain. \emph{H. pylori} has an earlier scale of recombination not present in the other species.}
+\label{fig:pathogen_persistence_diagram}
 \end{figure}
 
 We define a relative rate of recombination by counting the number of $H_1$ loops across the filtration and dividing by the number of samples for that species.
@@ -114,14 +114,14 @@ For example, \emph{S. enterica} and \emph{E. coli} have the highest recombinatio
 Coupled with the smaller scale of recombinations suggests that the \emph{H. pylori} core genome is relatively resistant to recombination except within closely related strains.
 
 \begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{./fig/pathogen_barchart.pdf}
-    \caption{Relative recombination rates computed by persistent homology from MLST profile data.}
-    \label{fig:pathogen_barchart}
+\centering
+\includegraphics[width=\textwidth]{./fig/pathogen_barchart.pdf}
+\caption[Core genome reticulation patterns in pathogenic bacteria from MLST profiles]{Relative recombination rates computed by persistent homology from MLST profile data.}
+\label{fig:pathogen_barchart}
 \end{figure}
 
 \section{Protein Families as a Proxy for Genome Wide Reticulation}
-\label{sec:patric_analysis}
+\label{pathogens:patric_analysis}
 
 Protein family annotations cluster proteins into sets of isofunctional homologs, i.e., clusters of proteins with both similar sequence composition and similar function.
 A particular strain is represented as a binary vector indicating the presence or absence of a given protein family.
@@ -140,7 +140,7 @@ The large scales of exchange in \emph{H. influenzae} suggest it can regularly ac
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{./fig/figfam_persistent_diagram.pdf}
-\caption{Persistence diagram for a subset of pathogenic bacteria, computed using the FigFam annotations compiled in PATRIC. Compared to the MLST persistence diagram, the Figfam diagram has a more diverse scale of topological structure.}
+\caption[Genome-wide reticulation patterns in pathogenic bacteria from protein annotations]{Persistence diagram for a subset of pathogenic bacteria, computed using the FigFam annotations compiled in PATRIC. Compared to the MLST persistence diagram, the Figfam diagram has a more diverse scale of topological structure.}
 \label{fig:figfam_persistence_diagram}
 \end{figure}
 
@@ -171,11 +171,12 @@ This suggests the hypothesis that antibiotic resistance has spread from the firs
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{./fig/saureus_figfam_network.png}
-\caption[FigFam similarity network of \emph{S. aureus}]{The FigFam similarity network of \emph{S. aureus} constructed using Mapper as implemented in Ayasdi Iris. We use a Hamming metric and Primary and Secondary Metric SVD filters (res: 30, gain 4x, eq.). Node color is based on strain enrichment for \emph{mecA}, the gene conferring $\beta$-Lactam resistance. Two distinct clades of \emph{S. aureus} are visible, one of which has already been compromised for resistance. Of important clinical significance is the growing enrichment for \emph{mecA} in the second clade.}
+\caption[FigFam similarity network of \emph{S. aureus}]{The FigFam similarity network of \emph{S. aureus} constructed using Mapper as implemented in Ayasdi Iris \cite{AyasdiIris:2015}. We use a Hamming metric and Primary and Secondary Metric SVD filters (res: 30, gain 4x, eq.). Node color is based on strain enrichment for \emph{mecA}, the gene conferring $\beta$-Lactam resistance. Two distinct clades of \emph{S. aureus} are visible, one of which has already been compromised for resistance. Of important clinical significance is the growing enrichment for \emph{mecA} in the second clade.}
 \label{fig:saureus_figfam_network}
 \end{figure}
 
 \section{Microbiome as a Reservoir of Antibiotic Resistance Genes}
+\label{pathogens:microbiome}
 
 While antibiotic resistance can be acquired through gene exchange between strains of the same species, it is also possible for gene exchange to occur between distantly related species.
 It has been recognized that an individual's microbiome, the set of microorganisms that exist symbiotically within a human host, can act as a reservoir of antimicrobial resistance genes \cite{Sommer:2010uh,Penders:2013wt}.
@@ -207,7 +208,7 @@ We foresee an era of genomically informed infectious disease management in the c
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{./fig/microbiome_network.pdf}
-\caption{The FigFam similarity network of gastrointestinal tract reference strains identified in the Human Microbiome Project. The green diamond identifies the strains carrying resistance to $\beta$-Lactam antibiotics.}
+\caption[FigFam similarity network of the gastrointestinal tract]{The FigFam similarity network of gastrointestinal tract reference strains identified in the Human Microbiome Project. The green diamond identifies the strains carrying resistance to $\beta$-Lactam antibiotics.}
 \label{fig:microbiome_network}
 \end{figure}
 
