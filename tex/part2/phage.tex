@@ -5,8 +5,6 @@
 \section{Introduction}
 \label{phage:introduction}
 
-% PHAGE!
-
 Phages are microbial viruses which can infect bacteria, archaea, or single-celled eukaryotes.
 By some measures, they are the most abundant and diverse class of organism on the planet.
 It is estimated that there are $10^31$ extent bacteriophages \cite{Rohwer:2014vz}.\footnote{The estimate can be arrived at two independent ways: by assuming a total bacterial population size of $10^30$, and approximately ten phages per bacteria; or by the observation of a phage density of $10^6$ to $10^7$ per mL of seawater.}
@@ -172,9 +170,13 @@ Phage phylogeny taken from \cite{Glazko:2007dc}.
 \section{Representing Phage Relationships with Mapper}
 \label{phage:mapper}
 
-Finally, we use Ayasdi to construct a network visualization of the phage phyletic profiles.
-One particular network is shown in Figure~\ref{phage:fig:network}.
-This network was constructed using XXXXX lens, XXX filters.
+We used Ayasdi Mapper to construct a network representation of the phage phyletic profiles.
+The network was constructed using a Hamming metric and a 2D filter function.
+First filter function was Metric PCA coord 1 with a resolution of 20 and a gain of 3.
+Second filter function is metric PCA coord 2 with a resolution of 20 and a gain of 3.
+The equalize setting was used for both filter functions.
+
+
 We see several interesting things.
 Using Ayasdi, we can identify gene enrichment in particular clusters.
 We can also correlate with lifestyle and ecological properties.
@@ -186,8 +188,28 @@ This suggests that a better classification would be based on host range.
 
 \begin{figure}
 \centering
-\caption[Phage Network]{Phage Network.}
-\label{phage:fig:network}
+\includegraphics[]{{fig/phage/phage.s306.caudovirales_networks}.pdf}
+\caption[Caudovirales Family Networks]{Caudovirales Family Networks}
+\label{phage:fig:s306_caudovirales_networks}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[]{{fig/phage/phage.s306.host_networks}.pdf}
+\caption[Phage Host Networks]{Phage Host Network.}
+\label{phage:fig:s306_host_networks}
+\end{figure}
+
+Finally, we clustered the network using the MCL graph clustering algorithm \cite{Enright:2002ep}, as implemented in XX.
+The MCL algorithm takes two input parameters which control the coarseness of the clustering: an expand factor $e$ and an inflate factor $i$.
+We set $e=5$ and $i=5$.
+Ignoring the single nodes, this resulted in eleven clusters, as shown in Figure~\ref{phage:fig:s306_mcl_clustered_network}.
+
+\begin{figure}
+\centering
+\includegraphics[]{{fig/phage/phage.s306.mcl_clustered_network}.pdf}
+\caption[Phage Network with MCL Clustering]{Phage Network with MCL Clustering}
+\label{phage:fig:s306_mcl_clustered_network}
 \end{figure}
 
 \section{Conclusions}
