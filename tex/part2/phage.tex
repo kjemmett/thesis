@@ -171,20 +171,27 @@ Phage phylogeny taken from \cite{Glazko:2007dc}.
 \label{phage:mapper}
 
 We used Ayasdi Mapper to construct a network representation of the phage phyletic profiles.
-The network was constructed using a Hamming metric and a 2D filter function.
-First filter function was Metric PCA coord 1 with a resolution of 20 and a gain of 3.
-Second filter function is metric PCA coord 2 with a resolution of 20 and a gain of 3.
-The equalize setting was used for both filter functions.
+The network was constructed using a Hamming metric on the binary phyletic matrix and a 2D filter function.
+The first filter was Metric PCA coordinate 1 with a resolution of 20 and a gain of 3.\footnote{The parameter settings are in arbitrary units and tuned by hand to produce the most visually useful graph.}
+The second filter was metric PCA coordinate 2 with a resolution of 20 and a gain of 3.
+The equalize setting was used for both filter functions, which ensures that in the filtered space each bin has approximately the same number of points.
+This resulted in a network consisting of 201 nodes from the original 306 rows.
+The basic structure of the network is shown in Figure~\ref{phage:fig:phage_mapper_network}, where the node color corresponds to the number of rows contained in the node.
+The network consists of one large connected component, two smaller connected components, and 21 singly connected nodes.
 
+We compute the clustering coefficient.
 
-We see several interesting things.
-Using Ayasdi, we can identify gene enrichment in particular clusters.
-We can also correlate with lifestyle and ecological properties.
+\begin{figure}
+\centering
+\includegraphics[]{{fig/phage/phage.s306.mapper_network}.pdf}
+\caption[Phage Mapper Network]{Phage Mapper Network}
+\label{phage:fig:phage_mapper_network}
+\end{figure}
 
-One thing we can see is that the traditional classifications do not hold very well.
-
-When we color by host, we see tighter correlation.
-This suggests that a better classification would be based on host range.
+We first examined how well existing taxonomic classifications mapped onto this representation.
+If the taxonomy is accurate, we would expect to see a tight clustering of particular orders, with minimal overlap
+We show the representation of the three families of order Caudovirales in Figure~\ref{phage:fig:s306_caudovirales_networks}.
+We can immediately see that each family is widely dispersed across the network.
 
 \begin{figure}
 \centering
@@ -193,6 +200,11 @@ This suggests that a better classification would be based on host range.
 \label{phage:fig:s306_caudovirales_networks}
 \end{figure}
 
+Secondly, we examined how well host correlated with network structure.
+We show this for the top six hosts represented in our dataset in Figure~\ref{phage:fig:s306_host_networks}.
+We see that while Enterobacteria has several pockets of representation within the network, phages are indeed more strongly clustered by host than by taxonomy.
+This is consist with existing evidence that phages of similar host range have a common environment for horizontal gene transfer.
+
 \begin{figure}
 \centering
 \includegraphics[]{{fig/phage/phage.s306.host_networks}.pdf}
@@ -200,10 +212,13 @@ This suggests that a better classification would be based on host range.
 \label{phage:fig:s306_host_networks}
 \end{figure}
 
-Finally, we clustered the network using the MCL graph clustering algorithm \cite{Enright:2002ep}, as implemented in XX.
-The MCL algorithm takes two input parameters which control the coarseness of the clustering: an expand factor $e$ and an inflate factor $i$.
+Finally, we clustered the network using the MCL graph clustering algorithm \cite{Enright:2002ep}, as implemented in the Python MCLMarkovCluster package \cite{Lami:2014}.
+The MCL algorithm takes two input parameters which control the coarseness of the clustering: an expansion factor $e$ and an inflation factor $i$.
 We set $e=5$ and $i=5$.
 Ignoring the single nodes, this resulted in eleven clusters, as shown in Figure~\ref{phage:fig:s306_mcl_clustered_network}.
+For each cluster, we used a hypergeometric test to identify particular protein families that were over- or under-represented in each cluster.
+Correcting for multiple testing ($p=8578$).
+The protein families that passed this threshold are shown in Table~\ref{phage:table:cluster_functions}.
 
 \begin{figure}
 \centering
@@ -212,10 +227,57 @@ Ignoring the single nodes, this resulted in eleven clusters, as shown in Figure~
 \label{phage:fig:s306_mcl_clustered_network}
 \end{figure}
 
+% phage function table.
+\begin{table}[t]
+    \caption{Phage cluster annotations -- protein family functions}
+    \centering
+    \scriptsize
+    \begin{tabular}{llll}
+    \toprule
+    Cluster & Protein Family & p-value & Function \\
+    \midrule
+    \multirow{2}{*}{Cluster 1} & pf\_0001 & 6.17e-25 & blah \\
+                               & pf\_0002 & 6.81e-21 & blah \\
+    \midrule
+    \multirow{2}{*}{Cluster 2} & pf\_0131 & 9.38e-13 & blah \\
+                               & pf\_0279 & 2.33e-09 & blah \\
+                               & pf\_0109 & 1.02e-08 & blah \\
+                               & pf\_0436 & 4.38e-08 & blah \\
+                               & pf\_0435 & 4.e8e-08 & blah \\
+    \midrule
+    \multirow{2}{*}{Cluster 3} & pf\_0001 & 6.17e-25 & blah \\
+                               & pf\_0002 & 6.81e-21 & blah \\
+    \midrule
+    \multirow{2}{*}{Cluster 4} & pf\_0049 & 6.17e-25 & blah \\
+                               & pf\_0043 & 6.81e-21 & blah \\
+                               & pf\_0052 & x        & blah \\
+                               & pf\_0053 & x        & blah \\
+                               & pf\_0007 & x        & blah \\
+    \midrule
+    \multirow{2}{*}{Cluster 5} & pf\_0008 & 7.45e-07 & blah \\
+    \midrule
+    \multirow{2}{*}{Cluster 6} & pf\_0001 & 6.17e-25 & blah \\
+                               & pf\_0002 & 6.81e-21 & blah \\
+    \midrule
+    \multirow{2}{*}{Cluster 7} & pf\_0001 & 6.17e-25 & blah \\
+                               & pf\_0002 & 6.81e-21 & blah \\
+    \midrule
+    \multirow{2}{*}{Cluster 8} & pf\_0497 & 1.24e-07 & blah \\
+                               & pf\_0417 & 8.23e-07 & blah \\
+                               & pf\_0002 & 9.70e-07 & blah \\
+    \midrule
+    \multirow{2}{*}{Cluster 9} & pf\_0001 & 6.17e-25 & blah \\
+                               & pf\_0002 & 6.81e-21 & blah \\
+    \bottomrule
+    \end{tabular}
+    \label{phage:table:cluster_functions}
+\end{table}
+
+
 \section{Conclusions}
 \label{phage:sec:conclusions}
 
 In this chapter, we analyzed reticulate evolution in phages.
-We demonstrated that phages have highly mosaic genomes.
-We used approaches from topological data analysis to quantify reticulation and represent phage evolutionary relationships.
-The Mapper representation allows for a systematic.
+We used persistent homology to show that there are indeed high levels of reticulate exchange across multiple taxonomic scales.
+We used mapper to construct a network representation of the phage genomes, and associated clusters in the network with representative protein families.
+These clusters are more reflective of molecular similarity than existing morphological taxonomies.
