@@ -28,6 +28,7 @@
 \usepackage{paralist}
 \usepackage{capt-of}
 \usepackage{tabularx}
+\usepackage{rotating}
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{bookmark} % loads hyperref
@@ -222,6 +223,10 @@
 \newcommand{\myline}[2]{
 \path(#1.east) --(#2.west)  coordinate[pos=0.4](mid);
 \draw[-latex] (#1.east) -| (mid) |- (#2.west);}
+
+% tables for phage chapter
+\newsavebox{\leftbox}
+\newsavebox{\rightbox}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -1,5 +1,5 @@
 %!TEX root = ../../thesis.tex
-\chapter{Bacteriophage Mosaicism}
+\chapter{Phage Mosaicism}
 \label{ch:phage}
 
 \section{Introduction}
@@ -7,7 +7,7 @@
 
 Phages are microbial viruses which can infect bacteria, archaea, or single-celled eukaryotes.
 By some measures, they are the most abundant and diverse class of organism on the planet.
-It is estimated that there are $10^31$ extent bacteriophages \cite{Rohwer:2014vz}.\footnote{The estimate can be arrived at two independent ways: by assuming a total bacterial population size of $10^30$, and approximately ten phages per bacteria; or by the observation of a phage density of $10^6$ to $10^7$ per mL of seawater.}
+It is estimated that there are $10^31$ extant bacteriophages \cite{Rohwer:2014vz}.\footnote{The estimate can be arrived at two independent ways: by assuming a total bacterial population size of $10^30$, and approximately ten phages per bacteria; or by the observation of a phage density of $10^6$ to $10^7$ per mL of seawater.}
 This phage population completely turns over every few days -- an estimated infection rate of $10^23$ per second \cite{Suttle:2007cj}.
 
 Phages play an essential role in natural ecosystems by regulating bacterial populations.
@@ -34,33 +34,33 @@ Because there is no single conserved gene across the phage population, there is 
     \toprule
     Order & Family & Morphology & Nucleic acid \\
     \midrule
-    \multirow{3}{*}{\emph{Caudovirales}} & \emph{Myoviridae} & Nonenveloped, contractile tail & linear dsDNA \\
-                                  & \emph{Siphoviridae} & Nonenveloped, noncontractile tail (long) & linear dsDNA \\
-                                  & \emph{Podoviridae} & Nonenveloped, noncontractile tail (short) & linear dsDNA \\
+    \multirow{3}{*}{\emph{Caudovirales}} & \emph{Myoviridae}   & Nonenveloped, contractile tail           & linear dsDNA \\
+                                         & \emph{Siphoviridae} & Nonenveloped, noncontractile tail (long) & linear dsDNA \\
+                                         & \emph{Podoviridae}  & Nonenveloped, noncontractile tail (short) & linear dsDNA \\
     \midrule
-    \multirow{2}{*}{\emph{Ligamenvirales}} & \emph{Lipothrixviridae} & Enveloped, rod-shaped & linear dsDNA \\
-                                    & \emph{Rudiviridae} & Nonenveloped, rod-shaped & linear dsDNA \\
+    \multirow{2}{*}{\emph{Ligamenvirales}} & \emph{Lipothrixviridae} & Enveloped, rod-shaped    & linear dsDNA \\
+                                           & \emph{Rudiviridae}      & Nonenveloped, rod-shaped & linear dsDNA \\
     \midrule
-    \multirow{13}{*}{Unassigned} & \emph{Ampullaviridae} & Enveloped, bottle-shaped & linear dsDNA\\
+    \multirow{13}{*}{Unassigned} & \emph{Ampullaviridae} & Enveloped, bottle-shaped   & linear dsDNA\\
                                  & \emph{Bicaudaviridae} & Nonenveloped, lemon-shaped & circular dsDNA \\
-                                 & \emph{Clavaviridae}   & Nonenveloped, rod-shaped & circular dsDNA \\
-                                 & \emph{Corticoviridae} & Nonenveloped, isometric & circular dsDNA \\
-                                 & \emph{Cystoviridae}   & Enveloped, spherical & segmented dsRNA \\
+                                 & \emph{Clavaviridae}   & Nonenveloped, rod-shaped   & circular dsDNA \\
+                                 & \emph{Corticoviridae} & Nonenveloped, isometric    & circular dsDNA \\
+                                 & \emph{Cystoviridae}   & Enveloped, spherical       & segmented dsRNA \\
                                  & \emph{Fuselloviridae} & Nonenveloped, lemon-shaped & circular dsDNA \\
-                                 & \emph{Globuloviridae} & Enveloped, isometric & linear dsDNA \\
-                                 & \emph{Guttaviridae}   & Nonenveloped, ovoid & circular dsDNA \\
-                                 & \emph{Inoviridae}     & Nonenveloped, filamentous & circular ssDNA \\
-                                 & \emph{Leviviridae}    & Nonenveloped, isometric & linear ssRNA \\
-                                 & \emph{Microviridae}   & Nonenveloped, isometric & circular ssDNA \\
-                                 & \emph{Plasmaviridae}  & Enveloped, pleomorph& circular dsDNA \\
-                                 & \emph{Tectiviridae}   & Nonenveloped, isometric & linear dsDNA \\
+                                 & \emph{Globuloviridae} & Enveloped, isometric       & linear dsDNA \\
+                                 & \emph{Guttaviridae}   & Nonenveloped, ovoid        & circular dsDNA \\
+                                 & \emph{Inoviridae}     & Nonenveloped, filamentous  & circular ssDNA \\
+                                 & \emph{Leviviridae}    & Nonenveloped, isometric    & linear ssRNA \\
+                                 & \emph{Microviridae}   & Nonenveloped, isometric    & circular ssDNA \\
+                                 & \emph{Plasmaviridae}  & Enveloped, pleomorph       & circular dsDNA \\
+                                 & \emph{Tectiviridae}   & Nonenveloped, isometric    & linear dsDNA \\
     \bottomrule
     \end{tabularx}
     \label{phage:table:families}
 \end{table}
 
 It has long been known that phages are genetic mosaics subject to extremely high rates of reticulate genomic exchange \cite{Westmoreland:1969dd}.
-The idea of mosaicism holds that phage species are composed of distinct modules that can be exchanged interchangeability within a population.
+The idea of mosaicism holds that phage species are composed of distinct modules that can be exchanged interchangeably within a population.
 Exchange is facilitated within phages of the same host, thought certain phages are known to have broader host ranges.
 The advent of full genome sequencing has reconfirmed this phenomenon and brought to bear questions about the applicability and interpretation of the ICTV taxonomy.
 The ICTV taxonomy, based solely on morphology, has been shown to be inconsistent with the genomic data \cite{Lawrence:2002eg}.
@@ -228,50 +228,144 @@ The protein families that passed this threshold are shown in Table~\ref{phage:ta
 \end{figure}
 
 % phage function table.
-\begin{table}[t]
+\begin{sidewaystable}
     \caption{Phage cluster annotations -- protein family functions}
+    \tiny
+
+    % define tables
+    \begin{lrbox}{\leftbox}
+            \begin{tabular}[t]{llll}
+            \toprule
+            Cluster & Protein Family & p-value & Function \\
+            \midrule
+            \multirow{1}{*}{Cluster 1} & pf\_0001 & 6.17e-25 & tail tape measure protein \\ 
+                                        & pf\_0002 & 6.81e-21 & transcriptional repressor \\ 
+                                        & pf\_0003 & 2.69e-16 & tyrosine based integrase \\ 
+                                        & pf\_0004 & 9.08e-12 & DNA binding protein \\ 
+                                        & pf\_0008 & 7.37e-10 & unknown \\ 
+                                        & pf\_0010 & 2.36e-08 & terminase large subunit \\ 
+                                        & pf\_0006 & 2.87e-08 & NA \\ 
+                                        & pf\_0164 & 5.57e-08 & NA \\ 
+                                        & pf\_0012 & 1.74e-07 & DNA replication inititation protein \\ 
+                                        & pf\_0015 & 2.42e-07 & scaffolding protein \\ 
+                                        & pf\_0187 & 2.70e-07 & NA \\ 
+                                        & pf\_0217 & 2.70e-07 & NA \\ 
+                                        & pf\_0013 & 3.35e-07 & NA \\ 
+                                        & pf\_0017 & 4.63e-07 & portal protein \\ 
+                                        & pf\_0007 & 8.84e-07 & endolysin \\ 
+            \midrule
+            \multirow{1}{*}{Cluster 2} & pf\_0131 & 9.38e-13 & NA \\ 
+                                        & pf\_0279 & 2.33e-09 & NA \\ 
+                                        & pf\_0109 & 1.02e-08 & NA \\ 
+                                        & pf\_0434 & 4.38e-08 & NA \\ 
+                                        & pf\_0435 & 4.38e-08 & NA \\ 
+                                        & pf\_0436 & 4.38e-08 & NA \\ 
+                                        & pf\_0010 & 1.84e-07 & terminase large subunit \\ 
+                                        & pf\_0029 & 2.02e-07 & major head protein \\ 
+                                        & pf\_0009 & 2.54e-07 & NA \\ 
+                                        & pf\_0093 & 4.61e-07 & NA \\ 
+                                        & pf\_0512 & 5.47e-07 & NA \\ 
+                                        & pf\_0017 & 7.12e-07 & portal protein \\ 
+            \midrule
+            Cluster 3 & & & \\
+            \midrule
+            \multirow{1}{*}{Cluster 4} & pf\_0049 & 3.44e-24 & unknown \\ 
+                                        & pf\_0043 & 3.44e-24 & unknown \\ 
+                                        & pf\_0053 & 3.86e-23 & unknown \\ 
+                                        & pf\_0052 & 3.86e-23 & unknown \\ 
+                                        & pf\_0007 & 6.19e-22 & endolysin \\ 
+                                        & pf\_0058 & 4.39e-21 & unknown \\ 
+                                        & pf\_0060 & 4.39e-21 & unknown \\ 
+                                        & pf\_0061 & 4.39e-21 & unknown \\ 
+                                        & pf\_0002 & 2.23e-20 & transcriptional repressor \\ 
+                                        & pf\_0067 & 4.46e-20 & unknown \\ 
+                                        & pf\_0063 & 4.46e-20 & unknown \\ 
+                                        & pf\_0012 & 1.12e-19 & DNA replication inititation protein \\ 
+                                        & pf\_0018 & 2.04e-19 & tail protein \\ 
+                                        & pf\_0072 & 4.38e-19 & unknown \\ 
+                                        & pf\_0004 & 1.82e-18 & DNA binding protein \\ 
+                                        & pf\_0020 & 5.91e-18 & unknown \\ 
+                                        & pf\_0087 & 3.86e-17 & unknown \\ 
+                                        & pf\_0042 & 5.24e-17 & unknown \\ 
+                                        & pf\_0001 & 1.54e-16 & tail tape measure protein \\ 
+                                        & pf\_0092 & 3.48e-16 & unknown \\ 
+            \midrule
+            \end{tabular}
+    \end{lrbox}
+    \begin{lrbox}{\rightbox}
+            \begin{tabular}[t]{llll}
+            \toprule
+            Cluster & Protein Family & p-value & Function \\
+            \midrule
+            \multirow{1}{*}{Cluster 5} & pf\_0008 & 7.45e-07 & unknown \\ 
+            \midrule
+            \multirow{1}{*}{Cluster 6} & pf\_0006 & 2.17e-18 & NA \\ 
+                                        & pf\_0057 & 8.74e-10 & unknown \\ 
+                                        & pf\_0142 & 3.84e-09 & unknown \\ 
+                                        & pf\_0082 & 1.79e-08 & lysis protein \\ 
+                                        & pf\_0165 & 2.09e-08 & prohead \\ 
+                                        & pf\_0188 & 1.12e-07 & minor tail protein \\ 
+                                        & pf\_0190 & 1.12e-07 & tail \\ 
+                                        & pf\_0189 & 1.12e-07 & minor tail protein \\ 
+                                        & pf\_0204 & 5.81e-07 & unknown \\ 
+            \midrule
+            \multirow{1}{*}{Cluster 7} & pf\_0002 & 8.92e-11 & transcriptional repressor \\ 
+                                        & pf\_0121 & 2.46e-09 & transcription factor  \\ 
+                                        & pf\_0016 & 3.36e-08 & unknown \\ 
+                                        & pf\_0122 & 6.52e-08 & unknown \\ 
+                                        & pf\_0156 & 3.35e-07 & NA \\ 
+                                        & pf\_0517 & 4.38e-07 & NA \\ 
+                                        & pf\_0004 & 5.26e-07 & DNA binding protein \\ 
+                                        & pf\_0135 & 5.97e-07 & unknown \\ 
+                                        & pf\_0176 & 9.43e-07 & post-translational regulator \\ 
+                                        & pf\_0178 & 9.43e-07 & unknown \\ 
+                                        & pf\_0177 & 9.43e-07 & transcription anti-termination protein \\ 
+                                        & pf\_0012 & 9.78e-07 & DNA replication inititation protein \\ 
+                                        & pf\_0324 & 1.06e-06 & NA \\ 
+                                        & pf\_0325 & 1.06e-06 & NA \\ 
+            \midrule
+            \multirow{1}{*}{Cluster 8} & pf\_0497 & 1.24e-07 & NA \\ 
+                                        & pf\_0417 & 8.23e-07 & NA \\ 
+                                        & pf\_0002 & 9.70e-07 & transcriptional repressor \\ 
+            \midrule
+            \multirow{1}{*}{Cluster 9} & pf\_0425 & 2.15e-14 & NA \\ 
+                                        & pf\_0424 & 2.15e-14 & NA \\ 
+                                        & pf\_0423 & 2.15e-14 & NA \\ 
+                                        & pf\_0422 & 2.15e-14 & NA \\ 
+                                        & pf\_0421 & 2.15e-14 & NA \\ 
+                                        & pf\_0420 & 2.15e-14 & NA \\ 
+                                        & pf\_0146 & 2.15e-14 & NA \\ 
+                                        & pf\_0366 & 1.72e-13 & NA \\ 
+                                        & pf\_0316 & 7.74e-13 & NA \\ 
+                                        & pf\_0315 & 7.74e-13 & NA \\ 
+                                        & pf\_0273 & 2.58e-12 & NA \\ 
+                                        & pf\_0274 & 2.58e-12 & internal virion protein \\ 
+                                        & pf\_0138 & 2.58e-12 & head protein \\ 
+                                        & pf\_0504 & 6.45e-12 & NA \\ 
+                                        & pf\_0503 & 6.45e-12 & NA \\ 
+                                        & pf\_0183 & 7.09e-12 & NA \\ 
+                                        & pf\_0184 & 1.70e-11 & portal protein \\ 
+                                        & pf\_0185 & 1.70e-11 & tail protein \\ 
+                                        & pf\_0163 & 1.70e-11 & tail protein \\ 
+                                        & pf\_0426 & 4.50e-11 & NA \\ 
+            \bottomrule
+            \end{tabular}
+    \end{lrbox}
+
+
     \centering
-    \scriptsize
-    \begin{tabular}{llll}
-    \toprule
-    Cluster & Protein Family & p-value & Function \\
-    \midrule
-    \multirow{2}{*}{Cluster 1} & pf\_0001 & 6.17e-25 & blah \\
-                               & pf\_0002 & 6.81e-21 & blah \\
-    \midrule
-    \multirow{2}{*}{Cluster 2} & pf\_0131 & 9.38e-13 & blah \\
-                               & pf\_0279 & 2.33e-09 & blah \\
-                               & pf\_0109 & 1.02e-08 & blah \\
-                               & pf\_0436 & 4.38e-08 & blah \\
-                               & pf\_0435 & 4.e8e-08 & blah \\
-    \midrule
-    \multirow{2}{*}{Cluster 3} & pf\_0001 & 6.17e-25 & blah \\
-                               & pf\_0002 & 6.81e-21 & blah \\
-    \midrule
-    \multirow{2}{*}{Cluster 4} & pf\_0049 & 6.17e-25 & blah \\
-                               & pf\_0043 & 6.81e-21 & blah \\
-                               & pf\_0052 & x        & blah \\
-                               & pf\_0053 & x        & blah \\
-                               & pf\_0007 & x        & blah \\
-    \midrule
-    \multirow{2}{*}{Cluster 5} & pf\_0008 & 7.45e-07 & blah \\
-    \midrule
-    \multirow{2}{*}{Cluster 6} & pf\_0001 & 6.17e-25 & blah \\
-                               & pf\_0002 & 6.81e-21 & blah \\
-    \midrule
-    \multirow{2}{*}{Cluster 7} & pf\_0001 & 6.17e-25 & blah \\
-                               & pf\_0002 & 6.81e-21 & blah \\
-    \midrule
-    \multirow{2}{*}{Cluster 8} & pf\_0497 & 1.24e-07 & blah \\
-                               & pf\_0417 & 8.23e-07 & blah \\
-                               & pf\_0002 & 9.70e-07 & blah \\
-    \midrule
-    \multirow{2}{*}{Cluster 9} & pf\_0001 & 6.17e-25 & blah \\
-                               & pf\_0002 & 6.81e-21 & blah \\
-    \bottomrule
-    \end{tabular}
+    \makebox[0pt]{%
+        \hspace*{\fill}
+        \begin{minipage}[t]{\wd\leftbox}
+        \usebox{\leftbox}
+        \end{minipage}\hfill
+        \begin{minipage}[t]{\wd\rightbox}
+        \usebox{\rightbox}
+        \end{minipage}
+        \hspace*{\fill}
+        }
     \label{phage:table:cluster_functions}
-\end{table}
+\end{sidewaystable}
 
 
 \section{Conclusions}
