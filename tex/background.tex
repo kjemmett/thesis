@@ -20,7 +20,7 @@ Exposition for specific applications can be found in their respective individual
 
 The information required to express an organism's biological form and function is contained in the genome.
 At least one copy of the genome is packaged inside each cell of an organism.
-Physically, the genome is manifest as a polymer chain of deoxyribonucleic acid (DNA), of which there are four nucleotides: adenine, cytosine, guanine, and thymine.
+Physically, the genome is manifest as a polymer chain of nucleic acid, built on an alphabet of four nucleotide monomers: adenine, cytosine, guanine, and thymine.
 Abstractly, the genome is represented as a linear sequence of characters defined over the alphabet $\{A,C,G,T\}$.\footnote{The linear representation can be misleading, as many organisms, primarily viruses and bacteria, have circular genomes.}
 Contained in this sequence are subsequences representing genes, which code for the protein products that ultimately affect function.
 Further embedded in the genome is a complex regulatory pattern of transcription factors controlling the expression of particular genes and directing cellular differentiation and development.
@@ -60,7 +60,7 @@ Reticulation can occur when two virus particles coinfect the same host cell.
 During the replication process, genetic material can be exchanged in one of two ways: \emph{reassortment} or \emph{recombination} (the two processes are contrasted in Figure~\ref{fig:viral_reticulation}).
 Reassortment occurs in viruses whose genomes are segmented, such as influenza.
 Segments are similar to chromosomes, such that a single virus particle will contain a single copy of each segment.
-Reassortment occurs when coinfection results in packaging of segments taken from different virus particles.
+Coinfection of a single cell with two independent viruses results in packaging of segments taken from different virus particles.
 The result viral progeny will then be a genetic mixture of segments from each parental strain.
 Recombination, more common in non-segmented viruses such as HIV, involves a break-rejoin mechanism during the replication process.
 Here, an error in the polymerase during replication can result in an incomplete copy of the genome (a break).
@@ -164,7 +164,7 @@ These forces include natural selection, genetic drift, mutation, and recombinati
 Historically the input data for population genetics models was comparative studies of allele frequencies across populations.
 These studies have primarily been replaced by large-scale genomic surveys which have provided unprecedented insight into ancient population structure and historical migrations.
 
-These models allow two things: (1) simulate genomic data under realistic processes and (2) build statistical models to estimate biological parameters from real data.
+These models allow two things: (1) simulate genomic data under realistic processes and (2) build statistical models to estimate biological parameters from data.
 
 \subsubsection{The Wright-Fisher Model}
 \label{bg:bio:models:wrightfisher}
@@ -425,13 +425,13 @@ The circle and ellipse are identified as equivalent by the presence of a single 
 Neither can be deformed into a tree without introducing a cut, which would be a type of discontinuous deformation.
 Using these invariants, powerful ideas from abstract algebra can then be used to manipulate and reason about shape.
 
-While topology has traditionally developed through the study of abstract spaces, leading to very rich and beautiful constructions\footnote{For example, see the work of Thurston on low-dimensional topology}, real data does not come in the form of perfect continuous spaces.
+While topology has traditionally developed through the study of abstract spaces, leading to very rich and beautiful constructions\footnote{For example, see the work of Thurston on low-dimensional topology}, data does not come in the form of perfect continuous spaces.
 Recent effort over the past 15 years has focused on developing methods to apply topology to real world problems in science and engineering.
 This work, collectively falling under the heading of \emph{topological data analysis} (TDA), has focused on efficient algorithms for computing topological invariants from finite, noisy data.
 TDA now encompasses a wide range of efforts and can now be considered a branch of applied mathematics in its own right.
 It has emerged from substantial interdisciplinary effort between mathematicians, computer scientists, and domain experts.
 
-In practice, a typical workflow for applying TDA to real data is as follows.
+In practice, a typical workflow for applying TDA to data is as follows.
 Data comes in the form of a set of $n$ observations with $p$ attributes, where $p$ is often very large.
 The data is assumed to be a finite sample from some more complex space, from which we wish to infer either some sort of global structure or underlying model.
 The data is represented as a finite point cloud: a set of $n$ points in $p$ dimensions with an associated notion of distance.
@@ -587,7 +587,7 @@ The difference between the two constructions is shown in Figure~\ref{fig:bg:tria
 In general, $\text{\Cech}(S,\epsilon)\in VR(S,\epsilon)$.
 
 The \Cech\ complex is theoretically preferable because it comes with a \emph{Nerve theorem}, which essentially states that the topology of the resulting complex will be equivalent to the topology of the union of balls used to create it.
-However, the \Cech\ complex has drawbacks that prevent it from being widely applied to real data.
+However, the \Cech\ complex has drawbacks that prevent it from being widely applied to arbitrary data.
 First, computing the intersection of arbitrary balls is an expensive operation.
 While efficient algorithms exist in Euclidean space (the miniball algorithm \cite{Gartner:1999}), it is much more difficult in arbitrary metric spaces.
 Furthermore, the \Cech\ construction explicitly requires an ambient space in which the data is embedded.
@@ -900,7 +900,7 @@ Consequently, the persistent homology of additive data will have nontrivial topo
 Furthermore, while noise in the data will introduce small deviations from additivity, the theorem puts bounds on the size of the topological features that can arise in this manner.
 These bounds rely on the Gromov-Hausdorff stability conditions described in Section~\ref{bg:tda:ph:stability}.
 On the other hand, if the evolutionary history includes reticulate events that cannot be represented as a tree, these events will be captured as non-trivial higher dimensional homology in the barcode diagram, an idea which we develop below.
-This theorem provides an important positive control in using TDA to characterize reticulate evolution.
+This theorem provides an important negative control in using TDA to characterize reticulate evolution.
 
 \subsection{The Fundamental Unit of Reticulation}
 \label{bg:top4bio:fundamental_unit}

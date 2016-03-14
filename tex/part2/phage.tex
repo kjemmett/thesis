@@ -7,23 +7,23 @@
 
 Phages are microbial viruses which can infect bacteria, archaea, or single-celled eukaryotes.
 By some measures, they are the most abundant and diverse class of organism on the planet.
-It is estimated that there are $10^31$ extant bacteriophages \cite{Rohwer:2014vz}.\footnote{The estimate can be arrived at two independent ways: by assuming a total bacterial population size of $10^30$, and approximately ten phages per bacteria; or by the observation of a phage density of $10^6$ to $10^7$ per mL of seawater.}
-This phage population completely turns over every few days -- an estimated infection rate of $10^23$ per second \cite{Suttle:2007cj}.
+It is estimated that there are $10^{31}$ extant bacteriophages \cite{Rohwer:2014vz}.\footnote{The estimate can be arrived at two independent ways: by assuming a total bacterial population size of $10^{30}$, and approximately ten phages per bacteria; or by the observation of a phage density of $10^{6}$ to $10^{7}$ per mL of seawater.}
+The phage population completely turns over every few days -- an estimated infection rate of $10^{23}$ per second \cite{Suttle:2007cj}.
 
 Phages play an essential role in natural ecosystems by regulating bacterial populations.
 Steps have been taken towards harnessing this ability for productive use -- the FDA has approved several bacteriophage products designed to kill harmful bacteria in dairy and meat products \cite{Bren:2007wn}.
 Also promising are potential phage therapies for treating pathogenic bacterial infections, although research in this direction is controversial \cite{Keen:2012du}.
 
-Phages are classified based on lifestyle: virulent phages have a lytic life cycle and will infect a host, multiply, and exit the cell via lysis, killing the host organism. Temperate phages have a lysogenic life cycle and can remain within the host in a latent state, without disrupting host cellular function.
+Phages are classified based on lifestyle: virulent phages have a lytic life cycle and will infect a host, multiply, and exit the cell via lysis, killing the host organism; temperate phages have a lysogenic life cycle and can remain within the host in a latent state, without disrupting host cellular function.
 Phages can have a nucleic acid composition that is either double-stranded DNA (dsDNA), single-stranded DNA (ssDNA), double-stranded RNA (dsRNA), or single-stranded RNA (ssRNA).
 Of these, dsDNA is by far the most common.
-The typical genome length is on the order of $10^5$ bases, but can range from $10^3$ to $10^6$ bases.
+The typical phage genome length is on the order of $10^{5}$ bases, but can range from $10^{3}$ to $10^{6}$ bases.
 
+Because there is no conserved gene across all phage populations, there is no accepted way of constructing a molecular phage taxonomy.
 The current bacteriophage taxonomy is compiled by the International Committee on Taxonomy of Viruses (ICTV) and is based on virus morphology, host range, lifestyle, and nucleic acid composition \cite{ICTV:2012}.
-Table~\ref{phage:table:families} presents an overview of phage families defined by the ICTV.
+Table~\ref{phage:table:families} presents an overview of phage families as defined by the ICTV.
 There are two assigned orders and eighteen recognized families.
 Fourteen families have dsDNA, two families have ssDNA, and two families have an RNA genome.
-Because there is no single conserved gene across the phage population, there is currently no accepted way of constructing a molecular phage taxonomy.
 
 % phage:table:families
 \begin{table}[t]
@@ -59,47 +59,44 @@ Because there is no single conserved gene across the phage population, there is 
     \label{phage:table:families}
 \end{table}
 
-It has long been known that phages are genetic mosaics subject to extremely high rates of reticulate genomic exchange \cite{Westmoreland:1969dd}.
-The idea of mosaicism holds that phage species are composed of distinct modules that can be exchanged interchangeably within a population.
-Exchange is facilitated within phages of the same host, thought certain phages are known to have broader host ranges.
-The advent of full genome sequencing has reconfirmed this phenomenon and brought to bear questions about the applicability and interpretation of the ICTV taxonomy.
-The ICTV taxonomy, based solely on morphology, has been shown to be inconsistent with the genomic data \cite{Lawrence:2002eg}.
-As an example, in Figure~\ref{phage:fig:inconsistency} we show three different bacteriophage species: Enterobacteria phage HK97, Mycobacterium phage L5, and Enterobacteria phage P22.
+Phages have been shown to be subject to high rates of reticulate genomic exchange \cite{Westmoreland:1969dd}.
+The phage genome was thought to be a mosaic, composed of distinct modules that can be freely exchanged within a population.
+Increased genomic data has confirmed this mosaic structure and raised questions about the applicability and interpretation of the ICTV taxonomy.
+Based solely on morphology, the ICTV taxonomy has been shown to be inconsistent with the genomic data, as the following example from Lawrence \emph{et al.} shows \cite{Lawrence:2002eg}.
+In Figure~\ref{phage:fig:inconsistency} we show three different bacteriophage species: Enterobacteria phage HK97, Mycobacterium phage L5, and Enterobacteria phage P22.
 HK97 is a Siphoviridae infecting \emph{E. coli}.
 L5 is a Siphoviridae infecting \emph{M. smegmatis}.
 P22 is a Podoviridae infecting \emph{S. enterica}.
-HK97 and L5 belong to the Siphoviridae family comprised of long tail noncontracile phages.
+HK97 and L5 belong to the Siphoviridae family comprised of long tail noncontractile phages.
 P22 belongs to the Podoviridae family comprised of short tail phages.
 Visually, it appears that HK97 and L5 should indeed be classified as distinct from P22.
-However, genomic analysis indicates that HK97 and L5 share no gene content.
-Despite belonging to different viral families, HK97 and P22 share 20\% gene content.
-It is therefore clear that morphology and host range alone is not sufficient in representing phage relationships.
+However, genomic analysis reveals that HK97 and L5 share no gene content, and, despite appearances to the contrary, HK97 and P22 share 20\% gene content.
+This example demonstrates that morphology and host range alone are not sufficient in representing phage relationships.
 
 \begin{figure}
 \centering
 \includegraphics[width=.5\linewidth]{./fig/phage/LAWRENCE_phage_comparative.png}
-\caption[Inconsistency of morphological classification in bacteriophage.]{Inconsistency of genomic and morphological approaches. HK97 and L5 are classified under same viral family, despite sharing no homologous genetic content. P22 on the other hand shares many genes. Figure adapted from \parencite{Lawrence:2002eg}.}
+\caption[Inconsistency of morphological classifications in bacteriophage]{Inconsistency of morphological classifications in bacteriophage. HK97 and L5 are classified in the Siphoviridae family of long tail non-contractile phages, despite sharing no gene content. P22, a short-tail phage in the Podoviridae family, while morphologically dissimilar, shares 20\% gene content with HK97. Figure adapted from \parencite{Lawrence:2002eg}.}
 \label{phage:fig:inconsistency}
 \end{figure}
 
 Alternative representations of phage relationships have been proposed based on whole genome analysis.
 For example, Rohwer and Edwards constructed a phage phylogenetic tree using differences in phage proteomes \cite{Rohwer:2002uo}.
 Proux \emph{et al.} proposed a phylogenetic representation based on comparative analysis of head and tail sequences \cite{Proux:2002gj}.
-However, these models still make the assumption of tree-like relationships.
+However, these models still make the assumption of tree-like relationships, which will not be appropriate for representing highly mosaic molecular relationships.
 
 In this chapter, we use approaches from topological data analysis to identify, measure, and represent reticulate evolution in a population of phage sequences.
-This work is based on data collected by Lima-Mendez \emph{et al.} \cite{LimaMendez:2008ki} and Kristensen \emph{et al.} \cite{Kristensen:2013tt}.
-
+This work is primarily based on data collected by Lima-Mendez \emph{et al.} \cite{LimaMendez:2008ki}.
 First, we use persistent homology to characterize reticulation in phage genomes.
 We find $H_0$ is largely inconsistent with existing phage taxonomies, and interpret $H_1$ as evidence for reticulate genetic exchange due to shared ecology and host range.
-Second, we visualize phage relationships using Mapper, identifying clusters of phages with common gene content and host range.
-The Mapper representations suggests an alternate way of representing phage relationships.
+Second, we visualize phage molecular relationships using Mapper, identifying clusters of phages with common gene content and host range.
+The Mapper network suggests an alternate way of representing phage relationships.
 
 \section{Data}
 
 We use data initially collected an analyzed in \cite{LimaMendez:2008ki}.
-The data set consists of a collection of 306 bacteriophage genomes.
-We show a summary of the data collected in Figure~\ref{phage:fig:phage_data_plot}.
+The initial data set consists of a collection of 306 sequenced bacteriophage genomes.
+We show summary information about the data in Figure~\ref{phage:fig:phage_data_plot}.
 Of the 306 genomes, 246 consist of dsDNA, 36 ssDNA, 12 dsRNA, and 8 ssRNA.
 Four have unclassified nucleic acid material.
 With respect to lifestyle, 146 are temperate and 72 are virulent.
@@ -112,22 +109,25 @@ Unassigned families include Inoviridae (22), Cystoviridae (12), Gokushoviridae (
 \begin{figure}
 \centering
 \includegraphics[]{./fig/phage/phage_data_plots.pdf}
-\caption[Summary of phage data used in this analysis]{Summary of phage data used in this analysis. 306 bacteriophage genomes were included, as originally collected in \cite{LimaMendez:2008ki}. Here we show various annotations for the phage, including nucleic acid type, lifestyle, and taxonomic family (as defined by the ICTV). For some phage sequences this data is unknown.}
+\caption[Summary annotations of 306 bacteriophage strains used in this study]{Summary annotations of phage data used in this analysis. 306 bacteriophage genomes were included, as originally collected in \cite{LimaMendez:2008ki}. Here we show various annotations for the phage, including nucleic acid type, lifestyle, and taxonomic family (as defined by the ICTV). For some phage strains this data is unknown.}
 \label{phage:fig:phage_data_plot}
 \end{figure}
 
-The 306 bacteriophage genomes have been annotated and assigned genes.
-There are 19,537 unique phage genes.
-In the original study \cite{LimaMendez:2008ki}, these genes were clustered into 8,576 protein families using BlastP, which analyzes pairwise similarity of proteins.
+Each of the 306 bacteriophage genomes has been sequenced and annotated.\footnote{The annotation step assigns genes to subsequences of the genome. For well-characterized species this is facilitated by a reference genome. For less well-characterized species this can require the use of heuristic gene-finding algorithms.}
+This step resulted in 19,537 unique bacteriophage phage genes.
+In the original study \cite{LimaMendez:2008ki}, these genes were then clustered into 8,576 protein families using BlastP, which analyzes pairwise similarity of proteins \cite{Altschul:1997a}.
 Protein families share homology, which implies some degree of shared evolutionary ancestry.
-Phages can then be represented as phyletic profiles in a binary protein family-space, indicating the presence or absence of a particular protein family.
+Phages can then be represented as phyletic profiles in a protein family-space, indicating the presence or absence of a particular protein family.
+In this case, the phyletic matrix $P$ is a $306\times19537$ binary matrix.
 
 \section{Measuring Phage Mosaicism with Persistent Homology}
 \label{phage:ph}
 
+We apply persistent homology to the phyletic profiles in order to quantify reticulation in the bacteriphage data.
+Because we have transformed from sequence space into phyletic profiles, we do not invoke a specific evolutionary model.
+However, the fundamental theorem that non-trivial homology implies reticulation will still hold.
 First, we construct an appropriate metric space.
-Because we have already transformed the phage genomes into phyletic profile representation, an evolutionary model is not explicitly necessary.
-Instead, we follow \cite{LimaMendez:2008ki} and use a hypergeometric model as follows.
+Following \cite{LimaMendez:2008ki}, we use a hypergeometric model as follows.
 For two phages $A$ and $B$, let $a$ be the number of protein families in phage $A$, $b$ be the number of protein families in phage $B$, and $c$ be the number of protein families in common.
 Let $n$ be the total number of protein families.
 Then we can compute the p-value that the number of shared protein families $c$ is significant as
@@ -141,12 +141,16 @@ d_{AB} = \log_{10}(P_{AB} + 10^{-10}) + 10.
 This yields a distance matrix $D$ with distances scaled between $0$ and $10$.
 While this space does not explicitly reflect evolutionary divergence at a molecular level, it may be realistic at the protein level at which more complex types of genome evolution will have occurred.
 
-To $D$ we now apply persistent homology.
-We show the barcode diagrams in Figure~\ref{phage:fig:barcode}.
-$H_0$ gives an initial classification.
-We see that it is inconsistent with taxonomy.
-Cycles in $H_1$ can be mapped to specific reticulation patterns.
-These cycles may reflect shared environment.
+We now compute the persistent homology of $D$.
+The barcode diagram is shown in Figure~\ref{phage:fig:barcode}.
+The $H_0$ information represents hierarchical clustering and can be identically represented as a dendrogram.
+We show the dendrogram, restricting only to strains of order Caudovirales, in Figure~\ref{phage:fig:caudosubset_dendrogram}.
+The strains are labeled by their taxonomic family: red for Myoviridae, blue for Siphoviridae, and green for Podoviridae.
+We can immediately see that the assigned taxonomic families are not consistent with the clustering based on protein information.
+However, there does appear to be some structure in which the taxonomic label is consistent within clusters of strains.
+Returning to the barcode diagram, we see substantial nontrivial homology in $H_1$ across all scales.
+This confirms the presence of mosaic exchange expected in phage genomes.
+% Cycles in $H_1$ can be mapped to specific reticulation patterns. (include???)
 
 \begin{figure}
 \centering
@@ -157,15 +161,22 @@ These cycles may reflect shared environment.
 
 \begin{figure}
 \centering
-\includegraphics[]{./fig/phage/phage_s306_caudovirales_barcodes.pdf}
+\includegraphics[]{fig/phage/phage_s306_caudosubset_dendrogram.pdf}
+\caption[Caudovirales $H_0$ dendrogram]{The dendrogram constructed from the $H_0$, restricted to bacteriophages of order Caudovirales. Myoviridae in red, Siphoviridae in blue, and Podoviridae in green. The family classifications are inconsistent with the hierarchical clustering.}
+\label{phage:fig:caudosubset_dendrogram}
+\end{figure}
+
+Focusing on order Caudovirales, for which the most data was present.
+We separately computed persistent homology for each of the three families.
+The barcode diagrams are shown in Figure~\ref{phage:fig:caudovirales_barcodes}.
+%% TODO: make a comment?
+
+\begin{figure}
+\centering
+\includegraphics[]{{./fig/phage/phage_s306_caudovirales_barcodes}.pdf}
 \caption[Caudovirales Barcode Diagrams]{Barcode Diagrams for Families of Order Caudovirales, including Siphoviridae, Myoviridae, and Podoviridae.}
 \label{phage:fig:caudovirales_barcodes}
 \end{figure}
-
-In Figure~\ref{phage:fig:barcode} we show the barcode diagram.
-We show the relationship of these bars within an existing phage taxonomy.
-Extract multiscale patterns of reticulation.
-Phage phylogeny taken from \cite{Glazko:2007dc}.
 
 \section{Representing Phage Relationships with Mapper}
 \label{phage:mapper}
@@ -176,10 +187,8 @@ The first filter was Metric PCA coordinate 1 with a resolution of 20 and a gain 
 The second filter was metric PCA coordinate 2 with a resolution of 20 and a gain of 3.
 The equalize setting was used for both filter functions, which ensures that in the filtered space each bin has approximately the same number of points.
 This resulted in a network consisting of 201 nodes from the original 306 rows.
-The basic structure of the network is shown in Figure~\ref{phage:fig:phage_mapper_network}, where the node color corresponds to the number of rows contained in the node.
+The basic structure of the network is shown in Figure~\ref{phage:fig:phage_mapper_network}, where node color corresponds to the number of rows contained in the node.
 The network consists of one large connected component, two smaller connected components, and 21 singly connected nodes.
-
-We compute the clustering coefficient.
 
 \begin{figure}
 \centering
@@ -191,7 +200,18 @@ We compute the clustering coefficient.
 We first examined how well existing taxonomic classifications mapped onto this representation.
 If the taxonomy is accurate, we would expect to see a tight clustering of particular orders, with minimal overlap
 We show the representation of the three families of order Caudovirales in Figure~\ref{phage:fig:s306_caudovirales_networks}.
+Each node is colored by the proportion of rows in that particular family.
 We can immediately see that each family is widely dispersed across the network.
+
+How strongly a particular classification is reflected by a network can be quantitatively measured using a modularity score \cite{Newman:2006iq}.
+Modularity was originally devised for identifying community structure in networks.
+Intuitively, more tightly localized network divisions will have a higher modularity, while dispersed divisions will have a lower modularity.
+The basic definition for a two-class division is
+\begin{equation}
+Q = \frac{1}{4m}\sum_{ij}\left( A_{ij} - \frac{k_{i}k_{j}}{2m} \right)(s_{i}s_{j}+1)
+\end{equation}
+where $m$ is the total number of edges in the network, $A$ is the adjacency matrix of the network, $k_i$ is the degree of node $i$, and $s_{i}=\pm1$ is the class membership of node $i$.
+We adopt a slightly modified 
 
 \begin{figure}
 \centering
@@ -200,7 +220,7 @@ We can immediately see that each family is widely dispersed across the network.
 \label{phage:fig:s306_caudovirales_networks}
 \end{figure}
 
-Secondly, we examined how well host correlated with network structure.
+Second, we examined how well host correlated with network structure.
 We show this for the top six hosts represented in our dataset in Figure~\ref{phage:fig:s306_host_networks}.
 We see that while Enterobacteria has several pockets of representation within the network, phages are indeed more strongly clustered by host than by taxonomy.
 This is consist with existing evidence that phages of similar host range have a common environment for horizontal gene transfer.
@@ -215,7 +235,7 @@ This is consist with existing evidence that phages of similar host range have a 
 Finally, we clustered the network using the MCL graph clustering algorithm \cite{Enright:2002ep}, as implemented in the Python MCLMarkovCluster package \cite{Lami:2014}.
 The MCL algorithm takes two input parameters which control the coarseness of the clustering: an expansion factor $e$ and an inflation factor $i$.
 We set $e=5$ and $i=5$.
-Ignoring the single nodes, this resulted in eleven clusters, as shown in Figure~\ref{phage:fig:s306_mcl_clustered_network}.
+Ignoring the singleton nodes, this resulted in eleven clusters, as shown in Figure~\ref{phage:fig:s306_mcl_clustered_network}.
 For each cluster, we used a hypergeometric test to identify particular protein families that were over- or under-represented in each cluster.
 Correcting for multiple testing ($p=8578$).
 The protein families that passed this threshold are shown in Table~\ref{phage:table:cluster_functions}.
