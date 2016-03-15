@@ -19,7 +19,7 @@
 # *.pdf
 
 # Do not track main pdf
-tda-review.pdf
+#tda-review.pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
