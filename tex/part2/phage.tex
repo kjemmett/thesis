@@ -60,9 +60,9 @@ Fourteen families have dsDNA, two families have ssDNA, and two families have an 
 \end{table}
 
 Phages have been shown to be subject to high rates of reticulate genomic exchange \cite{Westmoreland:1969dd}.
-The phage genome was thought to be a mosaic, composed of distinct modules that can be freely exchanged within a population.
+The phage genome was believed to be mosaic, composed of distinct modules that can be freely exchanged within a population.
 Increased genomic data has confirmed this mosaic structure and raised questions about the applicability and interpretation of the ICTV taxonomy.
-Based solely on morphology, the ICTV taxonomy has been shown to be inconsistent with the genomic data, as the following example from Lawrence \emph{et al.} shows \cite{Lawrence:2002eg}.
+Based solely on morphology and host, the ICTV taxonomy has been shown to be inconsistent with the genomic data, as the following example from Lawrence \emph{et al.} shows \cite{Lawrence:2002eg}.
 In Figure~\ref{phage:fig:inconsistency} we show three different bacteriophage species: Enterobacteria phage HK97, Mycobacterium phage L5, and Enterobacteria phage P22.
 HK97 is a Siphoviridae infecting \emph{E. coli}.
 L5 is a Siphoviridae infecting \emph{M. smegmatis}.
@@ -90,7 +90,8 @@ This work is primarily based on data collected by Lima-Mendez \emph{et al.} \cit
 First, we use persistent homology to characterize reticulation in phage genomes.
 We find $H_0$ is largely inconsistent with existing phage taxonomies, and interpret $H_1$ as evidence for reticulate genetic exchange due to shared ecology and host range.
 Second, we visualize phage molecular relationships using Mapper, identifying clusters of phages with common gene content and host range.
-The Mapper network suggests an alternate way of representing phage relationships.
+Representative protein families for each phage cluster are identified.
+The Mapper network suggests an alternate way of representing phage molecular relationships.
 
 \section{Data}
 
@@ -118,14 +119,14 @@ This step resulted in 19,537 unique bacteriophage phage genes.
 In the original study \cite{LimaMendez:2008ki}, these genes were then clustered into 8,576 protein families using BlastP, which analyzes pairwise similarity of proteins \cite{Altschul:1997a}.
 Protein families share homology, which implies some degree of shared evolutionary ancestry.
 Phages can then be represented as phyletic profiles in a protein family-space, indicating the presence or absence of a particular protein family.
-In this case, the phyletic matrix $P$ is a $306\times19537$ binary matrix.
+In this case, the phyletic matrix $P$ is a $306\times8576$ binary matrix.
 
 \section{Measuring Phage Mosaicism with Persistent Homology}
 \label{phage:ph}
 
 We apply persistent homology to the phyletic profiles in order to quantify reticulation in the bacteriphage data.
 Because we have transformed from sequence space into phyletic profiles, we do not invoke a specific evolutionary model.
-However, the fundamental theorem that non-trivial homology implies reticulation will still hold.
+However, the fundamental theorem that non-trivial homology implies reticulation still holds.
 First, we construct an appropriate metric space.
 Following \cite{LimaMendez:2008ki}, we use a hypergeometric model as follows.
 For two phages $A$ and $B$, let $a$ be the number of protein families in phage $A$, $b$ be the number of protein families in phage $B$, and $c$ be the number of protein families in common.
@@ -155,13 +156,13 @@ This confirms the presence of mosaic exchange expected in phage genomes.
 \begin{figure}
 \centering
 \includegraphics[]{./fig/phage/phage_s306_barcode.pdf}
-\caption[Bacteriophage Barcode Diagram]{Bacteriophage Barcode Diagram using the S306 dataset.}
+\caption[S306 Bacteriophage Barcode Diagram]{Bacteriophage Barcode Diagram using the S306 dataset}
 \label{phage:fig:barcode}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[]{fig/phage/phage_s306_caudosubset_dendrogram.pdf}
+\includegraphics[width=.9\textwidth]{fig/phage/phage_s306_caudosubset_dendrogram.pdf}
 \caption[Caudovirales $H_0$ dendrogram]{The dendrogram constructed from the $H_0$, restricted to bacteriophages of order Caudovirales. Myoviridae in red, Siphoviridae in blue, and Podoviridae in green. The family classifications are inconsistent with the hierarchical clustering.}
 \label{phage:fig:caudosubset_dendrogram}
 \end{figure}
@@ -169,11 +170,11 @@ This confirms the presence of mosaic exchange expected in phage genomes.
 Focusing on order Caudovirales, for which the most data was present.
 We separately computed persistent homology for each of the three families.
 The barcode diagrams are shown in Figure~\ref{phage:fig:caudovirales_barcodes}.
-%% TODO: make a comment?
+Computing the TOP score for each family, we have Myoviridae = 0.58, Siphoviridae = 1.14, and Podoviridae = 0.56.
 
 \begin{figure}
 \centering
-\includegraphics[]{{./fig/phage/phage_s306_caudovirales_barcodes}.pdf}
+\includegraphics[]{fig/phage/phage_s306_caudovirales_barcodes.pdf}
 \caption[Caudovirales Barcode Diagrams]{Barcode Diagrams for Families of Order Caudovirales, including Siphoviridae, Myoviridae, and Podoviridae.}
 \label{phage:fig:caudovirales_barcodes}
 \end{figure}
@@ -182,53 +183,69 @@ The barcode diagrams are shown in Figure~\ref{phage:fig:caudovirales_barcodes}.
 \label{phage:mapper}
 
 We used Ayasdi Mapper to construct a network representation of the phage phyletic profiles.
-The network was constructed using a Hamming metric on the binary phyletic matrix and a 2D filter function.
+The network was constructed using a Hamming metric on the phyletic matrix and a 2D filter function.
 The first filter was Metric PCA coordinate 1 with a resolution of 20 and a gain of 3.\footnote{The parameter settings are in arbitrary units and tuned by hand to produce the most visually useful graph.}
-The second filter was metric PCA coordinate 2 with a resolution of 20 and a gain of 3.
+The second filter was Metric PCA coordinate 2 with a resolution of 20 and a gain of 3.
 The equalize setting was used for both filter functions, which ensures that in the filtered space each bin has approximately the same number of points.
 This resulted in a network consisting of 201 nodes from the original 306 rows.
-The basic structure of the network is shown in Figure~\ref{phage:fig:phage_mapper_network}, where node color corresponds to the number of rows contained in the node.
+The basic structure of the network is shown in Figure~\ref{phage:fig:phage_mapper_network}, where node color corresponds to the number of phages contained in the node.
 The network consists of one large connected component, two smaller connected components, and 21 singly connected nodes.
+The large connected component has local regions of clustering, which will be considered further later.
 
 \begin{figure}
 \centering
 \includegraphics[]{{fig/phage/phage.s306.mapper_network}.pdf}
-\caption[Phage Mapper Network]{Phage Mapper Network}
+\caption[Phage Mapper Network]{Phage Mapper Network. Network constructed using Mapper as implemented in Ayasdi Iris \cite{AyasdiIris:2015}. The network was constructed using a Hamming metric with a 2D Metric PCA filter function (resolution=20, gain=3, equalize). Nodes in the network represent clusters of phages and edges connect nodes that contain samples in common. Nodes are colored by the number of phages in each node.}
 \label{phage:fig:phage_mapper_network}
 \end{figure}
 
-We first examined how well existing taxonomic classifications mapped onto this representation.
-If the taxonomy is accurate, we would expect to see a tight clustering of particular orders, with minimal overlap
+We first examined how well the existing taxonomic classifications localized in the Mapper representation.
+If the taxonomy accurately reflects the molecular characteristics that were used to construct the network, we would expect to see strains belonging to the same level of hierarchy as localized together in the network, with minimal mixing between strains of different classification.
 We show the representation of the three families of order Caudovirales in Figure~\ref{phage:fig:s306_caudovirales_networks}.
-Each node is colored by the proportion of rows in that particular family.
-We can immediately see that each family is widely dispersed across the network.
+Each node is colored by the proportion of rows from that family contained in the node.\footnote{Recall that the nodes in a Mapper network can be composed of multiple nodes, depending on the parameters of the filter function used.}
+We immediately see that each family is widely dispersed across the network.
+On closer examination, we see that the patterns of spread resemble those of the dendrogram in Figure~\ref{phage:fig:caudosubset_dendrogram}, in that there are multiple clusters core clusters for each family.
+For example, the Myoviridae family has clusters in the bottom left and bottom right of the large component, and two singleton clusters.
+This roughly corresponds to the four clusters of Myoviridae in the $H_0$ dendrogram.
 
 How strongly a particular classification is reflected by a network can be quantitatively measured using a modularity score \cite{Newman:2006iq}.
 Modularity was originally devised for identifying community structure in networks.
 Intuitively, more tightly localized network divisions will have a higher modularity, while dispersed divisions will have a lower modularity.
-The basic definition for a two-class division is
+The standard definition for a two-class division is
+We use a modified form of modularity 
 \begin{equation}
-Q = \frac{1}{4m}\sum_{ij}\left( A_{ij} - \frac{k_{i}k_{j}}{2m} \right)(s_{i}s_{j}+1)
+Q = \frac{1}{m}\sum_{ij} A_{ij}s_{i}s_{j}
 \end{equation}
-where $m$ is the total number of edges in the network, $A$ is the adjacency matrix of the network, $k_i$ is the degree of node $i$, and $s_{i}=\pm1$ is the class membership of node $i$.
-We adopt a slightly modified 
+where $m$ is the total number of edges in the network, $A$ is the adjacency matrix of the network, and $s_{i}=\pm1$ is the class membership of node $i$.\footnote{The standard definition of modularity includes a term measuring how tightly connected each module is.We are only interested in the localization of each modular and neglect this term.}
+The modularity ranges between $0$ and $1$.
+We use a strict class membership, in which $s_{i}=1$ for node $i$ if any row in the now contains the annotation of interest.
+The modularity score for each family of Caudiovirales is shown in Figure~\ref{phage:fig:s306_mapper_modularities}.
 
 \begin{figure}
 \centering
 \includegraphics[]{{fig/phage/phage.s306.caudovirales_networks}.pdf}
-\caption[Caudovirales Family Networks]{Caudovirales Family Networks}
+\caption[Phage Network Colored by Taxonomic Family]{Taxonomic localization in the bacteriophage network. Network nodes are colored by presence of phages for each family in order Caudovirales.}
 \label{phage:fig:s306_caudovirales_networks}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[]{fig/phage/phage_s306_mapper_modularities.pdf}
+\caption[Modularity Scores for Different Divisions of the Phage Network]{Modularity Scores for Different Divisions of the Phage Network. We show the modularities for divisions defined by taxonomic family and host range, as well as the clusters we identify using MCL.}
+\label{phage:fig:s306_mapper_modularities}
 \end{figure}
 
 Second, we examined how well host correlated with network structure.
 We show this for the top six hosts represented in our dataset in Figure~\ref{phage:fig:s306_host_networks}.
-We see that while Enterobacteria has several pockets of representation within the network, phages are indeed more strongly clustered by host than by taxonomy.
-This is consist with existing evidence that phages of similar host range have a common environment for horizontal gene transfer.
+While Enterobacteria has several pockets of representation within the network, phages are on average more strongly clustered by host than by taxonomy.
+This is consist with existing evidence that phages of similar host range have a common environment for reticulate exchange\cite{Lawrence:2002eg}.
+Modularity scores for the most dominant four hosts are shown in Figure~\ref{phage:fig:s306_mapper_modularities}.
+Staphylococcus has the highest defined modularity, which is consistent with the earlier reports about strong coupling and high levels of exchange between the Staphylococcus host and its viruses \cite{Deghorain:2012wv}.
 
 \begin{figure}
 \centering
 \includegraphics[]{{fig/phage/phage.s306.host_networks}.pdf}
-\caption[Phage Host Networks]{Phage Host Network.}
+\caption[Phage Network Colored by Host]{Host localization in the bacteriophage network. Compared to taxonomic family, phages are more tightly localized, reflecting the degree to which shared host range provides an environment for reticulate exchange.}
 \label{phage:fig:s306_host_networks}
 \end{figure}
 
@@ -237,19 +254,18 @@ The MCL algorithm takes two input parameters which control the coarseness of the
 We set $e=5$ and $i=5$.
 Ignoring the singleton nodes, this resulted in eleven clusters, as shown in Figure~\ref{phage:fig:s306_mcl_clustered_network}.
 For each cluster, we used a hypergeometric test to identify particular protein families that were over- or under-represented in each cluster.
-Correcting for multiple testing ($p=8578$).
-The protein families that passed this threshold are shown in Table~\ref{phage:table:cluster_functions}.
+After correcting for multiple testing, the protein families were most significantly associated with particular clusters are shown in Table~\ref{phage:table:cluster_functions}.
 
 \begin{figure}
 \centering
 \includegraphics[]{{fig/phage/phage.s306.mcl_clustered_network}.pdf}
-\caption[Phage Network with MCL Clustering]{Phage Network with MCL Clustering}
+\caption[Phage Network with MCL Clustering]{Phage Network with MCL Clustering. 11 nontrivial clusters are identified. In Table~\ref{phage:table:cluster_functions} we associate clusters with representative protein families.}
 \label{phage:fig:s306_mcl_clustered_network}
 \end{figure}
 
 % phage function table.
 \begin{sidewaystable}
-    \caption{Phage cluster annotations -- protein family functions}
+    \caption{Phage Network MCL clustering annotations and representative protein families}
     \tiny
 
     % define tables
@@ -387,11 +403,15 @@ The protein families that passed this threshold are shown in Table~\ref{phage:ta
     \label{phage:table:cluster_functions}
 \end{sidewaystable}
 
-
 \section{Conclusions}
 \label{phage:sec:conclusions}
 
-In this chapter, we analyzed reticulate evolution in phages.
-We used persistent homology to show that there are indeed high levels of reticulate exchange across multiple taxonomic scales.
-We used mapper to construct a network representation of the phage genomes, and associated clusters in the network with representative protein families.
-These clusters are more reflective of molecular similarity than existing morphological taxonomies.
+In this chapter, we analyzed reticulate evolution in bacteriophages, using data from fully sequenced phage genomes represented as phyletic profiles measuring gene content.
+First, we used persistent homology to show that there are high levels of reticulate exchange across multiple taxonomic scales.
+Information in the $H_0$ barcode confirmed the inconsistency of the ICTV classification.
+Information in the $H_1$ barcode was used to compare levels of reticulate exchange among different phages.
+Second, we used Mapper to construct a network representation of phage molecular relationships.
+We examined how well different annotations, including taxonomic classification and host range, localized on this network.
+We used a network clustering algorithm to identify communities of phages related by shared protein content, and identified protein families representative of each cluster.
+These clusters, while not explicitly reflecting potential phylogenetic trajectories, are more reflective of molecular similarity than existing morphological taxonomies, and can be used as a starting point for developing a more comprehensive picture of bacteriophage evolutionary dynamics.
+Further sequencing data will allows us to refine these clusters and provide a higher resolution 
