@@ -53,7 +53,7 @@ Avian influenza binds to type 2-3 sialic acid receptors, while human influenza b
 NA is the surface protein that cleaves the newly replicated virus particles from the cell surface.
 Together, HA and NA determine the strain subtype and are a primary marker of host specificity and transmissibility.
 PA, PB1, and PB2 form a polymerase complex and are involved in viral replication.
-Mutations in these proteins can be among the most important in determining host adaptation and virulence, particularly mutation PB2-E627K, \cite{Subbarao:1993tt,Hatta:2001cw}. 
+Mutations in these proteins can be among the most important in determining host adaptation and virulence, particularly mutation PB2--E627K, \cite{Subbarao:1993tt,Hatta:2001cw}. 
 The remaining proteins, including NP, M1, M2, and NS1 are largely structural proteins involved in capsid formation and viral packaging.
 
 \begin{table}
@@ -98,7 +98,7 @@ We first compiled an aligned dataset of 3,105 complete avian influenza genomes f
 These sequences span in time from 1956 to 2012. 
 We collected samples from all influenza subtypes.
 The majority of our sequences are of the H5 and H6 type, with a smaller proportion of H3, H7, and H9.
-The distribution of collected HA types and yeras is shown in Figure~\ref{fig:flu:histograms}.
+The distribution of collected HA types and years is shown in Figure~\ref{fig:flu:histograms}.
 
 \begin{figure}
 \centering
@@ -108,20 +108,20 @@ The distribution of collected HA types and yeras is shown in Figure~\ref{fig:flu
 \end{figure}
 
 We first applied persistent homology to each genomic segment individually, as shown in Figure~\ref{fig:flu:segment_barcodes}.
-Here we see broadly only zero-dimensional homology, consistent with no intra-segmental recombination.
+Here we see very little higher homology, consistent with no intra-segmental recombination.
 The presence of higher homology is likely due to back mutation, which is expected to be more common in viruses with high mutation rates and shorter genomes (i.e. the infinite sites model does not hold).
-However, an analysis of the concatenated full genome reveals a complex topology, with a large number of homological invariants in one and two dimensions.
+However, an analysis of the concatenated full genome reveals a complex topology, with a large number of homological invariants in one and two dimensions (Figure~\ref{fig:flu:concatenated_genome_barcode}.
 
 These results show that persistent homology can detect pervasive reassortment in influenza.
 One-dimensional $\ICR$ provides a lower-bound estimate of reassortment rate.
 We calculate $\ICR < 1$ event per year for classic H1N1 swine and H3N2 human influenza, supported by previous phylogenetic estimates \cite{Lycett:2012fqa,Holmes:2005cia}.
-In contrast, we calculate a high rate of 22.16 reassortments per year for avian influenza A (Dataset S1, Table S16).
+In contrast, we calculate a high rate of 22.16 reassortments per year for avian influenza A.
 This difference could be explained by the high diversity and frequent coinfection of avian viruses \cite{Lubeck:1979ws} and correlates with the high proportion of avian reassortants reported in previous studies \cite{Dugan:2008iba}.
 
 \begin{figure}
 \centering
 \includegraphics[]{fig/influenza/flu_segment_barcodes.pdf}
-\caption[Influenza Segment Barcodes]{Influenza Segment Barcodes. Persistent homology computed on a per-segment basis reveals very little $H_1$ homology, indicating limited intrasegment reticulation.}
+\caption[Influenza Genome Segment Barcodes]{Influenza Genome Segment Barcodes. Persistent homology computed on a per-segment basis reveals very little $H_1$ homology, indicating limited intrasegment reticulation.}
 \label{fig:flu:segment_barcodes}
 \end{figure}
 
@@ -134,30 +134,36 @@ This difference could be explained by the high diversity and frequent coinfectio
 
 We used mapper to visualize the relationships in our influenza dataset.
 A series of mapper networks is shown in Figure~\ref{fig:flu:networks_by_subtype}.
-The networks were generated using a Hamming metric and the first and second MDS component as a 2D lens.
-In each subfigure we color the network by the prevalence of each HA subtype in the particular node.
-It is interesting to note how this is different than a traditional phylogeny based on HA.
+The networks were generated using a Hamming metric and the first and second MDS components as a 2D lens.
+In each subfigure we color the network by influenza subtype, for the top ten subtypes represented in the dataset.
+We can see that the current classification of flu sequences by HA and NA type is a reasonable approach, as flu isolates of same subtype tend to cluster together tightly within the network.
+H6N2 is the sole subtype to be represented by two clusters in the network.
+When we examined the members of each H6N2 cluster, we found that both consisted of isolates spanning long time frames, suggesting that multiple stable lineages of H6N2, each carrying different internal segments, have persisted.
+
+The Mapper representation offers further resolution into isolate relationships that can account for whole genomes.
+We performed an MCL clustering of the network and considered how subtype-pure each cluster was.
+\kje{TODO: Make the figure and expand here. Argue for alternate classification scheme.}
 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{fig/influenza/flu_networks_by_subtype.pdf}
-\caption[Influenza Networks By HA Subtype]{Influenza Networks By HA Subtype. The networks were generated using Ayasdi. }
+\caption[Influenza Networks By HA Subtype]{Influenza Networks By HA Subtype. The networks were generated using Ayasdi. [Parameters]}
 \label{fig:flu:networks_by_subtype}
 \end{figure}
 
 \section{Nonrandom Association of Genome Segments}
 \label{flu:nonrandom_reassortment}
 
-% (This section needs more details)
 We observed nonrandom association of flu segments.
 Statistical inference on the loops corresponding to reassortments identified segments that tend to co-segregate with each other during reassortment.In particular, polymerases co-segregate, while genes coding for envelope and capsid proteins show independent reassortment patterns.
 Cosegregation of polymerases suggests that effective protein–protein interaction between the polymerase complex and the NP protein constrain reassortment. 
 
 Although previous phylogenetic studies confirmed a high reassortment rate in avian influenza, none has identified a clear pattern of gene segment association \cite{Dugan:2008iba}.
-To determine whether any segments cosegregate more than expected by chance, we applied persistent homology to avian influenza.
-We first considered all pairs of concatenated segments and estimated the number of reassortments by $b1$.
-We then ascertained the significance of observing a number of reassortments between each pair of segments given the total estimate of reassortments in the concatenated genome (SI Appendix, Supplementary Text).
-Analysis of avian influenza reveals a statistically significant configuration of four cosegregating segments: polymerase basic 2 (PB2), polymerase basic 1 (PB1), polymerase acidic (PA), and nucleoprotein (NP) (Fig. 3D).
+To determine whether any segments cosegregate more than expected by chance, we considered all pairs of concatenated segments and estimated the number of reassortments using $b_{1}$.
+We then ascertained the significance of observing a number of reassortments between each pair of segments given the total estimate of reassortments in the concatenated genome.
+These patterns of cosegregation are represented in Figure~\ref{fig:flu:nonrandom_reassortment}, in which thicker edges indicate cosegregation, as measured by a lower level of homology between segment pairs.
+\kje{TODO: Put statistics in a table}
+Analysis of avian influenza reveals a statistically significant configuration of four cosegregating segments: polymerase basic 2 (PB2), polymerase basic 1 (PB1), polymerase acidic (PA), and nucleoprotein (NP).
 Interestingly, this pattern mimics previous in vitro results that suggest that effective protein-–protein interaction between the polymerase complex and the NP protein constrain reassortment \cite{Lubeck:1979ws}.
 
 \begin{figure}
@@ -171,7 +177,7 @@ Interestingly, this pattern mimics previous in vitro results that suggest that e
 \section{Multiscale Flu Reassortment}
 \label{flu:multiscale_reassortment}
 
-We computed persistent homology on an aligned dataset of 3,105 avian influenza sequences across the seven major HA subtypes.
+We computed persistent homology on the avian influenza sequences across the seven major HA subtypes.
 The persistence diagram is shown in Figure \ref{fig:flu:scatterplot}, along with density estimates for the birth and death distributions.
 Both birth and death times appear strongly bimodal, unlike in the coalescent simulations, which were strictly unimodal.
 This suggests two distinct scales of topological structure.
@@ -185,37 +191,20 @@ We conclude that intersubtype recombination occurs at a rate over twice that of 
 The nature of this barrier warrants further study.
 This illustrates a real world example in which multiscale topological structure can be captured by persistent homology and given biological interpretation.
 
-% figure
 \begin{figure}
-\begin{center}
-\centerline{\includegraphics[width=\columnwidth]{./fig/influenza/flu_scatterplot.pdf}}
+\centering
+\includegraphics[width=\columnwidth]{./fig/influenza/flu_scatterplot.pdf}
 \caption[$H_1$ persistence diagram computed from an avian influenza dataset.]{The $H_1$ persistence diagram computed from an avian influenza dataset. On the top and left are plotted the marginal distributions of birth and death times, along with a density estimate for each distribution. The bimodality indicates two scales of topological structure. Inset: The barcode diagram for a subset of this data. Blue bars have representative cycles involving only one subtype, green bars have cycles involving multiple subtypes.}
 \label{fig:flu:scatterplot}
-\end{center}
 \end{figure}
-
-\section{Prediction of Host Specific Residues}
-\label{flu:flumarker}
-
-In this section, we describe work in prediction of host specific residues using machine learning approaches.
-Host specific residues are important for viral surveillance in order to predict possible outbreaks.
-We describe here two methods and include preliminary validation from our collaborator in Wisconsin.
 
 \section{Conclusions}
 \label{flu:conclusions}
 
-The segmented nature of the influenza genome makes it an ideal 
-Coinfection of a single cell by 
-Coinfection of a single cell with multiple strains of influenza can lead to genomic reassortment.
-Reassortments can lead to novel pandemics.
-Therefore it is important that methods to characterize reassortment be developed.
-In this chapter we have applied methods from TDA to characterize reassortment in influenza.
-Using our approach, we have confirmed that intrasegmental recombination does not occur.
-We have estimated reassortment rates.
-We have estimated recombination rates.
-Further, from the persistence diagram we identified a bimodal presence of $H_1$ invariants.
-This suggests a genetic barrier maintaining subtype diversity.
-
-
-
-
+In this chapter we analyzed reassortment patterns in influenza.
+The segmented nature of the influenza genome, and the large amount of collected genome information, make influenza ideal for the application of our topological methods.
+Reassortment occurs when a single cell is coinfected by multiple strains of the virus, and can lead to the emergence of novel pandemics.
+Current methods of classifying influenza, based solely on HA and NA subtype, fail to account for information in the internal segments and have no consistent methodology for dealing with reassortments.
+We have applied methods from TDA to characterize both the scale and frequency of reassortment in influenza, estimating both reassortment rates and cosegregation patterns.
+Using Mapper, we determined classifications of viruses based on whole genome information that provide a higher resolution picture into extant circulating strains.
+Further, from the persistenece diagram we identified a bimodal structure of $H_1$ invariants, which suggests a genetic barrier maintaining subtype diversity.
