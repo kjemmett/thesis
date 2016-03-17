@@ -4,7 +4,7 @@
         {
             "path": ".",
             "name": "Main",
-            "file_exclude_patterns": ["*.aux", "*-blx.bib", "*.bib.bak", "*.bbl", "*.bcf", "*.blg", "*.dvi", "*.fdb_latexmk", "*.fls", "*.lof", "*.lot", "*.log", "*.out", "*.pdf", "*.xml", "*.synctex.gz*", "*.toc", ".gitignore", ".DS_Store"],
+            "file_exclude_patterns": ["*.aux", "*-blx.bib", "*.bib.bak", "*.bbl", "*.bcf", "*.blg", "*.dvi", "*.fdb_latexmk", "*.fls", "*.ipynb", "*.lof", "*.lot", "*.log", "*.out", "*.pdf", "*.xml", "*.synctex.gz*", "*.toc", ".gitignore", ".DS_Store"],
             "folder_exclude_patterns": [".git", "fig", "tex"]
         },
         {

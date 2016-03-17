@@ -1,0 +1,100 @@
+Dans Comments:
+
+I read through the intro & background. It looks like a good way to structure & order the background, and I think most of it will be understandable to non-topology folks. My overall comment is to think about what can be cut -- if a particular method or bit of background is not 100% relevant to work you will describe later on, then cut it. I think the main instances of this are Cech complexes, stability, and some of the tree space stuff. This should make it easier to read.
+
+Also, to motivate the reader along, wherever possible, try to explain at the beginning of each section why the background will be directly relevant to your work. Wherever possible, help the reader see through the abstractions. Some specific examples below.
+
+And at the end of the day, don't stress too much about it... you have already published papers, which is the important part!
+
+
+
+* Abstract: Can you add 2-3 sentences about main results/findings/interpretations? Also in the intro -- the discussion is very methods-heavy and does not really tell the reader what sort of biological conclusions to expect.
+
+x Bottom of p.1: "means beyond reproduction" is a bit confusing here, since some of these horizontal processes also involve reproduction.
+
+Top of p.2: Along similar lines, recombination is a kind of "modification" and so I would usually think of "descent with modification" as including it.
+
+p.3: Maybe a nitpicky point, but for bacteria, the genome isn't always 'indexed by position' as it may include plasmids. (Actually, are plasmids considered part of "the genome"?)
+
+x p.4: Typo -- "helped popularized"
+x populatized -> popularize
+
+p.4: An additional motivation for using distance methods: any method that involves likelihoods requires a specific model of evolution, and all the tractable models exclude recombination. (Can also mention this point on p. 23, in 2.1.4.)
+
+? Fig 1.2 caption typo -- "three kingdom"
+
+x p.6: "direct reproduction" is confusing, as this can include recombination
+x direct -> clonal
+
+p. 7 discussion of Doolittle -- it is unclear whether the figure panel on the right is mostly speculative, or backed up by specific examples. Perhaps this could be more clearly integrated with the next paragraph ("more than just theoretical concern") which provides some examples. (Also, it is unclear that the opposite of "theoretical concern" is "applicable to human health" which is what you are implying here.)
+
+p. 9 intro of betti numbers -- make sure to define "simply connected". Also, be careful with equating same betti numbers with "topological equivalence" as this ignores torsion & aspects not captured by homology. More generally, I think pages 9 & 10 can be made a bit clearer if you remove some jargon ("nonvanishing", "nontrivial") and make it less wordy ("objects are to be read such that").
+
+I think that the statement "construct topological spaces from finite samples" on p. 11 will be clearer to the reader if you explain further up that your illustration in Fig. 1.5 is just a conceptual model, and that in real life we are not given the actual ancestry but must infer things from sequence data.
+
+p. 12 -- Final paragraph can have some more interesting detail -- e.g., "we study bacteriophages and find XYZ." Also, include citation/brief explanation for "Hi-C" or your readers may think it is the sugary drink.
+
+p. 13 -- Title of section 2.1 could be more specific -- "evolutionary genetics" or "evolutionary biology and genetics"
+
+p. 15 "clonal evolution" -- Maybe this can be spelled out a bit more, because a natural question is "Didn't Darwin know about sexual reproduction?" (He was both a father and pigeon breeder...) The leaves of his tree were meant to be species -- so he wasn't denying bi-parental inheritance, but he was implicitly supposing that, on long timescales, a large population/species evolves more or less clonally and produces the hierarchical relationships we can observe. (And as you point out later, species hybridization was thought to be rare, so this seemed like a good model.)
+
+p. 15 bottom: "Reassortment occurs" is repeated
+x modified sentence
+
+p. 16 top -- This description doesn't really match what happens in HIV, as there is not a break-repair mechanism. The RTase just falls off and hops back on.
+
+p. 17 bottom-- Were Mendel's experiments actually done with multiple species?
+
+p.18 discussion of sexual reproduction -- "on the one hand, the answer could be yes" -- clear this phrasing up. What exactly is the question?
+
+p. 20 Wright-Fisher model -- typo 'ancestors genomes'. Also explain "with no structure". It's also important to note that the coalescent is an efficient approximation of the W-F model (otherwise it may be unclear to the reader why we should use such a strange-seeming backwards process).
+
+? p. 22 Hamming metric -- this is just the total # of sites that differ. So 3, not 3/7.
+x can be defined both ways i believe.
+
+Section 2.1 overall could be signposted a bit better -- especially later on, with the tree space stuff, it is not clear why you are introducing all of this formalism. Especially because you spent a lot of time explaining why trees can't describe reticulate evolution. You also distinguish between tree topology and global topology in footnote 10 -- but if you can bring up that point in the main text, that would also clarify things.
+
+? p. 30 -- "Two spaces can only be deformed into one another if they share the same invariants." -- sharing the same invariants is a necessary but not sufficient condition.
+? what else is there?
+
+x p. 31 -- remove "real" in "real data". Also be consistent with capitalization of 'mapper'
+x real data -> data
+
+x p. 32 -- Maybe say that in the evolutionary context, the features of your data are the sites
+
+x Fig 2.8 caption -- change "sensibly nice way"
+x made this more precise
+
+x p. 33: To motivate better, change "we are interested in combinatorial operations" to something like, "In order to compute homology etc etc and formally define the notion of 'holes', we need to..."
+x integrated this.
+
+x Fig. 2.10 -- I like this diagram a lot... intuitive way to explain how it counts holes without redundancy. Make sure to define 'basis'
+
+p. 37 -- Perhaps explain the point about ambient space specifically with reference to genetic data? You can possibly remove all discussion of Cech complexes, since you just introduce them to dismiss them.
+
+x p. 38 - Typo with the tildes above 5 and 80. Clean up some wording on this page and the next.
+x fixed tildes.
+? double check wording?
+
+x p. 42 -- Is it really necessary to include stability if it is not used in the thesis? This is already quite a lot of introductory methods info. In general, I like including methods only if they can specifically be related to your work. Like in the statistical persistent homology section -- can you more explicitly relate this to the model/parametric approach you will discuss later? This is an interesting point of difference between your work and the rest of the stat PH literature.
+x i’d like to include these for completeness sake.
+
+p. 48 -- Need the description of fitness?
+
+x p. 50 top -- "negative control," not "positive control," right?
+x yes. positive -> negative
+
+I wonder if section 2.3.4 (space of trees, revisited) could be moved further up, to where you introduce the space of trees, and possibly shortened. Otherwise it feels like a rather abstract addendum to the discussion of TDA and evolution. Also, no need to say what the ambitious goal was.
+
+
+——————————————————————————
+
+Sak:
+
+section 2.1: biology
+x 2.1.1 you should broaden the statement to "a genome is a always a polymer chain of nucleic acid, built on an alphabet of 4 nucleotide monomers." you're too DNA-centric.
+2.1.1 "RNA is translated into {amino acid chains, polypeptides} that fold into proteins."
+2.1.1 maybe say a "complex pattern of regulatory elements and transcription factor binding sites" because there's no pattern of actual TFs hiding in the nucleotide sequence. TFs are proteins after all.
+i think you mislabeled reassortment and recombination in Figure 2.1, just looking at the colors of the genetic material in the viral progeny.
+2.1.2.2 isn’t mitochondrial eve based purely on mtDNA, not just any genomic loci which have low recombination rates?
+Table 2.1 after making such a point of woese’s molecular phylogenetics victory and the 3 domains of life, the reader might be wondering why archaea haven’t been allotted a row in this table.
