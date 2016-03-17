@@ -7,39 +7,42 @@ number of holes, Betti numbers, etc., one will be more interested in the
 distribution of such objects on noncompact manifolds as one goes out
 to infinity''}{Isadore Singer}
 
-\begin{figure}
-\begin{center}
-\centerline{\includegraphics[width=\columnwidth]{./fig/persistence_diagram.pdf}}
-\caption[Two representations of the same topological invariants computed using persistent homology]{Two representations of the same topological invariants, computed using persistent homology. Left: Barcode diagram. Right: Persistence diagram. Data was generated from a coalescent simulation with $n=100$, $\rho=72$, and $\theta=500$.}
-\label{fig:persistence_diagram}
-\end{center}
-\end{figure}
-
 \section{Introduction}
 
-Computational topology is emerging as a new approach to data analysis, driven by efficient algorithms for computing topological structure in data.
-Perhaps the most mature tool is persistent homology, which summarizes multiscale topological information in a two-dimensional persistence diagram (see Figure \ref{fig:persistence_diagram} and Chapter \ref{ch:background}).
-Recent work has concentrated on developing the statistical foundations for data analysis using the persistent homology framework \cite{Fasy:2014,Blumberg:2014bq,Chazal:2014vl}.
-The focus of this work has been estimating the topology of an object from a finite, noisy sample.
+Recent work in topological data analysis has concentrated on developing the statistical foundations for data analysis using the persistent homology framework (see the discussion in Section~\ref{bg:tda:ph:statistics} and references \cite{Fasy:2014,Blumberg:2014bq,Chazal:2014vl}).
+The focus of this work has primarily been estimating the topology of an object from a finite, noisy sample.
 Doing so requires statistical methods to distinguish topological signal from noise.
 
 Here we consider a different scenario.
 Many simple stochastic models generate complex data that cannot be readily visualized as a manifold or summarized by a small number of topological features.
-These models will generate persistence diagrams whose complexity increases with the number of sampled points.
+The persistence diagrams generated from such models will be unique in two ways: (1) the complexity of the diagram (i.e. number of topological features) will grow with the number of sampled points, and (2) each instantiation of the model will generate a unique set of topological features.
 Nevertheless, the collection of measured topological features may exhibit additional structure, providing useful information about the underlying data generating process.
 While the persistence diagram is itself a summary of the topological information contained in a sampled point cloud, to perform inference further summarization may be appropriate, e.g. by considering distributions of properties defined on the diagram.
 In other words, we are less interested in learning the topology of a particular sample, but rather in understanding the expected topological signal of different model parameters.
+We show an example in Figure~\ref{fig:sim_barcodes}.
+Here we have three identical simulations of a stochastic coalescent model, commonly used in population genetics.
+Each simulation is generated with the same number of points and the same parameters.
+Because the model is random, the resulting topology will also be random, making it impossible to match individual topological features between diagrams.
+We would like a way to characterize these models using topology.
 
 In this chapter, we show that summary statistics computed on the persistence diagram can be used for likelihood-based parametric inference.
 We use genomic sequence data as a case study, examining the topological behavior of the coalescent process with recombination, a widely used stochastic model of biological evolution.
-We find that the process generates nontrivial topology in a way that depends sensitively on parameter in the model.
+We find that the process generates nontrivial topology in a way that depends sensitively on parameters in the model.
 The idea is presented as a proof of concept, in order to motivate the identification additional models with regular topological structure that may amenable to this type of inference.
 
-\section{Warmup: Gaussian Random Fields}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/parametric_inference/sim_barcodes.pdf}
+\caption[Barcode Diagrams for Three Coalescent Simulations]{Barcode diagrams for three simulations of a stochastic coalescent model. Each simulation is generated using the same parameters, however as random models the persistent homology will differ for each run. Simulations were performed in \texttt{ms} using the command \texttt{ms 200 1 -t 500 -r 144 10000}.}
+\label{fig:sim_barcodes}
+\end{figure}
 
-Here we show that parametric inference of Gaussian Random Fields can be performed from the barcode diagram.
-Make reference to \cite{Adler:2010}.
-Connections with problems in cosmology.
+% \section{Warmup: Gaussian Random Fields}
+
+% Here we show that parametric inference of Gaussian Random Fields can be performed from the barcode diagram.
+% Make reference to \cite{Adler:2010}.
+% Connections with problems in cosmology.
+% \kje{}
 
 \section{The Coalescent Process}
 
@@ -67,7 +70,7 @@ Coalescent simulations were performed using \texttt{ms} \cite{Hudson:2002}.
 
 \begin{figure}
 \begin{center}
-\centerline{\includegraphics[width=\columnwidth]{./fig/coalescent_sims.pdf}}
+\centerline{\includegraphics[width=\columnwidth]{./fig/parametric_inference/coalescent_sims.pdf}}
 \caption[Distributions of statistics defined on the $H_1$ persistence diagram for different model parameters]{Distributions of statistics defined on the $H_1$ persistence diagram for different model parameters. Top left: Number of features. Top right: Birth time distribution. Bottom left: Death time distribution. Bottom right: Feature length distribution. Data generated from $1000$ coalescent simulations with $n=100$, $\theta=500$, and variable $\rho$.}
 \label{fig:coalescent_sims}
 \end{center}
@@ -76,7 +79,7 @@ Coalescent simulations were performed using \texttt{ms} \cite{Hudson:2002}.
 \section{Statistical Model}
 \label{sec:model}
 
-The persistence diagram from a typical coalescent simulation is shown in Figure \ref{fig:persistence_diagram}.
+The persistence diagram from a typical coalescent simulation is shown in Figure \ref{fig:sim_barcodes}.
 Examining the diagram, it would be difficult to classify the observed features into signal and noise.
 Instead, we use the information in the diagram to construct a statistical model in order to infer the parameters, $\theta$ and $\rho$, which generated the data.
 Note that we consider inference using only $H_1$ invariants, but the ideas easily generalize to higher dimensions.
@@ -131,11 +134,34 @@ This is expected, as increasing $\theta$ is essentially increasing sampling on b
 We also observe tighter confidence intervals at higher recombination rates, consistent with the behavior seen in Figure \ref{fig:coalescent_sims}.
 
 \begin{figure}
-\begin{center}
-\centerline{\includegraphics[width=\columnwidth]{./fig/param_inference.pdf}}
+\centering
+\includegraphics[width=\columnwidth]{./fig/parametric_inference/param_inference.pdf}
 \caption[Inference of recombination rate $\rho$ using topological information]{Inference of recombination rate $\rho$ using topological information. The recombination rate $\rho$ is estimated for five values \{4, 12, 36, 72, 144\} at three different mutation rates \{50, 500, 5000\}. Mean estimate over 500 simulations and 95\% confidence interval is shown.}
 \label{fig:param_inference}
-\end{center}
+\end{figure}
+
+As a final point of discussion, we make a comparison with existing methods of estimating the recombination rate in coalescent models.
+One of the earliest methods was developed by Hudson in \cite{Hudson:1987fo} and relies on a modeling the distribution of pairwise distances in sequence data.
+Our estimator, by contrast, is built on modeling the distribution of topological features measured in the data.
+In Figure~\ref{fig:estimator_comparison} we show what these distributions look like for a few values of $\rho$.
+The distribution of pairwise distances follows an interesting pattern as we increase the $\rho$.
+At $\rho=0$, the distances follow an exponential distribution, and as $\rho$ is increased the distances begin to follow a normal distribution with an increasingly tight variance.
+That is to say, as $\rho$ is increased, all pairs of sequences begin to be normally distributed around some mean value (that is determined by the mutation rate).
+Estimating $\rho$ from this data requires teasing out the contribution of recombination from the contribution of coalescence.
+In contrast, our topological estimator is in some sense a more pure signal of recombination.
+By the fundamental theorem, there will be no $H_1$ homology when $\rho=0$.
+Any signal that is generated at $H_1$ and higher is due strictly to reticulate processes.
+
+\begin{figure}
+\centering
+\subbottom[]{%
+	\includegraphics[width=.3\textwidth]{fig/parametric_inference/coalescent_pairwise_distance.pdf}
+}
+\subbottom[]{%
+	\includegraphics[width=.3\textwidth]{fig/parametric_inference/coalescent_birth_distributions.pdf}
+}
+\caption[Comparing traditional estimators of $\rho$ to ]{Traditional estimators of $\rho$ are based on modeling the distribution of pairwise distances in a dataset, as shown on left. This distribution is a mixture of both coalescent and recombination processes. In contrast, the distribution of birth times is driven solely by recombination.}
+\label{fig:estimator_comparison}
 \end{figure}
 
 \section{Conclusions}
