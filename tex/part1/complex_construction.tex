@@ -39,32 +39,27 @@ We demonstrate with two examples.
 %
 It is generally the case that we do not have a complete sampling of the sequences corresponding to the evolutionary history of a set of sequences.
 For example, we may not have sampled the true recombinant child, only a descendant which has accumulated additional mutations.
-Consider the set of sequences 000, 100, 010, and 111.
-From the four-gamete test we know there is an incompatibility between sites 1 and 2, indicating the presence of a reticulate event.
-Let us arbitrarily choose $s_1$ to be the common ancestor, $s_2$ and $s_3$ to be parents, and $s_4$ to be a descendant of the reticulate event.
-We can infer that the recombinant was of the form $s_r=110$.
-Unfortunately, the persistent homology the four sequences will be trivial.
-To understand why, consider an embedding of the four sampled sequences onto the 3-cube, as seen in Figure XXX.
-
-The failure to detect the loop is due to the ancestral and parent sequences collapsing before connecting with the recombinant child.
-In general, for a loop to be detected, the two internal distances must be greater than any of the four side distances.
+Consider the sequences $s_1=000$, $s_2=100$, $s_3=010$, and $s_4=111$.
+The four-gamete test identifies incompatibility between sites 1 and 2.
+However, persistent homology of the four sequences does not capture this reticulation.
+To understand why, consider $s_1$ to be the common ancestor, $s_2$ and $s_3$ to be parents, and $s_4$ to be a descendant of a reticulate event.
+In this scenario, we can infer that there was an ancestral recombinant sequence, $s_r=110$, which was not sampled.
+The failure to find a loop is due to the ancestral and parent sequences collapsing before connecting with the recombinant offspring, as shown in Figure~\ref{fig:complex_construction:simple_examples}A.
+In general, for a loop to be detected, the two internal distances must be greater than any of the four external distances.
 In this case, the internal distance from parent 1 ($s_2$) to parent 2 ($s_3$), $d_{23}$ is equal to the distances from each parent to the sampled descendant of the recombinant ($d_{24}$ and $d_{34}$).
-This is a general issue with the application of the Vietoris-Rips complex to phylogenetic data.
+This is an example of incomplete sampling lowering the detection sensitivity, even in cases where incompatible sites are present.
 
 \paragraph{Example Two}
 \label{ex:example2}
 %
-This example is taken from \citet{Song:2005}.
-Consider the set of sequences: $s_{1}=0000$, $s_{2}=1100$, $s_{3}=0011$, $s_{4}=1010$, and $s_{5}=1111$.
-There are pairwise incompatibilities between sites $1$ and $3$, $1$ and $4$, $2$ and $3$, and $2$ and $4$.
-Performing the Hudson-Kaplan test yields $R_M=1$, with a partition between sites 2 and 3.
-\citet{Song:2005} showed that a minimum of two recombinations were required to explain this data.
-In this example, persistent homology will contract immediately, with trivial higher homology.
-To understand why this is the case, consider an embedding into $\mathbb{R}^3$.
-The problem is that $s_{3}$ sits in the middle of the other four sequences, and at $\epsilon=2$ everything contracts.
-Had $s_{3}$ not been present in the data, we would have had an example very similar to Example \ref{ex:example1}, with the interpretation of one recombination event.
-We term this the ``dixie cup'' example.
-The conclusion to draw from this example is that multiple recombination events can interact in complicated ways, destroying signal from persistent homology.
+This example is taken from \cite{Song:2005}.
+Consider the sequences: $s_{1}=0000$, $s_{2}=1100$, $s_{3}=0011$, $s_{4}=1010$, and $s_{5}=1111$.
+The four-gamete test identifies incompatibilities between sites $1$ and $3$, $1$ and $4$, $2$ and $3$, and $2$ and $4$.
+Performing the Hudson-Kaplan test yields a partition between sites 2 and 3, however \cite{Song:2005} show a minimum of two reticulate events are required to explain the data.
+Using the standard filtration, the complex contracts completely at $\epsilon=2$, and no higher homology will be detected.
+In this case, the two reticulations interact in such a way that $s_3$ now sits equidistant from the other four sequences.
+Had $s_{3}$ not been in the data, we would have had an example very similar to Example 1, with the interpretation of one recombination event.
+In this example we observe that multiple reticulate events can interact in complicated ways, obscuring the signal from persistent homology.
 
 \begin{figure}
 \centering
@@ -236,9 +231,7 @@ The problem is stated as
                         & x \in \mathbb{R}^d
 \end{align*}
 
-We implement the problem in \texttt{cvxpy}.
-\kje{TODO: A brief comment about the complexity of this routine.}
-The randomized miniball algorithm has constant complexity in dimension.
+We implement the optimization problem in \texttt{cvxpy}.
 
 \subsection{Molecular Hypothesis}
 
@@ -254,7 +247,7 @@ In general, $n$ bars will represent $n+1$-cubes in which all $2^{(n+1)}$ haploty
 From the barcode diagram it will not in general be possible to decompose our construction into the primitive building blocks of hypercubes.
 This is because the hypercubes of dimension ($n>2$) will in general not be independent, but can interact by sharing lower dimensional faces.
 Nonetheless, to aid in decomposing the barcode diagram, we constructed the following table, which contains the homology ranks (betti numbers) for powers of the hypercube graph, computed using the \Cech\ complex.
-Incidentally, it was understanding the structure of numbers in a table very much like Table \ref{table:hypercube_homology} which led us to find a method of computing Cech homology instead of Rips homology.
+Incidentally, it was understanding the structure of numbers in a table very much like Table \ref{table:hypercube_homology} which led us to find a method of computing \Cech\ homology instead of Rips homology.
 
 \begin{table}
 \centering
@@ -275,7 +268,7 @@ $H_{6}$ & 0 & 0 & 0 &  0 &  0 &   0\\
 \label{table:hypercube_homology}
 \end{table}
 
-We include a simple proof of the numbers in this table [right here].
+% We include a simple proof of the numbers in this table [right here].
 
 % \subsection{Simple Examples}
 % \label{subsec:higher_dim_examples}

@@ -47,11 +47,17 @@
 % main body [arabic numerals]
 \mainmatter
 
+% set toc depth for intro chapters
+\settocdepth{subsection}
+
 % introduction
 \input{./tex/introduction.tex}
 
 % background
 \input{./tex/background.tex}
+
+% set toc depth for latter chapters
+\settocdepth{section}
 
 % Part 1: Theory
 \input{./tex/part1/part1.tex}

@@ -416,14 +416,14 @@ Or, as we saw in the introduction, the coffee mug can be continuously deformed i
 Likewise, if we take a tree and change the lengths of its branches, the tree remains a tree.\footnote{It is important to draw a distinction between the notion of tree topology, in which the branch patterns determines the topology, and global topology, in which all trees are equivalent. While the former is more common in the phylogenetics community, here we consider the latter.}
 In each of these examples, while the deformation has substantially altered \emph{local} properties of the space, on a \emph{global} level certain essential characteristics have remained unchanged.
 From the perspective of topology, the spaces are considered identical.
-The question then is how to formalize our idea of global shape in order to systematically reason about it.
+The question topology addresses is how to formalize the idea of global shape in order for it to be reasoned about systematically.
 
 Algebraic topology solves this problem by associating algebraic objects (an integer, for instance) that do not change under continuous deformation.
-These objects may capture properties like the number of connected components, the number of loops, and the number of holes in an object, and represent \emph{topological invariants} of a space.
+These objects capture properties like the number of connected components, the number of loops, or the number of holes in an object, and represent \emph{topological invariants} of a space.
 Two spaces can only be deformed into one other if they share the same invariants.
-The circle and ellipse are identified as equivalent by the presence of a single loop.
+For example, the circle and ellipse are identified as equivalent by the presence of a single loop.
 Neither can be deformed into a tree without introducing a cut, which would be a type of discontinuous deformation.
-Using these invariants, powerful ideas from abstract algebra can then be used to manipulate and reason about shape.
+Using these invariants, powerful ideas from abstract algebra can be used to manipulate and reason about shape.
 
 While topology has traditionally developed through the study of abstract spaces, leading to very rich and beautiful constructions\footnote{For example, see the work of Thurston on low-dimensional topology}, data does not come in the form of perfect continuous spaces.
 Recent effort over the past 15 years has focused on developing methods to apply topology to real world problems in science and engineering.
@@ -433,14 +433,14 @@ It has emerged from substantial interdisciplinary effort between mathematicians,
 
 In practice, a typical workflow for applying TDA to data is as follows.
 Data comes in the form of a set of $n$ observations with $p$ attributes, where $p$ is often very large.
-The data is assumed to be a finite sample from some more complex space, from which we wish to infer either some sort of global structure or underlying model.
-The data is represented as a finite point cloud: a set of $n$ points in $p$ dimensions with an associated notion of distance.
-The point cloud is then transformed into a topological space by associating different sets of points with each other.
-The associations can be constructed in different ways -- for instance, one of the most common constructions associates points within a certain distance $d$ from one another.
+The data is assumed to be a finite sample from a more complex space, from which we wish to infer either global structure or an underlying model.
+The data is represented as a finite point cloud: a set of $n$ points in $p$ dimensions with a notion of distance.
+The point cloud is transformed into a discrete topological space by associating different sets of points with each other, forming essentially a higher-dimensional analog of a graph.
+The associations can be constructed in different ways -- for instance, one of the simplest constructions associates points within a certain distance $d$ from one another.
 Computational approaches are then used to measure informative topological properties from the space.
 
 In this thesis, we use methods from TDA to study problems in evolutionary biology and genomics.
-Our data is typically aligned genomic sequences from sets of related organisms.
+Our data is typically aligned genomic sequences from sets of related organisms, where features are the residues at each site.
 If our sequences are each of length $L$, then we can imagine our data as points in an $L$-dimensional sequence space.
 A genetic sequence metric, such as the Hamming metric, measures distance.
 
@@ -491,7 +491,7 @@ An example of a simplicial complex is shown in Figure~\ref{fig:bg:simplicial_com
 \begin{figure}
 \centering
 \includegraphics[]{./fig/background/simplicial_complex.pdf}
-\caption[Simplicial Complex: A discrete topological space]{A finite simplicial complex is an object built from finite number of simplices glued together in a sensibly nice way.}
+\caption[Simplicial Complex: A discrete topological space]{A finite simplicial complex $K$ is an object built from a finite number of simplices, glued together in such a way that (a) any face of a simplex in $K$ is also in $K$, and (b) the non-empty intersection of any two simplices is face of both simplices.}
 \label{fig:bg:simplicial_complex}
 \end{figure}
 
@@ -512,11 +512,11 @@ We have $\partial\triangle = (a,b) + (b,c) + (a,c)$.
 Further, we have $\partial\partial\triangle = 2(a) + 2(b) + 2(c) = 0$.
 In fact, the property $\partial\partial C = 0$ will hold for any chain $C$.
 
-We can additionally define more refined types of chains.
+We can additionally define more refined chains.
 A \emph{cycle} is a chain with empty boundary, $\partial C=0$.
 A \emph{boundary cycle} is a $k$-cycle that is the boundary of a chain in dimension $k+1$.
 
-We can use these definitions to construct various groups on a simplicial complex $K$.
+We use these definitions to construct various groups on a simplicial complex $K$.
 The set of all chains of dimension $k$ forms the chain group $C_{k}$.
 The set of all cycles of dimension $k$ forms the cycle group $Z_{k}$.
 The set of all boundary cycles of dimension $k$ forms the a group $B_{k}$.
@@ -636,7 +636,7 @@ Taken together, the barcode diagram represents a complete and quantitative pictu
 The information can be equivalently represented as a persistence diagram, which is a scatter plot of invariants with birth time on the $x$ axis and death time on the $y$ axis.
 The barcode diagram and persistence diagram for the two circles data is shown in Figure~\ref{fig:bg:expanding_balls_barcode}.
 First, looking at $H_0$, we see that the data begins disconnected and becomes connected at around $\epsilon=24$.
-Next, looking at $H_1$, we count eight loops across a range from \~5 to \~80.
+Next, looking at $H_1$, we count eight loops across a range from $\approx5$ to $\approx80$.
 Two of these loops persist for what appears to be an appreciable length of time.
 We associate these two loops with the two circles that we identified qualitatively from the raw point cloud data.
 
