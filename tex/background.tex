@@ -668,10 +668,10 @@ These filtration values are the \emph{birth} and \emph{death} times, respectivel
 The set of intervals are represented as either a barcode diagram or a persistence diagram.
 
 \begin{figure}[t]
-\centering
-\includegraphics[]{./fig/background/persistence_pipeline.pdf}
-\caption[The Persistence Pipeline]{The Persistence Pipeline.}
-\label{fig:bg:persistence_pipeline}
+	\centering
+	\includegraphics[]{./fig/background/persistence_pipeline.pdf}
+	\caption[The Persistence Pipeline]{The Persistence Pipeline. Data is represented as a high-dimensional point cloud. A Vietoris-Rips filtration, a nested series of simplicial complexes parameterized by a scale $\epsilon$ is constructed. Given a filtration, the persistence algorithm is used to compute homology groups. Topologies features are represented by an interval $(b_i, d_i)$, representing the birth and death times of the feature. The set of intervals are represented as either a barcode diagram or a persistence diagram.}
+	\label{fig:bg:persistence_pipeline}
 \end{figure}
 
 There is another way of applying persistent homology.
@@ -726,10 +726,10 @@ As can be seen, most of the noise introduced is reflected in intervals close to 
 While this example was for a simple level-set filtration, the result has an extension to the arbitrary finite metric spaces $(X,d_{X})$ which we primarily consider in this thesis.
 
 \begin{figure}
-\centering
-\includegraphics[]{fig/background/stability_example.pdf}
-\caption[The stability of persistent homology under noise]{An example of the stability of the persistence diagram with respect to noise. (A) A function (red), and a noisy sampling of the same function (blue). (B) The level-set persistence diagrams for the two samples. A bottleneck matching is indicated with yellow lines. The stability result gives an upper bound on how much the diagrams can diverge as the sample diverges from the true function. This figure is adapted from \cite{Edelsbrunner:2010}.}
-\label{fig:bg:stability_example}
+	\centering
+	\includegraphics[]{fig/background/stability_example.pdf}
+	\caption[The stability of persistent homology under noise]{An example of the stability of the persistence diagram with respect to noise. (A) A function (red), and a noisy sampling of the same function (blue). (B) The level-set persistence diagrams for the two samples. A bottleneck matching is indicated with yellow lines. The stability result gives an upper bound on how much the diagrams can diverge as the sample diverges from the true function. This figure is adapted from \cite{Edelsbrunner:2010}.}
+	\label{fig:bg:stability_example}
 \end{figure}
 
 \subsubsection{Statistical Persistent Homology}
@@ -758,10 +758,10 @@ Subsampling estimates were studied further in \cite{Chazal:2014wp}.
 Related approaches were developed by Blumberg \emph{et al.} in \cite{Blumberg:2014bq}.
 
 \begin{figure}
-\centering
-\includegraphics[]{fig/background/fasy_confidence_set.pdf}
-\caption[Confidence sets on the persistence diagram]{An example of how statistical persistent homology can be used to handle both noise in data and put confidence sets on the persistence diagram. Figure is taken from \cite{Fasy:2014}.}
-\label{fig:bg:fasy_confidence_set}
+	\centering
+	\includegraphics[]{fig/background/fasy_confidence_set.pdf}
+	\caption[Confidence sets on the persistence diagram]{An example of how statistical persistent homology can be used to handle both noise in data and put confidence sets on the persistence diagram. Figure is taken from \cite{Fasy:2014}.}
+	\label{fig:bg:fasy_confidence_set}
 \end{figure}
 
 Functional summaries of the persistence diagram convert the multiset of intervals into .
@@ -786,10 +786,10 @@ The silhouette is taken by weighting the contribution of each point based on its
 An example of the persistence landscape and silhouette is shown in Figure~\ref{fig:bg:persistence_landscape}.
 
 \begin{figure}
-\centering
-\includegraphics[]{fig/background/persistence_landscape.pdf}
-\caption[Persistence landscape of the persistence diagram]{Persistence Landscapes. (A) A simple filtration on a set of points. (B) The persistence diagram from this data. (C) Transformed into a persistence landscape. This figure is adapted from \cite[Fig.~2]{Bubenik2015:um}.}
-\label{fig:bg:persistence_landscape}
+	\centering
+	\includegraphics[]{fig/background/persistence_landscape.pdf}
+	\caption[Persistence landscape of the persistence diagram]{Persistence Landscapes. (A) A simple filtration on a set of points. (B) The persistence diagram from this data. (C) Transformed into a persistence landscape. This figure is adapted from \cite[Fig.~2]{Bubenik2015:um}.}
+	\label{fig:bg:persistence_landscape}
 \end{figure}
 
 A second approach has been taken by Schweinhart and MacPherson in \cite{MacPherson:2012eq}, in which a transformation of the intervals is used to characterize random polymers in terms of a fractal dimension.
@@ -816,10 +816,10 @@ Mapper was initially developed by Singh and Carlsson in \cite{Singh:2007ve}; fur
 Mapper has been applied to problems in RNA folding \cite{Bowman:2008esa}, breast cancer subtype classification \cite{Nicolau:2011}, and genetic associations in type 2 diabetes \cite{Li:2015gl}.
 
 \begin{figure}
-\centering
-\includegraphics[width=\textwidth]{fig/background/exploratory_data_analysis.tikz}
-\caption[Dimensionality Reduction for EDA]{Dimensionality Reduction Approaches for Exploratory Data Analysis.}
-\label{fig:bg:exploratory_data_analysis}
+	\centering
+	\includegraphics[width=\textwidth]{fig/background/exploratory_data_analysis.tikz}
+	\caption[Dimensionality Reduction for EDA]{Dimensionality Reduction Approaches for Exploratory Data Analysis.}
+	\label{fig:bg:exploratory_data_analysis}
 \end{figure}
 
 A simple example of the Mapper algorithm is shown in Figure~\ref{fig:bg:mapper}, which is adapted from \cite{Lum:2013cz}.
@@ -833,10 +833,10 @@ Each cluster will form a node in the graph representation.\footnote{Nodes in a M
 Finally, nodes that share points in the original space are connected by an edge.
 
 \begin{figure}
-\centering
-\includegraphics[]{fig/background/mapper.pdf}
-\caption[The Mapper Algorithm]{Mapper starts with a set of data points and a filter function $f$ and produces a colored graph that captures the shape of the data. (A) The image of the function $f$ is subdivided into overlapping intervals. (B) Each piece is clustered separately. (C) Each cluster is represented by a colored disk: a bin of points. The color of each bin corresponds to the average value of the filter function $f$ on the data points inside the bin. (D) Identify pairs of bins that have points in common and (E) connect pairs of bins that have points in common by an edge.}
-\label{fig:bg:mapper}
+	\centering
+	\includegraphics[]{fig/background/mapper.pdf}
+	\caption[The Mapper Algorithm]{Mapper starts with a set of data points and a filter function $f$ and produces a colored graph that captures the shape of the data. (A) The image of the function $f$ is subdivided into overlapping intervals. (B) Each piece is clustered separately. (C) Each cluster is represented by a colored disk: a bin of points. The color of each bin corresponds to the average value of the filter function $f$ on the data points inside the bin. (D) Identify pairs of bins that have points in common and (E) connect pairs of bins that have points in common by an edge.}
+	\label{fig:bg:mapper}
 \end{figure}
 
 Our use of Mapper will be primarily as a means of visualizing relationships in sequence data.
@@ -856,7 +856,7 @@ Sequence space will therefore consist of the $||Q||^L$ possible sequences.
 Together with any of the standard genetic distance measures, this forms a metric space.
 
 The processes of evolution can be seen as an exploration of sequence space.
-An individual genotype can be assigned a fitness which will describe the probability of reproductive success in a particular environment.
+% An individual genotype can be assigned a fitness which will describe the probability of reproductive success in a particular environment.
 Clonal evolution is the process of smoothly moving through sequence space, while reticulate evolution is the process of making discontinuous jumps through the space.
 Our data consists of a subset of points sampled from sequence space.
 These points reflect a particular evolutionary history.
@@ -922,10 +922,10 @@ We consider this example to be the minimal, or fundamental, unit of reticulation
 More complicated patterns of reticulation can be seen as extensions of this example.
 
 \begin{figure}
-\centering
-\includegraphics[width=\textwidth]{./fig/background/four_gamete_test.pdf}
-\caption[Fundamental Unit of Reticulation]{The Fundamental Unit of Reticulation. (A) A set of four sequences. (B) An evolutionary genealogy including two mutations ($m_1$ and $m_2$) and a single reticulation ($r_1$). (C) Vietoris-Rips Filtration. (D) Barcode Diagram.}
-\label{fig:bg:four_gamete_test}
+	\centering
+	\includegraphics[width=\textwidth]{./fig/background/four_gamete_test.pdf}
+	\caption[Fundamental Unit of Reticulation]{The Fundamental Unit of Reticulation. (A) A set of four sequences. (B) An evolutionary genealogy including two mutations ($m_1$ and $m_2$) and a single reticulation ($r_1$). (C) Vietoris-Rips Filtration. (D) Barcode Diagram.}
+	\label{fig:bg:four_gamete_test}
 \end{figure}
 
 \subsection{A Complete Example}
@@ -946,36 +946,36 @@ In this way, we can analyze both the scale and frequency of reticulation in geno
 We summarize the connection between genomic data and TDA in Table~\ref{table:dictionary}.
 
 \begin{table}
-\centering
-\caption{Dictionary connecting algebraic topology and evolutionary biology}
-\small
-\rowcolors{2}{gray!25}{white}
-\setlength{\aboverulesep}{0pt}
-\setlength{\belowrulesep}{0pt}
-\setlength{\extrarowheight}{.75ex}
-\begin{tabularx}{\textwidth}{XX}
-\toprule\rowcolor{gray!50}
-Algebraic Topology                                         & Evolutionary Biology \\
-\midrule
-Filtration value $\epsilon$                                & Genetic distance (evolutionary scale) \\
-0-dimensional Betti number at filtration value $\epsilon$  & Number of clusters at scale $\epsilon$ \\
-Generators of 0-D homology                                 & A representative element of the cluster \\
-Hierarchical relationship among generators of 0-D homology & Hierarchical clustering \\
-1-D Betti number                                           & Lower bound on number of reticulate events \\
-Generators of 1-D Homology                                 & Reticulate events \\
-Generators of 2-D Homology                                 & Complex horizontal genomic exchange \\
-Non-zero high-dimensional homology (“topological obstruction to phylogeny”) & No treelike phylogenetic representation exists \\
-Number of higher-dimensional generators over a time interval (“irreducible cycle rate”) & Lower bound on recombination/reassortment rate \\
-\bottomrule
-\end{tabularx}
-\label{table:dictionary}
+	\centering
+	\caption{Dictionary connecting algebraic topology and evolutionary biology}
+	\small
+	\rowcolors{2}{gray!25}{white}
+	\setlength{\aboverulesep}{0pt}
+	\setlength{\belowrulesep}{0pt}
+	\setlength{\extrarowheight}{.75ex}
+	\begin{tabularx}{\textwidth}{XX}
+	\toprule\rowcolor{gray!50}
+	Algebraic Topology                                         & Evolutionary Biology \\
+	\midrule
+	Filtration value $\epsilon$                                & Genetic distance (evolutionary scale) \\
+	0-dimensional Betti number at filtration value $\epsilon$  & Number of clusters at scale $\epsilon$ \\
+	Generators of 0-D homology                                 & A representative element of the cluster \\
+	Hierarchical relationship among generators of 0-D homology & Hierarchical clustering \\
+	1-D Betti number                                           & Lower bound on number of reticulate events \\
+	Generators of 1-D Homology                                 & Reticulate events \\
+	Generators of 2-D Homology                                 & Complex horizontal genomic exchange \\
+	Non-zero high-dimensional homology (“topological obstruction to phylogeny”) & No treelike phylogenetic representation exists \\
+	Number of higher-dimensional generators over a time interval (“irreducible cycle rate”) & Lower bound on recombination/reassortment rate \\
+	\bottomrule
+	\end{tabularx}
+	\label{table:dictionary}
 \end{table}
 
 \begin{figure}
-\centering
-\includegraphics[width=\textwidth]{./fig/tda_on_sequencedata.pdf}
-\caption[Applying TDA to Molecular Sequence Data]{Applying persistent homology to genomic data. (A) An evolutionary genealogy including reticulation. (B) Data projected into 2-dimensions. (C) Construction of a filtered simplicial complex. (D) The resulting multiscale barcode diagram.}
-\label{fig:bg:tda_on_sequence_data}
+	\centering
+	\includegraphics[width=\textwidth]{./fig/background/tda_on_sequencedata.pdf}
+	\caption[Applying TDA to Molecular Sequence Data]{Applying persistent homology to genomic data. (A) An evolutionary genealogy including reticulation. (B) Data projected into 2-dimensions. (C) Construction of a filtered simplicial complex. (D) The resulting multiscale barcode diagram.}
+	\label{fig:bg:tda_on_sequence_data}
 \end{figure}
 
 \subsection{The Space of Trees, Revisited}
@@ -990,7 +990,7 @@ We would like to use topological invariants, specifically homology, to measure t
 From the theorem due to Carlsson, we know that higher homology will vanish for on tree space.
 And from the simple example in Section~\ref{bg:top4bio:fundamental_unit}, we know that non-additive reticulate processes will have nonvanishing higher homology.
 Rather than attempt to characterize arbitrary data by projecting onto tree space, we will use persistent homology to compute homological invariants that will characterize our space.
-Our hypothesis, then, is that as the data moves further from tree space, the less additive it will be, and the stronger from higher homology will be.
+Our hypothesis, then, is that as the data moves further from tree space, it will be increasingly less additive, and the stronger the signal captured by higher homology.
 Our updated picture is shown in Figure~\ref{fig:bg:tree_space_revisited}, where we depict tree space embedded in the larger space of finite metrics.
 We anticipate for appreciable datasets, our sensitivity will be such that those close to the tree space will have little to no homological signal, while those further will have an increasing homological signal.
 A second point to make is that the metric structure will now allow us to pass through regions of space that are nonadditive.
@@ -1000,8 +1000,8 @@ We note that at the outset of this work, an ambitious goal was set to provide a 
 While some interesting work has explored the combinatorial structure of the space of metrics on low numbers of points (see \cite{Sturmfels:2004vc}), it does not appear feasible in general to provide a complete decomposition.
 
 \begin{figure}
-\centering
-\includegraphics[]{./fig/background/tree_space_revisited_v2.pdf}
-\caption[Topology expands Tree Space Revisited]{Tree space on $n$ leaves, $\mathcal{T}_{n}$, is a subspace of the larger space of the metric cone on $\mathbb{R}^{\binom{n}{2}}$. In the presence of reticulate evolution, data may not sit near an additive tree, as for example data $X$ (pink circle). The invariant $\TOP$ (topological obstruction to phylogeny) is one way to characterize these spaces and can be computed using persistent homology. As one moves further from tree space $\TOP$ increases. The orange lines indicate regions close to tree space in which $\TOP$ is insensitive to non-additivity. In this example we also indicate two trees $\mathcal{T}_{1}$ and $\mathcal{T}_{2}$ which sit on subspaces of different topology in tree space. The direct path between the two topologies will pass through a ${\TOP}{\neq}{0}$ region.}
-\label{fig:bg:tree_space_revisited}
+	\centering
+	\includegraphics[]{./fig/background/tree_space_revisited_v2.pdf}
+	\caption[Topology expands tree space to include reticulation]{Tree space on $n$ leaves, $\mathcal{T}_{n}$, is a subspace of the larger space of the metric cone on $\mathbb{R}^{\binom{n}{2}}$. In the presence of reticulate evolution, data may not sit near an additive tree, as for example data $X$ (pink circle). The invariant $\TOP$ (topological obstruction to phylogeny) is one way to characterize these spaces and can be computed using persistent homology. As one moves further from tree space $\TOP$ increases. The orange lines indicate regions close to tree space in which $\TOP$ is insensitive to non-additivity. In this example we also indicate two trees $\mathcal{T}_{1}$ and $\mathcal{T}_{2}$ which sit on subspaces of different topology in tree space. The direct path between the two topologies will pass through a ${\TOP}{\neq}{0}$ region.}
+	\label{fig:bg:tree_space_revisited}
 \end{figure}

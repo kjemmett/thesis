@@ -13,10 +13,10 @@ Traditionally, evolutionary relationships were established on the basis of pheno
 With the advent of molecular models of evolution and rapidly increasing genomic sequence data, the genotype has supplanted phenotype as the primary focus of evolutionary studies.
 Molecular phylogenetics has become established as the standard tool for inferring phylogenetic relationships.
 However, a tree is accurate only if the Darwinian model of descent with modification is the sole process driving evolution.
-It has long been recognized that there exist alternative evolutionary processes that can allow organisms to exchange genetic material through means beyond reproduction \cite{Arnold:2007vq}.
+It has long been recognized that there exist alternative evolutionary processes that can allow organisms to directly exchange genetic material \cite{Arnold:2007vq}.
 Notable examples include horizontal gene transfer in bacteria, species hybridization in plants, and meiotic recombination in eukaryotes.
 Collectively, these processes are known as \emph{reticulate evolution}.
-These stand in contrast to descent with modification, an example of \emph{clonal evolution}.\footnote{Clonal and reticulate evolution are also known by the terms \emph{vertical} and \emph{horizontal} evolution, respectively.}
+These stand in contrast to tree-like diversification, an example of \emph{clonal evolution}.\footnote{Clonal and reticulate evolution are also known by the terms \emph{vertical} and \emph{horizontal} evolution, respectively.}
 Increasing genomic data, powered by new high-throughput sequencing technologies, has shown that these reticulate processes are more prevalent than originally expected.
 For some, this has called into question the tree of life hypothesis as an organizing principle and prompted the search for new ways of representing evolutionary relationships \cite{Doolittle:1999,OMalley:2011tu}.
 
@@ -57,15 +57,7 @@ If one had a larger set of sequenced organisms, computing the complete set of pa
 From the distance matrix, one attempts to associate a tree to the data such that pairwise distances along the tree are close to the observed pairwise sequence distances.
 Walter Fitch and Emanuel Margolish helped popularize this approach by constructing a weighted least squares approach to fitting phylogenetic trees from distance matrices \cite{Fitch:1967we}.
 Since that time, the development of numerical approaches for inferring evolutionary relationships has evolved into a mature discipline and the use of molecular sequence data to infer phylogeny has become a standard practice across a wide range of biology and ecology.
-While other approaches to tree inference have been developed, including parsimony, maximum likelihood (ML) and Bayesian methods, our focus will be on distance matrix methods because of their close connection with the topological ideas we employ later.
-
-% NEUTRAL THEORY: Not necessary to include?
-% Two historical results, one from molecular evolution and one from molecular phylogenetics, are worth mentioning.
-% First, Motoo Kimura's neutral theory of evolution, first detailed in 1968 \cite{Kimura:1968vw} (see \cite{Kimura:1984} for a comprehensive survey).
-% The neutral theory holds that observed genetic diversity is largely a result of genetic drift.
-% At the time the neutral theory was proposed, most biologists assumed that natural selection was the driving force behind genetic diversity.
-% Kimura argued that at the molecular level, the vast majority of mutations are selectively neutral, that is they confer no fitness advantage to the individual organism.
-% With increased sequencing of organisms and populations, tests for selection based on the neutral theory have been developed.
+While other approaches to tree inference have been developed, including parsimony, maximum likelihood (ML) and Bayesian methods, our focus will be on distance matrix methods because of their close relationship to the topological ideas we employ.
 
 One important early result from molecular phylogenetics was Carl Woese's organization of bacteria, eukarya, and archaea into the three domains of life \cite{Woese:1977vd}.
 Prior to Woese, there were two recognized domains of life: prokaryotes, single-celled organisms lacking a nucleus, and eukaryotes, multi-celled organisms with an enveloped nucleus.
@@ -218,6 +210,6 @@ In Chapter \ref{ch:pathogens} we study pathogenic bacteria and use topological t
 % In Chapter \ref{ch:prokaryotes} we study prokaryotic evolution and species tree topologies.
 % In Chapter \ref{ch:human_recombination_rate} we use population data to measure human recombination rates and identify recombination hotspots.
 We identify variation in recombination hotspots in different human populations.
-In Chapter \ref{ch:human_chromatin_folding} we analyze Hi-C data to explore patterns of chromatin folding in the nucleus in both prokaryotic and human datasets.
+In Chapter \ref{ch:hic} we analyze Hi-C data to explore patterns of chromatin folding in the nucleus in both prokaryotic and human datasets.
 
 Finally, in Chapter \ref{ch:conclusions} we summarize these results and present future research directions.

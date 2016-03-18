@@ -6,20 +6,19 @@ Also, to motivate the reader along, wherever possible, try to explain at the beg
 
 And at the end of the day, don't stress too much about it... you have already published papers, which is the important part!
 
-
-
 * Abstract: Can you add 2-3 sentences about main results/findings/interpretations? Also in the intro -- the discussion is very methods-heavy and does not really tell the reader what sort of biological conclusions to expect.
 
 x Bottom of p.1: "means beyond reproduction" is a bit confusing here, since some of these horizontal processes also involve reproduction.
 
-Top of p.2: Along similar lines, recombination is a kind of "modification" and so I would usually think of "descent with modification" as including it.
+x Top of p.2: Along similar lines, recombination is a kind of "modification" and so I would usually think of "descent with modification" as including it.
 
 p.3: Maybe a nitpicky point, but for bacteria, the genome isn't always 'indexed by position' as it may include plasmids. (Actually, are plasmids considered part of "the genome"?)
 
 x p.4: Typo -- "helped popularized"
 x populatized -> popularize
 
-p.4: An additional motivation for using distance methods: any method that involves likelihoods requires a specific model of evolution, and all the tractable models exclude recombination. (Can also mention this point on p. 23, in 2.1.4.)
+x p.4: An additional motivation for using distance methods: any method that involves likelihoods requires a specific model of evolution, and all the tractable models exclude recombination. (Can also mention this point on p. 23, in 2.1.4.)
+x
 
 ? Fig 1.2 caption typo -- "three kingdom"
 
@@ -79,7 +78,8 @@ x fixed tildes.
 x p. 42 -- Is it really necessary to include stability if it is not used in the thesis? This is already quite a lot of introductory methods info. In general, I like including methods only if they can specifically be related to your work. Like in the statistical persistent homology section -- can you more explicitly relate this to the model/parametric approach you will discuss later? This is an interesting point of difference between your work and the rest of the stat PH literature.
 x i’d like to include these for completeness sake.
 
-p. 48 -- Need the description of fitness?
+x p. 48 -- Need the description of fitness?
+x deleted sentence
 
 x p. 50 top -- "negative control," not "positive control," right?
 x yes. positive -> negative

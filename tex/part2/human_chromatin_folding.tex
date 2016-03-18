@@ -1,7 +1,7 @@
 %!TEX root = ../../thesis.tex
 
 \chapter{Multiscale Topology of Chromatin Folding}
-\label{ch:human_chromatin_folding}
+\label{ch:hic}
 
 The three dimensional structure of DNA in the nucleus (chromatin) plays an important role in many cellular processes.
 Recent experimental advances have led to high-throughput methods of capturing information about chromatin conformation on genome-wide scales.
@@ -54,7 +54,7 @@ Pearson correlation $\rho$ measures similarity between loci, which we convert to
 
 \begin{figure}
        \centering
-       \includegraphics[width=\columnwidth]{./fig/chromatin_cartoon.pdf}
+       \includegraphics[width=\columnwidth]{./fig/hic/chromatin_cartoon.pdf}
        \caption[Three Hierarchies of Chromatin Organization]{Three hierarchices of chromatin organization. At the 100 bp scale, DNA chains wrap around protein complexes called nucleosomes. At the megabase scale, these chains are compacted into domains. Lieberman-Aiden \emph{et al.} proposed closed domains form a \emph{fractal globule} structure. At the genome scale, chromosomes fold into the nucleus in separate territories. The fractal globule represents densely packed regions not open for transcription. Fractal globule image from \cite{LiebermanAiden:2009jz}. Reprinted with permission from AAAS.}
        \label{fig:chromatin_cartoon}
 \end{figure}
@@ -91,7 +91,7 @@ We call this interaction a \emph{multi-jump loop}, because the minimal hole gene
 
 \begin{figure}
        \centering
-       \includegraphics[width=\columnwidth]{./fig/chromatin_interactions.pdf}
+       \includegraphics[width=\columnwidth]{./fig/hic/chromatin_interactions.pdf}
        \caption[Examples of Long-Range Chromatin Interactions]{Two examples of long range chromatin interactions resulting in a topological loop. (A) A protein mediated (red) point-interaction between an enhancer (green) and promoter (yellow) sequence. (B) A transcription factory consists of dense RNA polymerase (green) around a structural core in which adjacent genomic loci (colored segments) will be cotranscribed. Transcription factors (purple) are shown.}
        \label{fig:chromatin_interactions}
 \end{figure}
@@ -135,7 +135,7 @@ Persistent homology recovers 10 $H_1$ intervals, consistent with the simulation 
 
 \begin{figure}
        \centering
-       \includegraphics[width=\columnwidth]{./fig/polymer_sim.pdf}
+       \includegraphics[width=\columnwidth]{./fig/hic/polymer_sim.pdf}
        \caption[Polymer Simulations of Chromatin Folding]{Polymer Simulation. (A) 50 Mb polymer with 10 fixed loops is allowed to reach an equilbrium conformation. (B) PH identifies 10 $H_1$ loops.}
        \label{fig:polymer_sim}
 \end{figure}
@@ -156,7 +156,7 @@ Finally, in Figure~\ref{fig:caulobacter_v2}C we see that the size of $H_1$ invar
 
 \begin{figure}[ht]
        \centering
-       \includegraphics[width=\columnwidth]{./fig/caulobacter_v2.pdf}
+       \includegraphics[width=\columnwidth]{./fig/hic/caulobacter_v2.pdf}
        \caption[Hi-C Contact Map and Persistent Homology for \emph{Caulobacter} Hi-C Data]{(A) Contact map and (B) barcode diagram for \emph{Caulobacter}. (C) Distribution of $H_1$ bar sizes for \emph{Caulobacter} shows a bimodal scale of folding patterns.}
        \label{fig:caulobacter_v2}
 \end{figure}
@@ -171,7 +171,7 @@ These loops do not associate with the CIDs identified in \cite{Le:2013ci}, but r
 
 \begin{figure}
        \centering
-       \includegraphics[width=\columnwidth]{./fig/caulobacter_localized_loops.pdf}
+       \includegraphics[width=\columnwidth]{./fig/hic/caulobacter_localized_loops.pdf}
        \caption[Minimal Cycle Projection for \emph{Caulobacter} Hi-C Data]{Minimal cycles projected linearly for \emph{Caulobacter}. Left: small loops distribute uniformly across the genome. Right: pattern of large loops, which segregate into two chromosomal domains.}
        \label{fig:caulobacter_bar_sizes}
 \end{figure}
@@ -200,14 +200,14 @@ It is possible that the linear nature of the chain may make a heuristic homology
 
 \begin{figure}
        \centering
-       \includegraphics[width=\columnwidth]{./fig/gm06690.pdf}
+       \includegraphics[width=\columnwidth]{./fig/hic/gm06690.pdf}
        \caption[Hi-C Contact Map and Persistent Homology for GM06690 Cell Line Data]{Hi-C data chromosome 1 from GM06690 human cell line data, from \cite{LiebermanAiden:2009jz}. Left: Contact map representation. Right: PH identifies complex multiscale topology.}
        \label{fig:human_data}
 \end{figure}
 
 \begin{figure}
        \centering
-       \includegraphics[width=\columnwidth]{./fig/gm06690_barsizes_v2.pdf}
+       \includegraphics[width=\columnwidth]{./fig/hic/gm06690_barsizes_v2.pdf}
        \caption[Distribution of $H_1$ Features for GM06690 Data]{Distribution of $H_1$ bar sizes for GM06690 human cell line data shows a bimodal scale of folding patterns.}
        \label{fig:human_data_histogram}
 \end{figure}
