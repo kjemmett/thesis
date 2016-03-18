@@ -8,12 +8,12 @@ In Section~\ref{bg:bio} we introduce the models of evolution and types of genomi
 In Section~\ref{bg:tda} we provide a self-contained introduction to the primary methods of topological data analysis, including persistent homology and Mapper.
 Finally, in Section~\ref{bg:top4bio} we give simple examples of how the tools from TDA can be informative about reticulate evolution.
 
-\section{Biology}
+\section{Evolutionary Biology and Genomics}
 \label{bg:bio}
 
 In this section we present a basic introduction to molecular sequence data: what the data looks like, the processes by which it is generated, and the methods by which it is analyzed.
 Particular attention is paid to modes of reticulate evolution.
-Exposition for specific applications can be found in their respective individual chapters.
+Exposition for specific biological applications can be found in their respective chapters.
 
 \subsection{Genes and Genomes}
 \label{bg:bio:genes}
@@ -98,10 +98,9 @@ We mention two such processes: hybrid speciation and meiotic recombination.
 These two processes act at very different scales, however the outcome is the same: a unique offspring with genetic material drawing from both parents.
 
 First, hybrid speciation refers to the cross-breeding of animals or plants of different species.
-This mixing of genetic material can lead to the development of a third species with a phenotype distinct from both parents.
+This mixing of genetic material can lead to the development of offspring with a phenotype distinct from both parents.
 Hybrid speciation was originally believed to be a rare occurrence in nature and hybrid offspring to be infertile.
-However, recent genomic data has demonstrated that hybrid speciation occurs quite frequently in plants \cite{Arnold:1996,Arnold:2007vq}.
-Indeed, Mendel's early experiments in hybridization were themselves an artificially induced form of reticulate evolution.
+However, recent genomic data has demonstrated that hybridization occurs quite frequently in plants \cite{Arnold:1996,Arnold:2007vq}.
 
 Second, meiotic recombination refers to a specialized process for generating diversity that occurs in sexually-reproducing polyploid organisms, such as humans, during meiosis.
 Meiosis is the process by which a single cell containing $n$ copies of each chromosome results in four distinct cells each with $n/2$ copies of each chromosome.
@@ -114,12 +113,12 @@ The two sets of chromosomes then pair with each other and exchange DNA through p
 This is another example of homologous recombination and results in new allelic patterns mixing genetic information from both parents.\footnote{Patterns of shared alleles define the concept of \emph{linkage}.}
 After crossover occurs, two phases of cellular division result in gametes with $n/2$ copies of each chromosome.
 
-At this point, one might wonder about sexual reproduction -- an offspring can be seen as a hybridization of genetic material donated from both mother and father.
-On the one hand, the answer could be yes, particularly because the presence of meiotic recombination involves a shuffling of genomic material such that the chromosome each parent donates is a unique combination of alleles not previously present in the donor organism.
-On the other hand, the answer could be no, because both mother and father donate a complete copy of the genome to the offspring.
-Each copy can be considered as an independent transfer of genetic information defining both a matrilineal and a patrilineal line of inheritance.
-Indeed, researchers in human population genetics generally distinguish between these two cases -- looking at genomic regions that do not recombine they define a matrilineal common ancestor known as \emph{Mitochondrial Eve} and a patrilineal common ancestor known as \emph{Y-chromosomal Adam}.
-Mathematically, the evolutionary relationships of a population of $N$ organisms with ploidy $n$ are often analyzed as a haploid population of size $nN$ with random mating.
+% At this point, one might wonder about sexual reproduction -- an offspring can be seen as a hybridization of genetic material donated from both mother and father.
+% On the one hand, the answer could be yes, particularly because the presence of meiotic recombination involves a shuffling of genomic material such that the chromosome each parent donates is a unique combination of alleles not previously present in the donor organism.
+% On the other hand, the answer could be no, because both mother and father donate a complete copy of the genome to the offspring.
+% Each copy can be considered as an independent transfer of genetic information defining both a matrilineal and a patrilineal line of inheritance.
+% Indeed, researchers in human population genetics generally distinguish between these two cases -- looking at genomic regions that do not recombine they define a matrilineal common ancestor known as \emph{Mitochondrial Eve} and a patrilineal common ancestor known as \emph{Y-chromosomal Adam}.
+% Mathematically, the evolutionary relationships of a population of $N$ organisms with ploidy $n$ are often analyzed as a haploid population of size $nN$ with random mating.
 
 \begin{table}
 \centering

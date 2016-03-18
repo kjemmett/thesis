@@ -25,15 +25,17 @@ x
 x p.6: "direct reproduction" is confusing, as this can include recombination
 x direct -> clonal
 
-p. 7 discussion of Doolittle -- it is unclear whether the figure panel on the right is mostly speculative, or backed up by specific examples. Perhaps this could be more clearly integrated with the next paragraph ("more than just theoretical concern") which provides some examples. (Also, it is unclear that the opposite of "theoretical concern" is "applicable to human health" which is what you are implying here.)
+x p. 7 discussion of Doolittle -- it is unclear whether the figure panel on the right is mostly speculative, or backed up by specific examples. Perhaps this could be more clearly integrated with the next paragraph ("more than just theoretical concern") which provides some examples. (Also, it is unclear that the opposite of "theoretical concern" is "applicable to human health" which is what you are implying here.)
 
-p. 9 intro of betti numbers -- make sure to define "simply connected". Also, be careful with equating same betti numbers with "topological equivalence" as this ignores torsion & aspects not captured by homology. More generally, I think pages 9 & 10 can be made a bit clearer if you remove some jargon ("nonvanishing", "nontrivial") and make it less wordy ("objects are to be read such that").
+x p. 9 intro of betti numbers -- make sure to define "simply connected". Also, be careful with equating same betti numbers with "topological equivalence" as this ignores torsion & aspects not captured by homology. More generally, I think pages 9 & 10 can be made a bit clearer if you remove some jargon ("nonvanishing", "nontrivial") and make it less wordy ("objects are to be read such that").
 
-I think that the statement "construct topological spaces from finite samples" on p. 11 will be clearer to the reader if you explain further up that your illustration in Fig. 1.5 is just a conceptual model, and that in real life we are not given the actual ancestry but must infer things from sequence data.
+x I think that the statement "construct topological spaces from finite samples" on p. 11 will be clearer to the reader if you explain further up that your illustration in Fig. 1.5 is just a conceptual model, and that in real life we are not given the actual ancestry but must infer things from sequence data.
 
-p. 12 -- Final paragraph can have some more interesting detail -- e.g., "we study bacteriophages and find XYZ." Also, include citation/brief explanation for "Hi-C" or your readers may think it is the sugary drink.
+x p. 12 -- Final paragraph can have some more interesting detail -- e.g., "we study bacteriophages and find XYZ." Also, include citation/brief explanation for "Hi-C" or your readers may think it is the sugary drink.
+x added more detail
+———————————————————————
 
-p. 13 -- Title of section 2.1 could be more specific -- "evolutionary genetics" or "evolutionary biology and genetics"
+x p. 13 -- Title of section 2.1 could be more specific -- "evolutionary genetics" or "evolutionary biology and genetics"
 
 p. 15 "clonal evolution" -- Maybe this can be spelled out a bit more, because a natural question is "Didn't Darwin know about sexual reproduction?" (He was both a father and pigeon breeder...) The leaves of his tree were meant to be species -- so he wasn't denying bi-parental inheritance, but he was implicitly supposing that, on long timescales, a large population/species evolves more or less clonally and produces the hierarchical relationships we can observe. (And as you point out later, species hybridization was thought to be rare, so this seemed like a good model.)
 
@@ -42,7 +44,8 @@ x modified sentence
 
 p. 16 top -- This description doesn't really match what happens in HIV, as there is not a break-repair mechanism. The RTase just falls off and hops back on.
 
-p. 17 bottom-- Were Mendel's experiments actually done with multiple species?
+x p. 17 bottom-- Were Mendel's experiments actually done with multiple species?
+x - true.
 
 p.18 discussion of sexual reproduction -- "on the one hand, the answer could be yes" -- clear this phrasing up. What exactly is the question?
 

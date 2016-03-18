@@ -104,16 +104,17 @@ Incompatibilities in the tree paradigm now appear as the rule, not the exception
 Many have argued that, in light of new genomic evidence, the very notion of a universal tree of life must be discarded \cite{Koonin:2008bt,Koonin:2008tj}.
 This point has been argued most strongly by Ford Doolittle.
 In Figure~\ref{fig:doolittle_tree}, we see Doolittle's simplified representation of Tree of Life as it stands today, including only the most well-known examples of reticulations, the acquisition of mitochondria and chloroplasts from bacterial ancestors.
-We also see his representation of the Tree of Life as it would stand if additional large-scale reticulations were contained -- no long is it clear that the tree is an appropriate metaphor.
+We also see his representation of the Tree of Life as it would stand if additional large-scale reticulations were reflected -- no longer is it clear that the tree is an appropriate metaphor.
 
 \begin{figure}
 \centering
 \includegraphics[]{./fig/introduction/doolittle_trees.pdf}
-\caption[Ford Doolittle's Reticulate Tree of Life]{Left: W Ford Doolittle's representation of the consensus universal tree of life. Only the most well known reticulations are reflected: the endosymbiosis of mitochondria and chloroplasts. Right: Doolittle's representation of the universal tree of life with reticulate evolution. While the three domains of life are still recognizable, patterns of divergence no longer follow a strictly treelike model. (From \emph{Science}, vol. 284, issue 5423, page 2127. Reprinted with permission from AAAS.)}
+\caption[Ford Doolittle's Reticulate Tree of Life]{Left: W Ford Doolittle's representation of the consensus universal tree of life. Only the most well known reticulations are reflected: the endosymbiosis of mitochondria and chloroplasts. Right: Doolittle's speculative representation of the universal tree of life after accounting for reticulate evolution. While the three domains of life are still recognizable, patterns of divergence no longer follow a strictly treelike model. (From \emph{Science}, vol. 284, issue 5423, page 2127. Reprinted with permission from AAAS.)}
 \label{fig:doolittle_tree}
 \end{figure}
 
-Finally, reticulate evolutionary processes are of more than just theoretical concern.
+Finally, reticulate evolutionary processes are of more than just historical interest for evolutionary studies, but rather have a substantial 
+
 In HIV, frequent homologous recombination confounds our understanding of the epidemic's early and present history \cite{Burke:1997ep}.
 In influenza, segmental gene reassortments lead to antigenic novelty and the emergence of epidemics \cite{Nelson:2007bc}.
 In several pathogenic bacteria, including \emph{E. coli} and \emph{S. aureus}, horizontal gene transfer has been responsible for the spread of antibiotic resistance genes \cite{Alekshun:2007bq,Davies:2010dv}.
@@ -138,45 +139,46 @@ Topologically, the two objects are equivalent.\footnote{The two objects are topo
 \label{intro:fig:coffeemug_to_donut}
 \end{figure}
 
-Algebraic topology quantifies our intuitive notions of shape by associating algebraic structures to different invariants.
+Algebraic topology quantifies our intuitive notions of shape using algebraic structures to represent different invariants of a space.
 For our purposes, the most relevant invariants will be the \emph{Betti numbers}.
 We give a more complete characterization of Betti numbers in Chapter~\ref{ch:background}, but the intuition is as follows.
 The Betti numbers are a collection of integers indexed by an integer $n$ describing the connectivity of a space at different dimensions.
-First, we can think of $b_0$ as representing the number of connected components, or clusters, in our space.
-Next, we can think of $b_1$ as representing the number of one-dimensional loops in our space.
-Equivalently, this is the number of cuts needed to transform the space into something simply connected.
-Higher Betti numbers, $b_n$ for $n>1$ will correspond to higher dimensional holes.
-In our coffee mug example, because both objects have the same Betti numbers ($b_0=1$, $b_1=1$, and $b_n=0$ for $n>1$), they can be considered topologically equivalent.
-Our goal in this work will be to adopt a similar perspective as this example and characterize evolutionary spaces as topological spaces using their Betti numbers.
+First, we can think of $\beta_0$ as representing the number of connected components, or clusters, in our space.
+Next, we can think of $\beta_1$ as representing the number of one-dimensional loops in our space.
+Equivalently, this is the number of cuts needed to transform the space into something simply connected.\footnote{In a simply connected space, any path between two points can be deformed into any other such path.}
+Higher Betti numbers, $\beta_n$ for $n>1$ will correspond to higher dimensional holes.
+In our coffee mug example, because both objects have the same Betti numbers ($\beta_0=1$, $\beta_1=1$, and $\beta_n=0$ for $n>1$), they are considered topologically equivalent.
+Our goal in this work will be to adopt a similar perspective and characterize evolutionary spaces as topological spaces using their Betti numbers.
 
-To give the very simplest example, consider Figure~\ref{intro:fig:simple_tree_example}.
+To give a simple example, consider Figure~\ref{intro:fig:simple_tree_example}.
 The example presents two possible scenarios describing the evolutionary relationships of three species, labeled $a$, $b$, and $c$.
-The objects are to be read such that moving vertically corresponds to moving backwards in time.
-Branch lengths will correspond to some notion of evolutionary divergence.
+For each scenario, moving vertically up the object corresponds to moving backwards in time.
+Branch lengths correspond to evolutionary divergence.
 Internal vertices represent extinct ancestors of the three species, up to the root of the tree, $r$, which represents the most recent common ancestor.
 On the left, we have a simple tree topology relating the three species.
-Considering the shape of the tree, there is a single connected component, giving $b_0=1$.
-Further, we see that there are no loops formed by the branches, giving $b_1=0$.
+Considering the shape of the tree, there is a single connected component, giving $\beta_0=1$.
+Further, we see that there are no loops formed by the branches, giving $\beta_1=0$.
 The object is trivially contractible, a property which will hold for all tree topologies.
 On the right, we have a reticulate topology relating the three species.
 We can envision species $b$ as being the reticulate offspring of parents ancestral to species $a$ and $c$.
 That is, species $b$ carries unique genetic material from both species $a$ and species $c$.
 To account for this, two branches merge into the vertex that is directly ancestral to $b$.
-Considering the shape, there is again a single connected component, giving $b_0=1$.
-However, because of the reticulate event mixing material from $a$ and $c$, there is now a loop formed in the topology, giving $b_1=1$
-The object is no longer treelike and is characterized by a nontrivial topology.
+Considering the shape, there is again a single connected component, giving $\beta_0=1$.
+However, because of the reticulate event mixing material from $a$ and $c$, there is now a loop formed in the topology, giving $\beta_1=1$
+The object is no longer treelike and is characterized by a more complex topology.
 The Betti numbers capture the essential difference in the two evolutionary histories.
+Finally, we note that this is a conceptual example of how reticulate processes can be captured using topology -- in practice, we do not have access to the true history, but must infer it from a finite sample.
 
-Consider again Darwin's branching phylogeny (Figure~\ref{fig:darwin_origin}) and Doolittle's modified tree accounting for reticulate evolution (Figure~\ref{fig:doolittle_tree}).
+Consider again Darwin's branching phylogeny (Figure~\ref{fig:darwin_origin}) and Doolittle's modified representation after accounting for reticulate evolution (Figure~\ref{fig:doolittle_tree}).
 The two objects can be imagined to be representations of two different topological spaces.
-Darwin's branching phylogeny is a tree and hence trivially contractible ($b_n=0$ for $n>0$).
-In contrast, Doolittle's construction has a much more complex topology, with loops being formed at points where reticulate events have occurred.
-The object will have nonvanishing Betti numbers, which will be associated with the amount of reticulation.
+Darwin's branching phylogeny is a tree and hence trivially contractible ($\beta_n=0$ for $n>0$).
+In contrast, Doolittle's construction has a much more complex topology, with loops being formed where reticulate events have occurred.
+The object will be characterized by nonvanishing Betti numbers, the magnitude of which will be associated with the amount of reticulation that has occurred.
 The remainder of this thesis focuses on expanding this idea and applying it to real data sets with the goal of measuring the prevalence and scale of reticulate evolutionary events.
-Our aim will be to characterize reticulate exchanges of genetic material by the parental sequences involved in the exchange, by the amount and identity of material exchanged (i.e., the genes or loci involved), and the frequency with which similar exchanges occur.
-Several important questions will be dealt with, such as how to construct topological spaces from finite samples, how to make comparisons among gene sets, and how to make statistical statements about reticulate events.
-We will address these questions, and in doing so develop new techniques to construct and extract topological and statistical information from evolutionary data.
-In doing so, we provide a fuller understanding of evolutionary relationships than allowed by current phylogenetic methods.
+Our aim will be to characterize reticulate exchange of genetic material by the parental sequences involved in the exchange, by the amount and identity of material exchanged (i.e., the genes or loci involved), and the frequency with which similar exchanges occur.
+Several important questions will be dealt with, such as how to construct topological spaces from finitely sampled sequence data, how to make comparisons among gene sets, and how to make statistical statements about reticulate events.
+We will address these questions by developing new techniques to construct and extract topological and statistical information from evolutionary data.
+In doing so, we provide a fuller understanding of evolutionary relationships than possible with current phylogenetic methods.
 
 \begin{figure}
 \centering
@@ -184,9 +186,6 @@ In doing so, we provide a fuller understanding of evolutionary relationships tha
 \caption[Treelike and reticulate phylogenies]{(A) A simple treelike phylogeny is contractible to a point. (B) A reticulate phylogeny that is equivalent to a circle and not contractible without a cut. The two spaces are not topologically equivalent and can be distinguished by their Betti numbers.}
 \label{intro:fig:simple_tree_example}
 \end{figure}
-
-% Linkage-based techniques have succeeded in measuring rates of recombination in medium-sized datasets (<200 sequences), but they cannot reveal the scale of these exchanges (i.e., the genetic distance between parental sequences), and they have limited resolution in pinpointing where along a 
-% Genome evolution is an extremely rich subject [cite Genome Architecture book].
 
 \section{Thesis Organization}
 
@@ -204,12 +203,16 @@ This is the first such use of TDA as a tool for performing parametric inference 
 This work was published in \cite{Emmett:2014b}
 
 In Part \ref{part:applications}, we apply our approach to several problems in evolution and genomics.
-In Chapter \ref{ch:phage} we study bacteriophages.
-In Chapter \ref{ch:influenza} we study influenza.
-In Chapter \ref{ch:pathogens} we study pathogenic bacteria and use topological techniques to represent the spread of antibiotic resistance.
-% In Chapter \ref{ch:prokaryotes} we study prokaryotic evolution and species tree topologies.
-% In Chapter \ref{ch:human_recombination_rate} we use population data to measure human recombination rates and identify recombination hotspots.
-We identify variation in recombination hotspots in different human populations.
-In Chapter \ref{ch:hic} we analyze Hi-C data to explore patterns of chromatin folding in the nucleus in both prokaryotic and human datasets.
+In Chapter \ref{ch:phage} we study phages, viruses of single-celled microorganisms.
+We show how persistent homology recovers inconsistencies in existing morphology-based taxonomies, use Mapper to construct an alternative genome-based representation of phage relationships, and identify representative gene families conserved within phage populations.
+In Chapter \ref{ch:influenza} we study influenza, a common human pathogen.
+We show how persistent homology captures widespread patterns of reassortment, including nonrandom cosegregation of segments and barriers to subtype mixing.
+In contrast to traditional influenza studies, which focus on the phylogenetic branching patterns of only the two surface-marker proteins, we use Mapper combined with whole-genome data to represent influenza molecular relationships.
+We show unexpected relationships between divergent influenza subtypes.
+In Chapter \ref{ch:pathogens} we study pathogenic bacteria.
+We use two sources of data to measure rates of reticulation in both the core genome and the mobile genome across a range of species.
+Mapper is used to represent that population of \emph{S. aureus} and analyze the spread of antibiotic resistance genes.
+The potential for the spreading of antibiotic resistance in the human microbiome is investigated.
+In Chapter \ref{ch:hic} we analyze high-throughput chromatin interaction data to explore patterns of chromatin folding in the nucleus in simulated, prokaryotic, and human datasets.
 
 Finally, in Chapter \ref{ch:conclusions} we summarize these results and present future research directions.
