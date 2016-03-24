@@ -7,7 +7,7 @@
 
 Pathogenic bacteria can lead to severe infection and mortality and present an enormous burden on human populations and public health systems.
 One of the achievements of twentieth century medicine was the development of a wide range of antibiotic drugs to control and contain the spread of pathogenic bacteria, leading to vastly increased life expectancies and global economic development.
-However, rapidly rising levels of multidrug antibiotic resistance in several common pathogens, including \emph{Escherichia coli}, \emph{Klebsiella pneumoniae}, \emph{Staphylococcus aureus}, and \emph{Neisseria gonorrhoea}, is recognized as a pressing global issue with near-term consequences \cite{Neu:1992gk,Thomas:2005hp,WHO:2014wa}.
+However, rapidly rising levels of multidrug antibiotic resistance in several common pathogens, including \emph{Escherichia coli}, \emph{Klebsiella pneumoniae}, \emph{Staphylococcus aureus}, and \emph{Neisseria gonorrhoeae}, is recognized as a pressing global issue with near-term consequences \cite{Neu:1992gk,Thomas:2005hp,WHO:2014wa}.
 The threat of a post-antibiotic 21st century is serious, and new methods to characterize and monitor the spread of resistance are urgently needed.
 
 Antibiotic resistance can be acquired through point mutation or through horizontal transfer of resistance genes.
@@ -17,11 +17,6 @@ Foreign DNA can be acquired via uptake from an external environment (transformat
 Resistance genes can be transferred between strains of the same species, or can be acquired from different species in the same environment.
 While the former is generally more common, an example of the latter is the phage-mediated acquisition of Shiga toxin in \emph{E. coli} in Germany in 2011 \cite{Rohde:2011ju}.
 Elements of the bacterial genome that show evidence of foreign origin are called genomic islands, and are of particular concern when associated with phenotypic effects such as virulence or antibiotic resistance.
-
-% The presence of horizontal gene transfer precludes accurate phylogenetic characterization, because different segments of the genome will have different evolutionary histories.
-% Bacterial species definitions and taxonomic classifications are made on the basis of 16S ribosomal RNA, a highly conserved genomic region between bacteria and archaea species \cite{Woese:1977vd}.
-% However, the region generally accounts for less than 1\% of the complete genome, implying that the vast majority of evolutionary relationships are not accounted for in the taxonomy \cite{Dagan:2006up}.
-% Because of the important role played by lateral gene transfer, new ways of characterizing evolutionary and phenotypic relationships between microorganisms are needed.
 
 In this chapter we explore topics relating to horizontal gene transfer in bacteria and the emergence of antibiotic resistance in pathogenic strains.
 We show that TDA can not only quantify gene transfer events, but also characterize the scale of gene transfer.
@@ -37,10 +32,10 @@ The species selected for study and the sample sizes in each analysis are specifi
 Next, we explore the spread of antibiotic resistance genes in \emph{S. aureus} using Mapper, an algorithm for partial clustering and visualization of high dimensional data \cite{Singh:2007ve}.
 We identify two major populations of \emph{S. aureus}, and observe one cluster with strong enrichment for the antibiotic resistance gene \emph{mecA}.
 Importantly, resistance appears to be increasingly spreading in the second population.
-Finally, we consider the risk of lateral transfer of resistance genes from the human microbiome into an antibiotic sensitive strain, using $\beta$-Lactam resistence as an example.
+Finally, we consider the risk of lateral transfer of resistance genes from the human microbiome into an antibiotic sensitive strain, using $\beta$-Lactam resistance as an example.
 In this environment, benign bacterial strains can harbor known resistance genes.
 We use a network analysis to visualize the spread of antibiotic resistance gene $\emph{mecA}$ into nonnative phyla.
-Each indidivual has a unique microbiome, and we speculate that microbiome typing of this sort may useful in developing personalized antibiotic therapies.
+Each individual has a unique microbiome, and we speculate that microbiome typing of this sort may useful in developing personalized antibiotic therapies.
 These results suggest an important role for topological data mining of -omics scale data in clinical applications and personalized medicine.
 
 \begin{table}
@@ -72,12 +67,13 @@ Species & \hspace{10mm}MLST profiles\hspace{10mm} & PATRIC profiles \\
 %
 Multilocus sequence typing (MLST) data was used to examine scales of recombination in the core bacterial genome.
 MLST is a method of rapidly assigning a sequence profile to a sample bacterial strain.
-For each species, a predetermined set of loci on a small number of housekeeping genes are selected as representative of the core genome of the species.
-As new strains are sequenced, they can be annotated with a profile corresponding to the type at each locus.
+For each species, a predetermined set of loci in a small number of housekeeping genes are selected as representative of the core genome of the species.
+At each loci, a set of sequence types are defined by using a similarity-based clustering.
+As new strains are sequenced, they are annotated with a profile corresponding to the type at each locus.
 If a sample has a previously unseen type at a given locus, it is appended to the list of types at that locus.
 Large online databases have curated MLST data from labs around the world; significant pathogens can have several thousand typed strains (over 10,000 in the case of \emph{Neisseria spp.}).
 Because different species will be typed at different loci, examining direct interspecies genetic exchange with this data is unfeasible, however MLST provides a large quantity of data with which to examine intraspecies exchange in the core genome.
-However, because the selected loci are generally all housekeeping genes, this type of recombination analysis will tell you only about genetic exchane in the core genome.
+Finally, because the selected loci are primarily housekeeping genes, this type of recombination analysis will tell you only about genetic exchange in the core genome.
 Mobile genetic elements may have a separate rates of exchange.
 
 We investigate genetic exchange in the twelve pathogens using MLST data from PubMLST \cite{Jolley:2010gf}.
@@ -86,10 +82,11 @@ Using a Hamming metric, we construct a pairwise distance matrix between strains 
 Because of the large number of sample strains, we employ a Lazy Witness complex with 250 landmark points and $\nu=0$ \cite{deSilva:2004tg}.
 The computation is performed using javaplex \cite{Tausz:2011}.
 An example of our output is shown in Figure~\ref{fig:pathogen_barcodes}, where we plot the $H_1$ barcode diagrams for \emph{K. pneumoniae} and \emph{S. enterica}.
-The two species have distinct recombination profiles, characterized by the range of recombinations: \emph{K. pneumoniae} recombines at only one short-lived scale, while \emph{S. enterica} recombines both at the short-lived scale and a longer-lived scale.
+The two species have distinct recombination profiles, characterized by the range of recombinations: \emph{K. pneumoniae} recombines at only an early short-lived scale, while \emph{S. enterica} recombines both at the short-lived scale and a longer-lived scale.
+These multiple scales are reflective of population structure at the subspecies level: in \emph{S. enterica}, there are seven defined subspecies, and experimental studies have shown high levels of reticulation both within and between subspecies groups \cite{Brown:2003id}.
 We repeat this analysis for each species, and plot the results as a persistence diagram in Figure~\ref{fig:pathogen_persistence_diagram}.
 Among the bulk of pathogens there appears to be three major scales of recombination, a short-lived scale at intermediate distances, a longer-lived scale at intermediate distances, and a short-lived scale at longer distances.
-\emph{H. polyori} is a clear outlier, tending to recombine at scales significantly lower than the other pathogens.
+We recover a pronounced pattern of reticulation at very short distances unique to \emph{H. Pylori}, which is consistent with earlier measurements of an unusually small size of DNA imports, reported in \cite{Falush:2001cd}.
 
 \begin{figure}
     \centering
@@ -97,21 +94,24 @@ Among the bulk of pathogens there appears to be three major scales of recombinat
         \includegraphics[width=.4\textwidth]{./fig/pathogens/kpneumoniae_barcode.pdf}}
     \subbottom[\emph{Salmonella enterica}]{
         \includegraphics[width=.4\textwidth]{./fig/pathogens/senterica_barcode.pdf}}
-    \caption[Core genome exchange in \emph{K. pneumoniae} and \emph{S. enterica}]{Barcode diagrams reflect different scales of core genomic exchange in \emph{K. pneumoniae} and \emph{S. enterica}.}
+    \caption[Core genome exchange in \emph{K. pneumoniae} and \emph{S. enterica}]{Barcode diagrams reflect different scales of core genomic exchange in \emph{K. pneumoniae} and \emph{S. enterica}. Differing scales can be attributed to different degrees of population substructure in the two species.}
     \label{fig:pathogen_barcodes}
 \end{figure}
 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{./fig/pathogens/pathogen_persistence_diagram.pdf}
-\caption[$H_1$ persistence diagram for twelve pathogenic strains using MLST profile data]{The $H_1$ persistence diagram for the twelve pathogenic strains selected for this study using MLST profile data. There are three broad scales of recombination. To the right is the birth time distribution for each strain. \emph{H. pylori} has an earlier scale of recombination not present in the other species.}
+\caption[$H_1$ persistence diagram for twelve pathogenic strains using MLST profile data]{The $H_1$ persistence diagram for the twelve pathogenic strains selected for this study using MLST profile data. There are three broad scales of recombination. To the right is the birth time distribution for each strain. \emph{H. pylori} has an earlier scale of recombination not present in the other species, corresponding to the atypically small size of DNA imports in the species \cite{Falush:2001cd}.}
 \label{fig:pathogen_persistence_diagram}
 \end{figure}
 
-We define a relative rate of recombination by counting the number of $H_1$ loops across the filtration and dividing by the number of samples for that species.
-The results are shown in Figure~\ref{fig:pathogen_barchart}, where we observe that different species can have vastly different recombination profiles.
-For example, \emph{S. enterica} and \emph{E. coli} have the highest recombination rates, while \emph{H. pylori} is substantially lower than the others.
-Coupled with the smaller scale of recombinations suggests that the \emph{H. pylori} core genome is relatively resistant to recombination except within closely related strains.
+We define a relative rate of recombination by counting the total number of $H_1$ loops across the filtration and dividing by the number of samples for that species.
+The results are shown in Figure~\ref{fig:pathogen_barchart}, where we observe that different species can have vastly different reticulation profiles.
+For example, \emph{S. enterica} and \emph{E. coli} have the highest reticulation rates, consistent with earlier results which have shown a high proportion of defects in the \emph{mutS} mismatch-repair gene leading to relaxed genetic barriers to recombination \cite{Rayssiguier:1989gb,LeClerc:1996hx}.
+The low measured reticulation rate in \emph{H. pylori} is a surprising outlier, as previous studies have shown that it lacks the mismatch repair pathways common in other bacteria, leading to higher than expected recombination rates \cite{Dorer:2011hx}.
+\emph{H. pylori} has been reported to have very little clonal structure relative to other strains, which is reflected in the star-like phylogeny that has been proposed for the species \cite{Kalia:2004jx}
+However, restriction-modification systems limiting uptake of foreign DNA have also been reported \cite{Dwivedi:2013bt}, suggesting that the \emph{H. pylori} core genome is relatively resistant to reticulation at wider genomic scales.
+It is therefore plausible that the lower signal from persistent homology is due to systematic reduced sampling of particular lineages, suggesting that accounting for larger-scale population structure is important when making estimates of reticulation rates.
 
 \begin{figure}
 \centering
@@ -136,11 +136,12 @@ After transforming, we construct a strain-strain correlation matrix and compute 
 In Figure~\ref{fig:figfam_persistence_diagram} we show the persistence diagram relating the structure and scale between different species.
 We find that different species have a much more diverse topological structure in this space than in MLST space, and a wide variety of recombination scales.
 The large scales of exchange in \emph{H. influenzae} suggest it can regularly acquire novel genetic material from distantly related strains.
+% TODO: why? this is correlation across genome - very mosaic?
 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{./fig/pathogens/figfam_persistent_diagram.pdf}
-\caption[Genome-wide reticulation patterns in pathogenic bacteria from protein annotations]{Persistence diagram for a subset of pathogenic bacteria, computed using the FigFam annotations compiled in PATRIC. Compared to the MLST persistence diagram, the Figfam diagram has a more diverse scale of topological structure.}
+\caption[Genome-wide reticulation patterns in pathogenic bacteria from protein annotations]{Persistence diagram for a subset of pathogenic bacteria, computed using the FigFam annotations compiled from PATRIC. Compared to the MLST persistence diagrams, the Figfam diagrams have a more diverse scale of topological structure.}
 \label{fig:figfam_persistence_diagram}
 \end{figure}
 
@@ -148,10 +149,10 @@ The large scales of exchange in \emph{H. influenzae} suggest it can regularly ac
 \label{sec:staph_aureus}
 %
 \emph{S. aureus} is a gram positive bacteria commonly found in the nostrils and upper respiratory tract.
-Certain strains can cause severe infection in high-risk populations, particulary in the hospital setting.
+Certain strains can cause severe infection in high-risk populations, particularly in the hospital setting.
 The emergence of antibiotic resistant \emph{S. aureus} is therefore of significant clinical concern.
 Methicillin resistant \emph{S. aureus} (MRSA) strains are resistant to $\beta$-lactam antibiotics including penicillin and cephalosporin.
-Resistance is conferred by the gene \emph{mecA}, an element of the Staphyloccoccal cassette chromosome mec (\emph{SCCmec}).
+Resistance is conferred by the gene \emph{mecA}, an element of the Staphylococcal cassette chromosome mec (\emph{SCCmec}).
 \emph{mecA} codes for a dysfunctional penicillin-binding protein 2a (PBP2a), which inhibits $\beta$-lactam antibiotic binding, the primary mechanism of action \cite{Jensen:2009fu}.
 Of substantial clinical importance are methods for characterizing the spread of MRSA within the \emph{S. aureus} population.
 
@@ -171,7 +172,7 @@ This suggests the hypothesis that antibiotic resistance has spread from the firs
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{./fig/pathogens/saureus_figfam_network.png}
-\caption[FigFam similarity network of \emph{S. aureus}]{The FigFam similarity network of \emph{S. aureus} constructed using Mapper as implemented in Ayasdi Iris \cite{AyasdiIris:2015}. We use a Hamming metric and Primary and Secondary Metric SVD filters (res: 30, gain 4x, eq.). Node color is based on strain enrichment for \emph{mecA}, the gene conferring $\beta$-Lactam resistance. Two distinct clades of \emph{S. aureus} are visible, one of which has already been compromised for resistance. Of important clinical significance is the growing enrichment for \emph{mecA} in the second clade.}
+\caption[FigFam similarity network of \emph{S. aureus}]{The FigFam similarity network of \emph{S. aureus} constructed using Mapper as implemented in Ayasdi Iris \cite{AyasdiIris:2015}. We use a Hamming metric and Primary and Secondary Metric SVD filters (res: 30, gain 4x, equalize). Node color is based on strain enrichment for \emph{mecA}, the gene conferring $\beta$-Lactam resistance. Two distinct clades of \emph{S. aureus} are visible, one of which has already been compromised for resistance. Of important clinical significance is the growing enrichment for \emph{mecA} in the second clade.}
 \label{fig:saureus_figfam_network}
 \end{figure}
 
@@ -182,20 +183,20 @@ While antibiotic resistance can be acquired through gene exchange between strain
 It has been recognized that an individual's microbiome, the set of microorganisms that exist symbiotically within a human host, can act as a reservoir of antimicrobial resistance genes \cite{Sommer:2010uh,Penders:2013wt}.
 It is of substantial clinical interest to characterize to what extent an individual's microbiome may pose a risk for a pathogenic bacteria acquiring a resistance gene through lateral transfer.
 
-To address this question, we use data from the Human Microbiome Project (HMP), a major research initiative performing metagenomic characterization of hundreds of healthy human microbiomes \cite{Consortium:2012bm}.
-The HMP has defined a set of reference strains that have been observed in human microbiomes.
+To address this question, we use data from the Human Microbiome Project (HMP), a major research initiative performing metagenomic characterization of hundreds of healthy human microbiome samples \cite{Consortium:2012bm}.
+The HMP has defined a set of reference strains that have been observed in the human microbiome.
 We collect FigFam annotations from PATRIC for the reference strain list in the gastrointestinal tract.
 We focus on the gastrointestinal tract because it is an isolated environment and likely to undergo higher rates of exchange than other anatomic regions.
 Of the 717 reference strains, 321 had FigFam annotations.
 We computed a similarity matrix as in previous sections, using correlation as distance.
 The resulting network is shown in Figure~\ref{fig:microbiome_network}, where strains are colored by phyla-level classifications.
-While largely recapitulating phylogeny, the network depicts interesting correlations between phya, such as the loop between Firmicutes, Bacteroides, and Proteobacteria.
+While largely recapitulating phylogeny, the network depicts interesting correlations between phyla, such as the loop between Firmicutes, Bacteroides, and Proteobacteria.
 
 Next, we searched for genomic annotations relating to $\beta$-lactam resistance.
 10 strains in the reference set had matching annotations, and we highlight those strains in the network with green diamonds.
 We observe resistance mostly concentrated in the Firmicutes, of which \emph{S. aureus} is a member, however there is a strain of Proteobacteria that has acquired the resistance gene.
-Transfer of beta-lactam resistance into the Protebacteria is clinically worrisome.
-Pathogenic proteobacteria include \emph{S. enterica}, \emph{V. cholerae}, and \emph{H. pylori}, and emergence of $\beta$-lactam resistance will severely impact antibiotic drug therapies.
+Transfer of beta-lactam resistance into the Proteobacteria is clinically worrisome.
+Pathogenic Proteobacteria include \emph{S. enterica}, \emph{V. cholerae}, and \emph{H. pylori}, and emergence of $\beta$-lactam resistance will severely impact antibiotic drug therapies.
 
 The species composition of each individual's microbiome can differ substantially due to a wide variety of poorly understood factors \cite{Consortium:2012bm}.
 In this case, an individuals personal microbiome network will differ from the network we show in Figure~\ref{fig:microbiome_network}, which was constructed from the set of \emph{all} strains that have been reported across studies of multiple individuals.
