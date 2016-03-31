@@ -46,7 +46,7 @@ The genome can be represented as a string of nucleotides, indexed by position.
 Embedded within the genome are regions defining the genes which code for functional proteins, as well as non-coding regions which have as-yet unknown function.\footnote{In humans, only 1.5\% of the genome is protein-coding, the rest largely non-functional. \cite{Lander:2001hk}. Up to 5-8\% of the human genome is believed to consist of endogenous retroviruses, dead viruses which have integrated their genome into the human genome.}
 When an organism reproduces, either sexually or asexually, a complete copy of the genomic information is passed to the offspring.
 Because the molecular mechanisms that control this copying are not exact, errors in replication are introduced.
-These errors can take the form of single point mutations (or single nucleotide polymorphisms, SNPs), small insertions and deletions of a few nucleotides (indels), or larger effects including copy numbers variations (CNVs) and chromosomal duplications.\footnote{Mutation rates vary across species. In humans, $10^{-8}$ per site per generation. In single cell bacteria, $10^{-10}$ per site per generation.}
+These errors can take the form of single point mutations (or single nucleotide polymorphisms, SNPs), small insertions and deletions of a few nucleotides (indels), or larger effects including copy number variations (CNVs) and chromosomal duplications.\footnote{Mutation rates vary across species. In humans, $10^{-8}$ per site per generation. In single cell bacteria, $10^{-10}$ per site per generation.}
 Under the neutral theory of evolution, the majority of these errors will have very little impact, either positive or negative, on the descendant organism.
 A small fraction of mutations will result in an appreciable fitness differential compared to other organisms, and it is on these organisms that natural selection will act.
 
@@ -55,7 +55,7 @@ Molecular phylogenetics began with Emile Zuckerkandl and Linus Pauling's recogni
 It became clear that given two sequenced organisms, counting the differences between their respective sequences could be used as a quantitative measure of the amount of evolutionary divergence between the two organisms.
 If one had a larger set of sequenced organisms, computing the complete set of pairwise distances yields a \emph{distance matrix}.
 From the distance matrix, one attempts to associate a tree to the data such that pairwise distances along the tree are close to the observed pairwise sequence distances.
-Walter Fitch and Emanuel Margolish helped popularize this approach by constructing a weighted least squares approach to fitting phylogenetic trees from distance matrices \cite{Fitch:1967we}.
+Walter Fitch and Emanuel Margoliash helped popularize this approach by constructing a weighted least squares approach to fitting phylogenetic trees from distance matrices \cite{Fitch:1967we}.
 Since that time, the development of numerical approaches for inferring evolutionary relationships has evolved into a mature discipline and the use of molecular sequence data to infer phylogeny has become a standard practice across a wide range of biology and ecology.
 While other approaches to tree inference have been developed, including parsimony, maximum likelihood (ML) and Bayesian methods, our focus will be on distance matrix methods because of their close relationship to the topological ideas we employ.
 
@@ -68,7 +68,7 @@ This led to the three-domain system of life (see Figure \ref{fig:woese_tree}).
 \begin{figure}
 \centering
 \includegraphics[width=.7\columnwidth]{./fig/introduction/woese_tree.png}
-\caption[Carl Woese's Three Kingdom Tree of Life]{Carl Woese's three kingdom tree of life. Using 16S subunit ribosomal RNA, Carl Woese identified archaea as a distinct phylogenetic kingdom. Previously, based on morphological similarity (specifically, unicellular and lacking a nucleus), archaea had been grouped with bacteria. This result was an early success for molecular phylogenetics and the use of conserved gene segments for molecular classification. Figure adapted from \cite{Woese:1990uc}.}
+\caption[Carl Woese's Three Domain Tree of Life]{Carl Woese's three kingdom tree of life. Using 16S subunit ribosomal RNA, Carl Woese identified archaea as a distinct phylogenetic domain. Previously, based on morphological similarity (specifically, unicellular and lacking a nucleus), archaea had been grouped with bacteria. This result was an early success for molecular phylogenetics and the use of conserved gene segments for molecular classification. Figure adapted from \cite{Woese:1990uc}.}
 \label{fig:woese_tree}
 \end{figure}
 
@@ -113,8 +113,7 @@ We also see his representation of the Tree of Life as it would stand if addition
 \label{fig:doolittle_tree}
 \end{figure}
 
-Finally, reticulate evolutionary processes are of more than just historical interest for evolutionary studies, but rather have a substantial 
-
+Finally, reticulate evolutionary processes are of more than just historical interest for evolutionary studies, but play a substantial role in human health and disease.
 In HIV, frequent homologous recombination confounds our understanding of the epidemic's early and present history \cite{Burke:1997ep}.
 In influenza, segmental gene reassortments lead to antigenic novelty and the emergence of epidemics \cite{Nelson:2007bc}.
 In several pathogenic bacteria, including \emph{E. coli} and \emph{S. aureus}, horizontal gene transfer has been responsible for the spread of antibiotic resistance genes \cite{Alekshun:2007bq,Davies:2010dv}.
@@ -143,11 +142,11 @@ Algebraic topology quantifies our intuitive notions of shape using algebraic str
 For our purposes, the most relevant invariants will be the \emph{Betti numbers}.
 We give a more complete characterization of Betti numbers in Chapter~\ref{ch:background}, but the intuition is as follows.
 The Betti numbers are a collection of integers indexed by an integer $n$ describing the connectivity of a space at different dimensions.
-First, we can think of $\beta_0$ as representing the number of connected components, or clusters, in our space.
-Next, we can think of $\beta_1$ as representing the number of one-dimensional loops in our space.
+First, we can think of $\betti_0$ as representing the number of connected components, or clusters, in our space.
+Next, we can think of $\betti_1$ as representing the number of one-dimensional loops in our space.
 Equivalently, this is the number of cuts needed to transform the space into something simply connected.\footnote{In a simply connected space, any path between two points can be deformed into any other such path.}
-Higher Betti numbers, $\beta_n$ for $n>1$ will correspond to higher dimensional holes.
-In our coffee mug example, because both objects have the same Betti numbers ($\beta_0=1$, $\beta_1=1$, and $\beta_n=0$ for $n>1$), they are considered topologically equivalent.
+Higher Betti numbers, $\betti_n$ for $n>1$ will correspond to higher dimensional holes.
+In our coffee mug example, because both objects have the same Betti numbers ($\betti_0=1$, $\betti_1=1$, and $\betti_n=0$ for $n>1$), they are considered topologically equivalent.
 Our goal in this work will be to adopt a similar perspective and characterize evolutionary spaces as topological spaces using their Betti numbers.
 
 To give a simple example, consider Figure~\ref{intro:fig:simple_tree_example}.
@@ -156,22 +155,22 @@ For each scenario, moving vertically up the object corresponds to moving backwar
 Branch lengths correspond to evolutionary divergence.
 Internal vertices represent extinct ancestors of the three species, up to the root of the tree, $r$, which represents the most recent common ancestor.
 On the left, we have a simple tree topology relating the three species.
-Considering the shape of the tree, there is a single connected component, giving $\beta_0=1$.
-Further, we see that there are no loops formed by the branches, giving $\beta_1=0$.
+Considering the shape of the tree, there is a single connected component, giving $\betti_0=1$.
+Further, we see that there are no loops formed by the branches, giving $\betti_1=0$.
 The object is trivially contractible, a property which will hold for all tree topologies.
 On the right, we have a reticulate topology relating the three species.
 We can envision species $b$ as being the reticulate offspring of parents ancestral to species $a$ and $c$.
 That is, species $b$ carries unique genetic material from both species $a$ and species $c$.
 To account for this, two branches merge into the vertex that is directly ancestral to $b$.
-Considering the shape, there is again a single connected component, giving $\beta_0=1$.
-However, because of the reticulate event mixing material from $a$ and $c$, there is now a loop formed in the topology, giving $\beta_1=1$
+Considering the shape, there is again a single connected component, giving $\betti_0=1$.
+However, because of the reticulate event mixing material from $a$ and $c$, there is now a loop formed in the topology, giving $\betti_1=1$
 The object is no longer treelike and is characterized by a more complex topology.
 The Betti numbers capture the essential difference in the two evolutionary histories.
 Finally, we note that this is a conceptual example of how reticulate processes can be captured using topology -- in practice, we do not have access to the true history, but must infer it from a finite sample.
 
 Consider again Darwin's branching phylogeny (Figure~\ref{fig:darwin_origin}) and Doolittle's modified representation after accounting for reticulate evolution (Figure~\ref{fig:doolittle_tree}).
 The two objects can be imagined to be representations of two different topological spaces.
-Darwin's branching phylogeny is a tree and hence trivially contractible ($\beta_n=0$ for $n>0$).
+Darwin's branching phylogeny is a tree and hence trivially contractible ($\betti_n=0$ for $n>0$).
 In contrast, Doolittle's construction has a much more complex topology, with loops being formed where reticulate events have occurred.
 The object will be characterized by nonvanishing Betti numbers, the magnitude of which will be associated with the amount of reticulation that has occurred.
 The remainder of this thesis focuses on expanding this idea and applying it to real data sets with the goal of measuring the prevalence and scale of reticulate evolutionary events.
@@ -213,6 +212,6 @@ In Chapter \ref{ch:pathogens} we study pathogenic bacteria.
 We use two sources of data to measure rates of reticulation in both the core genome and the mobile genome across a range of species.
 Mapper is used to represent that population of \emph{S. aureus} and analyze the spread of antibiotic resistance genes.
 The potential for the spreading of antibiotic resistance in the human microbiome is investigated.
-In Chapter \ref{ch:hic} we analyze high-throughput chromatin interaction data to explore patterns of chromatin folding in the nucleus in simulated, prokaryotic, and human datasets.
+%In Chapter \ref{ch:hic} we analyze high-throughput chromatin interaction data to explore patterns of chromatin folding in the nucleus in simulated, prokaryotic, and human datasets.
 
 Finally, in Chapter \ref{ch:conclusions} we summarize these results and present future research directions.

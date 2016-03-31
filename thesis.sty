@@ -17,20 +17,18 @@
 \usetikzlibrary{shapes,arrows}
 
 \usepackage{graphicx}
-%\usepackage{subcaption}
 \newsubfloat{figure}
 
 % algorithm [make prettier?]
 \usepackage[]{algorithm2e}
 
-\usepackage{lipsum}
-\usepackage{tocloft}
+\usepackage{tocloft} % detailed ToC control
 \usepackage{paralist}
 \usepackage{capt-of}
-\usepackage{tabularx}
-\usepackage{rotating}
-\usepackage{booktabs}
-\usepackage{multirow}
+\usepackage{tabularx} % for tables
+\usepackage{rotating} % for sideways table
+\usepackage{booktabs} % for tables
+\usepackage{multirow} % for tables
 \usepackage{bookmark} % loads hyperref
 \usepackage[inline]{enumitem}
 
@@ -199,12 +197,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % macros
 
-\DeclareMathOperator{\VietorisRips}{VietorisRips}
-%\DeclareMathOperator{\Cech}{\v{C}ech}
-%\newcommand{\VietorisRips}{\mathrm{VietorisRips}}
+\newcommand{\betti}{\beta}
 \newcommand{\Cech}{\v{C}ech}
 \newcommand\given[1][]{\:#1\vert\:}
 \DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\VietorisRips}{VietorisRips}
 \DeclareMathOperator{\TOP}{TOP}
 \DeclareMathOperator{\ICR}{ICR}
 
