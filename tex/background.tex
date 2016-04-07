@@ -796,12 +796,11 @@ A related approach has recently been proposed by Kwitt \emph{et al.} that repres
 We explore the use of functional summaries of the barcode diagram in a statistical inference setting in Chapter~\ref{ch:parametric_inference}.
 
 Finally, probability measures on the space of persistence diagrams.
-Several authors have examined the space of persistence diagrams as a Polish space, with notions of mean and variance.
-A Polish space has a well defined notion of mean and variance.
+Several authors have examined the space of persistence diagrams as a Polish space, with well-defined notions of mean and variance.
 See the work of Turner \cite{Turner:2012wb} and Mileyko \cite{Mileyko:2011jm}.
 This work crucially relies on distances between diagrams that are based on matchings, as discussed in Section~\ref{bg:tda:ph:stability}.
 Further work has focused on statistical properties of the persistence diagrams themselves, such as \cite{Chazal:2014vl}
-Establishing these foundations would lead to directly using the persistence diagram in statistical applications, but as of yet no efficient tools have been developed.
+Establishing these foundations would lead to direct use of the persistence diagram as a statistical object, but as of yet no efficient tools have been developed.
 
 \subsection{Mapper}
 \label{bg:tda:mapper}
@@ -831,11 +830,10 @@ Third, the bins are then clustered in the original high-dimensional space (Figur
 Each cluster will form a node in the graph representation.\footnote{Nodes in a Mapper graph consist of multiple points in the original data; this is essence of the compressed representation.}
 Finally, nodes that share points in the original space are connected by an edge.
 
-% TODO: Update this figure
 \begin{figure}
 	\centering
-	\includegraphics[]{fig/background/mapper.pdf}
-	\caption[The Mapper Algorithm]{Mapper starts with a set of data points and a filter function $f$ and produces a colored graph that captures the shape of the data. (A) The image of the function $f$ is subdivided into overlapping intervals. (B) Each piece is clustered separately. (C) Each cluster is represented by a colored disk: a bin of points. The color of each bin corresponds to the average value of the filter function $f$ on the data points inside the bin. (D) Identify pairs of bins that have points in common and (E) connect pairs of bins that have points in common by an edge.}
+	\includegraphics[]{fig/background/mapper2.pdf}
+	\caption[The Mapper Algorithm]{The Mapper Algorithm. Mapper starts with a set of data points and a filter function $f$, and produces as output a graph that captures the shape of the data. (A) The original data represented as a point cloud. (B) The filter function $f$ projected onto the data. (C) In the projected space, the data is divided into overlapping bins. (D) Individual bins are represented as nodes. The size of each node represents the number of data point contained in the bin. Nodes can be colored by various attributes by the data, in this example the average value of the filter function is used. Pairs of bins that have points in common are connected by an edge.}
 	\label{fig:bg:mapper}
 \end{figure}
 
@@ -999,7 +997,7 @@ While some interesting work has explored the combinatorial structure of the spac
 
 \begin{figure}
 	\centering
-	\includegraphics[]{./fig/background/tree_space_revisited_v2.pdf}
-	\caption[Topology expands tree space to include reticulation]{Tree space on $n$ leaves, $\mathcal{T}_{n}$, is a subspace of the larger space of the metric cone on $\mathbb{R}^{\binom{n}{2}}_{\geq0}$. In the presence of reticulate evolution, data may not sit near an additive tree, as for example data $X$ (pink circle). The invariant $\TOP$ (topological obstruction to phylogeny) is one way to characterize these spaces and can be computed using persistent homology. As one moves further from tree space $\TOP$ increases. The orange lines indicate regions close to tree space in which $\TOP$ is insensitive to non-additivity. In this example we also indicate two trees $\mathcal{T}_{1}$ and $\mathcal{T}_{2}$ which sit on subspaces of different topology in tree space. The direct path between the two topologies will pass through a ${\TOP}{\neq}{0}$ region.}
+	\includegraphics[]{./fig/background/tree_space_revisited_v3.pdf}
+	\caption[Topology expands tree space to include reticulation]{Tree space on $n$ leaves, $\mathcal{T}_{n}$, is a subspace of the larger space of the metric cone on $\mathbb{R}^{\binom{n}{2}}_{\geq0}$. In the presence of reticulate evolution, data may not sit near an additive tree, as for example data $X$ (pink circle). The invariant $\TOP$ (topological obstruction to phylogeny) is one way to characterize these spaces and can be computed using persistent homology. As one moves further from tree space $\TOP$ increases. The orange lines indicate regions close to tree space in which $\TOP$ is insensitive to non-additivity. In this example we also indicate two trees $t_{1}$ and $t_{2}$ which sit on subspaces of different topology in tree space. The direct path between the two topologies will pass through a ${\TOP}{\neq}{0}$ region.}
 	\label{fig:bg:tree_space_revisited}
 \end{figure}

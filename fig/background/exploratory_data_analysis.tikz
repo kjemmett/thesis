@@ -8,7 +8,7 @@
 \draw (6, -1.5) node[node] (topology) {Topology};
 \draw (9, -.5) node[node,align=left] (manifold_learning) {Manifold\\Learning};
 \draw (9, -1.5) node[node] (mapper) {Mapper};
-\draw (12, -.5) node[node,align=center] (mds) {MDS\\PCA\\Isomap};
+\draw (12, -.5) node[node,align=center] (mds) {MDS\\Isomap};
 
 \myline{dr}{linear};
 \myline{dr}{nonlinear};
