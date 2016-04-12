@@ -341,7 +341,7 @@ Tree spaces refers to an abstract construction for representing each possible tr
 These studies were initiated by Andreas Dress and colleagues, who introduced a formalism known as \emph{T-theory} (see \cite{Dress:1998vq,Dress:1996di,Dress:1614018}).
 We give here a brief flavor of these ideas; additional exposition can be found in \cite[\S 7]{Pachter:2005vo}.
 
-Consider a set of $L$ taxa.
+Consider a set of $L$ leaves.
 A dissimilarity map is defined on $L$ as $\delta : L \times L \rightarrow \mathbb{R}$, where $\delta(l,l)=0$ and $\delta(l,m)=\delta(m,l)$.
 There are $\binom{L}{2}$ distances; the set of dissimilarity maps forms a vector space of dimension $\binom{L}{2}$.
 Furthermore, the set of all metrics will be the subspace of $\mathbb{R}^{\binom{L}{2}}$ that satisfies the triangle inequality.
@@ -410,7 +410,7 @@ Techniques such as phylogenetic networks and ancestral recombination graphs have
 
 Topology is the branch of mathematics that formalizes our intuitive notions of shape.
 More concretely, topology provides the methods to characterize the properties of objects and spaces that remain invariant under continuous deformation.
-For example, squeezing a circle into an ellipse by compressing along one axis does not change the fact that the object encloses a single loop.
+For example, transforming a circle into an ellipse by compressing along one axis does not change the fact that the object encloses a single loop.
 Or, as we saw in the introduction, the coffee mug can be continuously deformed into the donut.
 Likewise, if we take a tree and change the lengths of its branches, the tree remains a tree.\footnote{It is important to draw a distinction between the notion of tree topology, in which the branch patterns determines the topology, and global topology, in which all trees are equivalent. While the former is more common in the phylogenetics community, here we consider the latter.}
 In each of these examples, while the deformation has substantially altered \emph{local} properties of the space, on a \emph{global} level certain essential characteristics have remained unchanged.
