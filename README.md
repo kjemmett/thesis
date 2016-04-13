@@ -1,6 +1,10 @@
 ## Topology of Reticulate Evolution
 ## Kevin Emmett
 
+Brief Abstract
+
+Table of Contents
+
 ### Introduction
 
 * Open with Darwin's Tree of Life
@@ -29,11 +33,3 @@
 
 * Gene Genealogies, Variation and Evolution [Hein, Schierup, Wiuf]
 * ReCombinatorics [Gusfield]
-
-
-## Précis
-
-In the first chapter, we show how the information in the persistence diagram can be used in parameteric models for statistical inference. We will illustrate this with a number of simple examples, and then demonstrate statistical inference in a more complex model drawn from population genetics.
-
-We illustrate our approach with an initial application to inference in a Gaussian Random Field model.
-This model will be used in later chapters when applied to real data. This approach of making statistical statements about the persistence diagram differs from that of previous approaches for statistical information
