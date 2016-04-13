@@ -432,16 +432,16 @@ Topology is the branch of mathematics that formalizes our intuitive notions of s
 More concretely, topology provides the methods to characterize the properties of objects and spaces that remain invariant under continuous deformation.
 For example, transforming a circle into an ellipse by compressing along one axis does not change the fact that the object encloses a single loop.
 Or, as we saw in the introduction, the coffee mug can be continuously deformed into the donut.
-Likewise, if we take a tree and change the lengths of its branches, the tree remains a tree.\footnote{It is important to draw a distinction between the notion of tree topology, in which the branch patterns determines the topology, and global topology, in which all trees are equivalent. While the former is more common in the phylogenetics community, here we consider the latter.}
+Likewise, if we take a tree and change the lengths of its branches, the tree remains a tree.\footnote{As was mentioned in Section~\ref{bg:bio:phylo:topologies}, it is important to draw a distinction between the notion of tree topology, in which the branch patterns determines the topology, and global topology, in which all trees are equivalent. While the former is more common in the phylogenetics community, here we consider the latter.}
 In each of these examples, while the deformation has substantially altered \emph{local} properties of the space, on a \emph{global} level certain essential characteristics have remained unchanged.
 From the perspective of topology, the spaces are considered identical.
 The question topology addresses is how to formalize the idea of global shape in order for it to be reasoned about systematically.
 
-Algebraic topology solves this problem by associating algebraic objects (an integer, for instance) that do not change under continuous deformation.
+Algebraic topology solves this problem by associating to objects certain algebraic objects (an integer, for instance) that do not change under continuous deformation.
 These objects capture properties like the number of connected components, the number of loops, or the number of holes in an object, and represent \emph{topological invariants} of a space.
 Two spaces can only be deformed into one other if they share the same invariants.
 For example, the circle and ellipse are identified as equivalent by the presence of a single loop.
-Neither can be deformed into a tree without introducing a cut, which would be a type of discontinuous deformation.
+Neither can be deformed into a tree without introducing a cut, which would be a discontinuous deformation.
 Using these invariants, powerful ideas from abstract algebra can be used to manipulate and reason about shape.
 
 While topology has traditionally developed through the study of abstract spaces, leading to very rich and beautiful constructions\footnote{For example, see the work of Thurston on low-dimensional topology}, data does not come in the form of perfect continuous spaces.
@@ -635,11 +635,11 @@ Persistent homology solves this by providing an efficient way to track the shape
 Our object of study is the nested set of simplicial complexes, called a \emph{filtration}, that is produced by tuning the scale parameter up to some threshold.
 At the smallest scale, $\epsilon=0$, the complex consists only of disconnected points.
 As the scale parameter is increased, the topology of the complex changes -- clusters merge, holes and loops form, other holes and loops are filled -- until the complex is fully connected.
-Each aspect of shape represents a topological invariant, and as the scale is changed, the birth and death of different invariants encoded as an interval $(b_i, d_i)$.
+Each aspect of shape represents a topological invariant, and as the scale is changed, the birth and death of different invariants is encoded as an interval $(b_i, d_i)$.
 
 The shape information can be concisely summarized in a \emph{barcode diagram}.
 The barcode diagram represents topological features as horizontal line segments, annotated with a birth-death interval, and indexed by dimension.
-The birth time is when a particular invariant first appears in the complex, and the death time is when the invariant is collapsed in the complex.
+The birth time is when a particular invariant first appears in the complex, and the death time is when the invariant collapses in the complex.
 $H_0$ represents the number of connected components and is roughly equivalent to a hierarchical clustering of the data.
 Higher dimensions represent loops ($H_1$), voids ($H_2$), and their generalizations in the data.
 The number of bars at a particular scale will be the Betti number $\betti_n(\epsilon)$ for the complex $K(\epsilon)$.
@@ -693,9 +693,19 @@ The set of intervals are represented as either a barcode diagram or a persistenc
 	\label{fig:bg:persistence_pipeline}
 \end{figure}
 
+A second way of applying persistent homology is as a level-set filtration.
 There is another way of applying persistent homology.
 This is the level-set filtration, which we now describe.
+The beginning and ends of each bar will coresspond to critical points of the function.
+See Figure~\ref{fig:bg:level_set_filtration}.
 \kje{TODO: Describe level-set filtration.}
+
+\begin{figure}
+    \centering
+    \includegraphics[]{./fig/background/level_set_filtration.pdf}
+    \caption[Level-Set Filtrations]{Level-Set Filtration. TODO: Explain}
+    \label{fig:bg:level_set_filtration}
+\end{figure}
 
 As primarily end-users of persistent homology, the details of the persistence algorithm are largely beyond the scope of this thesis.
 Effectively, it involves manipulating the boundary matrix into a particular reduced form, from which each bar and representative cycle can be read off.
@@ -769,7 +779,7 @@ There are three main threads in statistical persistent homology:
 
 Confidence intervals on the persistence diagram address the question of when a bar is a significant topological feature and when it should be considered topological noise.
 Fasy \emph{et al.} have developed ways of generating confidence intervals for persistence diagrams \cite{Fasy:2014}.
-They use a filtration on a kernel density estimation of the data, and bootstrap resampling, to place an off-diagonal line on the diagram, below which points are to be considered noise.
+They use a filtration on a kernel density estimate of the data, and bootstrap resampling, to place an off-diagonal line on the diagram, below which points are to be considered noise.
 This approach can be used to handle outliers and noise in the data.
 An example of estimating the topology of a circle, with outliers, is shown in Figure~\ref{fig:bg:fasy_confidence_set}.
 Using the density estimate with a bootstrap estimator is one can recover the circle as a significant feature.
