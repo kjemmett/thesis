@@ -780,11 +780,10 @@ There are three main threads in statistical persistent homology:
 Confidence intervals on the persistence diagram address the question of when a bar is a significant topological feature and when it should be considered topological noise.
 Fasy \emph{et al.} have developed ways of generating confidence intervals for persistence diagrams \cite{Fasy:2014}.
 They use a filtration on a kernel density estimate of the data, and bootstrap resampling, to place an off-diagonal line on the diagram, below which points are to be considered noise.
-This approach can be used to handle outliers and noise in the data.
+This approach can be used to handle outliers and noise in the data by providing a way to identify the most robust topological features.
 An example of estimating the topology of a circle, with outliers, is shown in Figure~\ref{fig:bg:fasy_confidence_set}.
-Using the density estimate with a bootstrap estimator is one can recover the circle as a significant feature.
-Subsampling estimates were studied further in \cite{Chazal:2014wp}.
-Related approaches were developed by Blumberg \emph{et al.} in \cite{Blumberg:2014bq}.
+Using the density estimate with a bootstrap estimator one can recover the circle as a significant feature.
+Subsampling estimates were studied further in \cite{Chazal:2014wp}, and related approaches were developed by Blumberg \emph{et al.} in \cite{Blumberg:2014bq}.
 
 \begin{figure}
 	\centering
