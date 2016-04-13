@@ -235,6 +235,18 @@ where $p$ is the proportion of sites that are different.
 
 A phylogenetic tree is a binary tree in which leaves are associated with particular species or taxa, and the branching pattern of the tree reflects diverging evolutionary relationships.
 Branch lengths on the tree are associated with evolutionary divergence between sets of taxa.
+A tree can be either rooted, in which case a particular point on the tree is identified as the most recent common ancestor and the temporal order of branching is inferred, or unrooted, in which case only the branching pattern is represented but no statements about their temporal order are inferred.
+Typically sequence data alone is not sufficient to root a tree -- an estimate of the mutation rate under an evolutionary model is also required.
+See Figure~\ref{fig:bg:rooted_vs_unrooted} for an example of the two types of trees.
+In this work we primarily deal with unrooted trees.
+
+\begin{figure}
+\centering
+\includegraphics[]{./fig/background/rooted_vs_unrooted.pdf}
+\caption[Rooted vs. Unrooted trees]{(A) A rooted tree and (B) an unrooted tree on six leaves. In a rooted tree, a particular point on the tree is identified as the most recent ancestor. Time is measured along the horizontal axis. In an unrooted tree, only the pattern of divergence is represented. From sequence data, often times only an unrooted tree can be inferred.}
+\label{fig:bg:rooted_vs_unrooted}
+\end{figure}
+
 Molecular phylogenetics refers to a large collection of methods for inferring branching patterns from aligned molecular sequence data.\footnote{See Felsenstein's \emph{Inferring Phylogenies} for a readable and thorough introduction to the field \cite{Felsenstein:2004ws}.}
 In general, the problem of finding an optimal tree associated with sequence data is NP-complete \cite{Foulds:1982fn}, however several approximate methods have been developed.
 The primary types of methods include maximum parsimony, distance-matrix methods, maximum likelihood (ML), and Bayesian inference.
