@@ -318,8 +318,8 @@ In this case, one can either attempt to find the tree that best fits the data, o
 
 \subsubsection{Number of Tree Topologies}
 \label{bg:bio:phylo:topologies}
-
-The number of unrooted bifurcating tree topologies with $L$ leaves is $(2L-5)!!$.\footnote{The double factorial is defined as $n!! = n(n-2)(n-4)\cdots$.}
+Labeled trees on a fixed set on set of leaves can be distinguished by their topology, which refers to the arrangement of leaf labels corresponding to a particular evolutionary history.\footnote{The use of the term topology here is standard in phylogenetics, but distinct from that in mathematical topology.}
+The number of unrooted bifurcating tree topologies with $L$ leaves is $\mathcal{T}(L)=(2L-5)!!$.\footnote{The double factorial is defined as $n!! = n(n-2)(n-4)\cdots$.}
 This can be easily shown using induction.
 For $L = 3$, we have $\mathcal{T}(3)=1$ and $3$ branches.
 To pass to $L = 4$, we can add the fourth leaf to any of the $3$ branches, resulting in $3$ different topologies.
@@ -330,6 +330,14 @@ For $L = n+1$, we can add the new external branch to any of the current $2n-3$ b
 A rooted tree with $L$ leaves can be considered as an unrooted tree with $L+1$ leaves.
 Therefore, the number of rooted bifurcating tree topologies with $L$ leaves is $(2L-3)!!$
 As can be seen, the number of tree topologies explodes with the number of leaves.\footnote{As was observed by Walter Fitch, for $22$ species there are on the order of Avogadro's number of topologies. ($N_{22}=3.20e23$, $N_{A}=6.02\times 10^{23}$)}
+See Figure~\ref{fig:bg:tree_topologies}.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/background/tree_topologies.pdf}
+\caption[Counting Tree Topologies]{Enumerating tree topologies on sets of leaves. (A) There are three unique tree topologies on four leaves. (B) There are fifteen distinct tree topologies on five leaves. Inductively, the fifth leaf can be added as a branch to each branch. TODO: expand!}
+\label{fig:bg:tree_topologies}
+\end{figure}
 
 \subsubsection{The Space of Phylogenetic Trees}
 \label{bg:bio:phylo:space}
