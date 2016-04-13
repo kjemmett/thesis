@@ -839,7 +839,7 @@ Finally, nodes that share points in the original space are connected by an edge.
 
 Our use of Mapper will be primarily as a means of visualizing relationships in sequence data.
 While the resulting graphs cannot be strictly interpreted in a phylogenetic sense, they will provide valuable information about evolutionary relationships.
-An example of how a phylogeny could be represented using Mapper is shown in Figure~XX.
+% An example of how a phylogeny could be represented using Mapper is shown in Figure~XX.
 We use the commercial implementation of Mapper developed by Ayasdi \cite{AyasdiIris:2015}.
 Open-source implementations of Mapper are available in the Python Mapper package \cite{Mullner:2013} and sakmapper package \cite{Zairis:sakmapper:2016}.
 
@@ -855,6 +855,7 @@ Together with any of the standard genetic distance measures, this forms a metric
 
 The processes of evolution can be seen as an exploration of sequence space.
 % An individual genotype can be assigned a fitness which will describe the probability of reproductive success in a particular environment.
+Clonal evolution, in which mutations accrue at each generation, will be 
 Clonal evolution is the process of smoothly moving through sequence space, while reticulate evolution is the process of making discontinuous jumps through the space.
 Our data consists of a subset of points sampled from sequence space.
 These points reflect a particular evolutionary history.
@@ -992,7 +993,7 @@ Rather than attempt to characterize arbitrary data by projecting onto tree space
 Our hypothesis is that as the data moves further from tree space, it becomes increasingly nonadditive, which can be captured quantitatively with increasing signal from higher homology.
 Our updated picture is shown in Figure~\ref{fig:bg:tree_space_revisited}, where we depict tree space embedded in the larger space of finite metrics.
 We anticipate for appreciable datasets, our sensitivity will be such that those close to the tree space will have little to no homological signal, while those further away will have an increasing homological signal.
-A second point to make is that the metric structure will now allow us to pass through regions of space that are nonadditive.
+A second point is that the metric structure will now allow us to pass through regions of space that are nonadditive.
 Hence, one could conceivably compare two trees by drawing the direct path between them in metric space, and evaluating the persistent homology at each point.
 While some interesting work has explored the combinatorial structure of the space of metrics on low numbers of points (see \cite{Sturmfels:2004vc}), it does not appear feasible in general to provide a complete decomposition.
 
