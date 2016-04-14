@@ -11,10 +11,10 @@ This thesis contains results of applying new mathematical methods drawn from app
 #### Table of Contents
 
 1. Introduction
-  1.1 Molecular Evolution and the Tree Paradigm
-  1.2 Reticulate Processes and the Universal Tree
-  1.3 Evolution as a Topological Space
-  1.4 Thesis Organization
+  - Molecular Evolution and the Tree Paradigm
+  - Reticulate Processes and the Universal Tree
+  - Evolution as a Topological Space
+  - Thesis Organization
 2. Background
   2.1 Evolutionary Biology and Genomics
   2.2 Topological Data Analysis
@@ -38,7 +38,7 @@ This thesis contains results of applying new mathematical methods drawn from app
 
 #### References
 
-This thesis contains results from the following publications
+This thesis contains results from the following publications:
 
 1. **K. Emmett**, D. Rosenbloom, P. Camara, and R. Rabadan, "Parametric inference using persistence diagrams: A case study in population genetics," in *ICML Workshop on Topological Methods in Machine Learning*. 2014.
 2. **K. Emmett** and R. Rabadan, "Characterizing scales of genetic recombination and antibiotic resistance in pathogenic bacteria using topological data analysis," in *Brain Informatics and Health*, 2014.
@@ -46,7 +46,7 @@ This thesis contains results from the following publications
 4. **K. Emmett**, B. Schweinhart and R. Rabadan, "Multiscale Topology of Chromatin Folding," in *BICT 2015 Special Track on Topology-driven bio-inspired methods and models for complex systems (TOPDRIM4BIO)*, 2015.
 5. **K. Emmett**, D. Rosenbloom, J. Chan, and R. Rabadan, "Applying Topological Principles to Genomic Analysis," in *Microbe Magazine*. 2015. [link]
 
-Other papers written and contributed to during this period include
+Other papers written and contributed to during this period include:
 
 6. **Emmett, K.**, A. Lee, H. Khiabanian, and R. Rabadan, "High-resolution genomic surveillance of 2014 ebolavirus using shared subclonal variants," in *PLoS currents*, 7. 2015.
 7. R. Melamed, **K. Emmett**, C. Madubata, A. Rzhetsky, and R. Rabadan, "Genetic similarity between cancers and comorbid Mendelian diseases identifies candidate driver genes," in *Nature Communications*, 6:7033. 2015.
