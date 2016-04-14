@@ -1,4 +1,5 @@
-## Topology of Reticulate Evolution <br/> Kevin Emmett <br/> Columbia University
+## Topology of Reticulate Evolution
+## Kevin Emmett <br/> Columbia University
 
 <p align="center">
 <img src ="https://raw.githubusercontent.com/kjemmett/thesis/master/reticulate.gif" />
@@ -16,24 +17,30 @@ This thesis contains results of applying new mathematical methods drawn from app
   - Evolution as a Topological Space
   - Thesis Organization
 2. Background
-  2.1 Evolutionary Biology and Genomics
-  2.2 Topological Data Analysis
-  2.3 Applying TDA to Molecular Sequence Data
+  - Evolutionary Biology and Genomics
+  - Topological Data Analysis
+  - Applying TDA to Molecular Sequence Data
 3. Quantifying Reticulation Using Topological Complex Constructions
+  - Senstivity of the Vietoris-Rips Complex
+  - Median Complex Construction
+  - Cech Complex as an Optimization Problem
 4. Parametric Inference Using Persistence Diagrams
+  - The Coalescent
+  - Statistical Model
+  - Coalescent Simulations
 5. Phage Mosaicism
-  5.1 Measuring Phage Mosaicism with Persistent Homology
-  5.2 Representing Phage Relationships with Mapper
+  - Measuring Phage Mosaicism with Persistent Homology
+  - Representing Phage Relationships with Mapper
 6. Reassortment in Influenza Evolution
-  6.1 Influena Virology
-  6.2 Influenza Reassortment
-  6.3 Nonrandom Association of Genome Segments
-  6.4 Multiscale Fly Reassortment
+  - Influena Virology
+  - Influenza Reassortment
+  - Nonrandom Association of Genome Segments
+  - Multiscale Fly Reassortment
 7. Reticulate Evolution in Pathogenic Bacteria
-  7.1 Evolutionary Scales of Recombination in the Core Genome
-  7.2 Protein Families as a Proxy for Genome Wide Reticulation
-  7.3 Antibioitic Resistance in Staphylococcus aureus
-  7.4 Microbiome as a Reservoir of Antiobiotic Resistance Genes
+  - Evolutionary Scales of Recombination in the Core Genome
+  - Protein Families as a Proxy for Genome Wide Reticulation
+  - Antibioitic Resistance in Staphylococcus aureus
+  - Microbiome as a Reservoir of Antiobiotic Resistance Genes
 8. Conclusions
 
 #### References
