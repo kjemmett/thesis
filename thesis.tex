@@ -1,9 +1,8 @@
 %!TEX program = xelatex
-% PhD Thesis
 \documentclass[letterpaper,12pt,twoside]{memoir}
 
 % thesis metadata
-\newcommand{\thesistitle}{Statistical Topology of Reticulate Evolution}
+\newcommand{\thesistitle}{Topology of Reticulate Evolution}
 \newcommand{\thesisauthor}{Kevin Joseph Emmett}
 \newcommand{\thesisyear}{2016}
 \newcommand{\abstractpath}{./tex/abstract.tex}
@@ -41,7 +40,7 @@
 % \thesisacknowledgements
 
 % thesis dedication
-% This thesis is dedicated to Cindy Fang.
+% This thesis is secretly dedicated to Cindy Fang.
 % \thesisdedication
 
 % main body [arabic numerals]
@@ -65,15 +64,16 @@
 % Part 2: Applications
 \input{./tex/part2/part2.tex}
 
-% Part 3: Human Data
-% \input{./tex/part3/part3.tex}
-
 % add space before conclusions chapter in toc
 \bookmarksetup{startatroot}% this is it
 \addtocontents{toc}{\bigskip}
 
 % conclusions
 \input{./tex/conclusions.tex}
+
+% \begin{appendices}
+% \input{./tex/part2/human_chromatin_folding.tex}
+% \end{appendices}
 
 % backmatter [arabic numerals]
 \backmatter
