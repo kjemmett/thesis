@@ -41,17 +41,17 @@ This thesis contains results of applying new mathematical methods drawn from app
 This thesis contains results from the following publications
 
 1. **K. Emmett**, D. Rosenbloom, P. Camara, and R. Rabadan, "Parametric inference using persistence diagrams: A case study in population genetics," in *ICML Workshop on Topological Methods in Machine Learning*. 2014.
-2. **K. Emmett** and R. Rabadan, "Characterizing scales of genetic recombination and antibiotic resistance in pathogenic bacteria using topological data analysis," in Brain Informatics and Health, ser. Lecture Notes in Computer Science, vol. 8609, Springer, 2014, pp. 540–551. doi: 10.1007/978-3-319-09891-3_49.
-3. **K. Emmett** and R. Rabadan, "Quantifying reticulation in phylogenetic complexes using homology," in *BICT 2015 Special Track on Topology-driven bio-inspired methods and models for complex systems (TOPDRIM4BIO)*. 2015.
-4. **K. Emmett**, B. Schweinhart and R. Rabadan, "Multiscale Topology of Chromatin Folding," in *BICT 2015 Special Track on Topology-driven bio-inspired methods and models for complex systems (TOPDRIM4BIO)*. 2015.
+2. **K. Emmett** and R. Rabadan, "Characterizing scales of genetic recombination and antibiotic resistance in pathogenic bacteria using topological data analysis," in *Brain Informatics and Health*, 2014.
+3. **K. Emmett** and R. Rabadan, "Quantifying reticulation in phylogenetic complexes using homology," in *BICT 2015 Special Track on Topology-driven bio-inspired methods and models for complex systems (TOPDRIM4BIO)*, 2015.
+4. **K. Emmett**, B. Schweinhart and R. Rabadan, "Multiscale Topology of Chromatin Folding," in *BICT 2015 Special Track on Topology-driven bio-inspired methods and models for complex systems (TOPDRIM4BIO)*, 2015.
 5. **K. Emmett**, D. Rosenbloom, J. Chan, and R. Rabadan, "Applying Topological Principles to Genomic Analysis," in *Microbe Magazine*. 2015. [link]
 
 Other papers written and contributed to during this period include
 
 6. **Emmett, K.**, A. Lee, H. Khiabanian, and R. Rabadan, "High-resolution genomic surveillance of 2014 ebolavirus using shared subclonal variants," in *PLoS currents*, 7. 2015.
-7. R. Melamed, **K. Emmett**, C. Madubata, A. Rzhetsky, and R. Rabadan, "Genetic similarity between cancers and comorbid Mendelian diseases identifies candidate driver genes," in *Nature Communications*, 6, 7033. 2015.
+7. R. Melamed, **K. Emmett**, C. Madubata, A. Rzhetsky, and R. Rabadan, "Genetic similarity between cancers and comorbid Mendelian diseases identifies candidate driver genes," in *Nature Communications*, 6:7033. 2015.
 8. P. Camara, D. Rosenbloom, **K. Emmett**, A. Levine, and R. Rabadan. "Fine-scale resolution of human recombination using topological data analysis," in *Cell Systems*, in press. 2016.
 9. K. Walters, **K. Emmett**, J. Chan, D. Meroz, A. Karasin, S. Fan, G. Neumann, N. Ben-Tal, R. Rabadan, and Y. Kawaoka, "Identification of host-specific amino acids in the influenza virus PB2 polymerase subunit using machine learning approaches," in *Journal of Virology*, 2016 (in preparation).
-10. **K. Emmett**, J. Rosenstein, J.W. van de Meent, K. Shepard, & C. Wiggins. Statistical Inference for Nanopore Sequencing with a Biased Random Walk Model. *Biophysical journal*, 108(8), 1852-1855. 2015.
+10. **K. Emmett**, J. Rosenstein, J.W. van de Meent, K. Shepard, & C. Wiggins. "Statistical Inference for Nanopore Sequencing with a Biased Random Walk Model," in *Biophysical journal*, 108:8, 1852-1855. 2015.
 11. D. Bellin, H. Sakhtah, J. Rosenstein, P. Levine, J. Thimot, **K. Emmett**, L. Dietrich, K. Shepard. "Integrated circuit-based electrochemical sensor for spatially resolved detection of redox-active metabolites in biofilms," in *Nature Communucations* 5. 2014.
-12. S. Hill, L. Heiser, et al. **HPN-DREAM Consortium**, "Inferring causal molecular networks: empirical assessment through a community-based effort," in *Nature Methods*. 2016.
+12. S. Hill, L. Heiser, *et al.* **HPN-DREAM Consortium**, "Inferring causal molecular networks: empirical assessment through a community-based effort," in *Nature Methods*. 2016.
