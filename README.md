@@ -1,33 +1,42 @@
 ## Topology of Reticulate Evolution
 ## Kevin Emmett
 
-Brief Abstract
+#### Abstract
 
-Table of Contents
+This thesis contains results of applying new mathematical methods drawn from applied and computational topology to the problem of measuring reticulate evolution in molecular sequence data.
 
-### Introduction
+#### Table of Contents
 
-* Open with Darwin's Tree of Life
-* Recapitulate the Doolittle story and run through some history.
-* Darwin -> Zuckerkandl/Pauling -> Woese -> Modern Genomics
-* Doolittle; evidence for nonvertical evolution; new models
+1. Introduction
+  1. Molecular Evolution and the Tree Paradigm
+  2. Reticulate Processes and the Universal Tree
+  3. Evolution as a Topological Space
+  4. Thesis Organization
+2. Background
+3. Quantifying Reticulation Using Topological Complex Constructions
+4. Parametric Inference Using Persistence Diagrams
+5. Phage Mosaicism
+6. Reassortment in Influenza Evolution
+7. Reticulate Evolution in Pathogenic Bacteria
+8. Conclusions
 
-* Propose topological data analysis as a possible framework
-* Describe the basic idea behind TDA
-* Give a simple picture for how TDA is applied to sequence data
-* Thesis Organization
+#### References
 
-### Background
+This thesis contains results from the following papers
 
-* Major section: survey of evolutionary biology, population genetics and phylogenetics.
-* Sequence alignment. Coalescent simulation.
-* Discuss Darwin, Zuckerkandl and Pauling, Woese, Doolittle.
-* LUCA. Universal Tree of Life. Powerful image!
-* But evidence that evolution is not as linear as Darwin thought.
-* Discuss the coalescent with recombination. Biological mechanisms of recombination and horizontal gene transfer
-* Discuss phylogenetics and phylogenetic networks.
-* Detailed information can be put in later sections
-* Infinite sites assumption
+1. icml paper [1A]
+2. warsaw paper [1A]
+3. bict paper 1 [1A]
+4. bict paper 2 [1A]
+5. microbes article [1A]
+6. ebola paper [1A]
+7. mendelian paper [2A]
+8. human recomb paper [3A]
+9. (ip) flu paper [c1A]
+10. stochseq paper [1A]
+11. biofilm paper [5A]
+12. dream paper [SA]
+
 
 #### Population Genetics
 
