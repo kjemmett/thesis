@@ -110,12 +110,12 @@ The distribution of collected HA types and years is shown in Figure~\ref{fig:flu
 We first applied persistent homology to each genomic segment individually, as shown in Figure~\ref{fig:flu:segment_barcodes}.
 Here we see very little higher homology, consistent with no intra-segmental recombination.
 The presence of higher homology is likely due to back mutation, which is expected to be more common in viruses with high mutation rates and shorter genomes (i.e. the infinite sites model does not hold).
-However, an analysis of the concatenated full genome reveals a complex topology, with a large number of homological invariants in one and two dimensions (Figure~\ref{fig:flu:concatenated_genome_barcode}.
+However, an analysis of the concatenated full genome reveals a complex topology, with a large number of homological invariants in one and two dimensions (Figure~\ref{fig:flu:concatenated_genome_barcode}).
 
 These results show that persistent homology can detect pervasive reassortment in influenza.
 One-dimensional $\ICR$ provides a lower-bound estimate of reassortment rate.
 We calculate $\ICR < 1$ event per year for classic H1N1 swine and H3N2 human influenza, supported by previous phylogenetic estimates \cite{Lycett:2012fqa,Holmes:2005cia}.
-In contrast, we calculate a high rate of 22.16 reassortments per year for avian influenza A.
+In contrast, we calculate a much higher rate of 22.16 reassortments per year for avian influenza A.
 This difference could be explained by the high diversity and frequent coinfection of avian viruses \cite{Lubeck:1979ws} and correlates with the high proportion of avian reassortants reported in previous studies \cite{Dugan:2008iba}.
 
 \begin{figure}
@@ -136,18 +136,18 @@ We used mapper to visualize the relationships in our influenza dataset.
 A series of mapper networks is shown in Figure~\ref{fig:flu:networks_by_subtype}.
 The networks were generated using a Hamming metric and the first and second MDS components as a 2D lens.
 In each subfigure we color the network by influenza subtype, for the top ten subtypes represented in the dataset.
-We can see that the current classification of flu sequences by HA and NA type is a reasonable approach, as flu isolates of same subtype tend to cluster together tightly within the network.
+We can see that the current classification of flu sequences by HA and NA type is a reasonable approach, as flu isolates of the same subtype tend to cluster together tightly within the network.
 H6N2 is the sole subtype to be represented by two clusters in the network.
 When we examined the members of each H6N2 cluster, we found that both consisted of isolates spanning long time frames, suggesting that multiple stable lineages of H6N2, each carrying different internal segments, have persisted.
 
-The Mapper representation offers further resolution into isolate relationships that can account for whole genomes.
-We performed an MCL clustering of the network and considered how subtype-pure each cluster was.
-\kje{TODO: Make the figure and expand here. Explain alternate classification scheme.}
+% The Mapper representation offers further resolution into isolate relationships that can account for whole genomes.
+% We performed an MCL clustering of the network and considered how subtype-pure each cluster was.
+% \kje{TODO: Make the figure and expand here. Explain alternate classification scheme.}
 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{fig/influenza/flu_networks_by_subtype.pdf}
-\caption[Influenza Networks By HA Subtype]{Influenza Networks By HA Subtype. The networks were generated using Ayasdi. [Parameters]}
+\caption[Influenza Networks By HA Subtype]{Influenza Networks By HA Subtype. The networks were generated using Ayasdi using a Hamming metric and a 2D MDS coordinate lens. Lens parameters were (gain=5, resolution=40, equalize=False).},
 \label{fig:flu:networks_by_subtype}
 \end{figure}
 
@@ -189,7 +189,7 @@ The multiscale topological approach of persistent homology can distinguish biolo
 We isolated the two peaks and estimated two recombination rates: an intrasubtype $\rho_{1}=9.68$, and an intersubtype $\rho_{2}=21.43$.
 We conclude that intersubtype recombination occurs at a rate over twice that of intrasubtype recombination, however a genetic barrier exists that maintains distinct subtype populations.
 The nature of this barrier warrants further study.
-This illustrates a real world example in which multiscale topological structure can be captured by persistent homology and given biological interpretation.
+This illustrates a real-world example in which multiscale topological structure can be captured by persistent homology and given biological interpretation.
 
 \begin{figure}
 \centering
@@ -202,9 +202,9 @@ This illustrates a real world example in which multiscale topological structure 
 \label{flu:conclusions}
 
 In this chapter we analyzed reassortment patterns in influenza.
-The segmented nature of the influenza genome, and the large amount of collected genome information, make influenza ideal for the application of our topological methods.
+The segmented nature of the influenza genome, and the large amount of collected genome information, make influenza ideal for the application of topological methods.
 Reassortment occurs when a single cell is coinfected by multiple strains of the virus, and can lead to the emergence of novel pandemics.
-Current methods of classifying influenza, based solely on HA and NA subtype, fail to account for information in the internal segments and have no consistent methodology for dealing with reassortments.
+Current methods of classifying influenza, based solely on HA and NA subtype, fail to account for information in the internal segments and there is at present no consistent methodology for dealing with reassortments.
 We have applied methods from TDA to characterize both the scale and frequency of reassortment in influenza, estimating both reassortment rates and cosegregation patterns.
 Using Mapper, we determined classifications of viruses based on whole genome information that provide a higher resolution picture into extant circulating strains.
 Further, from the persistence diagram we identified a bimodal structure of $H_1$ invariants, which suggests a genetic barrier maintaining subtype diversity.
