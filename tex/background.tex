@@ -330,6 +330,7 @@ In this case, one can either attempt to find the tree that best fits the data, o
 
 \subsubsection{Number of Tree Topologies}
 \label{bg:bio:phylo:topologies}
+
 Labeled trees on a fixed set on set of leaves can be distinguished by their topology, which refers to the arrangement of leaf labels corresponding to a particular evolutionary history.\footnote{The use of the term topology here is standard in phylogenetics, but distinct from that in mathematical topology.}
 The number of unrooted bifurcating tree topologies with $L$ leaves is $\mathcal{T}(L)=(2L-5)!!$.\footnote{The double factorial is defined as $n!! = n(n-2)(n-4)\cdots$.}
 This can be easily shown using induction.
@@ -347,7 +348,7 @@ See Figure~\ref{fig:bg:tree_topologies}.
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{fig/background/tree_topologies.pdf}
-\caption[Counting Tree Topologies]{Enumerating tree topologies on sets of leaves. (A) There are three unique tree topologies on four leaves. (B) There are fifteen distinct tree topologies on five leaves. Inductively, the fifth leaf can be added as a branch to each branch. TODO: expand!}
+\caption[Counting Tree Topologies]{Enumerating tree topologies on labeled sets of leaves. (A) There are three unique tree topologies on four leaves. (B) There are fifteen distinct tree topologies on five leaves. Inductively, the fifth leaf can be added as a branch to each branch. In general, there are $\mathcal{T}(L)=(2L-5)!!$ topologies on $L$ leaves.}
 \label{fig:bg:tree_topologies}
 \end{figure}
 
@@ -693,17 +694,19 @@ The set of intervals are represented as either a barcode diagram or a persistenc
 	\label{fig:bg:persistence_pipeline}
 \end{figure}
 
-A second way of applying persistent homology is as a level-set filtration.
-There is another way of applying persistent homology.
-This is the level-set filtration, which we now describe.
-The beginning and ends of each bar will coresspond to critical points of the function.
-See Figure~\ref{fig:bg:level_set_filtration}.
-\kje{TODO: Describe level-set filtration.}
+A second way of applying persistent homology is through sublevel sets.
+The sublevel set of a function $f:X\rightarrow\mathbb{R}$ is defined as
+\begin{equation}
+L_{\epsilon}^{-}(f) = \{x \:|\: f(x)\leq \epsilon \}.
+\end{equation}
+One can compute persistent homology of sublevel sets by varying the parameter $\epsilon$.
+In this case, the beginning and end of each bar will correspond to critical points of the function.
+A simple example is shown in Figure~\ref{fig:bg:level_set_filtration}.
 
 \begin{figure}
     \centering
     \includegraphics[]{./fig/background/level_set_filtration.pdf}
-    \caption[Level-Set Filtrations]{Level-Set Filtration. TODO: Explain}
+    \caption[Level-Set Filtrations]{In a sublevel-set filtration, the homology of sublevel-sets of a function $f:\rightarrow\mathbb{R}$ are computed. Here we illustrate this for a simple function, showing the sublevel set at a particular $\epsilon$ and it's position in the barcode diagram indicating two connected components. In general, the beginning and end of bars will correspond to critical values of $f$.}
     \label{fig:bg:level_set_filtration}
 \end{figure}
 
