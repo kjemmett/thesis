@@ -1,14 +1,23 @@
 %!TEX root = ../thesis.tex
-Reticulate modes of genetic exchange can confound traditional methods of establishing evolutionary relationships among sets of related organisms.
-Increasing data has pointed to the prevelance of these modes, and underscored the lack of a unified mathematical approach to capturing and representing the scale and frequency of these events.
-This thesis contains results of applying new mathematical methods drawn from applied and computational topology to the problem of measuring reticulate evolution in molecular sequence data.
-In so doing, new techniques are established for constructing topological representations and extracting statistical patterns from biological data sets.
-We apply our approaches to several types of molecular sequence data.
-We first 
-Second, we study reassortment in influenza virus.
-We measure rates of reassortment, identify patterns of nonrandom segment cosegregation, and.
-Third,
 
+The standard representation of evolutionary relationships is a bifurcating tree.
+However, many types of genetic exchange, collectively referred to as \emph{reticulate evolution}, involve processes that cannot be modeled as trees.
+Increasing genomic data has pointed to the prevalence of reticulate processes, particularly in microorganisms, and underscored the need for new approaches to capture and represent the scale and frequency of these events.
 
-We apply our approaches to several types of molecular sequence data, include bacteriophage, influenza, and pathogenic bacteria.
-We also consider patterns of intranuclear chromatin folding in bacteria and humans.
+This thesis contains results from applying new techniques from applied and computational topology, under the heading \emph{topological data analysis}, to the problem of characterizing reticulate evolution in molecular sequence data.
+First, we develop approaches for analyzing sequence data using topology.
+We propose new topological constructions specific to molecular sequence data that generalize standard constructions.
+We draw on previous work in phylogenetic networks and use homology to provide a quantitative measure of reticulate events.
+We develop methods for performing statistical inference using topological summary statistics.
+
+Next, we apply our approach to several types of molecular sequence data.
+First, we examine the mosaic genome structure in phages.
+We recover inconsistencies in existing morphology-based taxonomies, use a network approach to construct a genome-based representation of phage relationships, and identify conserved gene families within phage populations.
+Second, we study influenza, a common human pathogen.
+We capture widespread patterns of reassortment, including nonrandom cosegregation of segments and barriers to subtype mixing.
+In contrast to traditional influenza studies, which focus on the phylogenetic branching patterns of only the two surface-marker proteins, we use whole-genome data to represent influenza molecular relationships.
+Using this representation, we identify unexpected relationships between divergent influenza subtypes.
+Finally, we examine a set of pathogenic bacteria.
+We use two sources of data to measure rates of reticulation in both the core genome and the mobile genome across a range of species.
+Network approaches are used to represent the population of \emph{S. aureus} and analyze the spread of antibiotic resistance genes.
+The presence of antibiotic resistance genes in the human microbiome is investigated.
