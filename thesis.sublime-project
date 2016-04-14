@@ -10,7 +10,7 @@
         {
             "path": "./fig",
             "name": "Figures",
-            "file_exclude_patterns": ["*.pdf", "*.pptx", "*.png", "*.gif", "*.jpg"]
+            "file_exclude_patterns": ["*.pdf", "*.pptx", "*.png", "*.gif", "*.jpg", "*.tiff"]
         },
         {
             "path": "./tex",
