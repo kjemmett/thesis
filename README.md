@@ -1,5 +1,5 @@
 ## Topology of Reticulate Evolution
-## Kevin Emmett <br/> Columbia University
+### Kevin Emmett <br/> Columbia University
 
 <p align="center">
 <img src ="https://raw.githubusercontent.com/kjemmett/thesis/master/reticulate.gif" />
