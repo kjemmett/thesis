@@ -151,7 +151,7 @@ We can immediately see that the assigned taxonomic families are not consistent w
 However, there does appear to be some structure in which the taxonomic label is consistent within clusters of strains.
 Returning to the barcode diagram, we see substantial nontrivial homology in $H_1$ across all scales.
 This confirms the presence of mosaic exchange expected in phage genomes.
-% Cycles in $H_1$ can be mapped to specific reticulation patterns. (include???)
+% Cycles in $H_1$ can be mapped to specific reticulation patterns. (TODO: include???)
 
 \begin{figure}
 \centering
@@ -254,7 +254,7 @@ The MCL algorithm takes two input parameters which control the coarseness of the
 We set $e=5$ and $i=5$.
 Ignoring the singleton nodes, this resulted in eleven clusters, as shown in Figure~\ref{phage:fig:s306_mcl_clustered_network}.
 For each cluster, we used a hypergeometric test to identify particular protein families that were over- or under-represented in each cluster.
-After correcting for multiple testing, the protein families were most significantly associated with particular clusters are shown in Table~\ref{phage:table:cluster_functions}.
+After correcting for multiple testing, the protein families that were most significantly associated with particular clusters are shown in Table~\ref{phage:table:cluster_functions}.
 
 \begin{figure}
 \centering
@@ -416,5 +416,5 @@ Information in the $H_1$ barcode was used to compare levels of reticulate exchan
 Second, we used Mapper to construct a network representation of phage molecular relationships.
 We examined how well different annotations, including taxonomic classification and host range, localized on this network.
 We used a network clustering algorithm to identify communities of phages related by shared protein content, and identified protein families representative of each cluster.
-These clusters, while not explicitly reflecting potential phylogenetic trajectories, are more reflective of molecular similarity than existing morphological taxonomies, and can be used as a starting point for developing a more comprehensive picture of bacteriophage evolutionary dynamics.
-Further sequencing data will allows us to refine these clusters and provide a higher resolution 
+These clusters, while not explicitly reflecting potential phylogenetic trajectories, are more reflective of molecular similarity than existing morphological taxonomies, and can be used as a starting point for developing a comprehensive picture of bacteriophage evolutionary dynamics.
+Further sequencing data will allow us to refine these clusters and provide a higher resolution picture of phage molecular relationships.
