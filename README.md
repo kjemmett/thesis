@@ -55,7 +55,7 @@ This thesis contains results from the following publications:
 
 Other papers written and contributed to during this period include:
 
-6. **Emmett, K.**, A. Lee, H. Khiabanian, and R. Rabadan, "High-resolution genomic surveillance of 2014 ebolavirus using shared subclonal variants," in *PLoS currents*, 7. 2015. [[link]](http://currents.plos.org/outbreaks/article/obk-14-0092-high-resolution-genomic-surveillance-of-2014-ebolavirus-using-shared-subclonal-variants/)
+6. **K. Emmett**, A. Lee, H. Khiabanian, and R. Rabadan, "High-resolution genomic surveillance of 2014 ebolavirus using shared subclonal variants," in *PLoS currents*, 7. 2015. [[link]](http://currents.plos.org/outbreaks/article/obk-14-0092-high-resolution-genomic-surveillance-of-2014-ebolavirus-using-shared-subclonal-variants/)
 7. R. Melamed, **K. Emmett**, C. Madubata, A. Rzhetsky, and R. Rabadan, "Genetic similarity between cancers and comorbid Mendelian diseases identifies candidate driver genes," in *Nature Communications*, 6:7033. 2015. [[link]](http://www.nature.com/ncomms/2015/150430/ncomms8033/full/ncomms8033.html)
 8. P. Camara, D. Rosenbloom, **K. Emmett**, A. Levine, and R. Rabadan. "Fine-scale resolution of human recombination using topological data analysis," in *Cell Systems*. 2016. (in press)
 9. K. Walters, **K. Emmett**, J. Chan, D. Meroz, A. Karasin, S. Fan, G. Neumann, N. Ben-Tal, R. Rabadan, and Y. Kawaoka, "Identification of host-specific amino acids in the influenza virus PB2 polymerase subunit using machine learning approaches," in *Journal of Virology*, 2016 (in preparation).
