@@ -30,12 +30,10 @@ We use genomic sequence data as a case study, examining the topological behavior
 We find that the process generates nontrivial topology in a way that depends sensitively on parameters in the model.
 The idea is presented as a proof of concept, in order to motivate the identification additional models with regular topological structure that may amenable to this type of inference.
 
-
 There has been related work on the topology of random models, mostly in the non-persistent case.
-The statistical properties of random simplicial complexes, including distributions over their Betti numbers, has been studied in \cite{Kahle:2011ep,Kahle:2013vy}.
+The statistical properties of random simplicial complexes, including distributions over their Betti numbers, was studied by Kahle and co-authors in \cite{Kahle:2011ep,Kahle:2013vy}.
 The persistent homology of Gaussian random fields and other probabilistic structures has been studied in \cite{Adler:2010}.
 Functions defined on the persistence diagram were used to compute a fractal dimension for various polymer physics models in \cite{MacPherson:2012eq}.
-
 
 \begin{figure}
 \centering
@@ -44,37 +42,38 @@ Functions defined on the persistence diagram were used to compute a fractal dime
 \label{fig:sim_barcodes}
 \end{figure}
 
-\section{Warmup: Gaussian Random Fields}
+% \section{Warmup: Gaussian Random Fields}
 
-Here we show that parametric inference of Gaussian Random Fields can be performed from the barcode diagram.
-Make reference to \cite{Adler:2010}.
-Connections with problems in cosmology.
-\kje{TODO: expand}
+% As a brief introduction tothe ide
+% Here we show that parametric inference of Gaussian Random Fields can be performed from the barcode diagram.
+% Make reference to \cite{Adler:2010}.
+% Connections with problems in cosmology.
+% \kje{TODO: expand}
+
+% % \begin{figure}
+% % \end{figure}
 
 % \begin{figure}
+% \centering
+% \includegraphics[width=\textwidth]{fig/parametric_inference/expCov.png}
+% \caption[Gaussian Random Fields with Exponential Covariance Structure]{Gaussian Random Fields with Exponential Covariance Structure.}
+% \label{fig:parametric_inference:expCov}
 % \end{figure}
 
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{fig/parametric_inference/expCov.png}
-\caption[Gaussian Random Fields with Exponential Covariance Structure]{Gaussian Random Fields with Exponential Covariance Structure.}
-\label{fig:parametric_inference:expCov}
-\end{figure}
-
-\begin{figure}
-\centering
-\subbottom[Birth Distribution]{%
-	\includegraphics[width=.3\textwidth]{fig/parametric_inference/expCov_birthdistribution.pdf}
-}
-\subbottom[Length Distribution]{%
-	\includegraphics[width=.3\textwidth]{fig/parametric_inference/expCov_lengthdistribution.pdf}
-}
-\subbottom[Length Fit]{%
-	\includegraphics[width=.3\textwidth]{fig/parametric_inference/expCov_length_fit.pdf}
-}
-\caption[Gaussian Random Field Summary Statistics]{Gaussian Random Field Summary Statistics}
-\label{fig:parametric_inference:expCov_distributions}
-\end{figure}
+% \begin{figure}
+% \centering
+% \subbottom[Birth Distribution]{%
+% 	\includegraphics[width=.3\textwidth]{fig/parametric_inference/expCov_birthdistribution.pdf}
+% }
+% \subbottom[Length Distribution]{%
+% 	\includegraphics[width=.3\textwidth]{fig/parametric_inference/expCov_lengthdistribution.pdf}
+% }
+% \subbottom[Length Fit]{%
+% 	\includegraphics[width=.3\textwidth]{fig/parametric_inference/expCov_length_fit.pdf}
+% }
+% \caption[Gaussian Random Field Summary Statistics]{Gaussian Random Field Summary Statistics}
+% \label{fig:parametric_inference:expCov_distributions}
+% \end{figure}
 
 \section{The Coalescent Process}
 
@@ -144,7 +143,7 @@ and scale parameter
 \begin{equation}
 \xi = \frac{1}{\alpha}(c_{0}\exp(-c_{1}\rho)+c_{2}).
 \end{equation}
-These expressions appears to hold well in the regime $\rho<\theta$, but break down for large $\rho$.
+These expressions appear to hold well in the regime $\rho<\theta$, but break down for large $\rho$.
 The length distribution is exponentially distributed with shape parameter proportional to mutation rate, $\eta=\alpha\theta$.
 The coefficients in each of these functions are calibrated using simulations, and could be improved with further analysis.
 This model has a simple structure and standard maximum likelihood approaches can be used to find optimal values of $\theta$ and $\rho$.
