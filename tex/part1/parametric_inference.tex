@@ -30,7 +30,6 @@ We use genomic sequence data as a case study, examining the topological behavior
 We find that the process generates nontrivial topology in a way that depends sensitively on parameters in the model.
 The idea is presented as a proof of concept, in order to motivate the identification additional models with regular topological structure that may amenable to this type of inference.
 
-
 There has been related work on the topology of random models, mostly in the non-persistent case.
 The statistical properties of random simplicial complexes, including distributions over their Betti numbers, has been studied in \cite{Kahle:2011ep,Kahle:2013vy}.
 The persistent homology of Gaussian random fields and other probabilistic structures has been studied in \cite{Adler:2010}.
@@ -50,9 +49,6 @@ Here we show that parametric inference of Gaussian Random Fields can be performe
 Make reference to \cite{Adler:2010}.
 Connections with problems in cosmology.
 \kje{TODO: expand}
-
-% \begin{figure}
-% \end{figure}
 
 \begin{figure}
 \centering
@@ -100,73 +96,97 @@ Evolutionary histories are no longer represented by a tree, but rather by an \em
 Recombination is the component of the model generating nontrivial topology by introducing deviations from a contractibile tree structure, and is the component which we would like to quantify.
 Coalescent simulations were performed using \texttt{ms} \cite{Hudson:2002}.
 
+\section{Statistical Model for Coalescent Inference}
+\label{sec:model}
+
+The persistence diagram from a typical coalescent simulation is shown in Figure~\ref{fig:sim_barcodes}.
+Examining the diagram, it would be difficult to classify the observed features into signal or noise.
+Instead, we will use the information in the persistence diagram to construct a statistical model in order to infer the parameters which generated the data.\footnote{We consider inference using only $H_1$ invariants, but the ideas easily generalize to higher dimensions.}
+As discussed in the previous section, the coalescent with recombination is a two parameter model: a mutation rate $\theta$ and a recombination rate $\rho$.
+In our initial model we will concentrate on inference of the recombination rate $\rho$ and set the mutation rate $\theta$ to $\infty$.
+Setting $\theta=\infty$ corresponds to perfect knowledge of the genealogy at each loci, and while not plausible for real data is possible within the simulation framework.\footnote{The effect of finite $\theta$ is to reduce the available information about the genealogy at each loci, and will correspond to a commensurate reduction in the ability to infer $\rho$. A simple TDA-based method to infer $\rho$ in the case of finite $\theta$ is proposed by P. Camara in forthcoming work.}
+Practically, this means our input is not sequence data, but rather tree-distance data.
+To construct the pairwise distance matrix for data on $n$ leaves, we take a weighted average of the tree-distance across each loci.
+
+We consider the following summary statistics which can be defined on the persistence diagram: the total number of invariants $K$; the set of birth times, $(b_1,{\ldots},b_K$; the set of death times, $(d_1,{\ldots},d_K)$; and the set of persistence lengths, $(l_1,{\ldots},l_K)$.
+In Figure~\ref{fig:coalescent_sims_fig1}, we show the distributions of these summary statistics for five values of $\rho$, keeping fixed $n=250$.
+Several observations are immediately apparent.
+First, the topological signal is remarkably stable, in the sense that the summary statistics form well-behaved distributions.
+Second, higher $\rho$ increases the number of features, consistent with the intuition that recombination generates nontrivial topology in the model.
+Finally, persistence lengths are only weakly dependent on $\rho$.
+
 \begin{figure}
 \begin{center}
-\centerline{\includegraphics[width=\columnwidth]{./fig/parametric_inference/coalescent_sims.pdf}}
-\caption[Distributions of statistics defined on the $H_1$ persistence diagram for different model parameters]{Distributions of statistics defined on the $H_1$ persistence diagram for different model parameters. Top left: Number of features. Top right: Birth time distribution. Bottom left: Death time distribution. Bottom right: Feature length distribution. Data generated from $1000$ coalescent simulations with $n=100$, $\theta=500$, and variable $\rho$.}
-\label{fig:coalescent_sims}
+\centerline{\includegraphics[width=\columnwidth]{./fig/parametric_inference/coalescent_sims_fig1.pdf}}
+\caption[Distributions of statistics defined on the $H_1$ persistence diagram for different model parameters]{Distributions of statistics defined on the $H_1$ persistence diagram for different model parameters. Top left: Number of invariants. Top right: Birth time distribution. Bottom left: Death time distribution. Bottom right: Invariant length distribution. Data generated from $1000$ coalescent simulations with $n=250$, $\theta=\infty$, and variable $\rho$.}
+\label{fig:coalescent_sims_fig1}
 \end{center}
 \end{figure}
 
-\section{Statistical Model}
-\label{sec:model}
+Further examining Figure \ref{fig:coalescent_sims_fig1}, we can empirically postulate the following: $K \sim \mathrm{Pois}(\zeta)$, $b_k \sim \mathrm{Gamma}(\alpha,\xi)$, and $l_k \sim \mathrm{Exp}(\eta)$.
+Death time is given by $d_k=b_k+l_k$, which will be incomplete Gamma distributed.
+The parameters of each distribution are assumed to be an \emph{a priori} unknown function of the model parameter, $\rho$, and the sample size, $n$.
+We performed simulations over a range of parameter values ($\rho=\{0, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024$ and $n=\{50, 100, 150, 200, 250\}$) to map the expected surface
+These simulations suggest functional forms for the parameters of each distribution, which were fit using the Eureqa symbolic regression package \cite{Eureqa}.
+In fitting parameters, we use an $R^2$ loss function weighted by the number of samples in each setting.
 
-The persistence diagram from a typical coalescent simulation is shown in Figure \ref{fig:sim_barcodes}.
-Examining the diagram, it would be difficult to classify the observed features into signal and noise.
-Instead, we use the information in the diagram to construct a statistical model in order to infer the parameters, $\theta$ and $\rho$, which generated the data.
-Note that we consider inference using only $H_1$ invariants, but the ideas easily generalize to higher dimensions.
-We consider the following properties of the persistence diagram: the total number of features, $K$; the set of birth times, $(b_1,{\ldots},b_K)$; the set of death times, $(d_1,{\ldots},d_K)$; and the set of persistence lengths, $(l_1,{\ldots},l_K)$.
-In Figure \ref{fig:coalescent_sims} we show the distributions of these properties for four values of $\rho$, keeping fixed $n=100$ and $\theta=500$.
-Several observations are immediately apparent.
-First, the topological signal is remarkably stable.
-Second, higher $\rho$ increases the number of features, consistent with the intuition that recombination generates nontrivial topology in the model.
-Third, the mean values of the birth and death time distributions are only weakly dependent on $\rho$ and are slightly smaller than $\theta$, suggesting that $\theta$ defines a natural scale in the topological space.
-However, higher $\rho$ tightens the variance of the distributions.
-Finally, persistence lengths are independent of $\rho$.
 
-Examining Figure \ref{fig:coalescent_sims}, we can postulate: $K \sim \mathrm{Pois}(\zeta)$, $b_k \sim \mathrm{Gamma}(\alpha,\xi)$, and $l_k \sim \mathrm{Exp}(\eta)$.
-Death time is given by $d_k=b_k+l_k$, which is incomplete Gamma distributed.
-The parameters of each distribution are assumed to be an \emph{a priori} unknown function of the model parameters, $\theta$ and $\rho$, and the sample size, $n$.
-Keeping $n$ fixed, and assuming each element in the diagram is independent, we can define the full likelihood as
+The number of features is Poisson distributed with expected value
+\begin{equation}
+\zeta(\rho, n) = n\log\left(1 + a_{0}\rho\right),
+\end{equation}
+(coefficient $a_0=0.004$; weighted $R^2=0.997$).
+Birth times are Gamma distributed with shape parameter
+\begin{equation}
+\alpha(\rho, n)=b_{0}\rho - b_{1}\rho\log(n)
+\end{equation}
+(coefficients $b_{0}=0.5, b_{1}=0.66$; weighted $R^2=0.998$) and scale parameter
+\begin{equation}
+\xi(\rho)=\frac{c_{0}}{c_{1}+\rho}
+\end{equation}
+(coefficients $c_{0}=3.21$, $c_{1}=8.20$; weighted $R^2=0.995$).
+The length distribution parameter, only weakly dependent on $\rho$, goes as
+\begin{equation}
+\eta(\rho)=d_{0} + \frac{d_{1}}{\sqrt{d_{2}+d_{3}\rho}}
+\end{equation}
+(coefficients $d_{0}=0.0274$, $d_{1}=0.0736$, $d_{2}=0.6$, $d_{3}=0.01$; weighted $R^2=0.992$).\footnote{In further simulations (not shown), the length distribution is strongly dependent on mutation rate $\theta$, which functions to set a natural scale for the finite metric space.}
+
+\begin{figure}
+\begin{center}
+\centerline{\includegraphics[]{./fig/parametric_inference/coalescent_sims_fig2.pdf}}
+\caption[Fitting the Poisson parameter $\zeta(\rho,n)$ for the expected number of invariants, $\bar{K}$]{The expected number of topological invariants in a coalescent simulation with $n$ samples, $\theta=\infty$, and recombination rate $\rho$. The expected number of $H_1$ bars, $\bar{K}$, is fit to a Poisson distribution with parameter $\zeta(\rho, n) = n\log\left(1 + a_{0}\rho\right)$, with fit coefficient $a_0=0.004$. Mean values over 1000 simulations are shown for each set of parameters, along with the fit (dashed lines). The fit was weighted toward higher values of $n$ and has an $R^2=0.997$.}
+\label{fig:coalescent_sims_fig2}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\centerline{\includegraphics[width=\columnwidth]{./fig/parametric_inference/coalescent_sims_fig3.pdf}}
+\caption[Fitting the distribution of birth times to a Gamma]{The distribution of $H_1$ invariant birth times in a coalescent simulation with $n$ samples, $\theta=\infty$, and recombination rate $\rho$ is fit to a Gamma distribution with shape parameter $\alpha(\rho, n)=b_{0}\rho - b_{1}\rho\log(n)$ (coefficients $b_{0}=0.5, b_{1}=0.66$; weighted $R^2=0.998$) and scale parameter $\xi(\rho, n)=\frac{c_{0}}{c_{1}+\rho}$ (coefficients $c_{0}=3.21$, $c_{1}=8.20$; weighted $R^2=0.995$).}
+\label{fig:coalescent_sims_fig3}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\centerline{\includegraphics[]{./fig/parametric_inference/coalescent_sims_fig4_v2.pdf}}
+\caption[Fitting the length distribution to an exponential]{The distribution of $H_1$ invariant length times in a coalescent simulation with $n$ samples, $\theta=\infty$, and recombination rate $\rho$ is fit to an exponential distribution with parameter $\eta(\rho)=d_{0} + \frac{d_{1}}{\sqrt{d_{2}+d_{3}\rho}}$ (coefficients $d_{0}=0.0274$, $d_{1}=0.0736$, $d_{2}=0.6$, $d_{3}=0.01$; weighted $R^2=0.992$).}
+\label{fig:coalescent_sims_fig4}
+\end{center}
+\end{figure}
+
+Keeping $n$ fixed, and assuming each interval in the diagram is independent, we can define the full likelihood as
 \begin{equation}
 p(D \given \theta,\rho) = p(K \given \theta,\rho)\displaystyle\prod_{k=1}^{K}p(b_k \given \theta,\rho)p(l_k  \given \theta,\rho).
 \end{equation}
-Simulations over a range of parameter values suggest the following functional forms for the parameters of each distribution.
-The number of features is Poisson distributed with expected value
-\begin{equation}
-\zeta=a_{0}\log\left(1+\frac{\rho}{a_{1}+a_{2}\rho}\right)
-\end{equation}
-Birth times are Gamma distributed with shape parameter
-\begin{equation}
-\alpha=b_{0}\rho+b_{1}
-\end{equation}
-and scale parameter
-\begin{equation}
-\xi = \frac{1}{\alpha}(c_{0}\exp(-c_{1}\rho)+c_{2}).
-\end{equation}
-These expressions appears to hold well in the regime $\rho<\theta$, but break down for large $\rho$.
-The length distribution is exponentially distributed with shape parameter proportional to mutation rate, $\eta=\alpha\theta$.
-The coefficients in each of these functions are calibrated using simulations, and could be improved with further analysis.
-This model has a simple structure and standard maximum likelihood approaches can be used to find optimal values of $\theta$ and $\rho$.
-
-\section{Coalescent Simulations}
-\label{parametric_inference:simulations}
-
-We simulated a coalescent process with sample size $n=100$ and $l=10{,}000$ loci.
-The mutation rate, $\theta$, was varied across $\theta=\{50,500,5000\}$.
-The recombination rate, $\rho$, was varied across $\rho=\{4,12,36,72\}$.
-The output of the process is a set of binary sequences of variable length (length is dependent on $\theta$).
-The Hamming metric is used to construct a pairwise distance matrix between sequences.
-We computed persistent homology and used the model described in Section \ref{sec:model} to estimate $\theta$ and $\rho$.
+This model has a simple structure and standard maximum likelihood approaches can be used to find the optimal value of $\rho$.
 Results are shown in Figure \ref{fig:param_inference}, where we plot estimates and 95\% confidence interval from $500$ simulations.
-We observe an improved $\rho$ estimate at higher mutation rate.
-This is expected, as increasing $\theta$ is essentially increasing sampling on branches in the genealogy.
-We also observe tighter confidence intervals at higher recombination rates, consistent with the behavior seen in Figure \ref{fig:coalescent_sims}.
+We also observe tighter confidence intervals at higher recombination rates, consistent with the behavior seen in Figure \ref{fig:coalescent_sims_fig1}.
 
 \begin{figure}
 \centering
 \includegraphics[width=\columnwidth]{./fig/parametric_inference/param_inference.pdf}
-\caption[Inference of recombination rate $\rho$ using topological information]{Inference of recombination rate $\rho$ using topological information. The recombination rate $\rho$ is estimated for five values \{4, 12, 36, 72, 144\} at three different mutation rates \{50, 500, 5000\}. Mean estimate over 500 simulations and 95\% confidence interval is shown.}
+\caption[Inference of recombination rate $\rho$ using topological information]{Inference of recombination rate $\rho$ using topological information. The recombination rate $\rho$ is estimated for five values \{4, 12, 36, 72, 144\} at $\theta=\infty$. Mean estimate over 1000 simulations and 95\% confidence interval is shown.}
 \label{fig:param_inference}
 \end{figure}
 
@@ -181,6 +201,7 @@ Estimating $\rho$ from this data requires teasing out the contribution of recomb
 In contrast, our topological estimator is in some sense a more pure signal of recombination.
 By the fundamental theorem, there will be no $H_1$ homology when $\rho=0$.
 Any signal that is generated at $H_1$ and higher is due strictly to reticulate processes.
+While this is a clear benefit, it does come with the downside of requiring either high recombination rates or large sample sizes for effective inference, as it is dependent on the number of intervals in the persistence diagram for reliable inference.
 
 \begin{figure}
 \centering
@@ -190,7 +211,7 @@ Any signal that is generated at $H_1$ and higher is due strictly to reticulate p
 \subbottom[]{%
 	\includegraphics[width=.3\textwidth]{fig/parametric_inference/coalescent_birth_distributions.pdf}
 }
-\caption[Comparing traditional estimators of $\rho$ to ]{Traditional estimators of $\rho$ are based on modeling the distribution of pairwise distances in a dataset, as shown on left. This distribution is a mixture of both coalescent and recombination processes. In contrast, the distribution of birth times is driven solely by recombination.}
+\caption[Comparing traditional estimators of $\rho$ to the TDA-estimator]{Traditional estimators of $\rho$ are based on modeling the distribution of pairwise distances in a dataset, as shown on left. This distribution is a mixture of both coalescent and recombination processes. In contrast, the distribution of birth times is driven solely by recombination.}
 \label{fig:estimator_comparison}
 \end{figure}
 
