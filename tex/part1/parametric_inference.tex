@@ -31,10 +31,9 @@ We find that the process generates nontrivial topology in a way that depends sen
 The idea is presented as a proof of concept, in order to motivate the identification additional models with regular topological structure that may amenable to this type of inference.
 
 There has been related work on the topology of random models, mostly in the non-persistent case.
-The statistical properties of random simplicial complexes, including distributions over their Betti numbers, has been studied in \cite{Kahle:2011ep,Kahle:2013vy}.
+The statistical properties of random simplicial complexes, including distributions over their Betti numbers, was studied by Kahle and co-authors in \cite{Kahle:2011ep,Kahle:2013vy}.
 The persistent homology of Gaussian random fields and other probabilistic structures has been studied in \cite{Adler:2010}.
 Functions defined on the persistence diagram were used to compute a fractal dimension for various polymer physics models in \cite{MacPherson:2012eq}.
-
 
 \begin{figure}
 \centering
@@ -45,10 +44,14 @@ Functions defined on the persistence diagram were used to compute a fractal dime
 
 \section{Warmup: Gaussian Random Fields}
 
+As a brief introduction tothe ide
 Here we show that parametric inference of Gaussian Random Fields can be performed from the barcode diagram.
 Make reference to \cite{Adler:2010}.
 Connections with problems in cosmology.
 \kje{TODO: expand}
+
+% \begin{figure}
+% \end{figure}
 
 \begin{figure}
 \centering
@@ -130,7 +133,6 @@ We performed simulations over a range of parameter values ($\rho=\{0, 1, 2, 4, 8
 These simulations suggest functional forms for the parameters of each distribution, which were fit using the Eureqa symbolic regression package \cite{Eureqa}.
 In fitting parameters, we use an $R^2$ loss function weighted by the number of samples in each setting.
 
-
 The number of features is Poisson distributed with expected value
 \begin{equation}
 \zeta(\rho, n) = n\log\left(1 + a_{0}\rho\right),
@@ -179,6 +181,7 @@ Keeping $n$ fixed, and assuming each interval in the diagram is independent, we 
 \begin{equation}
 p(D \given \theta,\rho) = p(K \given \theta,\rho)\displaystyle\prod_{k=1}^{K}p(b_k \given \theta,\rho)p(l_k  \given \theta,\rho).
 \end{equation}
+
 This model has a simple structure and standard maximum likelihood approaches can be used to find the optimal value of $\rho$.
 Results are shown in Figure \ref{fig:param_inference}, where we plot estimates and 95\% confidence interval from $500$ simulations.
 We also observe tighter confidence intervals at higher recombination rates, consistent with the behavior seen in Figure \ref{fig:coalescent_sims_fig1}.
