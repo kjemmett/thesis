@@ -42,38 +42,36 @@ Functions defined on the persistence diagram were used to compute a fractal dime
 \label{fig:sim_barcodes}
 \end{figure}
 
-\section{Warmup: Gaussian Random Fields}
+% \section{Warmup: Gaussian Random Fields}
 
-As a brief introduction tothe ide
-Here we show that parametric inference of Gaussian Random Fields can be performed from the barcode diagram.
-Make reference to \cite{Adler:2010}.
-Connections with problems in cosmology.
-\kje{TODO: expand}
+% As a brief introduction tothe ide
+% Here we show that parametric inference of Gaussian Random Fields can be performed from the barcode diagram.
+% Make reference to \cite{Adler:2010}.
+% Connections with problems in cosmology.
+% \kje{TODO: expand}
+
 
 % \begin{figure}
+% \centering
+% \includegraphics[width=\textwidth]{fig/parametric_inference/expCov.png}
+% \caption[Gaussian Random Fields with Exponential Covariance Structure]{Gaussian Random Fields with Exponential Covariance Structure.}
+% \label{fig:parametric_inference:expCov}
 % \end{figure}
 
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{fig/parametric_inference/expCov.png}
-\caption[Gaussian Random Fields with Exponential Covariance Structure]{Gaussian Random Fields with Exponential Covariance Structure.}
-\label{fig:parametric_inference:expCov}
-\end{figure}
-
-\begin{figure}
-\centering
-\subbottom[Birth Distribution]{%
-	\includegraphics[width=.3\textwidth]{fig/parametric_inference/expCov_birthdistribution.pdf}
-}
-\subbottom[Length Distribution]{%
-	\includegraphics[width=.3\textwidth]{fig/parametric_inference/expCov_lengthdistribution.pdf}
-}
-\subbottom[Length Fit]{%
-	\includegraphics[width=.3\textwidth]{fig/parametric_inference/expCov_length_fit.pdf}
-}
-\caption[Gaussian Random Field Summary Statistics]{Gaussian Random Field Summary Statistics}
-\label{fig:parametric_inference:expCov_distributions}
-\end{figure}
+% \begin{figure}
+% \centering
+% \subbottom[Birth Distribution]{%
+% 	\includegraphics[width=.3\textwidth]{fig/parametric_inference/expCov_birthdistribution.pdf}
+% }
+% \subbottom[Length Distribution]{%
+% 	\includegraphics[width=.3\textwidth]{fig/parametric_inference/expCov_lengthdistribution.pdf}
+% }
+% \subbottom[Length Fit]{%
+% 	\includegraphics[width=.3\textwidth]{fig/parametric_inference/expCov_length_fit.pdf}
+% }
+% \caption[Gaussian Random Field Summary Statistics]{Gaussian Random Field Summary Statistics}
+% \label{fig:parametric_inference:expCov_distributions}
+% \end{figure}
 
 \section{The Coalescent Process}
 
@@ -188,8 +186,8 @@ We also observe tighter confidence intervals at higher recombination rates, cons
 
 \begin{figure}
 \centering
-\includegraphics[width=\columnwidth]{./fig/parametric_inference/param_inference.pdf}
-\caption[Inference of recombination rate $\rho$ using topological information]{Inference of recombination rate $\rho$ using topological information. The recombination rate $\rho$ is estimated for five values \{4, 12, 36, 72, 144\} at $\theta=\infty$. Mean estimate over 1000 simulations and 95\% confidence interval is shown.}
+\includegraphics[]{fig/parametric_inference/coalescent_sims_fig5.pdf}
+\caption[Inference of recombination rate $\rho$ using topological information]{Inference of recombination rate $\rho$ using topological information. The recombination rate is estimated across values $\rho=0$ to $\rho=1000$ for $n=100$ (left) and $n=250$ (right). Shown are the mean estimate over 500 simulations and the 95\% confidence interval. Consistent with expectations, the estimator is more accurate for larger values of $\rho$ and has a tighter confidence bounds for larger $n$, correlating with more information available in the diagram for inference.}
 \label{fig:param_inference}
 \end{figure}
 
@@ -208,12 +206,7 @@ While this is a clear benefit, it does come with the downside of requiring eithe
 
 \begin{figure}
 \centering
-\subbottom[]{%
-	\includegraphics[width=.3\textwidth]{fig/parametric_inference/coalescent_pairwise_distance.pdf}
-}
-\subbottom[]{%
-	\includegraphics[width=.3\textwidth]{fig/parametric_inference/coalescent_birth_distributions.pdf}
-}
+\includegraphics[]{fig/parametric_inference/coalescent_sims_fig6.pdf}
 \caption[Comparing traditional estimators of $\rho$ to the TDA-estimator]{Traditional estimators of $\rho$ are based on modeling the distribution of pairwise distances in a dataset, as shown on left. This distribution is a mixture of both coalescent and recombination processes. In contrast, the distribution of birth times is driven solely by recombination.}
 \label{fig:estimator_comparison}
 \end{figure}
